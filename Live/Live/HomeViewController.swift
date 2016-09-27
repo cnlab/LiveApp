@@ -9,47 +9,37 @@
 import ResearchKit
 import UIKit
 
-extension FirstViewController : ORKTaskViewControllerDelegate {
+class HomeViewController: UIViewController {
 
-    func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
-        //Handle results with taskViewController.result
-        taskViewController.dismiss(animated: true, completion: nil)
-    }
-    
-}
-
-class FirstViewController: UIViewController {
+    @IBOutlet var motivationalTextView: UITextView?
+    @IBOutlet var stepsView: StepsView?
+    @IBOutlet var valueTextView: UITextView?
+    @IBOutlet var activityTextView: UITextView?
 
     let healthKitManager = HealthKitManager()
+    let valueMessageManager = ValueMessageManager()
+    let activityMessageManager = ActivityMessageManager()
     var notificationCount = 0
+    var weeklyStartDate = Date()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        nextValue()
+        nextActivity()
+
+        weeklyStartDate = Date()
+        stepsView?.update(startDate: weeklyStartDate, stepCounts: [nil, nil, nil, nil, nil, nil, nil])
+        authorizeHealthKit()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    @IBAction func consentTapped(_ sender: AnyObject) {
-        let taskViewController = ORKTaskViewController(task: ConsentTask, taskRun: nil)
-        taskViewController.delegate = self
-        present(taskViewController, animated: true, completion: nil)
-    }
-
-    @IBAction func surveyTapped(_ sender: AnyObject) {
-        let taskViewController = ORKTaskViewController(task: SurveyTask, taskRun: nil)
-        taskViewController.delegate = self
-        present(taskViewController, animated: true, completion: nil)
-    }
-
-    @IBAction func authorizeHealthKitTapped(_ sender: AnyObject) {
+    func authorizeHealthKit() {
         do {
             try healthKitManager.authorizeHealthKit { (authorized,  error) -> Void in
                 if authorized {
-                    print("HealthKit authorization received.")
+                    DispatchQueue.main.async {
+                        self.queryDailyStepCounts()
+                    }
                 } else {
                     print("HealthKit authorization denied!")
                     if error != nil {
@@ -62,9 +52,37 @@ class FirstViewController: UIViewController {
         }
     }
 
-    @IBAction func queryTapped(_ sender: AnyObject) {
+    func queryDailyStepCounts() {
+        weeklyStartDate = healthKitManager.queryLastWeekOfDailyStepCounts(handler: dailyStepCounts)
+    }
+
+    func dailyStepCounts(startDate: Date, stepCounts: [Int?]) {
+        stepsView?.update(startDate: startDate, stepCounts: stepCounts)
+    }
+
+    func nextValue() {
+        valueTextView?.text = "Think about " + MessageManager.format(message: valueMessageManager.next()) + "."
+    }
+
+    func nextActivity() {
+        activityTextView?.text = MessageManager.format(message: activityMessageManager.next())
+    }
+
+    @IBAction func respondToValueTouched(_ sender: AnyObject) {
+        nextValue()
+    }
+
+    @IBAction func respondToActivityTouched(_ sender: AnyObject) {
+        nextActivity()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    func queryHealthKit() {
         healthKitManager.queryMostRecentSamples()
-        healthKitManager.queryLastWeekOfDailyStepCounts()
     }
 
     @IBAction func scheduleNotificationTapped(_ sender: AnyObject) {

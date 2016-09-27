@@ -1,5 +1,5 @@
 //
-//  HealthMessageManager.swift
+//  ActivityMessageManager.swift
 //  Live
 //
 //  Created by Denis Bohm on 9/12/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HealthMessageManager {
+class ActivityMessageManager {
 
     var messageSequence = [Message]()
     var lastGroup: String?

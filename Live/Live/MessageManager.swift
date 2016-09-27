@@ -151,7 +151,6 @@ class MessageManager {
 
     // Create a sequence of the given messages in random order.
     // Try to alternate randomly between message groups of "how", "why", and "risk".
-    // Some messages have the tag "active" or "inactive".  Pass in the tag to match.  If the message is untagged it will always be included.
     // Note: The calculated item pair frequency table can be off if there is not a "round" number of messages.
     // In that case there may be a couple of stray messages from the same group in sequence. -denis
     func getMessageSequence(messages: [Message], initialGroup: String? = nil) -> [Message] {
@@ -175,6 +174,23 @@ class MessageManager {
         for message in strays {
             let index = random(upperBound: messageSequence.count)
             messageSequence.insert(message, at: index)
+        }
+        return messageSequence
+    }
+
+    // Create a sequence of the given messages in random order.
+    func getMessageSequence(messages: [Message], group: String, lastMessage: String? = nil) -> [Message] {
+        var messageSequence = [Message]()
+        var messages = messages.filter { $0.group == group }
+        while !messages.isEmpty {
+            let index = random(upperBound: messages.count)
+            let message = messages.remove(at: index)
+            messageSequence.append(message)
+        }
+        if let lastMessage = lastMessage, let first = messageSequence.first, first.identifier == lastMessage, messageSequence.count > 1 {
+            let message = messageSequence.remove(at: 0)
+            let index = random(upperBound: messageSequence.count - 1)
+            messageSequence.insert(message, at: index + 1)
         }
         return messageSequence
     }

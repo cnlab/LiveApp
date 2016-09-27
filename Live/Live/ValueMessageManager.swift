@@ -10,6 +10,36 @@ import Foundation
 
 class ValueMessageManager {
 
+    var messageSequence = [Message]()
+    var filterGroup: String
+    var lastMessage: String?
+
+    var group: String {
+
+        get {
+            return filterGroup
+        }
+
+        set {
+            if filterGroup != newValue {
+                lastMessage = nil
+                messageSequence.removeAll()
+            }
+            filterGroup = newValue
+        }
+
+    }
+
+    func next() -> Message {
+        if messageSequence.isEmpty {
+            messageSequence = MessageManager().getMessageSequence(messages: messages, group: filterGroup, lastMessage: lastMessage)
+            if let message = messageSequence.last {
+                lastMessage = message.identifier
+            }
+        }
+        return messageSequence.removeFirst()
+    }
+
     let messages: [Message]
 
     init() {
@@ -21,7 +51,9 @@ class ValueMessageManager {
         let powerAndStatus = "Power and Status"
         let familyAndFriends = "Family and Friends"
         let compassionAndKindness = "Compassion and Kindness"
-        
+
+        filterGroup = independence
+
         messages = [
             Message(group: independence, identifier: "1", string: "not being swayed by the thoughts or feelings of others"),
             Message(group: independence, identifier: "2", string: "deciding to do something because you felt that it was the right thing to do"),

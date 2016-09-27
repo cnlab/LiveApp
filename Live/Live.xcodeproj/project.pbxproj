@@ -19,11 +19,14 @@
 		9248782F1D86F6F5000C86FF /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9248782E1D86F6F5000C86FF /* HealthKit.framework */; };
 		924878321D86F88B000C86FF /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924878311D86F88B000C86FF /* HealthKitManager.swift */; };
 		924878341D8733C2000C86FF /* ValueMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924878331D8733C2000C86FF /* ValueMessageManager.swift */; };
-		924878361D873A92000C86FF /* HealthMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924878351D873A92000C86FF /* HealthMessageManager.swift */; };
+		924878361D873A92000C86FF /* ActivityMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924878351D873A92000C86FF /* ActivityMessageManager.swift */; };
 		9248783A1D873B3E000C86FF /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924878391D873B3E000C86FF /* MessageManager.swift */; };
 		92716C401D94CDCD00980CA3 /* CollectionViewListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92716C3F1D94CDCD00980CA3 /* CollectionViewListLayout.swift */; };
+		92986D8E1D99A57D008B8533 /* ConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92986D8D1D99A57D008B8533 /* ConsentViewController.swift */; };
+		92986D921D99A5FF008B8533 /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92986D911D99A5FF008B8533 /* SurveyViewController.swift */; };
+		92986D9A1D99A87A008B8533 /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92986D991D99A87A008B8533 /* StepsView.swift */; };
 		92CA91981D8304B9000491CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA91971D8304B9000491CD /* AppDelegate.swift */; };
-		92CA919A1D8304B9000491CD /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA91991D8304B9000491CD /* FirstViewController.swift */; };
+		92CA919A1D8304B9000491CD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA91991D8304B9000491CD /* HomeViewController.swift */; };
 		92CA919C1D8304B9000491CD /* ValuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA919B1D8304B9000491CD /* ValuesViewController.swift */; };
 		92CA919F1D8304B9000491CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92CA919D1D8304B9000491CD /* Main.storyboard */; };
 		92CA91A11D8304B9000491CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92CA91A01D8304B9000491CD /* Assets.xcassets */; };
@@ -100,12 +103,15 @@
 		924878301D86F6F5000C86FF /* Live.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Live.entitlements; sourceTree = "<group>"; };
 		924878311D86F88B000C86FF /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		924878331D8733C2000C86FF /* ValueMessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueMessageManager.swift; sourceTree = "<group>"; };
-		924878351D873A92000C86FF /* HealthMessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthMessageManager.swift; sourceTree = "<group>"; };
+		924878351D873A92000C86FF /* ActivityMessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityMessageManager.swift; sourceTree = "<group>"; };
 		924878391D873B3E000C86FF /* MessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
 		92716C3F1D94CDCD00980CA3 /* CollectionViewListLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewListLayout.swift; sourceTree = "<group>"; };
+		92986D8D1D99A57D008B8533 /* ConsentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentViewController.swift; sourceTree = "<group>"; };
+		92986D911D99A5FF008B8533 /* SurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
+		92986D991D99A87A008B8533 /* StepsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
 		92CA91941D8304B9000491CD /* Live.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Live.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92CA91971D8304B9000491CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		92CA91991D8304B9000491CD /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		92CA91991D8304B9000491CD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		92CA919B1D8304B9000491CD /* ValuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuesViewController.swift; sourceTree = "<group>"; };
 		92CA919E1D8304B9000491CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		92CA91A01D8304B9000491CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,6 +153,65 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		92986D931D99A67F008B8533 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				92CA91991D8304B9000491CD /* HomeViewController.swift */,
+				924878311D86F88B000C86FF /* HealthKitManager.swift */,
+				924878331D8733C2000C86FF /* ValueMessageManager.swift */,
+				924878351D873A92000C86FF /* ActivityMessageManager.swift */,
+				924878391D873B3E000C86FF /* MessageManager.swift */,
+				92986D991D99A87A008B8533 /* StepsView.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		92986D941D99A68E008B8533 /* Values */ = {
+			isa = PBXGroup;
+			children = (
+				92716C3F1D94CDCD00980CA3 /* CollectionViewListLayout.swift */,
+				92CA919B1D8304B9000491CD /* ValuesViewController.swift */,
+			);
+			name = Values;
+			sourceTree = "<group>";
+		};
+		92986D951D99A698008B8533 /* Consent */ = {
+			isa = PBXGroup;
+			children = (
+				92986D8D1D99A57D008B8533 /* ConsentViewController.swift */,
+				92CA91D91D830B31000491CD /* ConsentDocument.swift */,
+				9233565A1D833843005161A8 /* ConsentTask.swift */,
+			);
+			name = Consent;
+			sourceTree = "<group>";
+		};
+		92986D961D99A6A4008B8533 /* Survey */ = {
+			isa = PBXGroup;
+			children = (
+				92986D911D99A5FF008B8533 /* SurveyViewController.swift */,
+				9233565C1D833C24005161A8 /* SurveyTask.swift */,
+				9233565E1D833D90005161A8 /* blue.png */,
+				9233565F1D833D90005161A8 /* green.png */,
+				923356601D833D90005161A8 /* orange.png */,
+				923356611D833D90005161A8 /* purple.png */,
+				923356621D833D90005161A8 /* red.png */,
+				923356631D833D90005161A8 /* yellow.png */,
+			);
+			name = Survey;
+			sourceTree = "<group>";
+		};
+		92986D971D99A709008B8533 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				924878301D86F6F5000C86FF /* Live.entitlements */,
+				92CA91971D8304B9000491CD /* AppDelegate.swift */,
+				92CA91A01D8304B9000491CD /* Assets.xcassets */,
+				92CA91A21D8304B9000491CD /* LaunchScreen.storyboard */,
+				92CA91A51D8304B9000491CD /* Info.plist */,
+			);
+			name = Misc;
+			sourceTree = "<group>";
+		};
 		92CA918B1D8304B9000491CD = {
 			isa = PBXGroup;
 			children = (
@@ -172,28 +237,12 @@
 		92CA91961D8304B9000491CD /* Live */ = {
 			isa = PBXGroup;
 			children = (
-				924878301D86F6F5000C86FF /* Live.entitlements */,
-				92CA91971D8304B9000491CD /* AppDelegate.swift */,
-				92CA91991D8304B9000491CD /* FirstViewController.swift */,
-				92CA919B1D8304B9000491CD /* ValuesViewController.swift */,
 				92CA919D1D8304B9000491CD /* Main.storyboard */,
-				92CA91A01D8304B9000491CD /* Assets.xcassets */,
-				9233565E1D833D90005161A8 /* blue.png */,
-				9233565F1D833D90005161A8 /* green.png */,
-				923356601D833D90005161A8 /* orange.png */,
-				923356611D833D90005161A8 /* purple.png */,
-				923356621D833D90005161A8 /* red.png */,
-				923356631D833D90005161A8 /* yellow.png */,
-				92CA91A21D8304B9000491CD /* LaunchScreen.storyboard */,
-				92CA91A51D8304B9000491CD /* Info.plist */,
-				92CA91D91D830B31000491CD /* ConsentDocument.swift */,
-				9233565A1D833843005161A8 /* ConsentTask.swift */,
-				9233565C1D833C24005161A8 /* SurveyTask.swift */,
-				924878311D86F88B000C86FF /* HealthKitManager.swift */,
-				924878331D8733C2000C86FF /* ValueMessageManager.swift */,
-				924878351D873A92000C86FF /* HealthMessageManager.swift */,
-				924878391D873B3E000C86FF /* MessageManager.swift */,
-				92716C3F1D94CDCD00980CA3 /* CollectionViewListLayout.swift */,
+				92986D931D99A67F008B8533 /* Home */,
+				92986D941D99A68E008B8533 /* Values */,
+				92986D951D99A698008B8533 /* Consent */,
+				92986D961D99A6A4008B8533 /* Survey */,
+				92986D971D99A709008B8533 /* Misc */,
 			);
 			path = Live;
 			sourceTree = "<group>";
@@ -403,9 +452,12 @@
 				9233565B1D833843005161A8 /* ConsentTask.swift in Sources */,
 				92CA91981D8304B9000491CD /* AppDelegate.swift in Sources */,
 				924878321D86F88B000C86FF /* HealthKitManager.swift in Sources */,
+				92986D8E1D99A57D008B8533 /* ConsentViewController.swift in Sources */,
 				9248783A1D873B3E000C86FF /* MessageManager.swift in Sources */,
-				924878361D873A92000C86FF /* HealthMessageManager.swift in Sources */,
-				92CA919A1D8304B9000491CD /* FirstViewController.swift in Sources */,
+				924878361D873A92000C86FF /* ActivityMessageManager.swift in Sources */,
+				92986D9A1D99A87A008B8533 /* StepsView.swift in Sources */,
+				92986D921D99A5FF008B8533 /* SurveyViewController.swift in Sources */,
+				92CA919A1D8304B9000491CD /* HomeViewController.swift in Sources */,
 				92716C401D94CDCD00980CA3 /* CollectionViewListLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

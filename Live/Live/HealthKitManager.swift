@@ -14,11 +14,6 @@ class HealthKitManager {
         case healthDataNotAvailable
     }
 
-    struct DailyStepCount {
-        let startDate: Date
-        let stepCount: Double
-    }
-
     let identifierDateOfBirth = HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.dateOfBirth)!
     let identifierBiologicalSex = HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.biologicalSex)!
     let identifierBodyMass = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!
@@ -27,7 +22,6 @@ class HealthKitManager {
 
     var bodyMass: HKQuantitySample? = nil
     var height: HKQuantitySample? = nil
-    var dailyStepCounts = [DailyStepCount]()
 
     let healthStore = HKHealthStore()
 
@@ -107,7 +101,15 @@ class HealthKitManager {
         saveSample(identifierBodyMass, value: bodyMass)
     }
 
-    func queryLastWeekOfDailyStepCounts() {
+    func numberOfDays(from: Date, to: Date, timeZone: TimeZone? = nil) -> Int {
+        let calendar = Calendar.current
+        let date1 = calendar.startOfDay(for: from)
+        let date2 = calendar.startOfDay(for: to)
+        let components = calendar.dateComponents([Calendar.Component.day], from: date1, to: date2)
+        return components.day!
+    }
+
+    func queryLastWeekOfDailyStepCounts(handler: @escaping (_ startDate: Date, _ stepCounts: [Int?]) -> Void) -> Date {
         var intervalComponents = DateComponents()
         intervalComponents.day = 1
 
@@ -134,24 +136,27 @@ class HealthKitManager {
         query.initialResultsHandler = {
             (query, results, error) in
 
-            var dailyStepCounts = [DailyStepCount]()
+            var stepCounts = [Int?](repeating: 0, count: 7)
             if let results = results {
                 results.enumerateStatistics(from: startDate, to: endDate) {
                     statistics, stop in
 
                     if let quantity = statistics.sumQuantity() {
-                        let startDate = statistics.startDate
-                        let stepCount = quantity.doubleValue(for: HKUnit.count())
-                        print("step count \(startDate) \(stepCount)")
-                        let dailyStepCount = DailyStepCount(startDate: startDate, stepCount: stepCount)
-                        dailyStepCounts.append(dailyStepCount)
+                        let stepCount = Int(quantity.doubleValue(for: HKUnit.count()))
+                        let day = self.numberOfDays(from: startDate, to: statistics.startDate)
+                        print("step count \(startDate) \(day) \(stepCount)")
+                        stepCounts[day] = stepCount
                     }
                 }
             }
-            self.dailyStepCounts = dailyStepCounts
+            DispatchQueue.main.async {
+                handler(startDate, stepCounts)
+            }
         }
 
         healthStore.execute(query)
+
+        return startDate
     }
 
 }

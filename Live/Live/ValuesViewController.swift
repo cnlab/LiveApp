@@ -19,6 +19,7 @@ class ValuesViewController: UIViewController, UICollectionViewDataSource, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(ValuesViewController.handleLongGesture(gesture:)))
+        longPressGesture.minimumPressDuration = 0.1
         self.collectionView?.addGestureRecognizer(longPressGesture)
     }
 
@@ -46,14 +47,12 @@ class ValuesViewController: UIViewController, UICollectionViewDataSource, UIColl
     // MARK: UICollectionViewDataSource
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 8
+        return values.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
