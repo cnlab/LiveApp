@@ -8,14 +8,25 @@
 
 import Foundation
 
-class ActivityMessageManager {
+class ActivityMessageManager : MessageManager {
 
-    var messageSequence = [Message]()
     var lastGroup: String?
+
+    override func archive(archiver: NSKeyedArchiver, prefix: String) {
+        super.archive(archiver: archiver, prefix: prefix)
+        if let lastGroup = lastGroup {
+            Archiver.archive(archiver: archiver, prefix: prefix, key: "lastGroup", property: lastGroup)
+        }
+    }
+
+    override func unarchive(unarchiver: NSKeyedUnarchiver, prefix: String) {
+        super.unarchive(unarchiver: unarchiver, prefix: prefix)
+        Archiver.unarchive(unarchiver: unarchiver, prefix: prefix, key: "lastGroup", property: &lastGroup)
+    }
 
     func next() -> Message {
         if messageSequence.isEmpty {
-            messageSequence = MessageManager().getMessageSequence(messages: messages, initialGroup: lastGroup)
+            messageSequence = MessageSequencer().getMessageSequence(messages: messages, initialGroup: lastGroup)
             if let message = messageSequence.last {
                 lastGroup = message.group
             }
@@ -23,15 +34,13 @@ class ActivityMessageManager {
         return messageSequence.removeFirst()
     }
 
-    let messages: [Message]
-
     init() {
         let how = "how"
         let why = "why"
         let risk = "risk"
         let inactive = "inactive"
 
-        messages = [
+        super.init(messages: [
             // PA1 Active How
             Message(group: how, identifier: "1", string: "The best parking spots are the ones that are farther away. Choose the last row of a parking lot or the top floor so you have farther to walk."),
             Message(group: how, identifier: "2", string: "Stairs are a great way to /stay/ active. Take the stairs instead of the elevator - start with going up short distances and always walking down.", variants: [inactive: ["stay": "get more"]]),
@@ -118,7 +127,7 @@ class ActivityMessageManager {
             Message(group: risk, identifier: "17", string: "If you /become/ sedentary, you could shorten your life. Inactive people tend to die before more active people.", variants: [inactive: ["become": "are"]]),
             Message(group: risk, identifier: "18", string: "Inactive lifestyle can worsen your memory as you get older. /Becoming/ sedentary can shrink the brain's memory areas with age.", variants: [inactive: ["Becoming": "Remaining"]]),
             Message(group: risk, identifier: "19", string: "If you /start/ to sit most of the time, your muscles will become weak. Weak muscles make it difficult for you to get around and do the things you enjoy.", variants: [inactive: ["start": "continue"]]),
-        ]
+        ])
     }
     
 }

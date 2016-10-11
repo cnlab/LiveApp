@@ -8,11 +8,24 @@
 
 import Foundation
 
-class ValueMessageManager {
+class ValueMessageManager : MessageManager {
 
-    var messageSequence = [Message]()
     var filterGroup: String
     var lastMessage: String?
+
+    override func archive(archiver: NSKeyedArchiver, prefix: String) {
+        super.archive(archiver: archiver, prefix: prefix)
+        Archiver.archive(archiver: archiver, prefix: prefix, key: "filterGroup", property: filterGroup)
+        if let lastMessage = lastMessage {
+            Archiver.archive(archiver: archiver, prefix: prefix, key: "lastMessage", property: lastMessage)
+        }
+    }
+
+    override func unarchive(unarchiver: NSKeyedUnarchiver, prefix: String) {
+        super.unarchive(unarchiver: unarchiver, prefix: prefix)
+        Archiver.unarchive(unarchiver: unarchiver, prefix: prefix, key: "filterGroup", property: &filterGroup)
+        Archiver.unarchive(unarchiver: unarchiver, prefix: prefix, key: "lastMessage", property: &lastMessage)
+    }
 
     var group: String {
 
@@ -32,15 +45,13 @@ class ValueMessageManager {
 
     func next() -> Message {
         if messageSequence.isEmpty {
-            messageSequence = MessageManager().getMessageSequence(messages: messages, group: filterGroup, lastMessage: lastMessage)
+            messageSequence = MessageSequencer().getMessageSequence(messages: messages, group: filterGroup, lastMessage: lastMessage)
             if let message = messageSequence.last {
                 lastMessage = message.identifier
             }
         }
         return messageSequence.removeFirst()
     }
-
-    let messages: [Message]
 
     init() {
         let independence = "Independence"
@@ -54,7 +65,7 @@ class ValueMessageManager {
 
         filterGroup = independence
 
-        messages = [
+        super.init(messages: [
             Message(group: independence, identifier: "1", string: "not being swayed by the thoughts or feelings of others"),
             Message(group: independence, identifier: "2", string: "deciding to do something because you felt that it was the right thing to do"),
             Message(group: independence, identifier: "3", string: "standing up for yourself"),
@@ -222,7 +233,7 @@ class ValueMessageManager {
             Message(group: compassionAndKindness, identifier: "18", string: "showing people how much you love them by expressing kindness"),
             Message(group: compassionAndKindness, identifier: "19", string: "letting someone know how much they mean to you"),
             Message(group: compassionAndKindness, identifier: "20", string: "being tender to someone who is in trouble"),
-        ]
+        ])
     }
 
 }

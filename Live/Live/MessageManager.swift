@@ -22,11 +22,98 @@ class Message {
         self.variants = variants
     }
 
+    func format(variant: String? = nil) -> String {
+        let parts = string.components(separatedBy: "/")
+        if let variant = variant {
+            if let substitutions = variants[variant] {
+                var string = ""
+                for part in parts {
+                    if let substitution = substitutions[part] {
+                        string += substitution
+                    } else {
+                        string += part
+                    }
+                }
+                return string
+            }
+        }
+        return parts.joined()
+    }
+
 }
 
-// See "Generating constrained randomized sequences: Item frequency matters" 2009 by RobeRt M. FRench and PieRRe PeRRuchet
+class MessageKey : NSObject, NSCoding {
+
+    let group: String
+    let identifier: String
+
+    init(group: String, identifier: String) {
+        self.group = group
+        self.identifier = identifier
+    }
+
+    required convenience init?(coder decoder: NSCoder) {
+        guard
+            let group = decoder.decodeObject(forKey: "group") as? String,
+            let identifier = decoder.decodeObject(forKey: "identifier") as? String
+            else {
+                return nil
+            }
+
+        self.init(group: group, identifier: identifier)
+    }
+
+    func encode(with encoder: NSCoder) {
+        encoder.encode(group, forKey: "group")
+        encoder.encode(identifier, forKey: "identifier")
+    }
+
+}
 
 class MessageManager {
+
+    let messages: [Message]
+
+    var messageSequence = [Message]()
+
+    init(messages: [Message]) {
+        self.messages = messages
+    }
+
+    func archiveMessageSequence(archiver: NSKeyedArchiver, prefix: String) {
+        var keys = [MessageKey]()
+        for message in messageSequence {
+            keys.append(MessageKey(group: message.group, identifier: message.identifier))
+        }
+        archiver.encode(keys, forKey: "\(prefix)messageSequence")
+    }
+
+    func find(group: String, identifier: String) -> Message? {
+        return messages.first() { ($0.group == group) && ($0.identifier == identifier) }
+    }
+
+    func unarchiveMessageSequence(unarchiver: NSKeyedUnarchiver, prefix: String) {
+        messageSequence.removeAll()
+        if let keys = unarchiver.decodeObject(forKey: "\(prefix)messageSequence") as? [MessageKey] {
+            for key in keys {
+                if let message = find(group: key.group, identifier: key.identifier) {
+                    messageSequence.append(message)
+                }
+            }
+        }
+    }
+
+    func archive(archiver: NSKeyedArchiver, prefix: String) {
+        archiveMessageSequence(archiver: archiver, prefix: prefix)
+    }
+
+    func unarchive(unarchiver: NSKeyedUnarchiver, prefix: String) {
+        unarchiveMessageSequence(unarchiver: unarchiver, prefix: prefix)
+    }
+    
+}
+
+class MessageSequencer {
 
     class Group {
 
@@ -153,6 +240,8 @@ class MessageManager {
     // Try to alternate randomly between message groups of "how", "why", and "risk".
     // Note: The calculated item pair frequency table can be off if there is not a "round" number of messages.
     // In that case there may be a couple of stray messages from the same group in sequence. -denis
+    //
+    // See "Generating constrained randomized sequences: Item frequency matters" 2009 by RobeRt M. FRench and PieRRe PeRRuchet
     func getMessageSequence(messages: [Message], initialGroup: String? = nil) -> [Message] {
         var messageSequence = [Message]()
         let groups = getGroups(messages: messages)
@@ -193,24 +282,6 @@ class MessageManager {
             messageSequence.insert(message, at: index + 1)
         }
         return messageSequence
-    }
-
-    class func format(message: Message, variant: String? = nil) -> String {
-        let parts = message.string.components(separatedBy: "/")
-        if let variant = variant {
-            if let substitutions = message.variants[variant] {
-                var string = ""
-                for part in parts {
-                    if let substitution = substitutions[part] {
-                        string += substitution
-                    } else {
-                        string += part
-                    }
-                }
-                return string
-            }
-        }
-        return parts.joined()
     }
 
 }

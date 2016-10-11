@@ -14,13 +14,18 @@ class ValuesViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     @IBOutlet var collectionView: UICollectionView? = nil
 
-    var values = ["Independence", "Politics", "Spirituality", "Humor", "Fame", "Power and Status", "Family and Friends", "Compassion and Kindness"]
+    var values = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(ValuesViewController.handleLongGesture(gesture:)))
         longPressGesture.minimumPressDuration = 0.1
         self.collectionView?.addGestureRecognizer(longPressGesture)
+
+        let liveManager = LiveManager.shared
+        values = liveManager.orderedValues.value
+        liveManager.orderedValues.subscribe(owner: self, observer: orderedValuesChanged)
     }
 
     func handleLongGesture(gesture: UILongPressGestureRecognizer) {
@@ -36,6 +41,13 @@ class ValuesViewController: UIViewController, UICollectionViewDataSource, UIColl
             collectionView?.endInteractiveMovement()
         default:
             collectionView?.cancelInteractiveMovement()
+        }
+    }
+
+    func orderedValuesChanged() {
+        let liveManager = LiveManager.shared
+        if values != liveManager.orderedValues.value {
+            collectionView?.setNeedsDisplay()
         }
     }
 
@@ -77,6 +89,9 @@ class ValuesViewController: UIViewController, UICollectionViewDataSource, UIColl
         let value = values.remove(at: sourceIndex)
         let destinationIndex = destinationIndexPath.last!
         values.insert(value, at: destinationIndex)
+
+        let liveManager = LiveManager.shared
+        liveManager.orderedValues.value = values
     }
 
     /*

@@ -109,28 +109,16 @@ class HealthKitManager {
         return components.day!
     }
 
-    func queryLastWeekOfDailyStepCounts(handler: @escaping (_ startDate: Date, _ stepCounts: [Int?]) -> Void) -> Date {
+    func queryDailyStepCounts(week: (startDate: Date, endDate: Date), handler: @escaping (_ startDate: Date, _ stepCounts: [Int?]) -> Void) -> Date {
         var intervalComponents = DateComponents()
         intervalComponents.day = 1
-
-        let now = Date()
-        let calendar = Calendar.current
-        var anchorComponents = (calendar as NSCalendar).components([.day, .month, .year], from: now)
-        anchorComponents.hour = 0
-        let anchorDate = calendar.date(from: anchorComponents)!
-
-        var oneDayOffsetComponents = DateComponents()
-        oneDayOffsetComponents.day = 1
-        let endDate = (calendar as NSCalendar).date(byAdding: oneDayOffsetComponents, to: anchorDate, options: [])!
-        var oneWeekOffsetComponents = DateComponents()
-        oneWeekOffsetComponents.day = -7
-        let startDate = (calendar as NSCalendar).date(byAdding: oneWeekOffsetComponents, to: endDate, options: [])!
+        let (startDate, endDate) = week
 
         let query = HKStatisticsCollectionQuery(
             quantityType: identifierStepCount,
             quantitySamplePredicate: nil,
             options: .cumulativeSum,
-            anchorDate: anchorDate,
+            anchorDate: startDate,
             intervalComponents: intervalComponents
         )
         query.initialResultsHandler = {
@@ -140,7 +128,6 @@ class HealthKitManager {
             if let results = results {
                 results.enumerateStatistics(from: startDate, to: endDate) {
                     statistics, stop in
-
                     if let quantity = statistics.sumQuantity() {
                         let stepCount = Int(quantity.doubleValue(for: HKUnit.count()))
                         let day = self.numberOfDays(from: startDate, to: statistics.startDate)

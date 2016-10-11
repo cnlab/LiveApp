@@ -22,6 +22,10 @@
 		924878361D873A92000C86FF /* ActivityMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924878351D873A92000C86FF /* ActivityMessageManager.swift */; };
 		9248783A1D873B3E000C86FF /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924878391D873B3E000C86FF /* MessageManager.swift */; };
 		92716C401D94CDCD00980CA3 /* CollectionViewListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92716C3F1D94CDCD00980CA3 /* CollectionViewListLayout.swift */; };
+		927DEAC41DAC5C8600B5C8C0 /* Archiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927DEAC31DAC5C8600B5C8C0 /* Archiver.swift */; };
+		9291F6861DABF85400042F42 /* LiveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9291F6851DABF85400042F42 /* LiveManager.swift */; };
+		9291F68A1DAC0DC100042F42 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9291F6891DAC0DC100042F42 /* Observable.swift */; };
+		9291F68D1DAC306500042F42 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9291F68C1DAC306500042F42 /* Week.swift */; };
 		92986D8E1D99A57D008B8533 /* ConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92986D8D1D99A57D008B8533 /* ConsentViewController.swift */; };
 		92986D921D99A5FF008B8533 /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92986D911D99A5FF008B8533 /* SurveyViewController.swift */; };
 		92986D9A1D99A87A008B8533 /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92986D991D99A87A008B8533 /* StepsView.swift */; };
@@ -106,6 +110,10 @@
 		924878351D873A92000C86FF /* ActivityMessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityMessageManager.swift; sourceTree = "<group>"; };
 		924878391D873B3E000C86FF /* MessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
 		92716C3F1D94CDCD00980CA3 /* CollectionViewListLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewListLayout.swift; sourceTree = "<group>"; };
+		927DEAC31DAC5C8600B5C8C0 /* Archiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Archiver.swift; sourceTree = "<group>"; };
+		9291F6851DABF85400042F42 /* LiveManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveManager.swift; sourceTree = "<group>"; };
+		9291F6891DAC0DC100042F42 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		9291F68C1DAC306500042F42 /* Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		92986D8D1D99A57D008B8533 /* ConsentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentViewController.swift; sourceTree = "<group>"; };
 		92986D911D99A5FF008B8533 /* SurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
 		92986D991D99A87A008B8533 /* StepsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
@@ -153,6 +161,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9291F68B1DAC0DC700042F42 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				9291F6891DAC0DC100042F42 /* Observable.swift */,
+				9291F68C1DAC306500042F42 /* Week.swift */,
+				927DEAC31DAC5C8600B5C8C0 /* Archiver.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		92986D931D99A67F008B8533 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +256,8 @@
 			isa = PBXGroup;
 			children = (
 				92CA919D1D8304B9000491CD /* Main.storyboard */,
+				9291F6851DABF85400042F42 /* LiveManager.swift */,
+				9291F68B1DAC0DC700042F42 /* Utilities */,
 				92986D931D99A67F008B8533 /* Home */,
 				92986D941D99A68E008B8533 /* Values */,
 				92986D951D99A698008B8533 /* Consent */,
@@ -445,17 +465,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9291F68A1DAC0DC100042F42 /* Observable.swift in Sources */,
 				92CA919C1D8304B9000491CD /* ValuesViewController.swift in Sources */,
 				924878341D8733C2000C86FF /* ValueMessageManager.swift in Sources */,
 				92CA91DA1D830B31000491CD /* ConsentDocument.swift in Sources */,
 				9233565D1D833C24005161A8 /* SurveyTask.swift in Sources */,
+				927DEAC41DAC5C8600B5C8C0 /* Archiver.swift in Sources */,
 				9233565B1D833843005161A8 /* ConsentTask.swift in Sources */,
 				92CA91981D8304B9000491CD /* AppDelegate.swift in Sources */,
+				9291F6861DABF85400042F42 /* LiveManager.swift in Sources */,
 				924878321D86F88B000C86FF /* HealthKitManager.swift in Sources */,
 				92986D8E1D99A57D008B8533 /* ConsentViewController.swift in Sources */,
 				9248783A1D873B3E000C86FF /* MessageManager.swift in Sources */,
 				924878361D873A92000C86FF /* ActivityMessageManager.swift in Sources */,
 				92986D9A1D99A87A008B8533 /* StepsView.swift in Sources */,
+				9291F68D1DAC306500042F42 /* Week.swift in Sources */,
 				92986D921D99A5FF008B8533 /* SurveyViewController.swift in Sources */,
 				92CA919A1D8304B9000491CD /* HomeViewController.swift in Sources */,
 				92716C401D94CDCD00980CA3 /* CollectionViewListLayout.swift in Sources */,

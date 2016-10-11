@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  HomeViewController.swift
 //  Live
 //
 //  Created by Denis Bohm on 9/9/16.
@@ -16,99 +16,71 @@ class HomeViewController: UIViewController {
     @IBOutlet var valueTextView: UITextView?
     @IBOutlet var activityTextView: UITextView?
 
-    let healthKitManager = HealthKitManager()
-    let valueMessageManager = ValueMessageManager()
-    let activityMessageManager = ActivityMessageManager()
-    var notificationCount = 0
-    var weeklyStartDate = Date()
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        nextValue()
-        nextActivity()
+        let liveManager = LiveManager.shared
+        liveManager.dailyStepCounts.subscribe(owner: self, observer: dailyStepCountsChanged)
+        liveManager.valueMessage.subscribe(owner: self, observer: valueChanged)
+        liveManager.activityMessage.subscribe(owner: self, observer: activityChanged)
 
-        weeklyStartDate = Date()
-        stepsView?.update(startDate: weeklyStartDate, stepCounts: [nil, nil, nil, nil, nil, nil, nil])
-        authorizeHealthKit()
+        dailyStepCountsChanged()
+        valueChanged()
+        activityChanged()
     }
 
-    func authorizeHealthKit() {
-        do {
-            try healthKitManager.authorizeHealthKit { (authorized,  error) -> Void in
-                if authorized {
-                    DispatchQueue.main.async {
-                        self.queryDailyStepCounts()
-                    }
-                } else {
-                    print("HealthKit authorization denied!")
-                    if error != nil {
-                        print("\(error)")
-                    }
-                }
+    func dailyStepCountsChanged() {
+        if let stepsView = stepsView {
+            let liveManager = LiveManager.shared
+            if let dailyStepCounts = liveManager.dailyStepCounts.value {
+                stepsView.update(startDate: dailyStepCounts.startDate, stepCounts: dailyStepCounts.stepCounts)
+            } else {
+                stepsView.update(startDate: Date(), stepCounts: [nil, nil, nil, nil, nil, nil, nil] as [Int?])
             }
-        } catch {
-            print("HealthKit not available")
         }
     }
 
-    func queryDailyStepCounts() {
-        weeklyStartDate = healthKitManager.queryLastWeekOfDailyStepCounts(handler: dailyStepCounts)
+    func showMessage(view: UITextView?, message: Message?, prefix: String? = nil) {
+        if let view = view {
+            var text = ""
+            if let message = message {
+                text = message.format()
+                if let prefix = prefix {
+                    text = prefix + " " + text + "."
+                }
+            }
+            view.text = text
+        }
     }
 
-    func dailyStepCounts(startDate: Date, stepCounts: [Int?]) {
-        stepsView?.update(startDate: startDate, stepCounts: stepCounts)
+    func valueChanged() {
+        let liveManager = LiveManager.shared
+        showMessage(view: valueTextView, message: liveManager.valueMessage.value, prefix: "Think about")
     }
 
-    func nextValue() {
-        valueTextView?.text = "Think about " + MessageManager.format(message: valueMessageManager.next()) + "."
-    }
-
-    func nextActivity() {
-        activityTextView?.text = MessageManager.format(message: activityMessageManager.next())
+    func activityChanged() {
+        let liveManager = LiveManager.shared
+        showMessage(view: activityTextView, message: liveManager.activityMessage.value)
     }
 
     @IBAction func respondToValueTouched(_ sender: AnyObject) {
-        nextValue()
+        let liveManager = LiveManager.shared
+        liveManager.nextValue()
     }
 
     @IBAction func respondToActivityTouched(_ sender: AnyObject) {
-        nextActivity()
+        let liveManager = LiveManager.shared
+        liveManager.nextActivity()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    func queryHealthKit() {
-        healthKitManager.queryMostRecentSamples()
-    }
-
     @IBAction func scheduleNotificationTapped(_ sender: AnyObject) {
-        notificationCount += 1
-
-        let application = UIApplication.shared
-        let notification = UILocalNotification()
-        notification.fireDate = Date(timeIntervalSinceNow: 5.0)
-        notification.alertAction = "Act Now"
-        notification.alertBody = "Do something cool \(Date())."
-        notification.alertTitle = "Just Do It."
-        notification.applicationIconBadgeNumber = notificationCount
-        application.scheduleLocalNotification(notification)
-        application.applicationIconBadgeNumber = notificationCount
+        let liveManager = LiveManager.shared
+        liveManager.scheduleNotification()
     }
 
     @IBAction func cancelNotificationsTapped(_ sender: AnyObject) {
-        let application = UIApplication.shared
-        if let notifications = application.scheduledLocalNotifications {
-            for notification in notifications {
-                application.cancelLocalNotification(notification)
-            }
-        }
-
-        notificationCount = 0
-        application.applicationIconBadgeNumber = 0
+        let liveManager = LiveManager.shared
+        liveManager.cancelNotifications()
     }
 
 }
