@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92062C371DB26C8C0001DE0C /* ScheduleCoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92062C361DB26C8C0001DE0C /* ScheduleCoderTests.swift */; };
+		92062C3D1DB272F70001DE0C /* ObjectiveCException.m in Sources */ = {isa = PBXBuildFile; fileRef = 92062C3C1DB272F70001DE0C /* ObjectiveCException.m */; };
 		922C70AF1D93576400F1C401 /* MessageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922C70AE1D93576400F1C401 /* MessageManagerTests.swift */; };
 		9233565B1D833843005161A8 /* ConsentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9233565A1D833843005161A8 /* ConsentTask.swift */; };
 		9233565D1D833C24005161A8 /* SurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9233565C1D833C24005161A8 /* SurveyTask.swift */; };
@@ -25,7 +27,7 @@
 		927DEAC41DAC5C8600B5C8C0 /* Archiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927DEAC31DAC5C8600B5C8C0 /* Archiver.swift */; };
 		9291F6861DABF85400042F42 /* LiveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9291F6851DABF85400042F42 /* LiveManager.swift */; };
 		9291F68A1DAC0DC100042F42 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9291F6891DAC0DC100042F42 /* Observable.swift */; };
-		9291F68D1DAC306500042F42 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9291F68C1DAC306500042F42 /* Week.swift */; };
+		9291F68D1DAC306500042F42 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9291F68C1DAC306500042F42 /* Time.swift */; };
 		92986D8E1D99A57D008B8533 /* ConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92986D8D1D99A57D008B8533 /* ConsentViewController.swift */; };
 		92986D921D99A5FF008B8533 /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92986D911D99A5FF008B8533 /* SurveyViewController.swift */; };
 		92986D9A1D99A87A008B8533 /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92986D991D99A87A008B8533 /* StepsView.swift */; };
@@ -39,6 +41,9 @@
 		92CA91D41D830A31000491CD /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92CA91CE1D8309CC000491CD /* ResearchKit.framework */; };
 		92CA91D51D830A31000491CD /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 92CA91CE1D8309CC000491CD /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		92CA91DA1D830B31000491CD /* ConsentDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA91D91D830B31000491CD /* ConsentDocument.swift */; };
+		92CAC2431DB2BF21009615C3 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CAC2421DB2BF21009615C3 /* Note.swift */; };
+		92DA5F961DAFF2EB00132B16 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA5F951DAFF2EB00132B16 /* Schedule.swift */; };
+		92F7CDBE1DAF033E009E2924 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F7CDBD1DAF033E009E2924 /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +99,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		92062C361DB26C8C0001DE0C /* ScheduleCoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCoderTests.swift; sourceTree = "<group>"; };
+		92062C3A1DB272F60001DE0C /* Live-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Live-Bridging-Header.h"; sourceTree = "<group>"; };
+		92062C3B1DB272F70001DE0C /* ObjectiveCException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCException.h; sourceTree = "<group>"; };
+		92062C3C1DB272F70001DE0C /* ObjectiveCException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveCException.m; sourceTree = "<group>"; };
 		922C70AE1D93576400F1C401 /* MessageManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageManagerTests.swift; sourceTree = "<group>"; };
 		9233565A1D833843005161A8 /* ConsentTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentTask.swift; sourceTree = "<group>"; };
 		9233565C1D833C24005161A8 /* SurveyTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyTask.swift; sourceTree = "<group>"; };
@@ -113,7 +122,7 @@
 		927DEAC31DAC5C8600B5C8C0 /* Archiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Archiver.swift; sourceTree = "<group>"; };
 		9291F6851DABF85400042F42 /* LiveManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveManager.swift; sourceTree = "<group>"; };
 		9291F6891DAC0DC100042F42 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
-		9291F68C1DAC306500042F42 /* Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
+		9291F68C1DAC306500042F42 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		92986D8D1D99A57D008B8533 /* ConsentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentViewController.swift; sourceTree = "<group>"; };
 		92986D911D99A5FF008B8533 /* SurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
 		92986D991D99A87A008B8533 /* StepsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
@@ -132,6 +141,9 @@
 		92CA91BB1D8304B9000491CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92CA91C71D8309CC000491CD /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = ../ResearchKit/ResearchKit.xcodeproj; sourceTree = "<group>"; };
 		92CA91D91D830B31000491CD /* ConsentDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentDocument.swift; sourceTree = "<group>"; };
+		92CAC2421DB2BF21009615C3 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		92DA5F951DAFF2EB00132B16 /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		92F7CDBD1DAF033E009E2924 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,8 +177,11 @@
 			isa = PBXGroup;
 			children = (
 				9291F6891DAC0DC100042F42 /* Observable.swift */,
-				9291F68C1DAC306500042F42 /* Week.swift */,
+				9291F68C1DAC306500042F42 /* Time.swift */,
 				927DEAC31DAC5C8600B5C8C0 /* Archiver.swift */,
+				92062C3B1DB272F70001DE0C /* ObjectiveCException.h */,
+				92062C3C1DB272F70001DE0C /* ObjectiveCException.m */,
+				92062C3A1DB272F60001DE0C /* Live-Bridging-Header.h */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -257,6 +272,9 @@
 			children = (
 				92CA919D1D8304B9000491CD /* Main.storyboard */,
 				9291F6851DABF85400042F42 /* LiveManager.swift */,
+				92CAC2421DB2BF21009615C3 /* Note.swift */,
+				92DA5F951DAFF2EB00132B16 /* Schedule.swift */,
+				92F7CDBD1DAF033E009E2924 /* NotificationManager.swift */,
 				9291F68B1DAC0DC700042F42 /* Utilities */,
 				92986D931D99A67F008B8533 /* Home */,
 				92986D941D99A68E008B8533 /* Values */,
@@ -272,6 +290,7 @@
 			children = (
 				92CA91B01D8304B9000491CD /* Info.plist */,
 				922C70AE1D93576400F1C401 /* MessageManagerTests.swift */,
+				92062C361DB26C8C0001DE0C /* ScheduleCoderTests.swift */,
 			);
 			path = LiveTests;
 			sourceTree = "<group>";
@@ -467,10 +486,12 @@
 			files = (
 				9291F68A1DAC0DC100042F42 /* Observable.swift in Sources */,
 				92CA919C1D8304B9000491CD /* ValuesViewController.swift in Sources */,
+				92062C3D1DB272F70001DE0C /* ObjectiveCException.m in Sources */,
 				924878341D8733C2000C86FF /* ValueMessageManager.swift in Sources */,
 				92CA91DA1D830B31000491CD /* ConsentDocument.swift in Sources */,
 				9233565D1D833C24005161A8 /* SurveyTask.swift in Sources */,
 				927DEAC41DAC5C8600B5C8C0 /* Archiver.swift in Sources */,
+				92CAC2431DB2BF21009615C3 /* Note.swift in Sources */,
 				9233565B1D833843005161A8 /* ConsentTask.swift in Sources */,
 				92CA91981D8304B9000491CD /* AppDelegate.swift in Sources */,
 				9291F6861DABF85400042F42 /* LiveManager.swift in Sources */,
@@ -479,9 +500,11 @@
 				9248783A1D873B3E000C86FF /* MessageManager.swift in Sources */,
 				924878361D873A92000C86FF /* ActivityMessageManager.swift in Sources */,
 				92986D9A1D99A87A008B8533 /* StepsView.swift in Sources */,
-				9291F68D1DAC306500042F42 /* Week.swift in Sources */,
+				9291F68D1DAC306500042F42 /* Time.swift in Sources */,
+				92F7CDBE1DAF033E009E2924 /* NotificationManager.swift in Sources */,
 				92986D921D99A5FF008B8533 /* SurveyViewController.swift in Sources */,
 				92CA919A1D8304B9000491CD /* HomeViewController.swift in Sources */,
+				92DA5F961DAFF2EB00132B16 /* Schedule.swift in Sources */,
 				92716C401D94CDCD00980CA3 /* CollectionViewListLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,6 +513,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92062C371DB26C8C0001DE0C /* ScheduleCoderTests.swift in Sources */,
 				922C70AF1D93576400F1C401 /* MessageManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,12 +659,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Live/Live.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Live/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fireflydesign.Live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Live/Live-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -650,12 +677,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Live/Live.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Live/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fireflydesign.Live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Live/Live-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

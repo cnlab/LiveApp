@@ -14,6 +14,8 @@ class HealthKitManager {
         case healthDataNotAvailable
     }
 
+    var authorized = false
+
     let identifierDateOfBirth = HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.dateOfBirth)!
     let identifierBiologicalSex = HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.biologicalSex)!
     let identifierBodyMass = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!
@@ -43,7 +45,7 @@ class HealthKitManager {
         )
         healthStore.requestAuthorization(toShare: typesToWrite, read: typesToRead) {
             (success, error) -> Void in
-
+            self.authorized = success
             completion(success, error as NSError?)
         }
     }

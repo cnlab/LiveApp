@@ -12,21 +12,45 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var liveManager: LiveManager?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Skip normal application startup when running unit tests. -denis
+        if NSClassFromString("XCTestCase") != nil {
+            return true
+        }
 
-        let notificationSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-        UIApplication.shared.registerUserNotificationSettings(notificationSettings)
+        let liveManager = LiveManager.shared
+        // !!! just for testing -denis
+        // liveManager.unarchive()
+        let calendar = Calendar.current
+        let now = Date()
+        liveManager.triggers = [
+            "Value": calendar.dateComponents([.hour, .minute], from: calendar.date(byAdding: .minute, value: 1, to: now)!),
+            "Activity": calendar.dateComponents([.hour, .minute], from: calendar.date(byAdding: .minute, value: 2, to: now)!)
+        ]
 
-        LiveManager.shared.unarchive()
+        liveManager.activate()
+
+        if let launchOptions = launchOptions {
+            NSLog("for pre-iOS 10")
+            if let notification = launchOptions[UIApplicationLaunchOptionsKey.localNotification] as? UILocalNotification {
+                NSLog("\(notification.userInfo)")
+            }
+        }
 
         return true
     }
 
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
         // called with results from registerUserNotificationSettings request
+    }
+
+    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, for notification: UILocalNotification, completionHandler: @escaping () -> Swift.Void) {
+        NSLog("for pre-iOS 10")
+    }
+
+    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
+        NSLog("for pre-iOS 10")
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -49,6 +73,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
+        LiveManager.shared.refresh()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

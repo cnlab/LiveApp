@@ -40,14 +40,11 @@ class HomeViewController: UIViewController {
         }
     }
 
-    func showMessage(view: UITextView?, message: Message?, prefix: String? = nil) {
+    func showMessage(view: UITextView?, message: Message?) {
         if let view = view {
             var text = ""
             if let message = message {
                 text = message.format()
-                if let prefix = prefix {
-                    text = prefix + " " + text + "."
-                }
             }
             view.text = text
         }
@@ -55,7 +52,7 @@ class HomeViewController: UIViewController {
 
     func valueChanged() {
         let liveManager = LiveManager.shared
-        showMessage(view: valueTextView, message: liveManager.valueMessage.value, prefix: "Think about")
+        showMessage(view: valueTextView, message: liveManager.valueMessage.value)
     }
 
     func activityChanged() {
@@ -65,22 +62,12 @@ class HomeViewController: UIViewController {
 
     @IBAction func respondToValueTouched(_ sender: AnyObject) {
         let liveManager = LiveManager.shared
-        liveManager.nextValue()
+        liveManager.advance()
     }
 
     @IBAction func respondToActivityTouched(_ sender: AnyObject) {
         let liveManager = LiveManager.shared
-        liveManager.nextActivity()
+        liveManager.advance()
     }
     
-    @IBAction func scheduleNotificationTapped(_ sender: AnyObject) {
-        let liveManager = LiveManager.shared
-        liveManager.scheduleNotification()
-    }
-
-    @IBAction func cancelNotificationsTapped(_ sender: AnyObject) {
-        let liveManager = LiveManager.shared
-        liveManager.cancelNotifications()
-    }
-
 }

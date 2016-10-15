@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ActivityMessageManager : MessageManager {
+class ActivityMessageManager : MessageManagerBase {
 
     var lastGroup: String?
 
@@ -24,14 +24,14 @@ class ActivityMessageManager : MessageManager {
         Archiver.unarchive(unarchiver: unarchiver, prefix: prefix, key: "lastGroup", property: &lastGroup)
     }
 
-    func next() -> Message {
-        if messageSequence.isEmpty {
-            messageSequence = MessageSequencer().getMessageSequence(messages: messages, initialGroup: lastGroup)
-            if let message = messageSequence.last {
-                lastGroup = message.group
+    override func next() -> Message.Key {
+        if messageKeySequence.isEmpty {
+            messageKeySequence = MessageSequencer().getMessageKeySequence(messages: messages, initialGroup: lastGroup)
+            if let messageKey = messageKeySequence.last {
+                lastGroup = messageKey.group
             }
         }
-        return messageSequence.removeFirst()
+        return messageKeySequence.removeFirst()
     }
 
     init() {

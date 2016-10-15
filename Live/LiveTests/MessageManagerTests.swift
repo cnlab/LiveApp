@@ -22,8 +22,8 @@ class MessageManagerTests: XCTestCase {
     }
     
     func testItemPairFrequencyTable() {
-        let manager = MessageManager()
-        let table = manager.getItemPairFrequencyTable(groups: [20, 24, 30])
+        let sequencer = MessageSequencer()
+        let table = sequencer.getItemPairFrequencyTable(groups: [20, 24, 30])
         let expected = [[0, 7, 13], [7, 0, 17], [13, 17, 0]]
         for i in 0 ..< 3 {
             for j in 0 ..< 3 {
@@ -33,18 +33,18 @@ class MessageManagerTests: XCTestCase {
     }
 
     func testSequence() {
-        let manager = HealthMessageManager()
-        var identifiers = Set<String>(manager.messages.map { return $0.group + "." + $0.identifier })
+        let manager = ActivityMessageManager()
+        var identifiers = Set<String>(manager.messages.map { return $0.key.group + "." + $0.key.identifier })
         for _ in 0 ..< manager.messages.count {
-            let message = manager.next()
-            let identifier = message.group + "." + message.identifier
+            let messageKey = manager.next()
+            let identifier = messageKey.group + "." + messageKey.identifier
             identifiers.remove(identifier)
         }
         XCTAssert(identifiers.isEmpty)
     }
 
     func testFormat() {
-        let manager = HealthMessageManager()
+        let manager = ActivityMessageManager()
         for message in manager.messages {
             let parts = Set<String>(message.string.components(separatedBy: "/").filter { $0 != "" })
             for variant in message.variants.values {
@@ -53,12 +53,12 @@ class MessageManagerTests: XCTestCase {
                 }
             }
 
-            let active = MessageManager.format(message: message)
+            let active = message.format()
             if message.variants.isEmpty {
                 XCTAssertEqual(active, message.string)
             } else {
                 XCTAssertEqual(active, message.string.replacingOccurrences(of: "/", with: ""))
-                let inactive = MessageManager.format(message: message, variant: "inactive")
+                let inactive = message.format(variant: "inactive")
                 XCTAssertNotEqual(active, inactive)
             }
         }

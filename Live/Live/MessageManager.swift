@@ -10,14 +10,40 @@ import Foundation
 
 class Message {
 
-    let group: String
-    let identifier: String
+    class Key : NSObject, NSCoding {
+
+        let group: String
+        let identifier: String
+
+        init(group: String, identifier: String) {
+            self.group = group
+            self.identifier = identifier
+        }
+
+        required convenience init?(coder decoder: NSCoder) {
+            guard
+                let group = decoder.decodeObject(forKey: "group") as? String,
+                let identifier = decoder.decodeObject(forKey: "identifier") as? String
+            else {
+                return nil
+            }
+
+            self.init(group: group, identifier: identifier)
+        }
+
+        func encode(with encoder: NSCoder) {
+            encoder.encode(group, forKey: "group")
+            encoder.encode(identifier, forKey: "identifier")
+        }
+        
+    }
+
+    let key: Key
     let string: String
     let variants: [String: [String: String]]
 
     init(group: String, identifier: String, string: String, variants: [String: [String: String]] = [:]) {
-        self.group = group
-        self.identifier = identifier
+        self.key = Key(group: group, identifier: identifier)
         self.string = string
         self.variants = variants
     }
@@ -42,75 +68,57 @@ class Message {
 
 }
 
-class MessageKey : NSObject, NSCoding {
+protocol MessageManager {
 
-    let group: String
-    let identifier: String
+    var messages: [Message] { get }
 
-    init(group: String, identifier: String) {
-        self.group = group
-        self.identifier = identifier
-    }
+    func find(group: String, identifier: String) -> Message?
 
-    required convenience init?(coder decoder: NSCoder) {
-        guard
-            let group = decoder.decodeObject(forKey: "group") as? String,
-            let identifier = decoder.decodeObject(forKey: "identifier") as? String
-            else {
-                return nil
-            }
+    func find(messageKey: Message.Key) -> Message?
 
-        self.init(group: group, identifier: identifier)
-    }
+    func archive(archiver: NSKeyedArchiver, prefix: String)
 
-    func encode(with encoder: NSCoder) {
-        encoder.encode(group, forKey: "group")
-        encoder.encode(identifier, forKey: "identifier")
-    }
+    func unarchive(unarchiver: NSKeyedUnarchiver, prefix: String)
+
+    func next() -> Message.Key
 
 }
 
-class MessageManager {
+extension MessageManager {
+
+    func find(group: String, identifier: String) -> Message? {
+        return messages.first() { ($0.key.group == group) && ($0.key.identifier == identifier) }
+    }
+
+    func find(messageKey: Message.Key) -> Message? {
+        return find(group: messageKey.group, identifier: messageKey.identifier)
+    }
+    
+}
+
+class MessageManagerBase : MessageManager {
 
     let messages: [Message]
 
-    var messageSequence = [Message]()
+    var messageKeySequence: [Message.Key] = []
 
     init(messages: [Message]) {
         self.messages = messages
     }
 
-    func archiveMessageSequence(archiver: NSKeyedArchiver, prefix: String) {
-        var keys = [MessageKey]()
-        for message in messageSequence {
-            keys.append(MessageKey(group: message.group, identifier: message.identifier))
-        }
-        archiver.encode(keys, forKey: "\(prefix)messageSequence")
-    }
-
-    func find(group: String, identifier: String) -> Message? {
-        return messages.first() { ($0.group == group) && ($0.identifier == identifier) }
-    }
-
-    func unarchiveMessageSequence(unarchiver: NSKeyedUnarchiver, prefix: String) {
-        messageSequence.removeAll()
-        if let keys = unarchiver.decodeObject(forKey: "\(prefix)messageSequence") as? [MessageKey] {
-            for key in keys {
-                if let message = find(group: key.group, identifier: key.identifier) {
-                    messageSequence.append(message)
-                }
-            }
-        }
-    }
-
     func archive(archiver: NSKeyedArchiver, prefix: String) {
-        archiveMessageSequence(archiver: archiver, prefix: prefix)
+        archiver.encode(messageKeySequence, forKey: "\(prefix)messageKeySequence")
     }
 
     func unarchive(unarchiver: NSKeyedUnarchiver, prefix: String) {
-        unarchiveMessageSequence(unarchiver: unarchiver, prefix: prefix)
+        messageKeySequence = unarchiver.decodeObject(forKey: "\(prefix)messageKeySequence") as? [Message.Key] ?? []
     }
-    
+
+    // !!! lame way to enable MessageManagerBase to be abstract -denis
+    func next() -> Message.Key {
+        fatalError("Not Implemented")
+    }
+
 }
 
 class MessageSequencer {
@@ -118,8 +126,8 @@ class MessageSequencer {
     class Group {
 
         let name: String
-        var messages = [Message]()
-        var transitions = [(Int, Int)]()
+        var messageKeys: [Message.Key] = []
+        var transitions: [(Int, Int)] = []
 
         init(name: String) {
             self.name = name
@@ -130,14 +138,14 @@ class MessageSequencer {
     func getGroups(messages: [Message]) -> [Group] {
         var groupByName = [String: Group]()
         for message in messages {
-            let groupName = message.group
+            let groupName = message.key.group
             var groupMaybe = groupByName[groupName]
             if groupMaybe == nil {
                 groupMaybe = Group(name: groupName)
                 groupByName[groupName] = groupMaybe
             }
             let group = groupMaybe!
-            group.messages.append(message)
+            group.messageKeys.append(message.key)
         }
         return [Group](groupByName.values)
     }
@@ -207,7 +215,7 @@ class MessageSequencer {
     }
 
     func getGroupSequence(groups: [Group], initialGroup: String? = nil) -> [Group] {
-        let n = getItemPairFrequencyTable(groups: groups.map { $0.messages.count })
+        let n = getItemPairFrequencyTable(groups: groups.map { $0.messageKeys.count })
         for i in 0 ..< groups.count {
             let group = groups[i]
             for j in 0 ..< groups.count {
@@ -242,46 +250,50 @@ class MessageSequencer {
     // In that case there may be a couple of stray messages from the same group in sequence. -denis
     //
     // See "Generating constrained randomized sequences: Item frequency matters" 2009 by RobeRt M. FRench and PieRRe PeRRuchet
-    func getMessageSequence(messages: [Message], initialGroup: String? = nil) -> [Message] {
-        var messageSequence = [Message]()
+    func getMessageKeySequence(messages: [Message], initialGroup: String? = nil) -> [Message.Key] {
+        var messageKeySequence: [Message.Key] = []
         let groups = getGroups(messages: messages)
         let groupSequence = getGroupSequence(groups: groups, initialGroup: initialGroup)
         for group in groupSequence {
-            if group.messages.isEmpty {
+            if group.messageKeys.isEmpty {
                 // The item pair frequency table can be off if there are not "round" numbers of messages.
                 // Give up on the group sequence if we run out of messages. -denis
                 // statistics...  can't live with them...  can't live without them...
                 break
             }
-            let index = random(upperBound: group.messages.count)
-            let message = group.messages.remove(at: index)
-            messageSequence.append(message)
+            let index = random(upperBound: group.messageKeys.count)
+            let messageKey = group.messageKeys.remove(at: index)
+            messageKeySequence.append(messageKey)
         }
         // The item pair frequency table can be off if there are not "round" numbers of messages.
         // Insert any strays at random positions. -denis
-        let strays = groups.reduce([Message]()) { $0 + $1.messages }
-        for message in strays {
-            let index = random(upperBound: messageSequence.count)
-            messageSequence.insert(message, at: index)
+        let strays = groups.reduce(Array<Message.Key>()) { $0 + $1.messageKeys }
+        for messageKey in strays {
+            let index = random(upperBound: messageKeySequence.count)
+            messageKeySequence.insert(messageKey, at: index)
         }
-        return messageSequence
+        return messageKeySequence
     }
 
     // Create a sequence of the given messages in random order.
-    func getMessageSequence(messages: [Message], group: String, lastMessage: String? = nil) -> [Message] {
-        var messageSequence = [Message]()
-        var messages = messages.filter { $0.group == group }
+    func getMessageKeySequence(messages: [Message], group: String, lastMessage: String? = nil) -> [Message.Key] {
+        var messageKeySequence: [Message.Key] = []
+        var messages = messages.filter { $0.key.group == group }
         while !messages.isEmpty {
             let index = random(upperBound: messages.count)
             let message = messages.remove(at: index)
-            messageSequence.append(message)
+            messageKeySequence.append(message.key)
         }
-        if let lastMessage = lastMessage, let first = messageSequence.first, first.identifier == lastMessage, messageSequence.count > 1 {
-            let message = messageSequence.remove(at: 0)
-            let index = random(upperBound: messageSequence.count - 1)
-            messageSequence.insert(message, at: index + 1)
+        if  let lastMessage = lastMessage,
+            let first = messageKeySequence.first,
+            first.identifier == lastMessage,
+            messageKeySequence.count > 1
+        {
+            let messageKey = messageKeySequence.remove(at: 0)
+            let index = random(upperBound: messageKeySequence.count - 1)
+            messageKeySequence.insert(messageKey, at: index + 1)
         }
-        return messageSequence
+        return messageKeySequence
     }
 
 }
