@@ -11,6 +11,7 @@ import UIKit
 import UserNotifications
 
 struct NoteKey {
+    let date: Date
     let uuid: String
     let type: String
     let messageKey: Message.Key
@@ -160,7 +161,13 @@ class NotificationManager10 : NSObject, UNUserNotificationCenterDelegate, Notifi
         content.badge = NSNumber(value: 1)
         content.sound = UNNotificationSound.default()
         content.categoryIdentifier = "Affirmation"
-        content.userInfo = ["uuid": uuid, "type": type, "group": message.key.group, "identifier": message.key.identifier]
+        content.userInfo = [
+            "date": Calendar.current.date(from: triggerComponents)!,
+            "uuid": uuid,
+            "type": type,
+            "group": message.key.group,
+            "identifier": message.key.identifier
+        ]
 
         let request = UNNotificationRequest(identifier: uuid, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request) {(error) in
@@ -176,23 +183,25 @@ class NotificationManager10 : NSObject, UNUserNotificationCenterDelegate, Notifi
         for request in pending {
             let userInfo = request.content.userInfo
             if
+                let date = userInfo["date"] as? Date,
                 let uuid = userInfo["uuid"] as? String,
                 let type = userInfo["type"] as? String,
                 let group = userInfo["group"] as? String,
                 let identifier = userInfo["identifier"] as? String
             {
-                outstanding.append(NoteKey(uuid: uuid, type: type, messageKey: Message.Key(group: group, identifier: identifier)))
+                outstanding.append(NoteKey(date: date, uuid: uuid, type: type, messageKey: Message.Key(group: group, identifier: identifier)))
             }
         }
         for notification in delivered {
             let userInfo = notification.request.content.userInfo
             if
+                let date = userInfo["date"] as? Date,
                 let uuid = userInfo["uuid"] as? String,
                 let type = userInfo["type"] as? String,
                 let group = userInfo["group"] as? String,
                 let identifier = userInfo["identifier"] as? String
             {
-                outstanding.append(NoteKey(uuid: uuid, type: type, messageKey: Message.Key(group: group, identifier: identifier)))
+                outstanding.append(NoteKey(date: date, uuid: uuid, type: type, messageKey: Message.Key(group: group, identifier: identifier)))
             }
         }
         if let delegate = delegate {

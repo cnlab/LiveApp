@@ -299,6 +299,42 @@ Terms &amp; Conditions</string>
             </objects>
             <point key="canvasLocation" x="3967.5" y="0.0"/>
         </scene>
+        <!--Debug-->
+        <scene sceneID="5hU-MK-FGp">
+            <objects>
+                <viewController id="414-fa-cwJ" customClass="DebugViewController" customModule="Live" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OKn-hv-PRz"/>
+                        <viewControllerLayoutGuide type="bottom" id="oya-L7-lP3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jYx-LC-mnj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PvX-LF-UeI">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PvX-LF-UeI" firstAttribute="top" secondItem="OKn-hv-PRz" secondAttribute="bottom" constant="8" symbolic="YES" id="4YO-Sv-54D"/>
+                            <constraint firstItem="PvX-LF-UeI" firstAttribute="trailing" secondItem="jYx-LC-mnj" secondAttribute="trailingMargin" id="CA8-ns-jsC"/>
+                            <constraint firstItem="PvX-LF-UeI" firstAttribute="leading" secondItem="jYx-LC-mnj" secondAttribute="leadingMargin" id="aIE-At-bL2"/>
+                            <constraint firstItem="oya-L7-lP3" firstAttribute="top" secondItem="PvX-LF-UeI" secondAttribute="bottom" constant="8" symbolic="YES" id="u4Y-3a-lbk"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Debug" id="LRL-1U-X7X"/>
+                    <connections>
+                        <outlet property="textView" destination="PvX-LF-UeI" id="aQW-pQ-CXX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="710-Gu-q4e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4803.75" y="0.0"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -315,6 +351,7 @@ Terms &amp; Conditions</string>
                         <segue destination="Oc1-GC-lxU" kind="relationship" relationship="viewControllers" id="xZ1-9F-Sij"/>
                         <segue destination="TXw-TS-pLl" kind="relationship" relationship="viewControllers" id="TNg-wl-PgZ"/>
                         <segue destination="cx8-BX-xki" kind="relationship" relationship="viewControllers" id="I0v-UA-JDc"/>
+                        <segue destination="414-fa-cwJ" kind="relationship" relationship="viewControllers" id="Hx5-BY-7u5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>

@@ -43,6 +43,7 @@
 		92CA91DA1D830B31000491CD /* ConsentDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA91D91D830B31000491CD /* ConsentDocument.swift */; };
 		92CAC2431DB2BF21009615C3 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CAC2421DB2BF21009615C3 /* Note.swift */; };
 		92DA5F961DAFF2EB00132B16 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA5F951DAFF2EB00132B16 /* Schedule.swift */; };
+		92E34EC31DB3F51A002DCB87 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E34EC21DB3F51A002DCB87 /* DebugViewController.swift */; };
 		92F7CDBE1DAF033E009E2924 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F7CDBD1DAF033E009E2924 /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +144,7 @@
 		92CA91D91D830B31000491CD /* ConsentDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentDocument.swift; sourceTree = "<group>"; };
 		92CAC2421DB2BF21009615C3 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		92DA5F951DAFF2EB00132B16 /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		92E34EC21DB3F51A002DCB87 /* DebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		92F7CDBD1DAF033E009E2924 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -270,6 +272,7 @@
 		92CA91961D8304B9000491CD /* Live */ = {
 			isa = PBXGroup;
 			children = (
+				92E34EBC1DB3F4B3002DCB87 /* Debug */,
 				92CA919D1D8304B9000491CD /* Main.storyboard */,
 				9291F6851DABF85400042F42 /* LiveManager.swift */,
 				92CAC2421DB2BF21009615C3 /* Note.swift */,
@@ -311,6 +314,14 @@
 				92CA91D01D8309CC000491CD /* ResearchKitTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		92E34EBC1DB3F4B3002DCB87 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				92E34EC21DB3F51A002DCB87 /* DebugViewController.swift */,
+			);
+			name = Debug;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -506,6 +517,7 @@
 				92CA919A1D8304B9000491CD /* HomeViewController.swift in Sources */,
 				92DA5F961DAFF2EB00132B16 /* Schedule.swift in Sources */,
 				92716C401D94CDCD00980CA3 /* CollectionViewListLayout.swift in Sources */,
+				92E34EC31DB3F51A002DCB87 /* DebugViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
