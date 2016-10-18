@@ -16,6 +16,8 @@ class HomeViewController: UIViewController {
     @IBOutlet var valueTextView: UITextView?
     @IBOutlet var activityTextView: UITextView?
 
+    @IBOutlet var valuePopupViewController: ValuesPopupViewController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,8 +63,11 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func respondToValueTouched(_ sender: AnyObject) {
-        let liveManager = LiveManager.shared
-        liveManager.advance()
+        if valuePopupViewController == nil {
+            valuePopupViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PopupViewController") as? ValuesPopupViewController
+        }
+
+        valuePopupViewController?.show(inView: view, text: "Some value text...")
     }
 
     @IBAction func respondToActivityTouched(_ sender: AnyObject) {

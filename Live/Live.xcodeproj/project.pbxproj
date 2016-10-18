@@ -31,6 +31,10 @@
 		92986D8E1D99A57D008B8533 /* ConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92986D8D1D99A57D008B8533 /* ConsentViewController.swift */; };
 		92986D921D99A5FF008B8533 /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92986D911D99A5FF008B8533 /* SurveyViewController.swift */; };
 		92986D9A1D99A87A008B8533 /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92986D991D99A87A008B8533 /* StepsView.swift */; };
+		929CE6A51DB5393900330FFB /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929CE6A41DB5393900330FFB /* PopupViewController.swift */; };
+		929CE6A91DB5544100330FFB /* ValuesPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929CE6A81DB5544100330FFB /* ValuesPopupViewController.swift */; };
+		929CE6AB1DB5548000330FFB /* ValuesThinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929CE6AA1DB5548000330FFB /* ValuesThinkViewController.swift */; };
+		929CE6AD1DB5548C00330FFB /* ValuesRankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929CE6AC1DB5548C00330FFB /* ValuesRankViewController.swift */; };
 		92CA91981D8304B9000491CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA91971D8304B9000491CD /* AppDelegate.swift */; };
 		92CA919A1D8304B9000491CD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA91991D8304B9000491CD /* HomeViewController.swift */; };
 		92CA919C1D8304B9000491CD /* ValuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA919B1D8304B9000491CD /* ValuesViewController.swift */; };
@@ -127,6 +131,10 @@
 		92986D8D1D99A57D008B8533 /* ConsentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentViewController.swift; sourceTree = "<group>"; };
 		92986D911D99A5FF008B8533 /* SurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
 		92986D991D99A87A008B8533 /* StepsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
+		929CE6A41DB5393900330FFB /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		929CE6A81DB5544100330FFB /* ValuesPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesPopupViewController.swift; sourceTree = "<group>"; };
+		929CE6AA1DB5548000330FFB /* ValuesThinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesThinkViewController.swift; sourceTree = "<group>"; };
+		929CE6AC1DB5548C00330FFB /* ValuesRankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesRankViewController.swift; sourceTree = "<group>"; };
 		92CA91941D8304B9000491CD /* Live.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Live.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92CA91971D8304B9000491CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92CA91991D8304B9000491CD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -191,12 +199,16 @@
 		92986D931D99A67F008B8533 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				929CE6A41DB5393900330FFB /* PopupViewController.swift */,
 				92CA91991D8304B9000491CD /* HomeViewController.swift */,
 				924878311D86F88B000C86FF /* HealthKitManager.swift */,
 				924878331D8733C2000C86FF /* ValueMessageManager.swift */,
 				924878351D873A92000C86FF /* ActivityMessageManager.swift */,
 				924878391D873B3E000C86FF /* MessageManager.swift */,
 				92986D991D99A87A008B8533 /* StepsView.swift */,
+				929CE6A81DB5544100330FFB /* ValuesPopupViewController.swift */,
+				929CE6AA1DB5548000330FFB /* ValuesThinkViewController.swift */,
+				929CE6AC1DB5548C00330FFB /* ValuesRankViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -499,14 +511,17 @@
 				92CA919C1D8304B9000491CD /* ValuesViewController.swift in Sources */,
 				92062C3D1DB272F70001DE0C /* ObjectiveCException.m in Sources */,
 				924878341D8733C2000C86FF /* ValueMessageManager.swift in Sources */,
+				929CE6AD1DB5548C00330FFB /* ValuesRankViewController.swift in Sources */,
 				92CA91DA1D830B31000491CD /* ConsentDocument.swift in Sources */,
 				9233565D1D833C24005161A8 /* SurveyTask.swift in Sources */,
 				927DEAC41DAC5C8600B5C8C0 /* Archiver.swift in Sources */,
 				92CAC2431DB2BF21009615C3 /* Note.swift in Sources */,
 				9233565B1D833843005161A8 /* ConsentTask.swift in Sources */,
+				929CE6A91DB5544100330FFB /* ValuesPopupViewController.swift in Sources */,
 				92CA91981D8304B9000491CD /* AppDelegate.swift in Sources */,
 				9291F6861DABF85400042F42 /* LiveManager.swift in Sources */,
 				924878321D86F88B000C86FF /* HealthKitManager.swift in Sources */,
+				929CE6AB1DB5548000330FFB /* ValuesThinkViewController.swift in Sources */,
 				92986D8E1D99A57D008B8533 /* ConsentViewController.swift in Sources */,
 				9248783A1D873B3E000C86FF /* MessageManager.swift in Sources */,
 				924878361D873A92000C86FF /* ActivityMessageManager.swift in Sources */,
@@ -518,6 +533,7 @@
 				92DA5F961DAFF2EB00132B16 /* Schedule.swift in Sources */,
 				92716C401D94CDCD00980CA3 /* CollectionViewListLayout.swift in Sources */,
 				92E34EC31DB3F51A002DCB87 /* DebugViewController.swift in Sources */,
+				929CE6A51DB5393900330FFB /* PopupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
