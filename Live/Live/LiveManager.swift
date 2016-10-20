@@ -11,6 +11,12 @@ import ResearchKit
 
 var sharedLiveManager = LiveManager()
 
+protocol LiveManagerDelegate {
+
+    func liveManagerAffirm(_ liveManager: LiveManager, uuid: String, type: String, messageKey: Message.Key)
+
+}
+
 class LiveManager : NotificationManagerDelegate {
 
     class var shared: LiveManager { get { return sharedLiveManager } }
@@ -20,6 +26,7 @@ class LiveManager : NotificationManagerDelegate {
         let stepCounts: [Int?]
     }
 
+    var delegate: LiveManagerDelegate?
     let notificationManager = createNotificationManager()
     let healthKitManager = HealthKitManager()
     let valueMessageManager = ValueMessageManager()
@@ -127,9 +134,7 @@ class LiveManager : NotificationManagerDelegate {
         authorizeHealthKit()
     }
 
-    func notificationManager(_ notificationManager: NotificationManager, action: String, uuid: String, type: String, messageKey: Message.Key) {
-        NSLog("action")
-
+    func affirm(uuid: String, type: String, messageKey: Message.Key, rank: Double) {
         for day in schedule.days {
             for note in day.notes {
                 if note.uuid == uuid {
@@ -137,8 +142,8 @@ class LiveManager : NotificationManagerDelegate {
                     if note.type == "Value" {
                         valueMessage.value = valueMessageManager.find(messageKey: note.messageKey)
                     } else
-                    if note.type == "Activity" {
-                        activityMessage.value = activityMessageManager.find(messageKey: note.messageKey)
+                        if note.type == "Activity" {
+                            activityMessage.value = activityMessageManager.find(messageKey: note.messageKey)
                     }
                     break
                 }
@@ -148,6 +153,14 @@ class LiveManager : NotificationManagerDelegate {
             notificationManager.nothingPending()
         }
         notificationManager.getOutstanding()
+    }
+
+    func notificationManager(_ notificationManager: NotificationManager, action: String, uuid: String, type: String, messageKey: Message.Key) {
+        if action == "affirm" {
+            affirm(uuid: uuid, type: type, messageKey: messageKey, rank: 1.0)
+        } else {
+            delegate?.liveManagerAffirm(self, uuid: uuid, type: type, messageKey: messageKey)
+        }
     }
 
     func notificationManagerUpdate() {

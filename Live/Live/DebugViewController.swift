@@ -37,7 +37,7 @@ class DebugViewController: UIViewController {
         for day in schedule.days {
             for note in day.notes {
                 let date = dateFormatter.string(from: day.date)
-                text += "\(date) \(note.status) \(note.type) \(note.messageKey.group) \(note.messageKey.identifier)\n"
+                text += "\(date) \(note.status) \(note.type) \(note.messageKey.group) \(note.messageKey.identifier) \(note.uuid)\n"
             }
         }
 

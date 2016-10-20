@@ -1,18 +1,18 @@
 //
-//  ValuesThinkView.swift
+//  ActivityThinkViewController.swift
 //  Live
 //
-//  Created by Denis Bohm on 10/17/16.
+//  Created by Denis Bohm on 10/20/16.
 //  Copyright © 2016 Firefly Design LLC. All rights reserved.
 //
 
 import UIKit
 
-class ValuesThinkViewController : UIViewController {
+class ActivityThinkViewController: UIViewController {
 
     @IBOutlet var textView: UITextView?
 
-    var popupViewController: ValuesPopupViewController?
+    var popupViewController: ActivityPopupViewController?
 
     @IBAction func okAction() {
         popupViewController?.thinkOkAction()

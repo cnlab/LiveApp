@@ -23,6 +23,10 @@
 		924878341D8733C2000C86FF /* ValueMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924878331D8733C2000C86FF /* ValueMessageManager.swift */; };
 		924878361D873A92000C86FF /* ActivityMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924878351D873A92000C86FF /* ActivityMessageManager.swift */; };
 		9248783A1D873B3E000C86FF /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924878391D873B3E000C86FF /* MessageManager.swift */; };
+		926ECB281DB9639A00A36584 /* LiveTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926ECB271DB9639A00A36584 /* LiveTabBarController.swift */; };
+		926ECB2D1DB975B300A36584 /* ActivityPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926ECB2C1DB975B300A36584 /* ActivityPopupViewController.swift */; };
+		926ECB2F1DB975E100A36584 /* ActivityThinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926ECB2E1DB975E100A36584 /* ActivityThinkViewController.swift */; };
+		926ECB311DB975EF00A36584 /* ActivityRankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926ECB301DB975EF00A36584 /* ActivityRankViewController.swift */; };
 		92716C401D94CDCD00980CA3 /* CollectionViewListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92716C3F1D94CDCD00980CA3 /* CollectionViewListLayout.swift */; };
 		927DEAC41DAC5C8600B5C8C0 /* Archiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927DEAC31DAC5C8600B5C8C0 /* Archiver.swift */; };
 		9291F6861DABF85400042F42 /* LiveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9291F6851DABF85400042F42 /* LiveManager.swift */; };
@@ -123,6 +127,10 @@
 		924878331D8733C2000C86FF /* ValueMessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueMessageManager.swift; sourceTree = "<group>"; };
 		924878351D873A92000C86FF /* ActivityMessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityMessageManager.swift; sourceTree = "<group>"; };
 		924878391D873B3E000C86FF /* MessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
+		926ECB271DB9639A00A36584 /* LiveTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveTabBarController.swift; sourceTree = "<group>"; };
+		926ECB2C1DB975B300A36584 /* ActivityPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPopupViewController.swift; sourceTree = "<group>"; };
+		926ECB2E1DB975E100A36584 /* ActivityThinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityThinkViewController.swift; sourceTree = "<group>"; };
+		926ECB301DB975EF00A36584 /* ActivityRankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityRankViewController.swift; sourceTree = "<group>"; };
 		92716C3F1D94CDCD00980CA3 /* CollectionViewListLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewListLayout.swift; sourceTree = "<group>"; };
 		927DEAC31DAC5C8600B5C8C0 /* Archiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Archiver.swift; sourceTree = "<group>"; };
 		9291F6851DABF85400042F42 /* LiveManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveManager.swift; sourceTree = "<group>"; };
@@ -183,9 +191,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		926ECB2B1DB9687600A36584 /* Affirm */ = {
+			isa = PBXGroup;
+			children = (
+				929CE6A81DB5544100330FFB /* ValuesPopupViewController.swift */,
+				929CE6AA1DB5548000330FFB /* ValuesThinkViewController.swift */,
+				929CE6AC1DB5548C00330FFB /* ValuesRankViewController.swift */,
+				926ECB2C1DB975B300A36584 /* ActivityPopupViewController.swift */,
+				926ECB2E1DB975E100A36584 /* ActivityThinkViewController.swift */,
+				926ECB301DB975EF00A36584 /* ActivityRankViewController.swift */,
+			);
+			name = Affirm;
+			sourceTree = "<group>";
+		};
 		9291F68B1DAC0DC700042F42 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				929CE6A41DB5393900330FFB /* PopupViewController.swift */,
 				9291F6891DAC0DC100042F42 /* Observable.swift */,
 				9291F68C1DAC306500042F42 /* Time.swift */,
 				927DEAC31DAC5C8600B5C8C0 /* Archiver.swift */,
@@ -199,16 +221,12 @@
 		92986D931D99A67F008B8533 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				929CE6A41DB5393900330FFB /* PopupViewController.swift */,
 				92CA91991D8304B9000491CD /* HomeViewController.swift */,
 				924878311D86F88B000C86FF /* HealthKitManager.swift */,
 				924878331D8733C2000C86FF /* ValueMessageManager.swift */,
 				924878351D873A92000C86FF /* ActivityMessageManager.swift */,
 				924878391D873B3E000C86FF /* MessageManager.swift */,
 				92986D991D99A87A008B8533 /* StepsView.swift */,
-				929CE6A81DB5544100330FFB /* ValuesPopupViewController.swift */,
-				929CE6AA1DB5548000330FFB /* ValuesThinkViewController.swift */,
-				929CE6AC1DB5548C00330FFB /* ValuesRankViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -284,17 +302,19 @@
 		92CA91961D8304B9000491CD /* Live */ = {
 			isa = PBXGroup;
 			children = (
-				92E34EBC1DB3F4B3002DCB87 /* Debug */,
 				92CA919D1D8304B9000491CD /* Main.storyboard */,
 				9291F6851DABF85400042F42 /* LiveManager.swift */,
+				926ECB271DB9639A00A36584 /* LiveTabBarController.swift */,
 				92CAC2421DB2BF21009615C3 /* Note.swift */,
 				92DA5F951DAFF2EB00132B16 /* Schedule.swift */,
 				92F7CDBD1DAF033E009E2924 /* NotificationManager.swift */,
-				9291F68B1DAC0DC700042F42 /* Utilities */,
+				926ECB2B1DB9687600A36584 /* Affirm */,
 				92986D931D99A67F008B8533 /* Home */,
 				92986D941D99A68E008B8533 /* Values */,
 				92986D951D99A698008B8533 /* Consent */,
 				92986D961D99A6A4008B8533 /* Survey */,
+				92E34EBC1DB3F4B3002DCB87 /* Debug */,
+				9291F68B1DAC0DC700042F42 /* Utilities */,
 				92986D971D99A709008B8533 /* Misc */,
 			);
 			path = Live;
@@ -507,6 +527,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				926ECB2F1DB975E100A36584 /* ActivityThinkViewController.swift in Sources */,
 				9291F68A1DAC0DC100042F42 /* Observable.swift in Sources */,
 				92CA919C1D8304B9000491CD /* ValuesViewController.swift in Sources */,
 				92062C3D1DB272F70001DE0C /* ObjectiveCException.m in Sources */,
@@ -519,11 +540,14 @@
 				9233565B1D833843005161A8 /* ConsentTask.swift in Sources */,
 				929CE6A91DB5544100330FFB /* ValuesPopupViewController.swift in Sources */,
 				92CA91981D8304B9000491CD /* AppDelegate.swift in Sources */,
+				926ECB311DB975EF00A36584 /* ActivityRankViewController.swift in Sources */,
+				926ECB2D1DB975B300A36584 /* ActivityPopupViewController.swift in Sources */,
 				9291F6861DABF85400042F42 /* LiveManager.swift in Sources */,
 				924878321D86F88B000C86FF /* HealthKitManager.swift in Sources */,
 				929CE6AB1DB5548000330FFB /* ValuesThinkViewController.swift in Sources */,
 				92986D8E1D99A57D008B8533 /* ConsentViewController.swift in Sources */,
 				9248783A1D873B3E000C86FF /* MessageManager.swift in Sources */,
+				926ECB281DB9639A00A36584 /* LiveTabBarController.swift in Sources */,
 				924878361D873A92000C86FF /* ActivityMessageManager.swift in Sources */,
 				92986D9A1D99A87A008B8533 /* StepsView.swift in Sources */,
 				9291F68D1DAC306500042F42 /* Time.swift in Sources */,

@@ -12,6 +12,11 @@ class PopupViewController: UIViewController {
 
     @IBOutlet var contentView: UIView?
 
+    func getContainerViewController<T>() -> T? {
+        let viewController = childViewControllers.first(where: { $0 is T })
+        return viewController as? T
+    }
+
     override func viewDidLoad() {
         view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
 
