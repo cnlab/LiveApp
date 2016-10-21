@@ -30,7 +30,7 @@ protocol NotificationManager {
     var authorized: Bool { get }
     func authorize(_ completion: @escaping ((_ success: Bool, _ error: Error?) -> Void))
     func cancel()
-    func request(date: Date, components: DateComponents, uuid: String, type: String, message: Message)
+    func request(date: Date, uuid: String, type: String, message: Message)
     func getOutstanding()
     func nothingPending()
 
@@ -68,7 +68,7 @@ class NotificationManager9 : NotificationManager {
         application.applicationIconBadgeNumber = 0
     }
     
-    func request(date: Date, components: DateComponents, uuid: String, type: String, message: Message) {
+    func request(date: Date, uuid: String, type: String, message: Message) {
         let notification = UILocalNotification()
         notification.fireDate = Date(timeIntervalSinceNow: 5.0)
         notification.alertAction = "Affirm"
@@ -149,14 +149,11 @@ class NotificationManager10 : NSObject, UNUserNotificationCenterDelegate, Notifi
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
 
-    func request(date: Date, components: DateComponents, uuid: String, type: String, message: Message) {
+    func request(date: Date, uuid: String, type: String, message: Message) {
         let trigger: UNNotificationTrigger?
-        var triggerComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
-        triggerComponents.hour = components.hour
-        triggerComponents.minute = components.minute
-        let date = Calendar.current.date(from: triggerComponents)!
-        if date > Date(timeIntervalSinceNow: 5.0) {
-            trigger = UNCalendarNotificationTrigger(dateMatching: triggerComponents, repeats: false)
+        if date > Date(timeIntervalSinceNow: 60.0) {
+            let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+            trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         } else {
             trigger = nil
         }
@@ -168,7 +165,7 @@ class NotificationManager10 : NSObject, UNUserNotificationCenterDelegate, Notifi
         content.sound = UNNotificationSound.default()
         content.categoryIdentifier = "Affirmation"
         content.userInfo = [
-            "date": Calendar.current.date(from: triggerComponents)!,
+            "date": date,
             "uuid": uuid,
             "type": type,
             "group": message.key.group,

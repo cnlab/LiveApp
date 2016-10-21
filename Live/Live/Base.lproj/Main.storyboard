@@ -16,7 +16,7 @@
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="k5j-7u-B7n">
@@ -118,7 +118,7 @@ five</string>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9DI-Ay-eAs">
@@ -147,7 +147,7 @@ five</string>
                                                 <collectionViewLayout key="collectionViewLayout" id="9tP-sD-irw" customClass="CollectionViewListLayout" customModule="Live" customModuleProvider="target"/>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ValueCell" id="EXS-BF-Tvj">
-                                                        <rect key="frame" x="0.5" y="0.0" width="287" height="30"/>
+                                                        <rect key="frame" x="1" y="0.0" width="287" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                             <rect key="frame" x="0.0" y="0.0" width="287" height="30"/>
@@ -212,7 +212,7 @@ five</string>
                         <viewControllerLayoutGuide type="bottom" id="X8b-FT-71Q"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6TC-Ii-Uog">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P03-8j-QfI">
@@ -268,7 +268,7 @@ five</string>
                         <viewControllerLayoutGuide type="bottom" id="1k1-vY-37h"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rVH-UX-psy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eed-1F-ee3">
@@ -297,7 +297,7 @@ five</string>
                         <viewControllerLayoutGuide type="bottom" id="waI-qI-ebt"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9lm-33-Hlf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="piG-Z2-hyu">
@@ -326,7 +326,7 @@ five</string>
                         <viewControllerLayoutGuide type="bottom" id="J1o-xN-7ub"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vAk-UN-tFx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YwW-lh-rv3">
@@ -353,7 +353,7 @@ Terms &amp; Conditions</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7B1-55-4Sh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3967.5" y="0.0"/>
+            <point key="canvasLocation" x="4780" y="-1"/>
         </scene>
         <!--Debug-->
         <scene sceneID="5hU-MK-FGp">
@@ -364,7 +364,7 @@ Terms &amp; Conditions</string>
                         <viewControllerLayoutGuide type="bottom" id="oya-L7-lP3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jYx-LC-mnj">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Debug text..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PvX-LF-UeI">
@@ -388,7 +388,50 @@ Terms &amp; Conditions</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="710-Gu-q4e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4803.75" y="0.0"/>
+            <point key="canvasLocation" x="5614" y="0.0"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="82i-fP-bX3">
+            <objects>
+                <viewController id="0nq-5A-lxm" customClass="SettingsViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Kga-MI-oaU"/>
+                        <viewControllerLayoutGuide type="bottom" id="Eq6-Qo-K0a"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ENq-ve-ocM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify Me At" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7d-g6-pmm">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="sM0-PY-JFf">
+                                <date key="date" timeIntervalSinceReferenceDate="498761161.217188">
+                                    <!--2016-10-21 16:46:01 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="timeChanged" destination="0nq-5A-lxm" eventType="valueChanged" id="dT6-Y9-52W"/>
+                                </connections>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="M7d-g6-pmm" firstAttribute="top" secondItem="Kga-MI-oaU" secondAttribute="bottom" id="1G9-16-Tox"/>
+                            <constraint firstItem="sM0-PY-JFf" firstAttribute="top" secondItem="M7d-g6-pmm" secondAttribute="bottom" constant="8" symbolic="YES" id="JoE-ed-AJF"/>
+                            <constraint firstItem="sM0-PY-JFf" firstAttribute="leading" secondItem="ENq-ve-ocM" secondAttribute="leading" id="L9l-Ti-voj"/>
+                            <constraint firstItem="M7d-g6-pmm" firstAttribute="leading" secondItem="ENq-ve-ocM" secondAttribute="leadingMargin" id="yRt-Gt-gk7"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" id="RRd-XL-Hc4"/>
+                    <connections>
+                        <outlet property="timePicker" destination="sM0-PY-JFf" id="gOB-bc-jkL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8ch-XH-mol" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3921" y="-1"/>
         </scene>
         <!--Live Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -401,12 +444,13 @@ Terms &amp; Conditions</string>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="Oc1-GC-lxU" kind="relationship" relationship="viewControllers" id="xZ1-9F-Sij"/>
-                        <segue destination="TXw-TS-pLl" kind="relationship" relationship="viewControllers" id="TNg-wl-PgZ"/>
-                        <segue destination="cx8-BX-xki" kind="relationship" relationship="viewControllers" id="I0v-UA-JDc"/>
-                        <segue destination="414-fa-cwJ" kind="relationship" relationship="viewControllers" id="Hx5-BY-7u5"/>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="RLh-wR-7GD"/>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="WRc-wz-833"/>
+                        <segue destination="Oc1-GC-lxU" kind="relationship" relationship="viewControllers" id="Wnl-vF-eij"/>
+                        <segue destination="TXw-TS-pLl" kind="relationship" relationship="viewControllers" id="rh3-6u-7lv"/>
+                        <segue destination="0nq-5A-lxm" kind="relationship" relationship="viewControllers" id="YMS-yx-ypm"/>
+                        <segue destination="cx8-BX-xki" kind="relationship" relationship="viewControllers" id="2LW-sC-SMs"/>
+                        <segue destination="414-fa-cwJ" kind="relationship" relationship="viewControllers" id="GSo-oT-o6j"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -422,7 +466,7 @@ Terms &amp; Conditions</string>
                         <viewControllerLayoutGuide type="bottom" id="5Ze-K7-tli"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XYl-j0-lfc">
-                        <rect key="frame" x="0.0" y="0.0" width="224" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="279" height="507"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Take a minute to think of a specific situation in the future when this might happen…" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jqY-vI-v6m">
@@ -475,7 +519,7 @@ Terms &amp; Conditions</string>
                         <viewControllerLayoutGuide type="bottom" id="eQb-6f-B7o"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="caM-N2-uWh">
-                        <rect key="frame" x="0.0" y="0.0" width="224" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="279" height="507"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hKO-SN-JQL">
@@ -549,7 +593,7 @@ Terms &amp; Conditions</string>
                         <viewControllerLayoutGuide type="bottom" id="JJA-0A-z75"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Wqy-8O-hxA">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="syM-C6-2af">
@@ -605,7 +649,7 @@ Terms &amp; Conditions</string>
                         <viewControllerLayoutGuide type="bottom" id="c8K-y2-4iE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mXi-bK-iBh">
-                        <rect key="frame" x="0.0" y="0.0" width="224" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="279" height="507"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Take a minute to think of a specific situation in the future when this might happen…" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QoJ-oH-Mp5">
@@ -658,7 +702,7 @@ Terms &amp; Conditions</string>
                         <viewControllerLayoutGuide type="bottom" id="MwI-GP-Kcm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bLr-Cg-GMz">
-                        <rect key="frame" x="0.0" y="0.0" width="224" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="279" height="507"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nUj-XO-DFc">

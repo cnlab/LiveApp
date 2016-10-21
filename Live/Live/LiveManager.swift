@@ -40,10 +40,8 @@ class LiveManager : NotificationManagerDelegate {
     var activityMessage = Observable<Message?>(value: nil)
     var schedule = Schedule(days: [])
     let horizon = 14
-    var triggers: [String: DateComponents] = [
-        "Value": DateComponents(hour: 9, minute: 0),
-        "Activity": DateComponents(hour: 9, minute: 5)
-        ]
+    var trigger = Observable<DateComponents>(value: DateComponents(hour: 9, minute: 0))
+    var triggerOffsets: [String: TimeInterval] = ["Value": 0, "Activity": 5 * 60]
 
     init() {
         notificationManager.delegate = self
@@ -127,6 +125,7 @@ class LiveManager : NotificationManagerDelegate {
 
     func activate() {
         orderedValues.subscribe(owner: self, observer: orderedValuesChanged)
+        trigger.subscribe(owner: self, observer: triggerChanged)
 
         extend()
 
@@ -181,9 +180,13 @@ class LiveManager : NotificationManagerDelegate {
                     case .pending = note.status,
                     let messageManager = messageManagers[note.type],
                     let message = messageManager.find(messageKey: note.messageKey),
-                    let dateComponents = triggers[note.type]
+                    let triggerOffset = triggerOffsets[note.type]
                 {
-                    notificationManager.request(date: day.date, components: dateComponents, uuid: note.uuid, type: note.type, message: message)
+                    var triggerComponents = Calendar.current.dateComponents([.year, .month, .day], from: day.date)
+                    triggerComponents.hour = trigger.value.hour
+                    triggerComponents.minute = trigger.value.minute
+                    let date = Calendar.current.date(from: triggerComponents)!.addingTimeInterval(triggerOffset)
+                    notificationManager.request(date: date, uuid: note.uuid, type: note.type, message: message)
                 }
             }
         }
@@ -227,8 +230,7 @@ class LiveManager : NotificationManagerDelegate {
         // !!! should keep all notes from the past -denis
         var days: [Schedule.Day] = []
         let now = Date()
-        let valueDateComponents = triggers["Value"]!
-        var date = Time.next(date: now, at: valueDateComponents)
+        var date = Time.next(date: now, at: trigger.value)
         for _ in 0 ..< horizon {
             let notes = nextNotes()
             days.append(Schedule.Day(date: date, notes: notes))
@@ -248,12 +250,11 @@ class LiveManager : NotificationManagerDelegate {
         var days: [Schedule.Day] = Array<Schedule.Day>(schedule.days)
         let calendar = Calendar.current
         let now = Date()
-        let valueDateComponents = triggers["Value"]!
-        let startDate = Time.next(date: now, at: valueDateComponents)
+        let startDate = Time.next(date: now, at: trigger.value)
         let endDate = calendar.date(byAdding: .day, value: horizon, to: startDate)!
 
         // append days up to the horizon
-        let nextDate = Time.next(date: lastDay.date, at: valueDateComponents)
+        let nextDate = Time.next(date: lastDay.date, at: trigger.value)
         var date = nextDate > startDate ? nextDate : startDate
         while date < endDate {
             let notes = nextNotes()
@@ -266,6 +267,10 @@ class LiveManager : NotificationManagerDelegate {
 
     func orderedValuesChanged() {
         valueMessageManager.group = orderedValues.value[0]
+        reschedule()
+    }
+
+    func triggerChanged() {
         reschedule()
     }
 
