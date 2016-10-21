@@ -135,19 +135,24 @@ class LiveManager : NotificationManagerDelegate {
     }
 
     func affirm(uuid: String, type: String, messageKey: Message.Key, rank: Double) {
+        var found = false
         for day in schedule.days {
             for note in day.notes {
                 if note.uuid == uuid {
-                    note.status = .rated(date: Date(), rank: 1.0)
+                    note.status = .rated(date: Date(), rank: rank)
                     if note.type == "Value" {
                         valueMessage.value = valueMessageManager.find(messageKey: note.messageKey)
                     } else
-                        if note.type == "Activity" {
-                            activityMessage.value = activityMessageManager.find(messageKey: note.messageKey)
+                    if note.type == "Activity" {
+                        activityMessage.value = activityMessageManager.find(messageKey: note.messageKey)
                     }
+                    found = true
                     break
                 }
             }
+        }
+        if !found {
+            NSLog("could not find uuid \(uuid)")
         }
         if !schedule.isPending {
             notificationManager.nothingPending()
@@ -239,19 +244,12 @@ class LiveManager : NotificationManagerDelegate {
             return
         }
 
-        var days: [Schedule.Day] = []
+        var days: [Schedule.Day] = Array<Schedule.Day>(schedule.days)
         let calendar = Calendar.current
         let now = Date()
         let valueDateComponents = triggers["Value"]!
         let startDate = Time.next(date: now, at: valueDateComponents)
         let endDate = calendar.date(byAdding: .day, value: horizon, to: startDate)!
-
-        // only keep days in the future
-        for day in schedule.days {
-            if day.date > now {
-                days.append(day)
-            }
-        }
 
         // append days up to the horizon
         let nextDate = Time.next(date: lastDay.date, at: valueDateComponents)
