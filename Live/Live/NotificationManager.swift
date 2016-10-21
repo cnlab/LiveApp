@@ -150,10 +150,16 @@ class NotificationManager10 : NSObject, UNUserNotificationCenterDelegate, Notifi
     }
 
     func request(date: Date, components: DateComponents, uuid: String, type: String, message: Message) {
+        let trigger: UNNotificationTrigger?
         var triggerComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
         triggerComponents.hour = components.hour
         triggerComponents.minute = components.minute
-        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerComponents, repeats: false)
+        let date = Calendar.current.date(from: triggerComponents)!
+        if date > Date(timeIntervalSinceNow: 5.0) {
+            trigger = UNCalendarNotificationTrigger(dateMatching: triggerComponents, repeats: false)
+        } else {
+            trigger = nil
+        }
 
         let content = UNMutableNotificationContent()
         content.title = type

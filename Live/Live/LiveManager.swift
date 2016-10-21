@@ -224,6 +224,7 @@ class LiveManager : NotificationManagerDelegate {
 
     func reschedule() {
         // append days up to the horizon
+        // !!! should keep all notes from the past -denis
         var days: [Schedule.Day] = []
         let now = Date()
         let valueDateComponents = triggers["Value"]!
@@ -263,24 +264,8 @@ class LiveManager : NotificationManagerDelegate {
         setScheduleDays(days: days)
     }
 
-    // advance messages by 1 day - for testing -denis
-    func advance() {
-        var days: [Schedule.Day] = []
-        for index in 0 ..< schedule.days.count - 1 {
-            let a = schedule.days[index]
-            let b = schedule.days[index + 1]
-            days.append(Schedule.Day(date: a.date, notes: b.notes))
-        }
-        if let last = schedule.days.last {
-            let notes = nextNotes()
-            days.append(Schedule.Day(date: last.date, notes: notes))
-        }
-
-        setScheduleDays(days: days)
-    }
-
     func orderedValuesChanged() {
-        valueMessageManager.filterGroup = orderedValues.value[0]
+        valueMessageManager.group = orderedValues.value[0]
         reschedule()
     }
 
