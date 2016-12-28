@@ -88,7 +88,7 @@ class LiveManager : NotificationManagerDelegate {
         archiver.finishEncoding()
         do {
             try data.write(to: archivePath, options: Data.WritingOptions.atomic)
-        } catch {
+        } catch let error {
             NSLog("LiveManager.archive: error: \(error)")
         }
     }
@@ -129,8 +129,10 @@ class LiveManager : NotificationManagerDelegate {
 
         extend()
 
+        /*
         notificationManager.authorize() { (success: Bool, error: Error?) in self.notificationManagerUpdate() }
         authorizeHealthKit()
+         */
     }
 
     func affirm(uuid: String, type: String, messageKey: Message.Key, rank: Double) {

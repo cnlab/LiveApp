@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0820"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -46,6 +46,16 @@
                BlueprintIdentifier = "92CA91B41D8304B9000491CD"
                BuildableName = "LiveUITests.xctest"
                BlueprintName = "LiveUITests"
+               ReferencedContainer = "container:Live.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "925443D51E12D33900BD5687"
+               BuildableName = "LiveViewsTests.xctest"
+               BlueprintName = "LiveViewsTests"
                ReferencedContainer = "container:Live.xcodeproj">
             </BuildableReference>
          </TestableReference>

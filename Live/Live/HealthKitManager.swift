@@ -27,6 +27,9 @@ class HealthKitManager {
 
     let healthStore = HKHealthStore()
 
+    init() {
+    }
+
     func authorizeHealthKit(_ completion: @escaping ((_ success: Bool, _ error: NSError?) -> Void)) throws {
         if !HKHealthStore.isHealthDataAvailable() {
             throw LocalError.healthDataNotAvailable
