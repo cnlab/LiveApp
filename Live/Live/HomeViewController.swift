@@ -19,13 +19,33 @@ class HomeViewController: UIViewController {
     @IBOutlet var valueTextView: UITextView?
     @IBOutlet var activityTextView: UITextView?
 
+    @IBInspectable var unratedPrefix: String = "▶︎"
+    @IBInspectable var unratedColor: UIColor = UIColor.orange
+    @IBInspectable var ratedPrefix: String = "✔︎"
+    @IBInspectable var ratedColor: UIColor = UIColor(hue: 120.0 / 360.0, saturation: 1.0, brightness: 0.5, alpha: 1.0)
+
+    @IBInspectable var averageStepsInsufficientData: String = "Average steps will be calculated on day 7."
+    @IBInspectable var averageSteps: String = "Average Daily Steps: /steps/"
+
+    @IBInspectable var motivationalInsufficientData: String = "Welcome To Live Active!"
+    @IBInspectable var motivationalBelowRatio: Double = 0.9
+    @IBInspectable var motivationalBelow: String = "Keep at it. Can you beat your average?"
+    @IBInspectable var motivationalAlmost: String = "Getting close. You almost beat your average yesterday!"
+    @IBInspectable var motivationalAbove: String = "Great work yesterday! You beat your average by /percent/%"
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let valueRecognizer = UITapGestureRecognizer(target: self, action: #selector(respondToValueTouched))
+        valueTextView?.addGestureRecognizer(valueRecognizer)
+
+        let activityRecognizer = UITapGestureRecognizer(target: self, action: #selector(respondToActivityTouched))
+        activityTextView?.addGestureRecognizer(activityRecognizer)
+
         let liveManager = LiveManager.shared
         liveManager.dailyStepCounts.subscribe(owner: self, observer: dailyStepCountsChanged)
-        liveManager.valueMessage.subscribe(owner: self, observer: valueChanged)
-        liveManager.activityMessage.subscribe(owner: self, observer: activityChanged)
+        liveManager.valueNote.subscribe(owner: self, observer: valueChanged)
+        liveManager.activityNote.subscribe(owner: self, observer: activityChanged)
 
         dailyStepCountsChanged()
         valueChanged()
@@ -65,114 +85,125 @@ class HomeViewController: UIViewController {
         let stepsViewHeight = contentHeight - totalHeight(subviews: view.subviews, excluding: [stepsView!])
         layout(subview: motivationalLabel, x: x, y: &y, width: width)
         layout(subview: stepsView, x: x, y: &y, width: width, height: stepsViewHeight)
-        stepsButton!.frame = stepsView!.frame
+        stepsButton!.frame.size = stepsView!.frame.size
         layout(subview: averageStepsLabel, x: x, y: &y, width: width)
         layout(subview: valueTextView, x: x, y: &y, width: width)
         layout(subview: activityTextView, x: x, y: &y, width: width)
+    }
 
-// simple vertical layout
-#if false
-        let count = view.subviews.reduce(0) { $1.isHidden ? $0 : $0 + 1 }
-        let x: CGFloat = 0.0
-        var y: CGFloat = topLayoutGuide.length
-        let width = view.bounds.width
-        let height = (view.bounds.height - topLayoutGuide.length - bottomLayoutGuide.length) / CGFloat(count)
-        for subview in view.subviews {
-            if subview.isHidden {
-                continue
-            }
-            subview.frame = CGRect(x: x, y: y, width: width, height: height)
-            subview.layoutSubviews()
-            subview.frame = CGRect(x: x, y: y, width: width, height: height)
-            y += height
+    func calculateAverage(stepCounts: [Int?]) -> Int? {
+        let count = stepCounts.reduce(0) { (($1 ?? 0) != 0) ? $0 + 1 : $0 }
+        if count != 7 {
+            return nil
         }
-#endif
+        return stepCounts[0 ..< 5].reduce(0) { $0 + $1! } / count
+    }
+
+    func substitute(string: String, substitutions: [String : String]) -> String {
+        let parts = string.components(separatedBy: "/")
+        var result = ""
+        for part in parts {
+            if let substitution = substitutions[part] {
+                result += substitution
+            } else {
+                result += part
+            }
+        }
+        return result
     }
 
     func dailyStepCountsChanged() {
-        let label = "Average Daily Steps: "
-        let value = "Calculated On Day 7"
-        let string = NSMutableAttributedString(string: "\(label)\(value)", attributes: [:])
-        let range = NSRange(location: label.utf8.count, length: value.utf8.count)
-        string.addAttribute(NSForegroundColorAttributeName, value: UIColor.gray, range: range)
-        averageStepsLabel?.attributedText = string
-
-        if let stepsView = stepsView, let stepsButton = stepsButton {
-            if UserDefaults.standard.bool(forKey: "didAuthorizeHealthKit") {
-                stepsButton.isHidden = true
-                stepsView.isEnabled = true
-
-                let liveManager = LiveManager.shared
-                if liveManager.healthKitManager.authorized {
-                    if let dailyStepCounts = liveManager.dailyStepCounts.value {
-                        stepsView.update(startDate: dailyStepCounts.startDate, stepCounts: dailyStepCounts.stepCounts)
-                    } else {
-                        stepsView.update(startDate: Date(), stepCounts: [nil, nil, nil, nil, nil, nil, nil] as [Int?])
-                    }
-                }
+        let stepCounts: [Int?]
+        let liveManager = LiveManager.shared
+        if let dailyStepCounts = liveManager.dailyStepCounts.value {
+            stepsButton?.isHidden = true
+            stepsView?.isEnabled = true
+            stepsView?.update(startDate: dailyStepCounts.startDate, stepCounts: dailyStepCounts.stepCounts)
+            stepCounts = dailyStepCounts.stepCounts
+        } else {
+            stepsView?.isEnabled = false
+            if liveManager.didAuthorizeHealthKit {
+                stepsButton?.isHidden = true
+                stepsView?.update(startDate: Date(), stepCounts: [nil, nil, nil, nil, nil, nil, nil])
             } else {
-                stepsButton.isHidden = false
-                stepsView.isEnabled = false
+                stepsButton?.isHidden = false
+                stepsView?.setDefaults()
             }
+            stepCounts = []
+        }
+
+        if let averageStepCount = calculateAverage(stepCounts: stepCounts) {
+            let yesterdaysStepCount = stepCounts.last!!
+            let ratio = Double(yesterdaysStepCount) / Double(averageStepCount)
+            if ratio < motivationalBelowRatio {
+                let percent = Int(floor((1.0 - ratio) * 100.0))
+                motivationalLabel?.text = substitute(string: motivationalBelow, substitutions: ["percent": "\(percent)"])
+            } else
+            if ratio < 1.0 {
+                let percent = Int(floor((1.0 - ratio) * 100.0))
+                motivationalLabel?.text = substitute(string: motivationalAlmost, substitutions: ["percent": "\(percent)"])
+            } else {
+                let percent = Int(ceil((ratio - 1.0) * 100.0))
+                motivationalLabel?.text = substitute(string: motivationalAbove, substitutions: ["percent": "\(percent)"])
+            }
+
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = NumberFormatter.Style.decimal
+            let steps = numberFormatter.string(for: averageStepCount) ?? "?"
+            averageStepsLabel?.text = substitute(string: averageSteps, substitutions: ["steps": steps])
+        } else {
+            motivationalLabel?.text = motivationalInsufficientData
+
+            averageStepsLabel?.text = averageStepsInsufficientData
         }
     }
 
-    func showMessage(view: UITextView?, message: Message?) {
-        if let view = view {
-            if let message = message {
-//                let checkExclusion = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 100, height: 100))
-//                view.textContainer.exclusionPaths = [checkExclusion]
+    func showMessage(view: UITextView?, note: Note?) {
+        guard let view = view else {
+            return
+        }
 
-                if let image = UIImage(named: "checked") {
-                    let attributedString = NSMutableAttributedString(string: "like after")
-                    let textAttachment = NSTextAttachment()
-                    textAttachment.image = image
-                    let attrStringWithImage = NSAttributedString(attachment: textAttachment)
-                    attributedString.replaceCharacters(in: NSRange(location: 4, length: 1), with: attrStringWithImage)
-                    view.attributedText = attributedString
-                } else {
-                    view.text = message.format()
-                }
-            } else {
-                let text = "some message"
-
-                if let image = UIImage(named: "checked") {
-                    let attributedString = NSMutableAttributedString(string: "* ▶︎✔︎\(text)")
-                    attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.orange, range: NSRange(location: 2, length: 2))
-                    attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor(hue: 120.0 / 360.0, saturation: 1.0, brightness: 0.5, alpha: 1.0), range: NSRange(location: 3, length: 2))
-                    let textAttachment = NSTextAttachment()
-                    textAttachment.image = image
-                    let attrStringWithImage = NSAttributedString(attachment: textAttachment)
-                    attributedString.replaceCharacters(in: NSRange(location: 0, length: 1), with: attrStringWithImage)
-                    view.attributedText = attributedString
-                } else {
-                    view.text = text
-                }
-            }
+        let liveManager = LiveManager.shared
+        if let message = liveManager.message(forNote: note) {
+            let prefix = note!.status.isRated ? ratedPrefix : unratedPrefix
+            let color = note!.status.isRated ? ratedColor : unratedColor
+            let message = message.format()
+            let string = NSMutableAttributedString(string: prefix)
+            string.addAttribute(NSForegroundColorAttributeName, value: color, range: NSRange(location: 0, length: string.length))
+            string.append(NSAttributedString(string: " \(message)"))
+            view.attributedText = string
+        } else {
+            view.text = "?"
         }
     }
 
     func valueChanged() {
         let liveManager = LiveManager.shared
-        showMessage(view: valueTextView, message: liveManager.valueMessage.value)
+        showMessage(view: valueTextView, note: liveManager.valueNote.value)
     }
 
     func activityChanged() {
         let liveManager = LiveManager.shared
-        showMessage(view: activityTextView, message: liveManager.activityMessage.value)
+        showMessage(view: activityTextView, note: liveManager.activityNote.value)
     }
 
     @IBAction func respondToStepsTouched(_ sender: AnyObject) {
-        UserDefaults.standard.set(true, forKey: "didAuthorizeHealthKit")
-
         let liveManager = LiveManager.shared
         liveManager.authorizeHealthKit()
     }
 
-    @IBAction func respondToValueTouched(_ sender: AnyObject) {
+    func respondToValueTouched() {
+        let liveManager = LiveManager.shared
+        if let note = liveManager.valueNote.value {
+            liveManager.delegate?.liveManagerAffirm(liveManager, uuid: note.uuid, type: note.type, messageKey: note.messageKey)
+        }
     }
 
-    @IBAction func respondToActivityTouched(_ sender: AnyObject) {
+    func respondToActivityTouched() {
+        let liveManager = LiveManager.shared
+        if let note = liveManager.activityNote.value {
+            liveManager.delegate?.liveManagerAffirm(liveManager, uuid: note.uuid, type: note.type, messageKey: note.messageKey)
+        }
     }
     
 }

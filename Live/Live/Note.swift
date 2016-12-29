@@ -15,6 +15,16 @@ class Note : NSObject, NSCoding {
         case expired
         case closed
         case rated(date: Date, rank: Double)
+
+        var isRated: Bool {
+            get {
+                if case Note.Status.rated(date: _, rank: _) = self {
+                    return true
+                }
+                return false
+            }
+        }
+
     }
 
     let uuid: String

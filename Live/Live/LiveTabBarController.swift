@@ -8,7 +8,9 @@
 
 import UIKit
 
-class LiveTabBarController: UITabBarController, LiveManagerDelegate, ValuesPopupViewControllerDelegate, ActivityPopupViewControllerDelegate {
+class LiveTabBarController: UITabBarController, LiveManagerDelegate, ImportancePopupViewControllerDelegate, ValuesPopupViewControllerDelegate, ActivityPopupViewControllerDelegate {
+
+    var importancePopupViewController: ImportancePopupViewController?
 
     var valuesPopupViewController: ValuesPopupViewController?
     var activityPopupViewController: ActivityPopupViewController?
@@ -22,13 +24,38 @@ class LiveTabBarController: UITabBarController, LiveManagerDelegate, ValuesPopup
 
         let liveManager = LiveManager.shared
         liveManager.delegate = self
+
+        if !UserDefaults.standard.bool(forKey: "didShowGetStarted") {
+            DispatchQueue.main.async {
+                self.showGetStarted()
+            }
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func importancePopupViewController(_ importancePopupViewController: ImportancePopupViewController, value: String) {
+        UserDefaults.standard.set(true, forKey: "didShowGetStarted")
+
+        let liveManager = LiveManager.shared
+        var values = liveManager.orderedValues.value
+        if let index = values.index(of: value) {
+            values.remove(at: index)
+            values.insert(value, at: 0)
+        }
+        liveManager.orderedValues.value = values
     }
     
+    func showGetStarted() {
+        if importancePopupViewController == nil {
+            importancePopupViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImportancePopupViewController") as? ImportancePopupViewController
+            importancePopupViewController?.loadViewIfNeeded()
+            importancePopupViewController?.delegate = self
+        }
+        let liveManager = LiveManager.shared
+        let values = liveManager.orderedValues.value
+        importancePopupViewController?.show(inView: view, values: values)
+    }
+
+
     func liveManagerAffirm(_ liveManager: LiveManager, uuid: String, type: String, messageKey: Message.Key) {
         self.uuid = uuid
         self.type = type
@@ -82,15 +109,5 @@ class LiveTabBarController: UITabBarController, LiveManagerDelegate, ValuesPopup
     func activityPopupViewController(_ activityPopupViewController: ActivityPopupViewController, rank: Double) {
         affirm(rank: rank)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

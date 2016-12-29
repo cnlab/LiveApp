@@ -48,10 +48,10 @@
                                     <constraint firstAttribute="bottom" secondItem="n3A-Me-v6X" secondAttribute="bottom" id="ttT-0K-w9R"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Average Daily Steps: calculated on day 7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ve-r3-LfS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Average steps will be calculated on day 7..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ve-r3-LfS">
                                 <rect key="frame" x="16" y="309" width="288" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -590,6 +590,148 @@ Terms &amp; Conditions</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8n-aK-iAC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2088.75" y="-700"/>
+        </scene>
+        <!--Importance Popup View Controller-->
+        <scene sceneID="I8f-7n-4Zm">
+            <objects>
+                <viewController storyboardIdentifier="ImportancePopupViewController" id="1jT-2w-Anf" customClass="ImportancePopupViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="flK-Ed-Dlf"/>
+                        <viewControllerLayoutGuide type="bottom" id="GXi-1r-NxJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aji-jp-9JU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1g-Fr-4yW">
+                                <rect key="frame" x="40" y="72" width="240" height="424"/>
+                                <subviews>
+                                    <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hiI-l7-S2x">
+                                        <rect key="frame" x="8" y="8" width="224" height="408"/>
+                                        <connections>
+                                            <segue destination="d6f-4P-Ofx" kind="embed" id="BQe-uL-NZq"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="hiI-l7-S2x" firstAttribute="top" secondItem="S1g-Fr-4yW" secondAttribute="topMargin" id="EPY-jY-MYE"/>
+                                    <constraint firstItem="hiI-l7-S2x" firstAttribute="bottom" secondItem="S1g-Fr-4yW" secondAttribute="bottomMargin" id="RGK-k2-Xlh"/>
+                                    <constraint firstItem="hiI-l7-S2x" firstAttribute="leading" secondItem="S1g-Fr-4yW" secondAttribute="leadingMargin" id="m9J-nf-2yu"/>
+                                    <constraint firstItem="hiI-l7-S2x" firstAttribute="trailing" secondItem="S1g-Fr-4yW" secondAttribute="trailingMargin" id="nMf-5I-zVM"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="S1g-Fr-4yW" firstAttribute="top" secondItem="flK-Ed-Dlf" secondAttribute="bottom" constant="52" id="G0y-t8-cYw"/>
+                            <constraint firstItem="S1g-Fr-4yW" firstAttribute="leading" secondItem="aji-jp-9JU" secondAttribute="leadingMargin" constant="24" id="GvS-ti-72U"/>
+                            <constraint firstItem="S1g-Fr-4yW" firstAttribute="centerY" secondItem="aji-jp-9JU" secondAttribute="centerY" id="rwf-Je-Nlm"/>
+                            <constraint firstItem="S1g-Fr-4yW" firstAttribute="centerX" secondItem="aji-jp-9JU" secondAttribute="centerX" id="scK-iw-fus"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="S1g-Fr-4yW" id="1pq-ro-a9G"/>
+                        <outlet property="importanceView" destination="hiI-l7-S2x" id="cxx-Yo-nUJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lHs-Lx-cfD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="801" y="-2147"/>
+        </scene>
+        <!--Importance View Controller-->
+        <scene sceneID="1Ga-mk-gi8">
+            <objects>
+                <viewController id="d6f-4P-Ofx" customClass="ImportanceViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dhp-vE-AtX"/>
+                        <viewControllerLayoutGuide type="bottom" id="Prx-uM-bVg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zg7-lh-zEd">
+                        <rect key="frame" x="0.0" y="0.0" width="224" height="408"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cS6-Lf-mEL">
+                                <rect key="frame" x="0.0" y="0.0" width="224" height="123"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Connect to your Values
+Increase your Physical Activity</string>
+                                        <attributes>
+                                            <font key="NSFont" size="15" name=".SFNSText"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="To help you get more active, we will send you 2 messages a day and ask you to respond to a couple of quick questions.">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name=".AppleSystemUIFont"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your most important value:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Om-Wh-DsS">
+                                <rect key="frame" x="0.0" y="131" width="224" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLR-IP-b45">
+                                <rect key="frame" x="0.0" y="154" width="224" height="216"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pf4-B6-ndW">
+                                <rect key="frame" x="0.0" y="378" width="224" height="30"/>
+                                <state key="normal" title="Get Started"/>
+                                <connections>
+                                    <action selector="doneAction" destination="d6f-4P-Ofx" eventType="touchUpInside" id="VLs-SC-eek"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cS6-Lf-mEL" firstAttribute="trailing" secondItem="0Om-Wh-DsS" secondAttribute="trailing" id="1fm-t8-6MJ"/>
+                            <constraint firstItem="0Om-Wh-DsS" firstAttribute="top" secondItem="cS6-Lf-mEL" secondAttribute="bottom" constant="8" symbolic="YES" id="3PN-ma-YsF"/>
+                            <constraint firstItem="pf4-B6-ndW" firstAttribute="bottom" secondItem="Prx-uM-bVg" secondAttribute="top" id="6nP-yv-3TP"/>
+                            <constraint firstItem="cS6-Lf-mEL" firstAttribute="leading" secondItem="0Om-Wh-DsS" secondAttribute="leading" id="KJX-4y-axS"/>
+                            <constraint firstItem="cS6-Lf-mEL" firstAttribute="leading" secondItem="zg7-lh-zEd" secondAttribute="leading" id="Oqh-EU-jJa"/>
+                            <constraint firstItem="0Om-Wh-DsS" firstAttribute="leading" secondItem="fLR-IP-b45" secondAttribute="leading" id="VW7-ZY-8eK"/>
+                            <constraint firstAttribute="trailing" secondItem="cS6-Lf-mEL" secondAttribute="trailing" id="bdB-YP-clB"/>
+                            <constraint firstItem="fLR-IP-b45" firstAttribute="top" secondItem="0Om-Wh-DsS" secondAttribute="bottom" constant="8" symbolic="YES" id="ddL-4f-mhF"/>
+                            <constraint firstItem="fLR-IP-b45" firstAttribute="trailing" secondItem="pf4-B6-ndW" secondAttribute="trailing" id="h31-8C-ix6"/>
+                            <constraint firstItem="fLR-IP-b45" firstAttribute="leading" secondItem="pf4-B6-ndW" secondAttribute="leading" id="lBA-nv-OAj"/>
+                            <constraint firstItem="pf4-B6-ndW" firstAttribute="top" secondItem="fLR-IP-b45" secondAttribute="bottom" constant="8" symbolic="YES" id="oay-Od-q3k"/>
+                            <constraint firstItem="cS6-Lf-mEL" firstAttribute="top" secondItem="dhp-vE-AtX" secondAttribute="bottom" id="tXr-mB-Cz5"/>
+                            <constraint firstItem="0Om-Wh-DsS" firstAttribute="trailing" secondItem="fLR-IP-b45" secondAttribute="trailing" id="vj4-WY-rXk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="valuePickerView" destination="fLR-IP-b45" id="Qdi-3Z-Xv1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wZC-1P-ts5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1593.75" y="-2148.5915492957747"/>
         </scene>
         <!--Activity Popup View Controller-->
         <scene sceneID="BRZ-Lu-DFA">

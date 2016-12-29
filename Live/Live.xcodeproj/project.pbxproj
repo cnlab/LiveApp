@@ -18,6 +18,8 @@
 		923356671D833D90005161A8 /* purple.png in Resources */ = {isa = PBXBuildFile; fileRef = 923356611D833D90005161A8 /* purple.png */; };
 		923356681D833D90005161A8 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = 923356621D833D90005161A8 /* red.png */; };
 		923356691D833D90005161A8 /* yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 923356631D833D90005161A8 /* yellow.png */; };
+		923E62BA1E14522700D191EC /* ImportanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E62B91E14522700D191EC /* ImportanceViewController.swift */; };
+		923E62BE1E14526B00D191EC /* ImportancePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E62BD1E14526B00D191EC /* ImportancePopupViewController.swift */; };
 		9248782F1D86F6F5000C86FF /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9248782E1D86F6F5000C86FF /* HealthKit.framework */; };
 		924878321D86F88B000C86FF /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924878311D86F88B000C86FF /* HealthKitManager.swift */; };
 		924878341D8733C2000C86FF /* ValueMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924878331D8733C2000C86FF /* ValueMessageManager.swift */; };
@@ -152,6 +154,8 @@
 		923356611D833D90005161A8 /* purple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purple.png; sourceTree = "<group>"; };
 		923356621D833D90005161A8 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
 		923356631D833D90005161A8 /* yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellow.png; sourceTree = "<group>"; };
+		923E62B91E14522700D191EC /* ImportanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportanceViewController.swift; sourceTree = "<group>"; };
+		923E62BD1E14526B00D191EC /* ImportancePopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportancePopupViewController.swift; sourceTree = "<group>"; };
 		9248782E1D86F6F5000C86FF /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		924878301D86F6F5000C86FF /* Live.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Live.entitlements; sourceTree = "<group>"; };
 		924878311D86F88B000C86FF /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
@@ -313,6 +317,8 @@
 				924878331D8733C2000C86FF /* ValueMessageManager.swift */,
 				924878351D873A92000C86FF /* ActivityMessageManager.swift */,
 				924878391D873B3E000C86FF /* MessageManager.swift */,
+				923E62B91E14522700D191EC /* ImportanceViewController.swift */,
+				923E62BD1E14526B00D191EC /* ImportancePopupViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -719,6 +725,7 @@
 				924878341D8733C2000C86FF /* ValueMessageManager.swift in Sources */,
 				929CE6AD1DB5548C00330FFB /* ValuesRankViewController.swift in Sources */,
 				92CA91DA1D830B31000491CD /* ConsentDocument.swift in Sources */,
+				923E62BA1E14522700D191EC /* ImportanceViewController.swift in Sources */,
 				92554D121DBA7F3800009A21 /* SettingsViewController.swift in Sources */,
 				9233565D1D833C24005161A8 /* SurveyTask.swift in Sources */,
 				927DEAC41DAC5C8600B5C8C0 /* Archiver.swift in Sources */,
@@ -736,6 +743,7 @@
 				926ECB281DB9639A00A36584 /* LiveTabBarController.swift in Sources */,
 				924878361D873A92000C86FF /* ActivityMessageManager.swift in Sources */,
 				92986D9A1D99A87A008B8533 /* StepsView.swift in Sources */,
+				923E62BE1E14526B00D191EC /* ImportancePopupViewController.swift in Sources */,
 				9291F68D1DAC306500042F42 /* Time.swift in Sources */,
 				92F7CDBE1DAF033E009E2924 /* NotificationManager.swift in Sources */,
 				92986D921D99A5FF008B8533 /* SurveyViewController.swift in Sources */,

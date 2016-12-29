@@ -36,8 +36,8 @@ class LiveManager : NotificationManagerDelegate {
     }
     var dailyStepCounts = Observable<DailyStepCounts?>(value: nil)
     let orderedValues = Observable(value: ["Independence", "Politics", "Spirituality", "Humor", "Fame", "Power and Status", "Family and Friends", "Compassion and Kindness"])
-    var valueMessage = Observable<Message?>(value: nil)
-    var activityMessage = Observable<Message?>(value: nil)
+    var valueNote = Observable<Note?>(value: nil)
+    var activityNote = Observable<Note?>(value: nil)
     var schedule = Schedule(days: [])
     let horizon = 14
     var trigger = Observable<DateComponents>(value: DateComponents(hour: 9, minute: 0))
@@ -52,18 +52,6 @@ class LiveManager : NotificationManagerDelegate {
             let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             return documentDirectory.appendingPathComponent("archive.plist")
         }
-    }
-
-    func archive(archiver: NSKeyedArchiver, key: String, property: Observable<Message?>) {
-        if let message = property.value {
-            Archiver.archive(archiver: archiver, prefix: "", key: key, property: message.key)
-        }
-    }
-
-    func unarchive(unarchiver: NSKeyedUnarchiver, key: String, messageManager: MessageManager, property: Observable<Message?>) {
-        var messageKey = Message.Key(group: "", identifier: "")
-        Archiver.unarchive(unarchiver: unarchiver, prefix: "", key: key, property: &messageKey)
-        property.value = messageManager.find(messageKey: messageKey)
     }
 
     func archiveSchedule(archiver: NSKeyedArchiver) {
@@ -81,8 +69,6 @@ class LiveManager : NotificationManagerDelegate {
         archiveSchedule(archiver: archiver)
         valueMessageManager.archive(archiver: archiver, prefix: "valueMessageManager.")
         activityMessageManager.archive(archiver: archiver, prefix: "activityMessageManager.")
-        archive(archiver: archiver, key: "valueMessage", property: valueMessage)
-        archive(archiver: archiver, key: "activityMessage", property: activityMessage)
         archiver.encode(orderedValues.value, forKey: "orderedValues")
 
         archiver.finishEncoding()
@@ -97,8 +83,6 @@ class LiveManager : NotificationManagerDelegate {
         unarchiveSchedule(unarchiver: unarchiver)
         valueMessageManager.unarchive(unarchiver: unarchiver, prefix: "valueMessageManager.")
         activityMessageManager.unarchive(unarchiver: unarchiver, prefix: "activityMessageManager.")
-        unarchive(unarchiver: unarchiver, key: "valueMessage", messageManager: valueMessageManager, property: valueMessage)
-        unarchive(unarchiver: unarchiver, key: "activityMessage", messageManager: activityMessageManager, property: activityMessage)
         if let orderedValues = unarchiver.decodeObject(forKey: "orderedValues") as? [String] {
             self.orderedValues.value = orderedValues
         }
@@ -131,8 +115,10 @@ class LiveManager : NotificationManagerDelegate {
 
         /*
         notificationManager.authorize() { (success: Bool, error: Error?) in self.notificationManagerUpdate() }
-        authorizeHealthKit()
          */
+        if didAuthorizeHealthKit {
+            authorizeHealthKit()
+        }
     }
 
     func affirm(uuid: String, type: String, messageKey: Message.Key, rank: Double) {
@@ -142,10 +128,10 @@ class LiveManager : NotificationManagerDelegate {
                 if note.uuid == uuid {
                     note.status = .rated(date: Date(), rank: rank)
                     if note.type == "Value" {
-                        valueMessage.value = valueMessageManager.find(messageKey: note.messageKey)
+                        valueNote.value = note
                     } else
                     if note.type == "Activity" {
-                        activityMessage.value = activityMessageManager.find(messageKey: note.messageKey)
+                        activityNote.value = note
                     }
                     found = true
                     break
@@ -267,6 +253,19 @@ class LiveManager : NotificationManagerDelegate {
         setScheduleDays(days: days)
     }
 
+    func message(forNote note: Note?) -> Message? {
+        guard let note = note else {
+            return nil
+        }
+        if note.type == "Value" {
+            return valueMessageManager.find(messageKey: note.messageKey)
+        }
+        if note.type == "Activity" {
+            return activityMessageManager.find(messageKey: note.messageKey)
+        }
+        return nil
+    }
+
     func orderedValuesChanged() {
         valueMessageManager.group = orderedValues.value[0]
         reschedule()
@@ -284,7 +283,15 @@ class LiveManager : NotificationManagerDelegate {
         }
     }
 
+    var didAuthorizeHealthKit: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "didAuthorizeHealthKit")
+        }
+    }
+
     func authorizeHealthKit() {
+        UserDefaults.standard.set(true, forKey: "didAuthorizeHealthKit")
+
         do {
             try healthKitManager.authorizeHealthKit { (authorized,  error) -> Void in
                 if authorized {
