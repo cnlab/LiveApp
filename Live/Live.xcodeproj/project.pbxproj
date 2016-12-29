@@ -10,6 +10,7 @@
 		92062C371DB26C8C0001DE0C /* ScheduleCoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92062C361DB26C8C0001DE0C /* ScheduleCoderTests.swift */; };
 		92062C3D1DB272F70001DE0C /* ObjectiveCException.m in Sources */ = {isa = PBXBuildFile; fileRef = 92062C3C1DB272F70001DE0C /* ObjectiveCException.m */; };
 		922C70AF1D93576400F1C401 /* MessageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922C70AE1D93576400F1C401 /* MessageManagerTests.swift */; };
+		9232234B1E157ADB00F300AC /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9232234A1E157ADB00F300AC /* Layout.swift */; };
 		9233565B1D833843005161A8 /* ConsentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9233565A1D833843005161A8 /* ConsentTask.swift */; };
 		9233565D1D833C24005161A8 /* SurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9233565C1D833C24005161A8 /* SurveyTask.swift */; };
 		923356641D833D90005161A8 /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 9233565E1D833D90005161A8 /* blue.png */; };
@@ -37,6 +38,8 @@
 		926ECB2F1DB975E100A36584 /* ActivityThinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926ECB2E1DB975E100A36584 /* ActivityThinkViewController.swift */; };
 		926ECB311DB975EF00A36584 /* ActivityRankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926ECB301DB975EF00A36584 /* ActivityRankViewController.swift */; };
 		92716C401D94CDCD00980CA3 /* CollectionViewListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92716C3F1D94CDCD00980CA3 /* CollectionViewListLayout.swift */; };
+		927B69011E1592E200C80F76 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927B69001E1592E200C80F76 /* MessageUI.framework */; };
+		927B69041E15949B00C80F76 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927B69031E15949B00C80F76 /* AboutViewController.swift */; };
 		927DEAC41DAC5C8600B5C8C0 /* Archiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927DEAC31DAC5C8600B5C8C0 /* Archiver.swift */; };
 		9291F6861DABF85400042F42 /* LiveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9291F6851DABF85400042F42 /* LiveManager.swift */; };
 		9291F68A1DAC0DC100042F42 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9291F6891DAC0DC100042F42 /* Observable.swift */; };
@@ -146,6 +149,7 @@
 		92062C3B1DB272F70001DE0C /* ObjectiveCException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCException.h; sourceTree = "<group>"; };
 		92062C3C1DB272F70001DE0C /* ObjectiveCException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveCException.m; sourceTree = "<group>"; };
 		922C70AE1D93576400F1C401 /* MessageManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageManagerTests.swift; sourceTree = "<group>"; };
+		9232234A1E157ADB00F300AC /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		9233565A1D833843005161A8 /* ConsentTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentTask.swift; sourceTree = "<group>"; };
 		9233565C1D833C24005161A8 /* SurveyTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyTask.swift; sourceTree = "<group>"; };
 		9233565E1D833D90005161A8 /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue.png; sourceTree = "<group>"; };
@@ -175,6 +179,8 @@
 		926ECB2E1DB975E100A36584 /* ActivityThinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityThinkViewController.swift; sourceTree = "<group>"; };
 		926ECB301DB975EF00A36584 /* ActivityRankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityRankViewController.swift; sourceTree = "<group>"; };
 		92716C3F1D94CDCD00980CA3 /* CollectionViewListLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewListLayout.swift; sourceTree = "<group>"; };
+		927B69001E1592E200C80F76 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		927B69031E15949B00C80F76 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		927DEAC31DAC5C8600B5C8C0 /* Archiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Archiver.swift; sourceTree = "<group>"; };
 		9291F6851DABF85400042F42 /* LiveManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveManager.swift; sourceTree = "<group>"; };
 		9291F6891DAC0DC100042F42 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -230,6 +236,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				927B69011E1592E200C80F76 /* MessageUI.framework in Frameworks */,
 				92CA91D41D830A31000491CD /* ResearchKit.framework in Frameworks */,
 				925443E31E12D33900BD5687 /* LiveViews.framework in Frameworks */,
 				9248782F1D86F6F5000C86FF /* HealthKit.framework in Frameworks */,
@@ -275,6 +282,7 @@
 		925691941E12D72B00E820F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				927B69001E1592E200C80F76 /* MessageUI.framework */,
 				925691951E12D72C00E820F7 /* UIKit.framework */,
 			);
 			name = Frameworks;
@@ -293,9 +301,26 @@
 			name = Affirm;
 			sourceTree = "<group>";
 		};
+		927B68FD1E1585AC00C80F76 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				92554D111DBA7F3800009A21 /* SettingsViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		927B69021E15947300C80F76 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				927B69031E15949B00C80F76 /* AboutViewController.swift */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
 		9291F68B1DAC0DC700042F42 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				9232234A1E157ADB00F300AC /* Layout.swift */,
 				929CE6A41DB5393900330FFB /* PopupViewController.swift */,
 				9291F6891DAC0DC100042F42 /* Observable.swift */,
 				9291F68C1DAC306500042F42 /* Time.swift */,
@@ -405,12 +430,13 @@
 				92CAC2421DB2BF21009615C3 /* Note.swift */,
 				92DA5F951DAFF2EB00132B16 /* Schedule.swift */,
 				92F7CDBD1DAF033E009E2924 /* NotificationManager.swift */,
-				92554D111DBA7F3800009A21 /* SettingsViewController.swift */,
 				926ECB2B1DB9687600A36584 /* Affirm */,
 				92986D931D99A67F008B8533 /* Home */,
 				92986D941D99A68E008B8533 /* Values */,
 				92986D951D99A698008B8533 /* Consent */,
 				92986D961D99A6A4008B8533 /* Survey */,
+				927B68FD1E1585AC00C80F76 /* Settings */,
+				927B69021E15947300C80F76 /* About */,
 				92E34EBC1DB3F4B3002DCB87 /* Debug */,
 				9291F68B1DAC0DC700042F42 /* Utilities */,
 				92986D971D99A709008B8533 /* Misc */,
@@ -748,8 +774,10 @@
 				92F7CDBE1DAF033E009E2924 /* NotificationManager.swift in Sources */,
 				92986D921D99A5FF008B8533 /* SurveyViewController.swift in Sources */,
 				92CA919A1D8304B9000491CD /* HomeViewController.swift in Sources */,
+				927B69041E15949B00C80F76 /* AboutViewController.swift in Sources */,
 				92DA5F961DAFF2EB00132B16 /* Schedule.swift in Sources */,
 				92716C401D94CDCD00980CA3 /* CollectionViewListLayout.swift in Sources */,
+				9232234B1E157ADB00F300AC /* Layout.swift in Sources */,
 				92E34EC31DB3F51A002DCB87 /* DebugViewController.swift in Sources */,
 				929CE6A51DB5393900330FFB /* PopupViewController.swift in Sources */,
 			);

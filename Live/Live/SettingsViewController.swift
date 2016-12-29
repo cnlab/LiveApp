@@ -20,9 +20,8 @@ class SettingsViewController: UIViewController {
         triggerChanged()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    open override func viewDidLayoutSubviews() {
+        Layout.vertical(viewController: self)
     }
 
     func triggerChanged() {
@@ -45,15 +44,5 @@ class SettingsViewController: UIViewController {
         let liveManager = LiveManager.shared
         liveManager.trigger.value = Calendar.current.dateComponents([.hour, .minute], from: timePicker.date)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -113,12 +113,24 @@ class LiveManager : NotificationManagerDelegate {
 
         extend()
 
-        /*
-        notificationManager.authorize() { (success: Bool, error: Error?) in self.notificationManagerUpdate() }
-         */
+        if didAuthorizeNotificationManager {
+            authorizeNotificationManager()
+        }
         if didAuthorizeHealthKit {
             authorizeHealthKit()
         }
+    }
+
+    var didAuthorizeNotificationManager: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "didAuthorizeNotificationManager")
+        }
+    }
+
+    func authorizeNotificationManager() {
+        UserDefaults.standard.set(true, forKey: "didAuthorizeNotificationManager")
+        
+        notificationManager.authorize() { (success: Bool, error: Error?) in self.notificationManagerUpdate() }
     }
 
     func affirm(uuid: String, type: String, messageKey: Message.Key, rank: Double) {

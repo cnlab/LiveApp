@@ -52,43 +52,9 @@ class HomeViewController: UIViewController {
         activityChanged()
     }
 
-    func layout(subview: UIView?, x: CGFloat, y: inout CGFloat, width: CGFloat, height: CGFloat? = nil) {
-        guard let subview = subview else {
-            return
-        }
-        let height = height ?? subview.frame.size.height
-        subview.layoutSubviews()
-        subview.frame = CGRect(x: x, y: y, width: width, height: height)
-        subview.layoutSubviews()
-        y += height
-    }
-
-    func totalHeight(subviews: [UIView], excluding: Set<UIView> = []) -> CGFloat {
-        var height: CGFloat = 0
-        for subview in subviews {
-            if subview.isHidden {
-                continue
-            }
-            if excluding.contains(subview) {
-                continue
-            }
-            height += subview.frame.size.height
-        }
-        return height
-    }
-
     open override func viewDidLayoutSubviews() {
-        let x: CGFloat = 0.0
-        var y: CGFloat = topLayoutGuide.length
-        let width = view.bounds.width
-        let contentHeight = view.bounds.height - topLayoutGuide.length - bottomLayoutGuide.length
-        let stepsViewHeight = contentHeight - totalHeight(subviews: view.subviews, excluding: [stepsView!])
-        layout(subview: motivationalLabel, x: x, y: &y, width: width)
-        layout(subview: stepsView, x: x, y: &y, width: width, height: stepsViewHeight)
+        Layout.vertical(viewController: self, flexibleView: stepsView!)
         stepsButton!.frame.size = stepsView!.frame.size
-        layout(subview: averageStepsLabel, x: x, y: &y, width: width)
-        layout(subview: valueTextView, x: x, y: &y, width: width)
-        layout(subview: activityTextView, x: x, y: &y, width: width)
     }
 
     func calculateAverage(stepCounts: [Int?]) -> Int? {

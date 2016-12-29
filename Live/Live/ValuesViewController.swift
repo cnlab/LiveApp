@@ -28,6 +28,10 @@ class ValuesViewController: UIViewController, UICollectionViewDataSource, UIColl
         liveManager.orderedValues.subscribe(owner: self, observer: orderedValuesChanged)
     }
 
+    open override func viewDidLayoutSubviews() {
+        Layout.vertical(viewController: self)
+    }
+
     func handleLongGesture(gesture: UILongPressGestureRecognizer) {
         switch(gesture.state) {
         case UIGestureRecognizerState.began:

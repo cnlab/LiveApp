@@ -34,8 +34,10 @@ class LiveTabBarController: UITabBarController, LiveManagerDelegate, ImportanceP
 
     func importancePopupViewController(_ importancePopupViewController: ImportancePopupViewController, value: String) {
         UserDefaults.standard.set(true, forKey: "didShowGetStarted")
-
+        
         let liveManager = LiveManager.shared
+        liveManager.authorizeNotificationManager()
+
         var values = liveManager.orderedValues.value
         if let index = values.index(of: value) {
             values.remove(at: index)

@@ -13,7 +13,7 @@
         <!--Home-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="HomeViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="9pv-A4-QxB" customClass="HomeViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -95,7 +95,7 @@ five</string>
         <!--Values-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="ValuesViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="8rJ-Kc-sve" customClass="ValuesViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -104,85 +104,69 @@ five</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9DI-Ay-eAs">
-                                <rect key="frame" x="16" y="28" width="288" height="351"/>
-                                <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Take a moment to think about what is most important to you.  Arrange the values below to reflect their importance." translatesAutoresizingMaskIntoConstraints="NO" id="x78-VR-Ouw">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="65"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x78-VR-Ouw">
+                                <rect key="frame" x="16" y="28" width="288" height="180"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">To get started, take a moment to think about what is important to you. 
+
+Drag the value words in order of importance to you.
+
+This list will be used to customize your daily messages. Don’t worry if you are unsure. You can change the order at anytime.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Most Important" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFY-HQ-kFQ">
+                                <rect key="frame" x="116" y="216" width="87" height="14.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BOA-Mb-Zld">
+                                <rect key="frame" x="16" y="239" width="288" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewLayout key="collectionViewLayout" id="9tP-sD-irw" customClass="CollectionViewListLayout" customModule="Live" customModuleProvider="target"/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ValueCell" id="EXS-BF-Tvj">
+                                        <rect key="frame" x="0.5" y="0.0" width="287" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="30"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Raa-aN-q1s">
+                                                    <rect key="frame" x="8" y="-12" width="271" height="54"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="65" id="zAq-KJ-2NL"/>
+                                            <constraint firstItem="Raa-aN-q1s" firstAttribute="leading" secondItem="EXS-BF-Tvj" secondAttribute="leadingMargin" id="3yr-oJ-Wk6"/>
+                                            <constraint firstItem="Raa-aN-q1s" firstAttribute="top" secondItem="EXS-BF-Tvj" secondAttribute="topMargin" constant="-20" id="PEp-RE-XKK"/>
+                                            <constraint firstItem="Raa-aN-q1s" firstAttribute="trailing" secondItem="EXS-BF-Tvj" secondAttribute="trailingMargin" id="qvJ-7K-W95"/>
+                                            <constraint firstItem="Raa-aN-q1s" firstAttribute="centerY" secondItem="EXS-BF-Tvj" secondAttribute="centerY" id="tTv-mN-AHp"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9nz-Me-eQi">
-                                        <rect key="frame" x="0.0" y="73" width="288" height="278"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most Important" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFY-HQ-kFQ">
-                                                <rect key="frame" x="100.5" y="0.0" width="87" height="14.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BOA-Mb-Zld">
-                                                <rect key="frame" x="0.0" y="14.5" width="288" height="249"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="288" id="Cgg-br-5Rh"/>
-                                                    <constraint firstAttribute="height" constant="249" id="nUB-xm-0Ft"/>
-                                                </constraints>
-                                                <collectionViewLayout key="collectionViewLayout" id="9tP-sD-irw" customClass="CollectionViewListLayout" customModule="Live" customModuleProvider="target"/>
-                                                <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ValueCell" id="EXS-BF-Tvj">
-                                                        <rect key="frame" x="0.5" y="0.0" width="287" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                            <rect key="frame" x="0.0" y="0.0" width="287" height="30"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Raa-aN-q1s">
-                                                                    <rect key="frame" x="8" y="-3" width="271" height="36"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </view>
-                                                        <constraints>
-                                                            <constraint firstItem="Raa-aN-q1s" firstAttribute="leading" secondItem="EXS-BF-Tvj" secondAttribute="leadingMargin" id="3yr-oJ-Wk6"/>
-                                                            <constraint firstItem="Raa-aN-q1s" firstAttribute="top" secondItem="EXS-BF-Tvj" secondAttribute="topMargin" constant="-11" id="PEp-RE-XKK"/>
-                                                            <constraint firstItem="Raa-aN-q1s" firstAttribute="trailing" secondItem="EXS-BF-Tvj" secondAttribute="trailingMargin" id="qvJ-7K-W95"/>
-                                                            <constraint firstItem="Raa-aN-q1s" firstAttribute="centerY" secondItem="EXS-BF-Tvj" secondAttribute="centerY" id="tTv-mN-AHp"/>
-                                                        </constraints>
-                                                        <size key="customSize" width="287" height="30"/>
-                                                    </collectionViewCell>
-                                                </cells>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="8rJ-Kc-sve" id="8na-Ct-M9e"/>
-                                                    <outlet property="delegate" destination="8rJ-Kc-sve" id="9ID-L2-ARz"/>
-                                                </connections>
-                                            </collectionView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Least Important" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDX-a5-tT1">
-                                                <rect key="frame" x="99.5" y="263.5" width="89.5" height="14.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="x78-VR-Ouw" firstAttribute="leading" secondItem="9DI-Ay-eAs" secondAttribute="leading" id="TdT-JR-bfk"/>
-                                </constraints>
-                            </stackView>
+                                        <size key="customSize" width="287" height="30"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="8rJ-Kc-sve" id="8na-Ct-M9e"/>
+                                    <outlet property="delegate" destination="8rJ-Kc-sve" id="9ID-L2-ARz"/>
+                                </connections>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Least Important" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDX-a5-tT1">
+                                <rect key="frame" x="116" y="487" width="89.5" height="14.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="9DI-Ay-eAs" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="Cgf-mQ-xaj"/>
-                            <constraint firstItem="9DI-Ay-eAs" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="8" id="hQL-fV-zxC"/>
-                            <constraint firstItem="9DI-Ay-eAs" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="syF-8o-4KY"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Values" id="cPa-gy-q4n"/>
                     <connections>
@@ -191,12 +175,12 @@ five</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1595.625" y="-1.25"/>
+            <point key="canvasLocation" x="1595.625" y="-2.112676056338028"/>
         </scene>
         <!--Values Popup View Controller-->
         <scene sceneID="xIW-A6-hfa">
             <objects>
-                <viewController storyboardIdentifier="ValuesPopupViewController" id="Q9r-GC-cN6" customClass="ValuesPopupViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ValuesPopupViewController" automaticallyAdjustsScrollViewInsets="NO" id="Q9r-GC-cN6" customClass="ValuesPopupViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fH2-kD-nnr"/>
                         <viewControllerLayoutGuide type="bottom" id="X8b-FT-71Q"/>
@@ -313,7 +297,7 @@ five</string>
         <!--About-->
         <scene sceneID="Crf-kS-1MG">
             <objects>
-                <viewController id="cx8-BX-xki" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="cx8-BX-xki" customClass="AboutViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eZR-lb-87O"/>
                         <viewControllerLayoutGuide type="bottom" id="J1o-xN-7ub"/>
@@ -322,17 +306,24 @@ five</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YwW-lh-rv3">
-                                <rect key="frame" x="16" y="28" width="288" height="483"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YwW-lh-rv3">
+                                <rect key="frame" x="16" y="20" width="288" height="491"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">The Live! app was built by researchers at the University of Michigan, the University of Pennsylvania and HopeLab.
+                                <string key="text">The Live Active! App was built by researchers at the University of Pennsylvania and HopeLab.
+
+The Communication Neuroscience Lab (Director: Emily Falk, PhD), is leading development efforts and you can learn more about their work here. 
 
 Questions?
 liveapp@gmail.com
 
-Terms &amp; Conditions</string>
+Terms of Use
+http://cn.asc.upenn.edu</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="cx8-BX-xki" id="leF-YZ-Svu"/>
+                                </connections>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -347,12 +338,12 @@ Terms &amp; Conditions</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7B1-55-4Sh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4780" y="-1"/>
+            <point key="canvasLocation" x="4779.375" y="-1.056338028169014"/>
         </scene>
         <!--Debug-->
         <scene sceneID="5hU-MK-FGp">
             <objects>
-                <viewController id="414-fa-cwJ" customClass="DebugViewController" customModule="Live" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="414-fa-cwJ" customClass="DebugViewController" customModule="Live" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OKn-hv-PRz"/>
                         <viewControllerLayoutGuide type="bottom" id="oya-L7-lP3"/>
@@ -388,7 +379,7 @@ Terms &amp; Conditions</string>
         <!--Settings-->
         <scene sceneID="82i-fP-bX3">
             <objects>
-                <viewController id="0nq-5A-lxm" customClass="SettingsViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="0nq-5A-lxm" customClass="SettingsViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Kga-MI-oaU"/>
                         <viewControllerLayoutGuide type="bottom" id="Eq6-Qo-K0a"/>
@@ -397,14 +388,25 @@ Terms &amp; Conditions</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify Me At" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7d-g6-pmm">
-                                <rect key="frame" x="16" y="20" width="95.5" height="20.5"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7k-gT-VUs">
+                                <rect key="frame" x="16" y="20" width="288" height="119"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">You will get 2 notifications a day.
+
+What time do you want to receive the first one?</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notify Me At" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7d-g6-pmm">
+                                <rect key="frame" x="16" y="147" width="288" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="sM0-PY-JFf">
-                                <rect key="frame" x="0.0" y="48.5" width="320" height="216"/>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="sM0-PY-JFf">
+                                <rect key="frame" x="16" y="176" width="288" height="216"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <date key="date" timeIntervalSinceReferenceDate="498761161.217188">
                                     <!--2016-10-21 16:46:01 +0000-->
                                 </date>
@@ -414,12 +416,6 @@ Terms &amp; Conditions</string>
                             </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="M7d-g6-pmm" firstAttribute="top" secondItem="Kga-MI-oaU" secondAttribute="bottom" id="1G9-16-Tox"/>
-                            <constraint firstItem="sM0-PY-JFf" firstAttribute="top" secondItem="M7d-g6-pmm" secondAttribute="bottom" constant="8" symbolic="YES" id="JoE-ed-AJF"/>
-                            <constraint firstItem="sM0-PY-JFf" firstAttribute="leading" secondItem="ENq-ve-ocM" secondAttribute="leading" id="L9l-Ti-voj"/>
-                            <constraint firstItem="M7d-g6-pmm" firstAttribute="leading" secondItem="ENq-ve-ocM" secondAttribute="leadingMargin" id="yRt-Gt-gk7"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" id="RRd-XL-Hc4"/>
                     <connections>
@@ -428,7 +424,7 @@ Terms &amp; Conditions</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ch-XH-mol" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3921" y="-1"/>
+            <point key="canvasLocation" x="3920.625" y="-1.056338028169014"/>
         </scene>
         <!--Live Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -457,7 +453,7 @@ Terms &amp; Conditions</string>
         <!--Values Think View Controller-->
         <scene sceneID="Ofu-Iv-1DS">
             <objects>
-                <viewController id="pJ8-OH-Hze" customClass="ValuesThinkViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="pJ8-OH-Hze" customClass="ValuesThinkViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jdz-1d-Uqm"/>
                         <viewControllerLayoutGuide type="bottom" id="5Ze-K7-tli"/>
@@ -513,7 +509,7 @@ Terms &amp; Conditions</string>
         <!--Values Rank View Controller-->
         <scene sceneID="WVv-vq-4YH">
             <objects>
-                <viewController id="nEs-cS-5Uz" customClass="ValuesRankViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="nEs-cS-5Uz" customClass="ValuesRankViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tWP-07-Vza"/>
                         <viewControllerLayoutGuide type="bottom" id="eQb-6f-B7o"/>
@@ -594,7 +590,7 @@ Terms &amp; Conditions</string>
         <!--Importance Popup View Controller-->
         <scene sceneID="I8f-7n-4Zm">
             <objects>
-                <viewController storyboardIdentifier="ImportancePopupViewController" id="1jT-2w-Anf" customClass="ImportancePopupViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImportancePopupViewController" automaticallyAdjustsScrollViewInsets="NO" id="1jT-2w-Anf" customClass="ImportancePopupViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="flK-Ed-Dlf"/>
                         <viewControllerLayoutGuide type="bottom" id="GXi-1r-NxJ"/>
@@ -642,7 +638,7 @@ Terms &amp; Conditions</string>
         <!--Importance View Controller-->
         <scene sceneID="1Ga-mk-gi8">
             <objects>
-                <viewController id="d6f-4P-Ofx" customClass="ImportanceViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="d6f-4P-Ofx" customClass="ImportanceViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dhp-vE-AtX"/>
                         <viewControllerLayoutGuide type="bottom" id="Prx-uM-bVg"/>
@@ -736,7 +732,7 @@ Cg
         <!--Activity Popup View Controller-->
         <scene sceneID="BRZ-Lu-DFA">
             <objects>
-                <viewController storyboardIdentifier="ActivityPopupViewController" id="xTh-9b-PSN" customClass="ActivityPopupViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActivityPopupViewController" automaticallyAdjustsScrollViewInsets="NO" id="xTh-9b-PSN" customClass="ActivityPopupViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cEH-MJ-jc9"/>
                         <viewControllerLayoutGuide type="bottom" id="JJA-0A-z75"/>
@@ -795,7 +791,7 @@ Cg
         <!--Activity Think View Controller-->
         <scene sceneID="hK5-i4-fKR">
             <objects>
-                <viewController id="CF3-MF-K0f" customClass="ActivityThinkViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="CF3-MF-K0f" customClass="ActivityThinkViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9Up-rD-Lnn"/>
                         <viewControllerLayoutGuide type="bottom" id="c8K-y2-4iE"/>
@@ -851,7 +847,7 @@ Cg
         <!--Activity Rank View Controller-->
         <scene sceneID="ydQ-hP-MAQ">
             <objects>
-                <viewController id="MPu-jl-2Sh" customClass="ActivityRankViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="MPu-jl-2Sh" customClass="ActivityRankViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="s4M-qQ-n6W"/>
                         <viewControllerLayoutGuide type="bottom" id="MwI-GP-Kcm"/>
