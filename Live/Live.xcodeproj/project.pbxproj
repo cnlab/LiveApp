@@ -33,6 +33,8 @@
 		925443E41E12D33900BD5687 /* LiveViews.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 925443CE1E12D33900BD5687 /* LiveViews.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		92554D121DBA7F3800009A21 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92554D111DBA7F3800009A21 /* SettingsViewController.swift */; };
 		925691961E12D72C00E820F7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925691951E12D72C00E820F7 /* UIKit.framework */; };
+		925F5ABB1E15F6E70051DF1B /* MeFieldsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925F5ABA1E15F6E70051DF1B /* MeFieldsTableViewController.swift */; };
+		925F5ABF1E15FB080051DF1B /* ShareFieldsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925F5ABE1E15FB080051DF1B /* ShareFieldsTableViewController.swift */; };
 		926ECB281DB9639A00A36584 /* LiveTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926ECB271DB9639A00A36584 /* LiveTabBarController.swift */; };
 		926ECB2D1DB975B300A36584 /* ActivityPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926ECB2C1DB975B300A36584 /* ActivityPopupViewController.swift */; };
 		926ECB2F1DB975E100A36584 /* ActivityThinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926ECB2E1DB975E100A36584 /* ActivityThinkViewController.swift */; };
@@ -53,6 +55,8 @@
 		929CE6AD1DB5548C00330FFB /* ValuesRankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929CE6AC1DB5548C00330FFB /* ValuesRankViewController.swift */; };
 		92B2F4CB1E134E92002A3CF4 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B2F4C91E134E92002A3CF4 /* checked.png */; };
 		92B2F4CC1E134E92002A3CF4 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B2F4CA1E134E92002A3CF4 /* unchecked.png */; };
+		92B89C501E15A92F00E7D5CC /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B89C4F1E15A92F00E7D5CC /* ShareViewController.swift */; };
+		92B89C531E15BBC600E7D5CC /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B89C521E15BBC600E7D5CC /* MeViewController.swift */; };
 		92CA91981D8304B9000491CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA91971D8304B9000491CD /* AppDelegate.swift */; };
 		92CA919A1D8304B9000491CD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA91991D8304B9000491CD /* HomeViewController.swift */; };
 		92CA919C1D8304B9000491CD /* ValuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA919B1D8304B9000491CD /* ValuesViewController.swift */; };
@@ -174,6 +178,8 @@
 		925443DF1E12D33900BD5687 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92554D111DBA7F3800009A21 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		925691951E12D72C00E820F7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		925F5ABA1E15F6E70051DF1B /* MeFieldsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeFieldsTableViewController.swift; sourceTree = "<group>"; };
+		925F5ABE1E15FB080051DF1B /* ShareFieldsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareFieldsTableViewController.swift; sourceTree = "<group>"; };
 		926ECB271DB9639A00A36584 /* LiveTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveTabBarController.swift; sourceTree = "<group>"; };
 		926ECB2C1DB975B300A36584 /* ActivityPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPopupViewController.swift; sourceTree = "<group>"; };
 		926ECB2E1DB975E100A36584 /* ActivityThinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityThinkViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +200,8 @@
 		929CE6AC1DB5548C00330FFB /* ValuesRankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesRankViewController.swift; sourceTree = "<group>"; };
 		92B2F4C91E134E92002A3CF4 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		92B2F4CA1E134E92002A3CF4 /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
+		92B89C4F1E15A92F00E7D5CC /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		92B89C521E15BBC600E7D5CC /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		92CA91941D8304B9000491CD /* Live.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Live.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92CA91971D8304B9000491CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92CA91991D8304B9000491CD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -394,6 +402,24 @@
 			name = Misc;
 			sourceTree = "<group>";
 		};
+		92B89C4C1E15A8F800E7D5CC /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				92B89C4F1E15A92F00E7D5CC /* ShareViewController.swift */,
+				925F5ABE1E15FB080051DF1B /* ShareFieldsTableViewController.swift */,
+			);
+			name = Share;
+			sourceTree = "<group>";
+		};
+		92B89C511E15BBB400E7D5CC /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				92B89C521E15BBC600E7D5CC /* MeViewController.swift */,
+				925F5ABA1E15F6E70051DF1B /* MeFieldsTableViewController.swift */,
+			);
+			name = Me;
+			sourceTree = "<group>";
+		};
 		92CA918B1D8304B9000491CD = {
 			isa = PBXGroup;
 			children = (
@@ -433,11 +459,13 @@
 				926ECB2B1DB9687600A36584 /* Affirm */,
 				92986D931D99A67F008B8533 /* Home */,
 				92986D941D99A68E008B8533 /* Values */,
-				92986D951D99A698008B8533 /* Consent */,
 				92986D961D99A6A4008B8533 /* Survey */,
 				927B68FD1E1585AC00C80F76 /* Settings */,
+				92B89C4C1E15A8F800E7D5CC /* Share */,
+				92B89C511E15BBB400E7D5CC /* Me */,
 				927B69021E15947300C80F76 /* About */,
 				92E34EBC1DB3F4B3002DCB87 /* Debug */,
+				92986D951D99A698008B8533 /* Consent */,
 				9291F68B1DAC0DC700042F42 /* Utilities */,
 				92986D971D99A709008B8533 /* Misc */,
 			);
@@ -746,6 +774,7 @@
 			files = (
 				926ECB2F1DB975E100A36584 /* ActivityThinkViewController.swift in Sources */,
 				9291F68A1DAC0DC100042F42 /* Observable.swift in Sources */,
+				92B89C531E15BBC600E7D5CC /* MeViewController.swift in Sources */,
 				92CA919C1D8304B9000491CD /* ValuesViewController.swift in Sources */,
 				92062C3D1DB272F70001DE0C /* ObjectiveCException.m in Sources */,
 				924878341D8733C2000C86FF /* ValueMessageManager.swift in Sources */,
@@ -764,14 +793,17 @@
 				9291F6861DABF85400042F42 /* LiveManager.swift in Sources */,
 				924878321D86F88B000C86FF /* HealthKitManager.swift in Sources */,
 				929CE6AB1DB5548000330FFB /* ValuesThinkViewController.swift in Sources */,
+				92B89C501E15A92F00E7D5CC /* ShareViewController.swift in Sources */,
 				92986D8E1D99A57D008B8533 /* ConsentViewController.swift in Sources */,
 				9248783A1D873B3E000C86FF /* MessageManager.swift in Sources */,
 				926ECB281DB9639A00A36584 /* LiveTabBarController.swift in Sources */,
 				924878361D873A92000C86FF /* ActivityMessageManager.swift in Sources */,
 				92986D9A1D99A87A008B8533 /* StepsView.swift in Sources */,
+				925F5ABF1E15FB080051DF1B /* ShareFieldsTableViewController.swift in Sources */,
 				923E62BE1E14526B00D191EC /* ImportancePopupViewController.swift in Sources */,
 				9291F68D1DAC306500042F42 /* Time.swift in Sources */,
 				92F7CDBE1DAF033E009E2924 /* NotificationManager.swift in Sources */,
+				925F5ABB1E15F6E70051DF1B /* MeFieldsTableViewController.swift in Sources */,
 				92986D921D99A5FF008B8533 /* SurveyViewController.swift in Sources */,
 				92CA919A1D8304B9000491CD /* HomeViewController.swift in Sources */,
 				927B69041E15949B00C80F76 /* AboutViewController.swift in Sources */,

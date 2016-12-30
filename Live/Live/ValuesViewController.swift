@@ -79,6 +79,7 @@ class ValuesViewController: UIViewController, UICollectionViewDataSource, UIColl
             if let label = view.subviews.first as? UILabel {
                 if let index = indexPath.last {
                     label.text = values[index]
+                    label.textColor = label.tintColor
                 }
             }
         }
