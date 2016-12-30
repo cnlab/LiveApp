@@ -18,6 +18,18 @@ class MeFieldsTableViewController: UITableViewController {
     @IBOutlet var weightPerceptionButton: UIButton?
     @IBOutlet var heightButton: UIButton?
 
+    var pickerPopupViewController: PickerPopupViewController? = nil
+
+    @IBAction func changePerceivedWeight() {
+        if pickerPopupViewController == nil {
+            pickerPopupViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PickerPopupViewController") as? PickerPopupViewController
+            pickerPopupViewController?.loadViewIfNeeded()
+        }
+        if let meViewController = parent as? MeViewController {
+            pickerPopupViewController?.show(inView: meViewController.view, values: ["about right", "heavier than I would like", "lighter than I would like"], value: weightPerceptionButton?.titleLabel?.text)
+        }
+    }
+
     func select(segmentedControl: UISegmentedControl?, title: String?) {
         guard let segmentedControl = segmentedControl, let title = title else {
             return

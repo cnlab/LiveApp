@@ -469,6 +469,9 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                                     <rect key="frame" x="70" y="7" width="137" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="heavier than I'd like"/>
+                                                    <connections>
+                                                        <action selector="changePerceivedWeight" destination="c6z-zU-SlP" eventType="touchUpInside" id="Ydh-Mv-H2J"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -920,6 +923,33 @@ Data is anonymous and has a random ID assigned to it. We do not share your data 
             </objects>
             <point key="canvasLocation" x="2088.75" y="-700.35211267605632"/>
         </scene>
+        <!--Picker Popup View Controller-->
+        <scene sceneID="ZDP-wC-LgE">
+            <objects>
+                <viewController storyboardIdentifier="PickerPopupViewController" id="MHa-ug-aV7" customClass="PickerPopupViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="p5R-Jz-Hdz"/>
+                        <viewControllerLayoutGuide type="bottom" id="3qp-Vh-zcm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pKE-6H-MDd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Jv-F7-1dS">
+                                <rect key="frame" x="0.0" y="157" width="320" height="254"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="QJo-3U-ppj" kind="embed" id="7vX-bl-9zx"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1y3-K8-35u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="800.625" y="-2862.676056338028"/>
+        </scene>
         <!--Importance Popup View Controller-->
         <scene sceneID="I8f-7n-4Zm">
             <objects>
@@ -1257,6 +1287,37 @@ Cg
                 <placeholder placeholderIdentifier="IBFirstResponder" id="brd-wv-sMp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2088.75" y="-1413.3802816901409"/>
+        </scene>
+        <!--Picker View Controller-->
+        <scene sceneID="fzE-BQ-QW3">
+            <objects>
+                <viewController id="QJo-3U-ppj" customClass="PickerViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fNc-Hp-dc5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="254"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xT1-oU-vae">
+                                <rect key="frame" x="283" y="0.0" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneAction" destination="QJo-3U-ppj" eventType="touchUpInside" id="Mgv-OU-oGk"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PSI-wG-09t">
+                                <rect key="frame" x="0.0" y="38" width="320" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="pickerView" destination="PSI-wG-09t" id="yNK-er-0oZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cId-r2-G5b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1595.625" y="-2863.7323943661972"/>
         </scene>
     </scenes>
 </document>

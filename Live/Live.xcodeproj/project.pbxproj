@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9204FDA31E160B5500E9CFF9 /* PickerPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204FDA21E160B5500E9CFF9 /* PickerPopupViewController.swift */; };
+		9204FDA71E160B9100E9CFF9 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204FDA61E160B9100E9CFF9 /* PickerViewController.swift */; };
+		9204FDA91E16127F00E9CFF9 /* StringArrayPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204FDA81E16127F00E9CFF9 /* StringArrayPickerViewDataSource.swift */; };
 		92062C371DB26C8C0001DE0C /* ScheduleCoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92062C361DB26C8C0001DE0C /* ScheduleCoderTests.swift */; };
 		92062C3D1DB272F70001DE0C /* ObjectiveCException.m in Sources */ = {isa = PBXBuildFile; fileRef = 92062C3C1DB272F70001DE0C /* ObjectiveCException.m */; };
 		922C70AF1D93576400F1C401 /* MessageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922C70AE1D93576400F1C401 /* MessageManagerTests.swift */; };
@@ -148,6 +151,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9204FDA21E160B5500E9CFF9 /* PickerPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerPopupViewController.swift; sourceTree = "<group>"; };
+		9204FDA61E160B9100E9CFF9 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		9204FDA81E16127F00E9CFF9 /* StringArrayPickerViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringArrayPickerViewDataSource.swift; sourceTree = "<group>"; };
 		92062C361DB26C8C0001DE0C /* ScheduleCoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCoderTests.swift; sourceTree = "<group>"; };
 		92062C3A1DB272F60001DE0C /* Live-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Live-Bridging-Header.h"; sourceTree = "<group>"; };
 		92062C3B1DB272F70001DE0C /* ObjectiveCException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCException.h; sourceTree = "<group>"; };
@@ -330,6 +336,9 @@
 			children = (
 				9232234A1E157ADB00F300AC /* Layout.swift */,
 				929CE6A41DB5393900330FFB /* PopupViewController.swift */,
+				9204FDA21E160B5500E9CFF9 /* PickerPopupViewController.swift */,
+				9204FDA61E160B9100E9CFF9 /* PickerViewController.swift */,
+				9204FDA81E16127F00E9CFF9 /* StringArrayPickerViewDataSource.swift */,
 				9291F6891DAC0DC100042F42 /* Observable.swift */,
 				9291F68C1DAC306500042F42 /* Time.swift */,
 				927DEAC31DAC5C8600B5C8C0 /* Archiver.swift */,
@@ -776,6 +785,7 @@
 				9291F68A1DAC0DC100042F42 /* Observable.swift in Sources */,
 				92B89C531E15BBC600E7D5CC /* MeViewController.swift in Sources */,
 				92CA919C1D8304B9000491CD /* ValuesViewController.swift in Sources */,
+				9204FDA91E16127F00E9CFF9 /* StringArrayPickerViewDataSource.swift in Sources */,
 				92062C3D1DB272F70001DE0C /* ObjectiveCException.m in Sources */,
 				924878341D8733C2000C86FF /* ValueMessageManager.swift in Sources */,
 				929CE6AD1DB5548C00330FFB /* ValuesRankViewController.swift in Sources */,
@@ -784,6 +794,7 @@
 				92554D121DBA7F3800009A21 /* SettingsViewController.swift in Sources */,
 				9233565D1D833C24005161A8 /* SurveyTask.swift in Sources */,
 				927DEAC41DAC5C8600B5C8C0 /* Archiver.swift in Sources */,
+				9204FDA71E160B9100E9CFF9 /* PickerViewController.swift in Sources */,
 				92CAC2431DB2BF21009615C3 /* Note.swift in Sources */,
 				9233565B1D833843005161A8 /* ConsentTask.swift in Sources */,
 				929CE6A91DB5544100330FFB /* ValuesPopupViewController.swift in Sources */,
@@ -806,6 +817,7 @@
 				925F5ABB1E15F6E70051DF1B /* MeFieldsTableViewController.swift in Sources */,
 				92986D921D99A5FF008B8533 /* SurveyViewController.swift in Sources */,
 				92CA919A1D8304B9000491CD /* HomeViewController.swift in Sources */,
+				9204FDA31E160B5500E9CFF9 /* PickerPopupViewController.swift in Sources */,
 				927B69041E15949B00C80F76 /* AboutViewController.swift in Sources */,
 				92DA5F961DAFF2EB00132B16 /* Schedule.swift in Sources */,
 				92716C401D94CDCD00980CA3 /* CollectionViewListLayout.swift in Sources */,

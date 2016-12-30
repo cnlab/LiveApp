@@ -25,7 +25,7 @@ class Layout {
         var height: CGFloat = 0
         for subview in subviews {
             if subview.isHidden {
-                continue
+                break
             }
             if excluding.contains(subview) {
                 continue
@@ -55,6 +55,9 @@ class Layout {
         }
 
         for subview in view.subviews {
+            if subview.isHidden {
+                break
+            }
             Layout.place(subview: subview, x: x, y: &y, width: width, height: subview == flexibleView ? flexibleHeight : nil)
         }
     }
