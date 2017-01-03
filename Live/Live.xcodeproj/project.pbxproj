@@ -17,13 +17,6 @@
 		922C70AF1D93576400F1C401 /* MessageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922C70AE1D93576400F1C401 /* MessageManagerTests.swift */; };
 		9232234B1E157ADB00F300AC /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9232234A1E157ADB00F300AC /* Layout.swift */; };
 		9233565B1D833843005161A8 /* ConsentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9233565A1D833843005161A8 /* ConsentTask.swift */; };
-		9233565D1D833C24005161A8 /* SurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9233565C1D833C24005161A8 /* SurveyTask.swift */; };
-		923356641D833D90005161A8 /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 9233565E1D833D90005161A8 /* blue.png */; };
-		923356651D833D90005161A8 /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 9233565F1D833D90005161A8 /* green.png */; };
-		923356661D833D90005161A8 /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 923356601D833D90005161A8 /* orange.png */; };
-		923356671D833D90005161A8 /* purple.png in Resources */ = {isa = PBXBuildFile; fileRef = 923356611D833D90005161A8 /* purple.png */; };
-		923356681D833D90005161A8 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = 923356621D833D90005161A8 /* red.png */; };
-		923356691D833D90005161A8 /* yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 923356631D833D90005161A8 /* yellow.png */; };
 		923E62BA1E14522700D191EC /* ImportanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E62B91E14522700D191EC /* ImportanceViewController.swift */; };
 		923E62BE1E14526B00D191EC /* ImportancePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E62BD1E14526B00D191EC /* ImportancePopupViewController.swift */; };
 		9248782F1D86F6F5000C86FF /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9248782E1D86F6F5000C86FF /* HealthKit.framework */; };
@@ -48,6 +41,9 @@
 		927B69011E1592E200C80F76 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927B69001E1592E200C80F76 /* MessageUI.framework */; };
 		927B69041E15949B00C80F76 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927B69031E15949B00C80F76 /* AboutViewController.swift */; };
 		927DEAC41DAC5C8600B5C8C0 /* Archiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927DEAC31DAC5C8600B5C8C0 /* Archiver.swift */; };
+		927E72AA1E1B4135003CFD5A /* SurveyFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927E72A91E1B4135003CFD5A /* SurveyFormViewController.swift */; };
+		927E72AC1E1B4145003CFD5A /* SurveyNextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927E72AB1E1B4145003CFD5A /* SurveyNextViewController.swift */; };
+		927E72AE1E1B4155003CFD5A /* SurveyIntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927E72AD1E1B4155003CFD5A /* SurveyIntroductionViewController.swift */; };
 		9291F6861DABF85400042F42 /* LiveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9291F6851DABF85400042F42 /* LiveManager.swift */; };
 		9291F68A1DAC0DC100042F42 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9291F6891DAC0DC100042F42 /* Observable.swift */; };
 		9291F68D1DAC306500042F42 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9291F68C1DAC306500042F42 /* Time.swift */; };
@@ -167,13 +163,6 @@
 		922C70AE1D93576400F1C401 /* MessageManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageManagerTests.swift; sourceTree = "<group>"; };
 		9232234A1E157ADB00F300AC /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		9233565A1D833843005161A8 /* ConsentTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentTask.swift; sourceTree = "<group>"; };
-		9233565C1D833C24005161A8 /* SurveyTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyTask.swift; sourceTree = "<group>"; };
-		9233565E1D833D90005161A8 /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue.png; sourceTree = "<group>"; };
-		9233565F1D833D90005161A8 /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
-		923356601D833D90005161A8 /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange.png; sourceTree = "<group>"; };
-		923356611D833D90005161A8 /* purple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purple.png; sourceTree = "<group>"; };
-		923356621D833D90005161A8 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
-		923356631D833D90005161A8 /* yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellow.png; sourceTree = "<group>"; };
 		923E62B91E14522700D191EC /* ImportanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportanceViewController.swift; sourceTree = "<group>"; };
 		923E62BD1E14526B00D191EC /* ImportancePopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportancePopupViewController.swift; sourceTree = "<group>"; };
 		9248782E1D86F6F5000C86FF /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -200,6 +189,9 @@
 		927B69001E1592E200C80F76 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		927B69031E15949B00C80F76 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		927DEAC31DAC5C8600B5C8C0 /* Archiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Archiver.swift; sourceTree = "<group>"; };
+		927E72A91E1B4135003CFD5A /* SurveyFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyFormViewController.swift; sourceTree = "<group>"; };
+		927E72AB1E1B4145003CFD5A /* SurveyNextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyNextViewController.swift; sourceTree = "<group>"; };
+		927E72AD1E1B4155003CFD5A /* SurveyIntroductionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyIntroductionViewController.swift; sourceTree = "<group>"; };
 		9291F6851DABF85400042F42 /* LiveManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveManager.swift; sourceTree = "<group>"; };
 		9291F6891DAC0DC100042F42 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		9291F68C1DAC306500042F42 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
@@ -400,13 +392,9 @@
 			isa = PBXGroup;
 			children = (
 				92986D911D99A5FF008B8533 /* SurveyViewController.swift */,
-				9233565C1D833C24005161A8 /* SurveyTask.swift */,
-				9233565E1D833D90005161A8 /* blue.png */,
-				9233565F1D833D90005161A8 /* green.png */,
-				923356601D833D90005161A8 /* orange.png */,
-				923356611D833D90005161A8 /* purple.png */,
-				923356621D833D90005161A8 /* red.png */,
-				923356631D833D90005161A8 /* yellow.png */,
+				927E72AD1E1B4155003CFD5A /* SurveyIntroductionViewController.swift */,
+				927E72A91E1B4135003CFD5A /* SurveyFormViewController.swift */,
+				927E72AB1E1B4145003CFD5A /* SurveyNextViewController.swift */,
 			);
 			name = Survey;
 			sourceTree = "<group>";
@@ -745,17 +733,11 @@
 			files = (
 				92CA91A41D8304B9000491CD /* LaunchScreen.storyboard in Resources */,
 				92B2F4CC1E134E92002A3CF4 /* unchecked.png in Resources */,
-				923356691D833D90005161A8 /* yellow.png in Resources */,
 				92CA91A11D8304B9000491CD /* Assets.xcassets in Resources */,
 				922AB4411E1B06D000A33C8D /* thumb-up-22x24.png in Resources */,
-				923356671D833D90005161A8 /* purple.png in Resources */,
-				923356651D833D90005161A8 /* green.png in Resources */,
 				92B2F4CB1E134E92002A3CF4 /* checked.png in Resources */,
 				922AB4401E1B06D000A33C8D /* thumb-down-22x24.png in Resources */,
 				92CA919F1D8304B9000491CD /* Main.storyboard in Resources */,
-				923356681D833D90005161A8 /* red.png in Resources */,
-				923356641D833D90005161A8 /* blue.png in Resources */,
-				923356661D833D90005161A8 /* orange.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,7 +789,6 @@
 				92CA91DA1D830B31000491CD /* ConsentDocument.swift in Sources */,
 				923E62BA1E14522700D191EC /* ImportanceViewController.swift in Sources */,
 				92554D121DBA7F3800009A21 /* SettingsViewController.swift in Sources */,
-				9233565D1D833C24005161A8 /* SurveyTask.swift in Sources */,
 				927DEAC41DAC5C8600B5C8C0 /* Archiver.swift in Sources */,
 				9204FDA71E160B9100E9CFF9 /* PickerViewController.swift in Sources */,
 				92EE6E931E1AD13100645F8E /* HeightPickerViewDataSource.swift in Sources */,
@@ -827,10 +808,12 @@
 				924878361D873A92000C86FF /* ActivityMessageManager.swift in Sources */,
 				92986D9A1D99A87A008B8533 /* StepsView.swift in Sources */,
 				925F5ABF1E15FB080051DF1B /* ShareFieldsTableViewController.swift in Sources */,
+				927E72AE1E1B4155003CFD5A /* SurveyIntroductionViewController.swift in Sources */,
 				923E62BE1E14526B00D191EC /* ImportancePopupViewController.swift in Sources */,
 				9291F68D1DAC306500042F42 /* Time.swift in Sources */,
 				92F7CDBE1DAF033E009E2924 /* NotificationManager.swift in Sources */,
 				925F5ABB1E15F6E70051DF1B /* MeFieldsTableViewController.swift in Sources */,
+				927E72AA1E1B4135003CFD5A /* SurveyFormViewController.swift in Sources */,
 				92986D921D99A5FF008B8533 /* SurveyViewController.swift in Sources */,
 				92CA919A1D8304B9000491CD /* HomeViewController.swift in Sources */,
 				9204FDA31E160B5500E9CFF9 /* PickerPopupViewController.swift in Sources */,
@@ -838,6 +821,7 @@
 				92DA5F961DAFF2EB00132B16 /* Schedule.swift in Sources */,
 				92716C401D94CDCD00980CA3 /* CollectionViewListLayout.swift in Sources */,
 				9232234B1E157ADB00F300AC /* Layout.swift in Sources */,
+				927E72AC1E1B4145003CFD5A /* SurveyNextViewController.swift in Sources */,
 				92E34EC31DB3F51A002DCB87 /* DebugViewController.swift in Sources */,
 				929CE6A51DB5393900330FFB /* PopupViewController.swift in Sources */,
 			);

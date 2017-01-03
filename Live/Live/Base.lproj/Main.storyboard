@@ -275,22 +275,51 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="piG-Z2-hyu">
-                                <rect key="frame" x="112" y="225" width="96" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Take a Survey"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sOV-gS-Zlb">
+                                <rect key="frame" x="16" y="28" width="288" height="483"/>
                                 <connections>
-                                    <action selector="surveyTapped:" destination="TXw-TS-pLl" eventType="touchUpInside" id="HRF-rY-mav"/>
+                                    <segue destination="xo4-wB-Yo4" kind="embed" id="WTn-9E-Psx"/>
                                 </connections>
-                            </button>
+                            </containerView>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XIK-6p-er2">
+                                <rect key="frame" x="16" y="28" width="288" height="483"/>
+                                <connections>
+                                    <segue destination="YnH-BT-CRx" kind="embed" id="7Mq-86-nky"/>
+                                </connections>
+                            </containerView>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QcW-1j-x9Z">
+                                <rect key="frame" x="16" y="28" width="288" height="483"/>
+                                <connections>
+                                    <segue destination="hIV-Za-qn0" kind="embed" id="hi1-9g-GUz"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="waI-qI-ebt" firstAttribute="top" secondItem="QcW-1j-x9Z" secondAttribute="bottom" constant="8" symbolic="YES" id="3LY-LH-3tC"/>
+                            <constraint firstItem="waI-qI-ebt" firstAttribute="top" secondItem="sOV-gS-Zlb" secondAttribute="bottom" constant="8" symbolic="YES" id="4ND-mw-BaQ"/>
+                            <constraint firstItem="QcW-1j-x9Z" firstAttribute="trailing" secondItem="sOV-gS-Zlb" secondAttribute="trailing" id="79O-NX-H6U"/>
+                            <constraint firstItem="waI-qI-ebt" firstAttribute="top" secondItem="XIK-6p-er2" secondAttribute="bottom" constant="8" symbolic="YES" id="BIB-6Z-uDK"/>
+                            <constraint firstItem="sOV-gS-Zlb" firstAttribute="top" secondItem="QcW-1j-x9Z" secondAttribute="top" id="Dc1-vM-zup"/>
+                            <constraint firstItem="sOV-gS-Zlb" firstAttribute="top" secondItem="uD8-Rn-7vg" secondAttribute="bottom" constant="8" symbolic="YES" id="GvY-Cs-uCm"/>
+                            <constraint firstItem="QcW-1j-x9Z" firstAttribute="leading" secondItem="sOV-gS-Zlb" secondAttribute="leading" id="coB-zq-A2O"/>
+                            <constraint firstItem="sOV-gS-Zlb" firstAttribute="trailing" secondItem="XIK-6p-er2" secondAttribute="trailing" id="hGX-Ag-IVC"/>
+                            <constraint firstItem="XIK-6p-er2" firstAttribute="leading" secondItem="9lm-33-Hlf" secondAttribute="leadingMargin" id="puX-d2-gqs"/>
+                            <constraint firstItem="QcW-1j-x9Z" firstAttribute="leading" secondItem="XIK-6p-er2" secondAttribute="leading" id="rYh-CB-7ce"/>
+                            <constraint firstItem="sOV-gS-Zlb" firstAttribute="top" secondItem="XIK-6p-er2" secondAttribute="top" id="tMt-4q-cxI"/>
+                            <constraint firstItem="QcW-1j-x9Z" firstAttribute="trailing" secondItem="9lm-33-Hlf" secondAttribute="trailingMargin" id="ugS-6C-aEQ"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Survey" id="Wf3-Bd-uW0"/>
+                    <connections>
+                        <outlet property="formView" destination="XIK-6p-er2" id="yCe-Qz-Mzp"/>
+                        <outlet property="introductionView" destination="sOV-gS-Zlb" id="IEg-ef-r2j"/>
+                        <outlet property="nextView" destination="QcW-1j-x9Z" id="U4g-u7-HTS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wcb-TP-uhM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2376" y="0.0"/>
+            <point key="canvasLocation" x="2375.625" y="0.0"/>
         </scene>
         <!--Me-->
         <scene sceneID="Cow-H5-T9X">
@@ -399,7 +428,7 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mpj-j2-Ypf" id="iGs-IV-iIL">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FP2-PO-Df2">
@@ -433,7 +462,7 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                         <rect key="frame" x="0.0" y="44" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e7g-Qr-xlN" id="fBU-RF-Tl8">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9QZ-J4-Xmg">
@@ -474,7 +503,7 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                         <rect key="frame" x="0.0" y="88" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Oba-Ie-o9d" id="1f6-Xv-vKw">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kS-rV-LCQ">
@@ -518,7 +547,7 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                         <rect key="frame" x="0.0" y="132" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X9T-OI-0Rg" id="yiZ-Qf-cTO">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rqh-Cv-D1C">
@@ -550,7 +579,7 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                         <rect key="frame" x="0.0" y="176" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CDf-aR-sJU" id="Kft-8j-WwT">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zip Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b39-1x-wu0">
@@ -584,7 +613,7 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                         <rect key="frame" x="0.0" y="220" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V4y-wX-bUA" id="egt-Le-8Ss">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sB0-Ix-UQ1">
@@ -1356,6 +1385,188 @@ Cg
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cId-r2-G5b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1595.625" y="-2863.7323943661972"/>
+        </scene>
+        <!--Survey Introduction View Controller-->
+        <scene sceneID="62d-wk-rbv">
+            <objects>
+                <viewController id="xo4-wB-Yo4" customClass="SurveyIntroductionViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="h6z-uE-hbG"/>
+                        <viewControllerLayoutGuide type="bottom" id="fPp-lp-nVN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V6e-fk-yrb">
+                        <rect key="frame" x="0.0" y="0.0" width="288" height="483"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OLg-Wd-Wzk">
+                                <rect key="frame" x="16" y="20" width="256" height="153"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Your phone may not track some kinds of activities like swimming or yoga. To keep track of them, you can answer questions about other activities every other week.
+
+The SURVEY tab will be highlighted when you have one to complete.
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Yza-b7-LA7">
+                                <rect key="frame" x="16" y="181" width="256" height="157"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">This app was developed by researchers. You can help them improve it by sharing your survey data and steps. 
+
+All shared data is anonymous and will only be used to improve the app experience.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBB-S8-RXR">
+                                <rect key="frame" x="16" y="346" width="256" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Share With Researchers"/>
+                                <connections>
+                                    <action selector="share" destination="xo4-wB-Yo4" eventType="touchUpInside" id="F1o-9l-jqP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="936-fU-zuX">
+                                <rect key="frame" x="16" y="384" width="256" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="About The Researchers"/>
+                                <connections>
+                                    <action selector="about" destination="xo4-wB-Yo4" eventType="touchUpInside" id="XJW-9J-XnL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bRh-bY-JKH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2328.75" y="725.17605633802816"/>
+        </scene>
+        <!--Survey Form View Controller-->
+        <scene sceneID="g8T-qJ-3PE">
+            <objects>
+                <viewController id="YnH-BT-CRx" customClass="SurveyFormViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CdW-48-TTd"/>
+                        <viewControllerLayoutGuide type="bottom" id="YMh-H0-Rx0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="N9j-Pi-R4m">
+                        <rect key="frame" x="0.0" y="0.0" width="288" height="483"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="In the past month, how often did you engage in the following activities for at least 10 minutes?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="03E-ZA-xMs">
+                                <rect key="frame" x="16" y="20" width="256" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Swimming, walking, running, cycling, aerobics, dancing playing a sport" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZOI-El-9A7">
+                                <rect key="frame" x="16" y="98" width="256" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BEw-ds-wc3">
+                                <rect key="frame" x="56" y="154" width="176" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Rarely"/>
+                                    <segment title="Weekly"/>
+                                    <segment title="Daily"/>
+                                </segments>
+                            </segmentedControl>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Indoor housework (ex. sweeping, scrubbing floors, washing windows)" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8JE-f1-PSc">
+                                <rect key="frame" x="16" y="190" width="256" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZvP-zd-MG0">
+                                <rect key="frame" x="56" y="246" width="176" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Rarely"/>
+                                    <segment title="Weekly"/>
+                                    <segment title="Daily"/>
+                                </segments>
+                            </segmentedControl>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Lifting weights, outdoor housework (ex. digging, raking, shoveling snow)" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2aQ-fB-FPC">
+                                <rect key="frame" x="16" y="282" width="256" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="E95-jj-fqS">
+                                <rect key="frame" x="56" y="338" width="176" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Rarely"/>
+                                    <segment title="Weekly"/>
+                                    <segment title="Daily"/>
+                                </segments>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0w-Lg-jqj">
+                                <rect key="frame" x="16" y="374" width="256" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit Survey"/>
+                                <connections>
+                                    <action selector="submitSurveyAction" destination="YnH-BT-CRx" eventType="touchUpInside" id="ooY-i2-etj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="questionOneSegmentedControl" destination="BEw-ds-wc3" id="F6z-uK-FaK"/>
+                        <outlet property="questionThreeSegmentedControl" destination="E95-jj-fqS" id="xNW-ml-HgE"/>
+                        <outlet property="questionTwoSegmentedControl" destination="ZvP-zd-MG0" id="xG3-e9-8Rx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r8W-Bv-zBO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2328.75" y="1307.2183098591549"/>
+        </scene>
+        <!--Survey Next View Controller-->
+        <scene sceneID="6Zj-4o-xUc">
+            <objects>
+                <viewController id="hIV-Za-qn0" customClass="SurveyNextViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="r00-gJ-BTV"/>
+                        <viewControllerLayoutGuide type="bottom" id="TLG-9V-Sgs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Rvj-UK-jUy">
+                        <rect key="frame" x="0.0" y="0.0" width="288" height="483"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your next survey is due in 14 days." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="loD-le-OVr">
+                                <rect key="frame" x="0.0" y="49" width="288" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cs-ga-c5M">
+                                <rect key="frame" x="0.0" y="20" width="288" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">Thanks for checking in!
+
+Your next survey is due in ## days</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WgN-D3-AsU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2328.75" y="1897.7112676056338"/>
         </scene>
     </scenes>
     <resources>
