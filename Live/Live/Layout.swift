@@ -38,7 +38,7 @@ class Layout {
         return height
     }
 
-    static func vertical(viewController: UIViewController, flexibleView: UIView? = nil, insets: UIEdgeInsets = UIEdgeInsets(top: 20.0, left: 16.0, bottom: 20.0, right: 16.0), spacing: CGFloat = 8.0) {
+    static func vertical(viewController: UIViewController, flexibleView: UIView? = nil, insets: UIEdgeInsets = UIEdgeInsets(top: 8.0, left: 16.0, bottom: 8.0, right: 16.0), spacing: CGFloat = 8.0) {
         guard let view = viewController.view else {
             return
         }

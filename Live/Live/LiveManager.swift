@@ -34,6 +34,7 @@ class LiveManager : NotificationManagerDelegate {
     var messageManagers: [String: MessageManager] {
         get { return ["Value": valueMessageManager, "Activity": activityMessageManager] }
     }
+    let surveyManager = SurveyManager()
     var dailyStepCounts = Observable<DailyStepCounts?>(value: nil)
     let orderedValues = Observable(value: ["Independence", "Politics", "Spirituality", "Humor", "Fame", "Power and Status", "Family and Friends", "Compassion and Kindness"])
     var valueNote = Observable<Note?>(value: nil)

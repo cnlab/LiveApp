@@ -15,8 +15,6 @@ class SurveyIntroductionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     open override func viewDidLayoutSubviews() {

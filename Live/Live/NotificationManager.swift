@@ -117,7 +117,6 @@ class NotificationManager10 : NSObject, UNUserNotificationCenterDelegate, Notifi
     }
 
     public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Swift.Void) {
-        NSLog("alert")
         completionHandler(UNNotificationPresentationOptions.alert)
     }
 

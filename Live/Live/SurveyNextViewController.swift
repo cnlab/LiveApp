@@ -19,8 +19,9 @@ class SurveyNextViewController: UIViewController {
     }
 
     func showWhen() {
-        let days = 14
-        whenLabel?.text = "Your next survey is due in \(days) days."
+        let surveyManager = LiveManager.shared.surveyManager
+        let days = Int(surveyManager.scheduledDate.timeIntervalSince(Date()) / (24 * 60 * 60))
+        whenLabel?.text = "Your next survey is due in \(days) " + (days > 1 ? "days" : "day") + "."
     }
 
 }

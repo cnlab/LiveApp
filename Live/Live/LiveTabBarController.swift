@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LiveTabBarController: UITabBarController, LiveManagerDelegate, ImportancePopupViewControllerDelegate, ValuesPopupViewControllerDelegate, ActivityPopupViewControllerDelegate {
+class LiveTabBarController: UITabBarController, Ancestor, LiveManagerDelegate, ImportancePopupViewControllerDelegate, ValuesPopupViewControllerDelegate, ActivityPopupViewControllerDelegate {
 
     var importancePopupViewController: ImportancePopupViewController?
 
@@ -18,6 +18,13 @@ class LiveTabBarController: UITabBarController, LiveManagerDelegate, ImportanceP
     var uuid: String?
     var type: String?
     var messageKey: Message.Key?
+
+    func findViewController<T>() -> T? where T: UIViewController {
+        if let index = (viewControllers?.index { $0 is T }) {
+            return viewControllers?[index] as? T
+        }
+        return nil
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +36,32 @@ class LiveTabBarController: UITabBarController, LiveManagerDelegate, ImportanceP
             DispatchQueue.main.async {
                 self.showGetStarted()
             }
+        }
+
+        if let surveyViewController: SurveyViewController = findViewController() {
+            surveyViewController.surveyTabBarItem?.hilite = liveManager.surveyManager.isScheduledDue()
+        }
+    }
+
+    func ancestorDidLoad(viewController: UIViewController) {
+        if let surveyIntroductionViewController = viewController as? SurveyIntroductionViewController {
+            surveyIntroductionViewController.aboutCallback = selectAbout
+            surveyIntroductionViewController.shareCallback = selectShare
+        }
+        if let surveyFormViewController = viewController as? SurveyFormViewController {
+            surveyFormViewController.submitCallback = LiveManager.shared.surveyManager.submit
+        }
+    }
+
+    func selectAbout() {
+        if let viewController: AboutViewController = findViewController() {
+            selectedViewController = viewController
+        }
+    }
+
+    func selectShare() {
+        if let viewController: ShareViewController = findViewController() {
+            selectedViewController = viewController
         }
     }
 

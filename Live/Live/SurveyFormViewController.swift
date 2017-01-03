@@ -10,7 +10,7 @@ import UIKit
 
 class SurveyFormViewController: UIViewController {
 
-    var submitCallback: ((Void) -> Void)? = nil
+    var submitCallback: (([String : Any]) -> Void)? = nil
 
     @IBOutlet var questionOneSegmentedControl: UISegmentedControl?
     @IBOutlet var questionTwoSegmentedControl: UISegmentedControl?
@@ -22,9 +22,22 @@ class SurveyFormViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    func answer(segmentedControl: UISegmentedControl?) -> String {
+        if let index = segmentedControl?.selectedSegmentIndex {
+            if let title = segmentedControl?.titleForSegment(at: index) {
+                return title
+            }
+        }
+        return ""
+    }
+
     @IBAction func submitSurveyAction() {
         if let submitCallback = submitCallback {
-            submitCallback()
+            var answers: [String : Any] = [:]
+            answers["Q1"] = answer(segmentedControl: questionOneSegmentedControl)
+            answers["Q2"] = answer(segmentedControl: questionTwoSegmentedControl)
+            answers["Q3"] = answer(segmentedControl: questionThreeSegmentedControl)
+            submitCallback(answers)
         }
     }
 

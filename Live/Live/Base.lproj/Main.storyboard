@@ -118,7 +118,7 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                 <rect key="frame" x="116" y="216" width="87" height="14.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BOA-Mb-Zld">
@@ -160,7 +160,7 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                 <rect key="frame" x="116" y="487" width="89.5" height="14.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -276,19 +276,19 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sOV-gS-Zlb">
-                                <rect key="frame" x="16" y="28" width="288" height="483"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                                 <connections>
                                     <segue destination="xo4-wB-Yo4" kind="embed" id="WTn-9E-Psx"/>
                                 </connections>
                             </containerView>
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XIK-6p-er2">
-                                <rect key="frame" x="16" y="28" width="288" height="483"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                                 <connections>
                                     <segue destination="YnH-BT-CRx" kind="embed" id="7Mq-86-nky"/>
                                 </connections>
                             </containerView>
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QcW-1j-x9Z">
-                                <rect key="frame" x="16" y="28" width="288" height="483"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                                 <connections>
                                     <segue destination="hIV-Za-qn0" kind="embed" id="hi1-9g-GUz"/>
                                 </connections>
@@ -296,21 +296,21 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="waI-qI-ebt" firstAttribute="top" secondItem="QcW-1j-x9Z" secondAttribute="bottom" constant="8" symbolic="YES" id="3LY-LH-3tC"/>
-                            <constraint firstItem="waI-qI-ebt" firstAttribute="top" secondItem="sOV-gS-Zlb" secondAttribute="bottom" constant="8" symbolic="YES" id="4ND-mw-BaQ"/>
-                            <constraint firstItem="QcW-1j-x9Z" firstAttribute="trailing" secondItem="sOV-gS-Zlb" secondAttribute="trailing" id="79O-NX-H6U"/>
-                            <constraint firstItem="waI-qI-ebt" firstAttribute="top" secondItem="XIK-6p-er2" secondAttribute="bottom" constant="8" symbolic="YES" id="BIB-6Z-uDK"/>
-                            <constraint firstItem="sOV-gS-Zlb" firstAttribute="top" secondItem="QcW-1j-x9Z" secondAttribute="top" id="Dc1-vM-zup"/>
-                            <constraint firstItem="sOV-gS-Zlb" firstAttribute="top" secondItem="uD8-Rn-7vg" secondAttribute="bottom" constant="8" symbolic="YES" id="GvY-Cs-uCm"/>
-                            <constraint firstItem="QcW-1j-x9Z" firstAttribute="leading" secondItem="sOV-gS-Zlb" secondAttribute="leading" id="coB-zq-A2O"/>
-                            <constraint firstItem="sOV-gS-Zlb" firstAttribute="trailing" secondItem="XIK-6p-er2" secondAttribute="trailing" id="hGX-Ag-IVC"/>
-                            <constraint firstItem="XIK-6p-er2" firstAttribute="leading" secondItem="9lm-33-Hlf" secondAttribute="leadingMargin" id="puX-d2-gqs"/>
-                            <constraint firstItem="QcW-1j-x9Z" firstAttribute="leading" secondItem="XIK-6p-er2" secondAttribute="leading" id="rYh-CB-7ce"/>
-                            <constraint firstItem="sOV-gS-Zlb" firstAttribute="top" secondItem="XIK-6p-er2" secondAttribute="top" id="tMt-4q-cxI"/>
-                            <constraint firstItem="QcW-1j-x9Z" firstAttribute="trailing" secondItem="9lm-33-Hlf" secondAttribute="trailingMargin" id="ugS-6C-aEQ"/>
+                            <constraint firstItem="sOV-gS-Zlb" firstAttribute="bottom" secondItem="waI-qI-ebt" secondAttribute="top" id="57G-VE-xNW"/>
+                            <constraint firstItem="sOV-gS-Zlb" firstAttribute="leading" secondItem="XIK-6p-er2" secondAttribute="leading" id="6M1-Og-rx1"/>
+                            <constraint firstItem="XIK-6p-er2" firstAttribute="trailing" secondItem="sOV-gS-Zlb" secondAttribute="trailing" id="7ci-QS-QgM"/>
+                            <constraint firstItem="QcW-1j-x9Z" firstAttribute="leading" secondItem="9lm-33-Hlf" secondAttribute="leading" id="IgQ-He-2To"/>
+                            <constraint firstItem="QcW-1j-x9Z" firstAttribute="trailing" secondItem="sOV-gS-Zlb" secondAttribute="trailing" id="Mb5-E7-Ee1"/>
+                            <constraint firstAttribute="trailing" secondItem="QcW-1j-x9Z" secondAttribute="trailing" id="PYc-Su-DTY"/>
+                            <constraint firstItem="QcW-1j-x9Z" firstAttribute="bottom" secondItem="waI-qI-ebt" secondAttribute="top" id="Pl3-Cq-VHX"/>
+                            <constraint firstItem="XIK-6p-er2" firstAttribute="bottom" secondItem="waI-qI-ebt" secondAttribute="top" id="YJj-1O-kYK"/>
+                            <constraint firstItem="QcW-1j-x9Z" firstAttribute="leading" secondItem="sOV-gS-Zlb" secondAttribute="leading" id="jSW-2a-k9D"/>
+                            <constraint firstItem="sOV-gS-Zlb" firstAttribute="top" secondItem="QcW-1j-x9Z" secondAttribute="top" id="khI-cl-Pip"/>
+                            <constraint firstItem="XIK-6p-er2" firstAttribute="top" secondItem="QcW-1j-x9Z" secondAttribute="top" id="rk4-eq-4Vh"/>
+                            <constraint firstItem="sOV-gS-Zlb" firstAttribute="top" secondItem="uD8-Rn-7vg" secondAttribute="bottom" id="yjK-1E-zvi"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Survey" id="Wf3-Bd-uW0"/>
+                    <tabBarItem key="tabBarItem" title="Survey" id="Wf3-Bd-uW0" customClass="SurveyTabBarItem" customModule="Live" customModuleProvider="target"/>
                     <connections>
                         <outlet property="formView" destination="XIK-6p-er2" id="yCe-Qz-Mzp"/>
                         <outlet property="introductionView" destination="sOV-gS-Zlb" id="IEg-ef-r2j"/>
@@ -699,7 +699,7 @@ http://cn.asc.upenn.edu</string>
                                 <rect key="frame" x="16" y="303" width="288" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
-                                <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -776,7 +776,7 @@ What time do you want to receive the first one?</string>
                                 <rect key="frame" x="16" y="147" width="288" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="sM0-PY-JFf">
@@ -1395,7 +1395,7 @@ Cg
                         <viewControllerLayoutGuide type="bottom" id="fPp-lp-nVN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="V6e-fk-yrb">
-                        <rect key="frame" x="0.0" y="0.0" width="288" height="483"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OLg-Wd-Wzk">
@@ -1452,7 +1452,7 @@ All shared data is anonymous and will only be used to improve the app experience
                         <viewControllerLayoutGuide type="bottom" id="YMh-H0-Rx0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="N9j-Pi-R4m">
-                        <rect key="frame" x="0.0" y="0.0" width="288" height="483"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="In the past month, how often did you engage in the following activities for at least 10 minutes?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="03E-ZA-xMs">
@@ -1540,7 +1540,7 @@ All shared data is anonymous and will only be used to improve the app experience
                         <viewControllerLayoutGuide type="bottom" id="TLG-9V-Sgs"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Rvj-UK-jUy">
-                        <rect key="frame" x="0.0" y="0.0" width="288" height="483"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your next survey is due in 14 days." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="loD-le-OVr">
