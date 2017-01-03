@@ -11,8 +11,23 @@ import MessageUI
 
 class AboutViewController: UIViewController, UITextViewDelegate, MFMailComposeViewControllerDelegate {
 
+    @IBOutlet var textView: UITextView?
+    @IBOutlet var versionLabel: UILabel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if let info = Bundle.main.infoDictionary {
+            let name = info["CFBundleDisplayName"] as? String ?? "Live Active!"
+            let version = info["CFBundleShortVersionString"] as? String ?? "0.0"
+            let build = info["CFBundleVersion"] as? String ?? "0"
+
+            versionLabel?.text = "\(name) Version \(version) Build \(build)"
+        }
+    }
+
+    open override func viewDidLayoutSubviews() {
+        Layout.vertical(viewController: self, flexibleView: textView)
     }
 
     func alert(message: String) {

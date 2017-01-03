@@ -21,7 +21,7 @@ class Layout {
         y += height
     }
 
-    static func totalHeight(subviews: [UIView], excluding: Set<UIView> = []) -> CGFloat {
+    static func totalHeight(subviews: [UIView], excluding: Set<UIView> = [], spacing: CGFloat = 4.0) -> CGFloat {
         var height: CGFloat = 0
         for subview in subviews {
             if subview.isHidden {
@@ -30,26 +30,29 @@ class Layout {
             if excluding.contains(subview) {
                 continue
             }
+            if height > 0 {
+                height += spacing
+            }
             height += subview.frame.size.height
         }
         return height
     }
 
-    static func vertical(viewController: UIViewController, flexibleView: UIView? = nil) {
+    static func vertical(viewController: UIViewController, flexibleView: UIView? = nil, insets: UIEdgeInsets = UIEdgeInsets(top: 20.0, left: 16.0, bottom: 20.0, right: 16.0), spacing: CGFloat = 8.0) {
         guard let view = viewController.view else {
             return
         }
 
-        let topMargin = viewController.topLayoutGuide.length
-        let bottomMargin = viewController.bottomLayoutGuide.length
-        let x: CGFloat = 0.0
-        var y: CGFloat = viewController.topLayoutGuide.length
-        let width = viewController.view.bounds.width
+        let topMargin = viewController.topLayoutGuide.length + insets.top
+        let bottomMargin = viewController.bottomLayoutGuide.length + insets.bottom
+        let x: CGFloat = insets.left
+        var y: CGFloat = topMargin
+        let width = viewController.view.bounds.width - insets.right - insets.left
         let contentHeight = view.bounds.height - topMargin - bottomMargin
 
         let flexibleHeight: CGFloat?
         if let flexibleView = flexibleView {
-            flexibleHeight = contentHeight - Layout.totalHeight(subviews: view.subviews, excluding: [flexibleView])
+            flexibleHeight = contentHeight - Layout.totalHeight(subviews: view.subviews, excluding: [flexibleView], spacing: spacing)
         } else {
             flexibleHeight = nil
         }
@@ -59,6 +62,7 @@ class Layout {
                 break
             }
             Layout.place(subview: subview, x: x, y: &y, width: width, height: subview == flexibleView ? flexibleHeight : nil)
+            y += spacing
         }
     }
 

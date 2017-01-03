@@ -14,7 +14,7 @@ class ImportanceViewController: UIViewController {
 
     var popupViewController: ImportancePopupViewController?
 
-    var dataSource: StringArrayPickerViewDataSource = StringArrayPickerViewDataSource()
+    var dataSource: PickerViewDataSource = StringArrayPickerViewDataSource(values: [])
 
     var valuesArray: [String] = []
     var values: [String] {
@@ -24,10 +24,11 @@ class ImportanceViewController: UIViewController {
         set {
             valuesArray = newValue
 
-            dataSource.values = values
+            dataSource = StringArrayPickerViewDataSource(values: values)
             valuePickerView?.dataSource = dataSource
             valuePickerView?.delegate = dataSource
             valuePickerView?.reloadAllComponents()
+            
             let row = values.count / 2 - 1
             valuePickerView?.selectRow(row, inComponent: 0, animated: false)
         }

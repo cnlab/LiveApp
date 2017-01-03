@@ -12,6 +12,8 @@
 		9204FDA91E16127F00E9CFF9 /* StringArrayPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204FDA81E16127F00E9CFF9 /* StringArrayPickerViewDataSource.swift */; };
 		92062C371DB26C8C0001DE0C /* ScheduleCoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92062C361DB26C8C0001DE0C /* ScheduleCoderTests.swift */; };
 		92062C3D1DB272F70001DE0C /* ObjectiveCException.m in Sources */ = {isa = PBXBuildFile; fileRef = 92062C3C1DB272F70001DE0C /* ObjectiveCException.m */; };
+		922AB4401E1B06D000A33C8D /* thumb-down-22x24.png in Resources */ = {isa = PBXBuildFile; fileRef = 922AB43E1E1B06D000A33C8D /* thumb-down-22x24.png */; };
+		922AB4411E1B06D000A33C8D /* thumb-up-22x24.png in Resources */ = {isa = PBXBuildFile; fileRef = 922AB43F1E1B06D000A33C8D /* thumb-up-22x24.png */; };
 		922C70AF1D93576400F1C401 /* MessageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922C70AE1D93576400F1C401 /* MessageManagerTests.swift */; };
 		9232234B1E157ADB00F300AC /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9232234A1E157ADB00F300AC /* Layout.swift */; };
 		9233565B1D833843005161A8 /* ConsentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9233565A1D833843005161A8 /* ConsentTask.swift */; };
@@ -73,6 +75,8 @@
 		92CAC2431DB2BF21009615C3 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CAC2421DB2BF21009615C3 /* Note.swift */; };
 		92DA5F961DAFF2EB00132B16 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA5F951DAFF2EB00132B16 /* Schedule.swift */; };
 		92E34EC31DB3F51A002DCB87 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E34EC21DB3F51A002DCB87 /* DebugViewController.swift */; };
+		92EE6E911E1ABFD800645F8E /* PickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EE6E901E1ABFD800645F8E /* PickerViewDataSource.swift */; };
+		92EE6E931E1AD13100645F8E /* HeightPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EE6E921E1AD13100645F8E /* HeightPickerViewDataSource.swift */; };
 		92F7CDBE1DAF033E009E2924 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F7CDBD1DAF033E009E2924 /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -158,6 +162,8 @@
 		92062C3A1DB272F60001DE0C /* Live-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Live-Bridging-Header.h"; sourceTree = "<group>"; };
 		92062C3B1DB272F70001DE0C /* ObjectiveCException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCException.h; sourceTree = "<group>"; };
 		92062C3C1DB272F70001DE0C /* ObjectiveCException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveCException.m; sourceTree = "<group>"; };
+		922AB43E1E1B06D000A33C8D /* thumb-down-22x24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb-down-22x24.png"; sourceTree = "<group>"; };
+		922AB43F1E1B06D000A33C8D /* thumb-up-22x24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb-up-22x24.png"; sourceTree = "<group>"; };
 		922C70AE1D93576400F1C401 /* MessageManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageManagerTests.swift; sourceTree = "<group>"; };
 		9232234A1E157ADB00F300AC /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		9233565A1D833843005161A8 /* ConsentTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentTask.swift; sourceTree = "<group>"; };
@@ -226,6 +232,8 @@
 		92CAC2421DB2BF21009615C3 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		92DA5F951DAFF2EB00132B16 /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		92E34EC21DB3F51A002DCB87 /* DebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
+		92EE6E901E1ABFD800645F8E /* PickerViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewDataSource.swift; sourceTree = "<group>"; };
+		92EE6E921E1AD13100645F8E /* HeightPickerViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightPickerViewDataSource.swift; sourceTree = "<group>"; };
 		92F7CDBD1DAF033E009E2924 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -334,11 +342,15 @@
 		9291F68B1DAC0DC700042F42 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				922AB43E1E1B06D000A33C8D /* thumb-down-22x24.png */,
+				922AB43F1E1B06D000A33C8D /* thumb-up-22x24.png */,
 				9232234A1E157ADB00F300AC /* Layout.swift */,
 				929CE6A41DB5393900330FFB /* PopupViewController.swift */,
 				9204FDA21E160B5500E9CFF9 /* PickerPopupViewController.swift */,
 				9204FDA61E160B9100E9CFF9 /* PickerViewController.swift */,
+				92EE6E901E1ABFD800645F8E /* PickerViewDataSource.swift */,
 				9204FDA81E16127F00E9CFF9 /* StringArrayPickerViewDataSource.swift */,
+				92EE6E921E1AD13100645F8E /* HeightPickerViewDataSource.swift */,
 				9291F6891DAC0DC100042F42 /* Observable.swift */,
 				9291F68C1DAC306500042F42 /* Time.swift */,
 				927DEAC31DAC5C8600B5C8C0 /* Archiver.swift */,
@@ -735,9 +747,11 @@
 				92B2F4CC1E134E92002A3CF4 /* unchecked.png in Resources */,
 				923356691D833D90005161A8 /* yellow.png in Resources */,
 				92CA91A11D8304B9000491CD /* Assets.xcassets in Resources */,
+				922AB4411E1B06D000A33C8D /* thumb-up-22x24.png in Resources */,
 				923356671D833D90005161A8 /* purple.png in Resources */,
 				923356651D833D90005161A8 /* green.png in Resources */,
 				92B2F4CB1E134E92002A3CF4 /* checked.png in Resources */,
+				922AB4401E1B06D000A33C8D /* thumb-down-22x24.png in Resources */,
 				92CA919F1D8304B9000491CD /* Main.storyboard in Resources */,
 				923356681D833D90005161A8 /* red.png in Resources */,
 				923356641D833D90005161A8 /* blue.png in Resources */,
@@ -782,6 +796,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				926ECB2F1DB975E100A36584 /* ActivityThinkViewController.swift in Sources */,
+				92EE6E911E1ABFD800645F8E /* PickerViewDataSource.swift in Sources */,
 				9291F68A1DAC0DC100042F42 /* Observable.swift in Sources */,
 				92B89C531E15BBC600E7D5CC /* MeViewController.swift in Sources */,
 				92CA919C1D8304B9000491CD /* ValuesViewController.swift in Sources */,
@@ -795,6 +810,7 @@
 				9233565D1D833C24005161A8 /* SurveyTask.swift in Sources */,
 				927DEAC41DAC5C8600B5C8C0 /* Archiver.swift in Sources */,
 				9204FDA71E160B9100E9CFF9 /* PickerViewController.swift in Sources */,
+				92EE6E931E1AD13100645F8E /* HeightPickerViewDataSource.swift in Sources */,
 				92CAC2431DB2BF21009615C3 /* Note.swift in Sources */,
 				9233565B1D833843005161A8 /* ConsentTask.swift in Sources */,
 				929CE6A91DB5544100330FFB /* ValuesPopupViewController.swift in Sources */,
