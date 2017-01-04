@@ -20,7 +20,7 @@ class SurveyNextViewController: UIViewController {
 
     func update() {
         let surveyManager = LiveManager.shared.surveyManager
-        let days = Int(ceil(surveyManager.scheduledDate.timeIntervalSince(Date()) / (24 * 60 * 60)))
+        let days = Int(ceil(surveyManager.state.scheduledDate.timeIntervalSince(Date()) / (24 * 60 * 60)))
         whenLabel?.text = "Your next survey is due in \(days) " + (days > 1 ? "days" : "day") + "."
     }
 

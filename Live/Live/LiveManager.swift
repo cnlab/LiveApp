@@ -17,7 +17,7 @@ protocol LiveManagerDelegate {
 
 }
 
-class LiveManager : NotificationManagerDelegate {
+class LiveManager: NotificationManagerDelegate {
 
     class var shared: LiveManager { get { return sharedLiveManager } }
 
@@ -26,13 +26,49 @@ class LiveManager : NotificationManagerDelegate {
         let stepCounts: [Int?]
     }
 
+    var installationUUID: String? = nil
     var delegate: LiveManagerDelegate?
     let notificationManager = createNotificationManager()
+    var didAuthorizeNotificationManager = false {
+        willSet(newValue) {
+            if newValue != didAuthorizeNotificationManager {
+                dirty = true
+            }
+        }
+    }
     let healthKitManager = HealthKitManager()
+    var didAuthorizeHealthKit = false {
+        willSet(newValue) {
+            if newValue != didAuthorizeHealthKit {
+                dirty = true
+            }
+        }
+    }
     let valueMessageManager = ValueMessageManager()
+    var didShowGetStarted = false {
+        willSet(newValue) {
+            if newValue != didShowGetStarted {
+                dirty = true
+            }
+        }
+    }
     let activityMessageManager = ActivityMessageManager()
     var messageManagers: [String: MessageManager] {
         get { return ["Value": valueMessageManager, "Activity": activityMessageManager] }
+    }
+    var personalInformation: PersonalInformation = PersonalInformation()  {
+        willSet(newValue) {
+            if newValue !== personalInformation {
+                dirty = true
+            }
+        }
+    }
+    var shareDataWithResearchers: Bool = false {
+        willSet(newValue) {
+            if newValue != shareDataWithResearchers {
+                dirty = true
+            }
+        }
     }
     let surveyManager = SurveyManager()
     var dailyStepCounts = Observable<DailyStepCounts?>(value: nil)
@@ -43,6 +79,17 @@ class LiveManager : NotificationManagerDelegate {
     let horizon = 14
     var trigger = Observable<DateComponents>(value: DateComponents(hour: 9, minute: 0))
     var triggerOffsets: [String: TimeInterval] = ["Value": 0, "Activity": 5 * 60]
+    var modificationDate = Date()
+    var dirty = false {
+        didSet {
+            if dirty {
+                modificationDate = Date()
+                DispatchQueue.main.async {
+                    self.checkDirty()
+                }
+            }
+        }
+    }
 
     init() {
         notificationManager.delegate = self
@@ -55,16 +102,45 @@ class LiveManager : NotificationManagerDelegate {
         }
     }
 
+    static func json(dateComponents: DateComponents) -> [String: Any] {
+        return [
+            "hour": dateComponents.hour ?? 0,
+            "minute": dateComponents.minute ?? 0,
+        ]
+    }
+
+    static func jsonDefaultDateComponents(json: [String: Any], key: String, fallback: DateComponents) throws -> DateComponents {
+        if json[key] == nil {
+            return fallback
+        }
+        guard let jsonDictionary = json[key] as? [String: Any] else {
+            throw JSON.SerializationError.invalid(key)
+        }
+        let hour = (jsonDictionary["hour"] as? Int) ?? 0
+        let minute = (jsonDictionary["minute"] as? Int) ?? 0
+        return DateComponents(hour: hour, minute: minute)
+    }
+
     func archive() {
         let json: [String: Any] = [
+            "installationUUID": JSON.json(string: installationUUID ?? ""),
+            "modificationDate": JSON.json(date: modificationDate),
+            "trigger": LiveManager.json(dateComponents: trigger.value),
             "schedule": JSON.json(object: schedule),
             "valueMessageManager": JSON.json(object: valueMessageManager.state),
             "activityMessageManager": JSON.json(object: activityMessageManager.state),
             "orderedValues": JSON.json(array: orderedValues.value),
+            "didAuthorizeNotificationManager": JSON.json(bool: didAuthorizeNotificationManager),
+            "didAuthorizeHealthKit": JSON.json(bool: didAuthorizeHealthKit),
+            "didShowGetStarted": JSON.json(bool: didShowGetStarted),
+            "surveyManager": JSON.json(object: surveyManager.state),
+            "personalInformation": JSON.json(object: personalInformation),
+            "shareDataWithResearchers": JSON.json(bool: shareDataWithResearchers),
         ]
         do {
             let data = try JSON.json(any: json)
             try data.write(to: archivePath, options: Data.WritingOptions.atomic)
+            NSLog("LiveManager.archive: success")
         } catch {
             NSLog("LiveManager.archive: error: \(error)")
         }
@@ -76,21 +152,53 @@ class LiveManager : NotificationManagerDelegate {
             guard let json = try JSON.json(data: data) as? [String: Any] else {
                 throw JSON.SerializationError.invalid("root")
             }
+
+            let installationUUID = try JSON.jsonOptionalString(json: json, key: "installationUUID")
+            let modificationDate = try JSON.jsonDefaultDate(json: json, key: "modificationDate", fallback: self.modificationDate)
+            let trigger = try LiveManager.jsonDefaultDateComponents(json: json, key: "trigger", fallback: self.trigger.value)
             let schedule: Schedule = try JSON.jsonObject(json: json, key: "schedule")
             let valueMessageManager: ValueMessageManager.State = try JSON.jsonObject(json: json, key: "valueMessageManager")
             let activityMessageManager: ActivityMessageManager.State = try JSON.jsonObject(json: json, key: "activityMessageManager")
             let orderedValues: [String] = try JSON.jsonArray(json: json, key: "orderedValues")
+            let didAuthorizeNotificationManager: Bool = try JSON.jsonDefaultBool(json: json, key: "didAuthorizeNotificationManager")
+            let didAuthorizeHealthKit: Bool = try JSON.jsonDefaultBool(json: json, key: "didAuthorizeHealthKit")
+            let didShowGetStarted: Bool = try JSON.jsonDefaultBool(json: json, key: "didShowGetStarted")
+            let surveyManager: SurveyManager.State = try JSON.jsonDefaultObject(json: json, key: "surveyManager", fallback: self.surveyManager.state)
+            let personalInformation: PersonalInformation = try JSON.jsonDefaultObject(json: json, key: "personalInformation", fallback: self.personalInformation)
+            let shareDataWithResearchers: Bool = try JSON.jsonDefaultBool(json: json, key: "shareDataWithResearchers")
 
+            self.installationUUID = installationUUID
+            self.modificationDate = modificationDate
+            self.trigger.value = trigger
             self.schedule = schedule
             self.valueMessageManager.state = valueMessageManager
             self.activityMessageManager.state = activityMessageManager
             self.orderedValues.value = orderedValues
+            self.didAuthorizeNotificationManager = didAuthorizeNotificationManager
+            self.didAuthorizeHealthKit = didAuthorizeHealthKit
+            self.didShowGetStarted = didShowGetStarted
+            self.surveyManager.state = surveyManager
+            self.personalInformation = personalInformation
+            self.shareDataWithResearchers = shareDataWithResearchers
+
+            dirty = false
         } catch {
             NSLog("LiveManager.unarchive: error: \(error)")
         }
     }
 
+    func checkDirty() {
+        if dirty {
+            archive()
+        }
+    }
+
     func activate() {
+        if installationUUID == nil {
+            installationUUID = UUID().uuidString
+            dirty = true
+        }
+
         orderedValues.subscribe(owner: self, observer: orderedValuesChanged)
         trigger.subscribe(owner: self, observer: triggerChanged)
 
@@ -104,15 +212,9 @@ class LiveManager : NotificationManagerDelegate {
         }
     }
 
-    var didAuthorizeNotificationManager: Bool {
-        get {
-            return UserDefaults.standard.bool(forKey: "didAuthorizeNotificationManager")
-        }
-    }
-
     func authorizeNotificationManager() {
-        UserDefaults.standard.set(true, forKey: "didAuthorizeNotificationManager")
-        
+        didAuthorizeNotificationManager = true
+
         notificationManager.authorize() { (success: Bool, error: Error?) in self.notificationManagerUpdate() }
     }
 
@@ -264,10 +366,12 @@ class LiveManager : NotificationManagerDelegate {
     func orderedValuesChanged() {
         valueMessageManager.group = orderedValues.value[0]
         reschedule()
+        dirty = true
     }
 
     func triggerChanged() {
         reschedule()
+        dirty = true
     }
 
     func refresh() {
@@ -278,14 +382,8 @@ class LiveManager : NotificationManagerDelegate {
         }
     }
 
-    var didAuthorizeHealthKit: Bool {
-        get {
-            return UserDefaults.standard.bool(forKey: "didAuthorizeHealthKit")
-        }
-    }
-
     func authorizeHealthKit() {
-        UserDefaults.standard.set(true, forKey: "didAuthorizeHealthKit")
+        didAuthorizeHealthKit = true
 
         do {
             try healthKitManager.authorizeHealthKit { (authorized,  error) -> Void in

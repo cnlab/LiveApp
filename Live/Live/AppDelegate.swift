@@ -21,17 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let liveManager = LiveManager.shared
         liveManager.unarchive()
-        
-/*
-        // !!! just for testing -denis
-        let calendar = Calendar.current
-        let now = Date()
-        liveManager.triggers = [
-            "Value": calendar.dateComponents([.hour, .minute], from: calendar.date(byAdding: .minute, value: 1, to: now)!),
-            "Activity": calendar.dateComponents([.hour, .minute], from: calendar.date(byAdding: .minute, value: 2, to: now)!)
-        ]
- */
-
         liveManager.activate()
 
         if let launchOptions = launchOptions {

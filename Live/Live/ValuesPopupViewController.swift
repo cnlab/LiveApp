@@ -14,7 +14,7 @@ protocol ValuesPopupViewControllerDelegate {
 
 }
 
-class ValuesPopupViewController : PopupViewController {
+class ValuesPopupViewController: PopupViewController {
 
     @IBOutlet var thinkView: UIView?
     @IBOutlet var rankView: UIView?

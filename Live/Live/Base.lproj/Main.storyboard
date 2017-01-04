@@ -428,7 +428,7 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mpj-j2-Ypf" id="iGs-IV-iIL">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FP2-PO-Df2">
@@ -462,11 +462,11 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                         <rect key="frame" x="0.0" y="44" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e7g-Qr-xlN" id="fBU-RF-Tl8">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9QZ-J4-Xmg">
-                                                    <rect key="frame" x="8" y="11" width="120" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9QZ-J4-Xmg">
+                                                    <rect key="frame" x="8" y="11" width="57" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="120" id="Cm8-6G-2bo"/>
                                                     </constraints>
@@ -487,15 +487,12 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="U9f-fA-eU8" firstAttribute="bottom" secondItem="fBU-RF-Tl8" secondAttribute="bottomMargin" id="0hl-Pn-7kJ"/>
-                                                <constraint firstItem="9QZ-J4-Xmg" firstAttribute="baseline" secondItem="U9f-fA-eU8" secondAttribute="firstBaseline" id="7N8-ma-OiO"/>
-                                                <constraint firstItem="U9f-fA-eU8" firstAttribute="baseline" secondItem="9QZ-J4-Xmg" secondAttribute="firstBaseline" id="DXA-do-KdR"/>
-                                                <constraint firstItem="U9f-fA-eU8" firstAttribute="leading" secondItem="9QZ-J4-Xmg" secondAttribute="trailing" constant="8" symbolic="YES" id="EVL-q7-EIf"/>
-                                                <constraint firstItem="9QZ-J4-Xmg" firstAttribute="centerY" secondItem="U9f-fA-eU8" secondAttribute="centerY" id="FUr-lq-9J1"/>
-                                                <constraint firstItem="U9f-fA-eU8" firstAttribute="top" secondItem="fBU-RF-Tl8" secondAttribute="topMargin" id="HeU-E6-dSm"/>
-                                                <constraint firstItem="9QZ-J4-Xmg" firstAttribute="leading" secondItem="fBU-RF-Tl8" secondAttribute="leadingMargin" id="JpM-Ue-hjf"/>
-                                                <constraint firstItem="U9f-fA-eU8" firstAttribute="trailing" secondItem="fBU-RF-Tl8" secondAttribute="trailingMargin" id="Jv7-zC-Ua2"/>
-                                                <constraint firstItem="9QZ-J4-Xmg" firstAttribute="centerY" secondItem="fBU-RF-Tl8" secondAttribute="centerY" id="jBv-mb-Ne4"/>
+                                                <constraint firstItem="9QZ-J4-Xmg" firstAttribute="centerY" secondItem="fBU-RF-Tl8" secondAttribute="centerY" id="0AC-tD-b5a"/>
+                                                <constraint firstItem="U9f-fA-eU8" firstAttribute="baseline" secondItem="9QZ-J4-Xmg" secondAttribute="firstBaseline" id="5eJ-4B-q94"/>
+                                                <constraint firstItem="9QZ-J4-Xmg" firstAttribute="baseline" secondItem="U9f-fA-eU8" secondAttribute="firstBaseline" id="693-cu-gj7"/>
+                                                <constraint firstItem="U9f-fA-eU8" firstAttribute="top" secondItem="fBU-RF-Tl8" secondAttribute="topMargin" id="7VD-FV-a9b"/>
+                                                <constraint firstItem="U9f-fA-eU8" firstAttribute="trailing" secondItem="fBU-RF-Tl8" secondAttribute="trailingMargin" id="QUy-Yu-EZH"/>
+                                                <constraint firstItem="9QZ-J4-Xmg" firstAttribute="leading" secondItem="fBU-RF-Tl8" secondAttribute="leadingMargin" id="Rcr-5A-NDK"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -503,7 +500,7 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                         <rect key="frame" x="0.0" y="88" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Oba-Ie-o9d" id="1f6-Xv-vKw">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kS-rV-LCQ">
@@ -547,7 +544,7 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                         <rect key="frame" x="0.0" y="132" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X9T-OI-0Rg" id="yiZ-Qf-cTO">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rqh-Cv-D1C">
@@ -579,7 +576,7 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                         <rect key="frame" x="0.0" y="176" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CDf-aR-sJU" id="Kft-8j-WwT">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zip Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b39-1x-wu0">
@@ -613,7 +610,7 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                         <rect key="frame" x="0.0" y="220" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V4y-wX-bUA" id="egt-Le-8Ss">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sB0-Ix-UQ1">

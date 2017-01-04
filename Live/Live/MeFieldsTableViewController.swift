@@ -34,13 +34,10 @@ class MeFieldsTableViewController: UITableViewController {
             if selections.count == 1 {
                 if let weightPerception = selections[0] as? String {
                     weightPerceptionButton?.setTitle(weightPerception, for: .normal)
-                    UserDefaults.standard.set(weightPerception, forKey: "userWeightPerception")
-                    return
+                    fieldChanged()
                 }
             }
         }
-        weightPerceptionButton?.setTitle(weightPerceptionValues[0], for: .normal)
-        UserDefaults.standard.removeObject(forKey: "userHeight")
     }
 
     @IBAction func changePerceivedWeight() {
@@ -48,7 +45,7 @@ class MeFieldsTableViewController: UITableViewController {
         guard let meViewController = parent as? MeViewController else {
             return
         }
-        pickerPopupViewController?.show(inView: meViewController.view, values: weightPerceptionValues, value: weightPerceptionButton?.titleLabel?.text, action: perceivedWeightChanged)
+        pickerPopupViewController?.show(inView: meViewController.view, values: weightPerceptionValues, value: weightPerceptionButton?.title(for: .normal), action: perceivedWeightChanged)
     }
 
     func format(height: Int) -> String {
@@ -63,19 +60,31 @@ class MeFieldsTableViewController: UITableViewController {
         return text
     }
 
+    func parse(height: String?) -> Int? {
+        guard let height = height else {
+            return nil
+        }
+        let tokens = height.components(separatedBy: " ")
+        if tokens.count != 2 {
+            return nil
+        }
+        let token0 = tokens[0]
+        let feet = Int(token0.substring(with: token0.startIndex ..< token0.index(before: token0.endIndex))) ?? 0
+        let token1 = tokens[1]
+        let inches = Int(token1.substring(with: token1.startIndex ..< token1.index(before: token1.endIndex))) ?? 0
+        return feet * 12 + inches
+    }
+
     func heightChanged() {
         if let selections = pickerPopupViewController?.pickerViewController?.selections {
             if selections.count == 2 {
                 if let feet = selections[0] as? Int, let inches = selections[1] as? Int {
                     let height = feet * 12 + inches
                     heightButton?.setTitle(format(height: height), for: .normal)
-                    UserDefaults.standard.set(height, forKey: "userHeight")
-                    return
+                    fieldChanged()
                 }
             }
         }
-        heightButton?.setTitle(format(height: 0), for: .normal)
-        UserDefaults.standard.removeObject(forKey: "userHeight")
     }
 
     @IBAction func changeHeight() {
@@ -83,7 +92,7 @@ class MeFieldsTableViewController: UITableViewController {
         guard let meViewController = parent as? MeViewController else {
             return
         }
-        let height = UserDefaults.standard.integer(forKey: "userHeight")
+        let height = LiveManager.shared.personalInformation.height ?? 0
         let feet = height / 12
         let inches = height - feet * 12
         pickerPopupViewController?.show(inView: meViewController.view, feet: feet, inches: inches, action: heightChanged)
@@ -112,29 +121,39 @@ class MeFieldsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        ageTextField?.text = UserDefaults.standard.string(forKey: "userAge")
-        weightTextField?.text = UserDefaults.standard.string(forKey: "userWeight")
-        zipCodeTextField?.text = UserDefaults.standard.string(forKey: "userZipCode")
-        commentTextField?.text = UserDefaults.standard.string(forKey: "userComment")
-
-        select(segmentedControl: genderSegmentedControl, title: UserDefaults.standard.string(forKey: "userGenger"))
-
-        let weightPerception = UserDefaults.standard.string(forKey: "userWeightPerception")
-        weightPerceptionButton?.setTitle(weightPerception ?? weightPerceptionValues[0], for: .normal)
-
-        let height = UserDefaults.standard.integer(forKey: "userHeight")
-        heightButton?.setTitle(format(height: height), for: .normal)
+        let personalInformation = LiveManager.shared.personalInformation
+        if let age = personalInformation.age {
+            ageTextField?.text = "\(age)"
+        }
+        if let gender = personalInformation.gender {
+            select(segmentedControl: genderSegmentedControl, title: gender)
+        }
+        if let weight = personalInformation.weight {
+            weightTextField?.text = "\(weight)"
+        }
+        if let weightPerception = personalInformation.weightPerception {
+            weightPerceptionButton?.setTitle(weightPerception, for: .normal)
+        }
+        if let height = personalInformation.height {
+            heightButton?.setTitle(format(height: height), for: .normal)
+        }
+        if let zipCode = personalInformation.zipCode {
+            zipCodeTextField?.text = zipCode
+        }
+        if let comment = personalInformation.comment {
+            commentTextField?.text = comment
+        }
     }
 
     @IBAction func fieldChanged() {
-        UserDefaults.standard.set(ageTextField?.text, forKey: "userAge")
-        UserDefaults.standard.set(weightTextField?.text, forKey: "userWeight")
-        UserDefaults.standard.set(zipCodeTextField?.text, forKey: "userZipCode")
-        UserDefaults.standard.set(commentTextField?.text, forKey: "userComment")
-
-        if let title = title(segmentedControl: genderSegmentedControl) {
-            UserDefaults.standard.set(title, forKey: "userGenger")
-        }
+        let age = Int(ageTextField?.text ?? "")
+        let gender = title(segmentedControl: genderSegmentedControl)
+        let weight = Int(weightTextField?.text ?? "")
+        let weightPerception = weightPerceptionButton?.title(for: .normal) ?? ""
+        let height = parse(height: heightButton?.title(for: .normal))
+        let zipCode = zipCodeTextField?.text
+        let comment = commentTextField?.text
+        LiveManager.shared.personalInformation = PersonalInformation(age: age, gender: gender, weight: weight, weightPerception: weightPerception, height: height, zipCode: zipCode, comment: comment)
     }
     
 }

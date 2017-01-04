@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ValuesThinkViewController : UIViewController {
+class ValuesThinkViewController: UIViewController {
 
     @IBOutlet var textView: UITextView?
 

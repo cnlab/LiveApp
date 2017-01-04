@@ -34,6 +34,7 @@
 		925443E41E12D33900BD5687 /* LiveViews.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 925443CE1E12D33900BD5687 /* LiveViews.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		92554D121DBA7F3800009A21 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92554D111DBA7F3800009A21 /* SettingsViewController.swift */; };
 		9255DC4C1E1D4CC600B931E3 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9255DC4B1E1D4CC600B931E3 /* JSON.swift */; };
+		9255DC4E1E1D7CAD00B931E3 /* PersonalInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9255DC4D1E1D7CAD00B931E3 /* PersonalInformation.swift */; };
 		925691961E12D72C00E820F7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925691951E12D72C00E820F7 /* UIKit.framework */; };
 		925F5ABB1E15F6E70051DF1B /* MeFieldsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925F5ABA1E15F6E70051DF1B /* MeFieldsTableViewController.swift */; };
 		925F5ABF1E15FB080051DF1B /* ShareFieldsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925F5ABE1E15FB080051DF1B /* ShareFieldsTableViewController.swift */; };
@@ -185,6 +186,7 @@
 		925443DF1E12D33900BD5687 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92554D111DBA7F3800009A21 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		9255DC4B1E1D4CC600B931E3 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		9255DC4D1E1D7CAD00B931E3 /* PersonalInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInformation.swift; sourceTree = "<group>"; };
 		925691951E12D72C00E820F7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		925F5ABA1E15F6E70051DF1B /* MeFieldsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeFieldsTableViewController.swift; sourceTree = "<group>"; };
 		925F5ABE1E15FB080051DF1B /* ShareFieldsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareFieldsTableViewController.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				92CAC2421DB2BF21009615C3 /* Note.swift */,
 				92DA5F951DAFF2EB00132B16 /* Schedule.swift */,
 				92F7CDBD1DAF033E009E2924 /* NotificationManager.swift */,
+				9255DC4D1E1D7CAD00B931E3 /* PersonalInformation.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -822,6 +825,7 @@
 				92986D8E1D99A57D008B8533 /* ConsentViewController.swift in Sources */,
 				9248783A1D873B3E000C86FF /* MessageManager.swift in Sources */,
 				926ECB281DB9639A00A36584 /* LiveTabBarController.swift in Sources */,
+				9255DC4E1E1D7CAD00B931E3 /* PersonalInformation.swift in Sources */,
 				924878361D873A92000C86FF /* ActivityMessageManager.swift in Sources */,
 				92986D9A1D99A87A008B8533 /* StepsView.swift in Sources */,
 				925F5ABF1E15FB080051DF1B /* ShareFieldsTableViewController.swift in Sources */,

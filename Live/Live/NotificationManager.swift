@@ -44,7 +44,7 @@ func createNotificationManager() -> NotificationManager {
     }
 }
 
-class NotificationManager9 : NotificationManager {
+class NotificationManager9: NotificationManager {
 
     var delegate: NotificationManagerDelegate? = nil
     var authorized: Bool = false
@@ -90,7 +90,7 @@ class NotificationManager9 : NotificationManager {
 }
 
 @available(iOS 10.0, *)
-class NotificationManager10 : NSObject, UNUserNotificationCenterDelegate, NotificationManager {
+class NotificationManager10: NSObject, UNUserNotificationCenterDelegate, NotificationManager {
 
     var delegate: NotificationManagerDelegate? = nil
     var authorized: Bool = false

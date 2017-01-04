@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ValuesRankViewController : UIViewController {
+class ValuesRankViewController: UIViewController {
 
     @IBOutlet var textView: UITextView?
     @IBOutlet var slider: UISlider?

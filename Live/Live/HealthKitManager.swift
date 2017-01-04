@@ -10,7 +10,7 @@ import HealthKit
 
 class HealthKitManager {
 
-    enum LocalError : Error {
+    enum LocalError: Error {
         case healthDataNotAvailable
     }
 

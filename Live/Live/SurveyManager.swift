@@ -10,7 +10,7 @@ import Foundation
 
 class SurveyManager {
 
-    struct Result: JSONConvertable {
+    class Result: JSONConvertable {
 
         let scheduledIdentifier: String
         let scheduledDate: Date
@@ -24,7 +24,7 @@ class SurveyManager {
             self.answers = answers
         }
 
-        init(json: [String: Any]) throws {
+        required init(json: [String: Any]) throws {
             let scheduledIdentifier = try JSON.jsonString(json: json, key: "scheduledIdentifier")
             let scheduledDate = try JSON.jsonDate(json: json, key: "scheduledDate")
             let submitDate = try JSON.jsonDate(json: json, key: "submitDate")
@@ -47,58 +47,48 @@ class SurveyManager {
 
     }
 
+    class State: JSONConvertable {
+
+        var results: [Result]
+
+        var scheduledIdentifier: String = "S1"
+        var scheduledDate: Date
+
+        init() {
+            results = []
+            scheduledDate = Date(timeIntervalSinceNow: SurveyManager.scheduledInterval)
+        }
+
+        required init(json: [String: Any]) throws {
+            let results: [Result] = try JSON.jsonArray(json: json, key: "results")
+            let scheduledIdentifier = try JSON.jsonString(json: json, key: "scheduledIdentifier")
+            let scheduledDate = try JSON.jsonDate(json: json, key: "scheduledDate")
+
+            self.results = results
+            self.scheduledIdentifier = scheduledIdentifier
+            self.scheduledDate = scheduledDate
+        }
+
+        func json() -> [String: Any] {
+            return [
+                "results": JSON.json(array: results),
+                "scheduledIdentifier": JSON.json(string: scheduledIdentifier),
+                "scheduledDate": JSON.json(date: scheduledDate),
+            ]
+        }
+
+    }
+
     static let scheduledInterval: TimeInterval = 14 * 24 * 60 * 60
 
     var observable = Observable<Date?>(value: nil)
-
-    var scheduledIdentifier: String = "S1"
-    var scheduledDate: Date
     var scheduledDue: Bool = false
-
-    var results: [Result] = []
-
     var updateTimer = Timer()
 
-    static func loadScheduledDate() -> Date? {
-        if let string = UserDefaults.standard.string(forKey: "surveyScheduledDate") {
-            if let date = JSON.dateFormatter.date(from: string) {
-                return date
-            }
-        }
-        return nil
-    }
+    var state: State
 
-    static func storeScheduledDate(date: Date) {
-        let string = JSON.dateFormatter.string(from: date)
-        UserDefaults.standard.set(string, forKey: "surveyScheduledDate")
-    }
-
-    static func loadResults() -> [Result] {
-        if let data = UserDefaults.standard.data(forKey: "surveyResults") {
-            if let json = try? JSON.json(data: data) {
-                if let results: [Result] = try? JSON.jsonArray(json: json) {
-                    return results
-                }
-            }
-        }
-        return []
-    }
-
-    static func storeResults(results: [Result]) {
-        if let data = try? JSON.json(any: JSON.json(array: results)) {
-            UserDefaults.standard.set(data, forKey: "surveyResults")
-        }
-    }
-    
     init() {
-        if let date = SurveyManager.loadScheduledDate() {
-            scheduledDate = date
-        } else {
-            scheduledDate = Date(timeIntervalSinceNow: SurveyManager.scheduledInterval)
-            SurveyManager.storeScheduledDate(date: scheduledDate)
-        }
-        results = SurveyManager.loadResults()
-        SurveyManager.storeResults(results: results)
+        state = State()
 
         let oneHour: TimeInterval = 60 * 60
         updateTimer = Timer.scheduledTimer(timeInterval: oneHour, target: self, selector: #selector(update), userInfo: nil, repeats: true)
@@ -107,7 +97,7 @@ class SurveyManager {
 
     @objc func update() {
         let now = Date()
-        scheduledDue = now >= scheduledDate
+        scheduledDue = now >= state.scheduledDate
         observable.value = now
     }
 
@@ -116,16 +106,14 @@ class SurveyManager {
     }
 
     func isScheduledFirst() -> Bool {
-        return results.isEmpty
+        return state.results.isEmpty
     }
 
     func submit(_ answers: [String: Any]) {
-        let result = Result(scheduledIdentifier: scheduledIdentifier, scheduledDate: scheduledDate, submitDate: Date(), answers: answers)
-        results.append(result)
-        SurveyManager.storeResults(results: results)
-
-        scheduledDate = Date(timeIntervalSinceNow: SurveyManager.scheduledInterval)
-        SurveyManager.storeScheduledDate(date: scheduledDate)
+        let result = Result(scheduledIdentifier: state.scheduledIdentifier, scheduledDate: state.scheduledDate, submitDate: Date(), answers: answers)
+        state.results.append(result)
+        state.scheduledDate = Date(timeIntervalSinceNow: SurveyManager.scheduledInterval)
+        LiveManager.shared.dirty = true
 
         update()
     }

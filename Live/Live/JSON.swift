@@ -33,10 +33,46 @@ class JSON {
 
     static let dateFormatter = newDateFormatter()
 
+    static func json(bool: Bool) -> Bool {
+        return bool
+    }
+
+    static func jsonBool(json: [String: Any], key: String) throws -> Bool {
+        guard let bool = json[key] as? Bool else {
+            throw SerializationError.missing(key)
+        }
+        return bool
+    }
+
+    static func jsonDefaultBool(json: [String: Any], key: String, fallback: Bool = false) throws -> Bool {
+        if json[key] == nil {
+            return fallback
+        }
+        return try jsonBool(json: json, key: key)
+    }
+
+    static func json(int: Int) -> Int {
+        return int
+    }
+
+    static func jsonInt(json: [String: Any], key: String) throws -> Int {
+        guard let int = json[key] as? Int else {
+            throw SerializationError.missing(key)
+        }
+        return int
+    }
+
+    static func jsonOptionalInt(json: [String: Any], key: String) throws -> Int? {
+        if json[key] == nil {
+            return nil
+        }
+        return try jsonInt(json: json, key: key)
+    }
+    
     static func json(double: Double) -> Double {
         return double
     }
-    
+
     static func jsonDouble(json: [String: Any], key: String) throws -> Double {
         guard let double = json[key] as? Double else {
             throw SerializationError.missing(key)
@@ -44,6 +80,13 @@ class JSON {
         return double
     }
 
+    static func jsonOptionalDouble(json: [String: Any], key: String) throws -> Double? {
+        if json[key] == nil {
+            return nil
+        }
+        return try jsonDouble(json: json, key: key)
+    }
+    
     static func json(string: String) -> String {
         return string
     }
@@ -87,6 +130,13 @@ class JSON {
         return date
     }
 
+    static func jsonDefaultDate(json: [String: Any], key: String, fallback: Date) throws -> Date {
+        if json[key] == nil {
+            return fallback
+        }
+        return try jsonDate(json: json, key: key)
+    }
+
     static func json<T>(object: T) -> Any where T: JSONConvertable {
         return object.json()
     }
@@ -100,6 +150,13 @@ class JSON {
             throw SerializationError.missing(key)
         }
         return try T(json: jsonDictionary)
+    }
+
+    static func jsonDefaultObject<T>(json: [String: Any], key: String, fallback: T) throws -> T where T: JSONConvertable {
+        if json[key] == nil {
+            return fallback
+        }
+        return try jsonObject(json: json, key: key)
     }
 
     static func json<T>(array: [T]) -> [Any] where T: JSONConvertable {

@@ -41,7 +41,7 @@ class LiveTabBarController: UITabBarController, Ancestor, LiveManagerDelegate, I
         let liveManager = LiveManager.shared
         liveManager.delegate = self
 
-        if !UserDefaults.standard.bool(forKey: "didShowGetStarted") {
+        if !liveManager.didShowGetStarted {
             DispatchQueue.main.async {
                 self.showGetStarted()
             }
@@ -81,9 +81,9 @@ class LiveTabBarController: UITabBarController, Ancestor, LiveManagerDelegate, I
     }
 
     func importancePopupViewController(_ importancePopupViewController: ImportancePopupViewController, value: String) {
-        UserDefaults.standard.set(true, forKey: "didShowGetStarted")
-        
         let liveManager = LiveManager.shared
+        liveManager.didShowGetStarted = true
+
         liveManager.authorizeNotificationManager()
 
         var values = liveManager.orderedValues.value
