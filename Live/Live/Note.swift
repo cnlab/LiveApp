@@ -8,13 +8,49 @@
 
 import Foundation
 
-class Note : NSObject, NSCoding {
+class Note: JSONConvertable {
 
-    enum Status {
+    enum Status: JSONConvertable {
+
         case pending
         case expired
         case closed
         case rated(date: Date, rank: Double)
+
+        init(json: [String: Any]) throws {
+            let type = try JSON.jsonString(json: json, key: "type")
+            switch type {
+            case "pending":
+                self = .pending
+            case "expired":
+                self = .expired
+            case "closed":
+                self = .closed
+            case "rated":
+                let date = try JSON.jsonDate(json: json, key: "date")
+                let rank = try JSON.jsonDouble(json: json, key: "rank")
+                self = .rated(date: date, rank: rank)
+            default:
+                throw JSON.SerializationError.invalid(type)
+            }
+        }
+
+        func json() -> [String: Any] {
+            switch self {
+            case .pending:
+                return ["type": "pending"]
+            case .expired:
+                return ["type": "expired"]
+            case .closed:
+                return ["type": "closed"]
+            case .rated(let date, let rank):
+                return [
+                    "type": "rated",
+                    "date": JSON.json(date: date),
+                    "rank": JSON.json(double: rank)
+                ]
+            }
+        }
 
         var isRated: Bool {
             get {
@@ -39,53 +75,25 @@ class Note : NSObject, NSCoding {
         self.status = status
     }
 
-    required convenience init?(coder decoder: NSCoder) {
-        guard
-            let uuid = decoder.decodeObject(forKey: "uuid") as? String,
-            let type = decoder.decodeObject(forKey: "type") as? String,
-            let messageKey = decoder.decodeObject(forKey: "messageKey") as? Message.Key,
-            let statusType = decoder.decodeObject(forKey: "statusType") as? String
-            else {
-                return nil
-        }
-        var status: Status? = nil
-        switch statusType {
-        case "pending":
-            status = .pending
-        case "expired":
-            status = .expired
-        case "closed":
-            status = .closed
-        case "rated":
-            if let date = decoder.decodeObject(forKey: "statusRatedDate") as? Date {
-                let rank = decoder.decodeDouble(forKey: "statusRatedRank")
-                status = .rated(date: date, rank: rank)
-            }
-        default:
-            break
-        }
-        guard let theStatus = status else {
-            return nil
-        }
-        self.init(uuid: uuid, type: type, messageKey: messageKey, status: theStatus)
+    required init(json: [String: Any]) throws {
+        let uuid = try JSON.jsonString(json: json, key: "uuid")
+        let type = try JSON.jsonString(json: json, key: "type")
+        let messageKey: Message.Key = try JSON.jsonObject(json: json, key: "messageKey")
+        let status: Status = try JSON.jsonObject(json: json, key: "status")
+
+        self.uuid = uuid
+        self.type = type
+        self.messageKey = messageKey
+        self.status = status
     }
 
-    func encode(with encoder: NSCoder) {
-        encoder.encode(uuid, forKey: "uuid")
-        encoder.encode(type, forKey: "type")
-        encoder.encode(messageKey, forKey: "messageKey")
-        switch status {
-        case .pending:
-            encoder.encode("pending", forKey: "statusType")
-        case .expired:
-            encoder.encode("expired", forKey: "statusType")
-        case .closed:
-            encoder.encode("closed", forKey: "statusType")
-        case .rated(let date, let rank):
-            encoder.encode("rated", forKey: "statusType")
-            encoder.encode(date, forKey: "statusRatedDate")
-            encoder.encode(rank, forKey: "statusRatedRank")
-        }
+    func json() -> [String: Any] {
+        return [
+            "uuid": JSON.json(string: uuid),
+            "type": JSON.json(string: type),
+            "messageKey": JSON.json(object: messageKey),
+            "status": JSON.json(object: status),
+        ]
     }
 
     var isPending: Bool {

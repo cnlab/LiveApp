@@ -10,7 +10,7 @@ import Foundation
 
 class Message {
 
-    class Key : NSObject, NSCoding {
+    class Key: JSONConvertable {
 
         let group: String
         let identifier: String
@@ -20,22 +20,21 @@ class Message {
             self.identifier = identifier
         }
 
-        required convenience init?(coder decoder: NSCoder) {
-            guard
-                let group = decoder.decodeObject(forKey: "group") as? String,
-                let identifier = decoder.decodeObject(forKey: "identifier") as? String
-            else {
-                return nil
-            }
+        required init(json: [String: Any]) throws {
+            let group = try JSON.jsonString(json: json, key: "group")
+            let identifier = try JSON.jsonString(json: json, key: "identifier")
 
-            self.init(group: group, identifier: identifier)
+            self.group = group
+            self.identifier = identifier
         }
 
-        func encode(with encoder: NSCoder) {
-            encoder.encode(group, forKey: "group")
-            encoder.encode(identifier, forKey: "identifier")
+        func json() -> [String: Any] {
+            return [
+                "group": JSON.json(string: group),
+                "identifier": JSON.json(string: identifier),
+            ]
         }
-        
+
     }
 
     let key: Key
@@ -76,10 +75,6 @@ protocol MessageManager {
 
     func find(messageKey: Message.Key) -> Message?
 
-    func archive(archiver: NSKeyedArchiver, prefix: String)
-
-    func unarchive(unarchiver: NSKeyedUnarchiver, prefix: String)
-
     func next() -> Message.Key
 
 }
@@ -94,31 +89,6 @@ extension MessageManager {
         return find(group: messageKey.group, identifier: messageKey.identifier)
     }
     
-}
-
-class MessageManagerBase : MessageManager {
-
-    let messages: [Message]
-
-    var messageKeySequence: [Message.Key] = []
-
-    init(messages: [Message]) {
-        self.messages = messages
-    }
-
-    func archive(archiver: NSKeyedArchiver, prefix: String) {
-        archiver.encode(messageKeySequence, forKey: "\(prefix)messageKeySequence")
-    }
-
-    func unarchive(unarchiver: NSKeyedUnarchiver, prefix: String) {
-        messageKeySequence = unarchiver.decodeObject(forKey: "\(prefix)messageKeySequence") as? [Message.Key] ?? []
-    }
-
-    // !!! lame way to enable MessageManagerBase to be abstract -denis
-    func next() -> Message.Key {
-        fatalError("Not Implemented")
-    }
-
 }
 
 class MessageSequencer {

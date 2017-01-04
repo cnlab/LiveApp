@@ -51,60 +51,42 @@ class LiveManager : NotificationManagerDelegate {
     var archivePath: URL {
         get {
             let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            return documentDirectory.appendingPathComponent("archive.plist")
+            return documentDirectory.appendingPathComponent("archive.json")
         }
     }
 
-    func archiveSchedule(archiver: NSKeyedArchiver) {
-        archiver.encode(schedule, forKey: "schedule")
-    }
-
-    func unarchiveSchedule(unarchiver: NSKeyedUnarchiver) {
-        schedule = unarchiver.decodeObject(forKey: "schedule") as? Schedule ?? Schedule(days: [])
-    }
-
     func archive() {
-        let data = NSMutableData()
-        let archiver = NSKeyedArchiver(forWritingWith: data)
-
-        archiveSchedule(archiver: archiver)
-        valueMessageManager.archive(archiver: archiver, prefix: "valueMessageManager.")
-        activityMessageManager.archive(archiver: archiver, prefix: "activityMessageManager.")
-        archiver.encode(orderedValues.value, forKey: "orderedValues")
-
-        archiver.finishEncoding()
+        let json: [String: Any] = [
+            "schedule": JSON.json(object: schedule),
+            "valueMessageManager": JSON.json(object: valueMessageManager.state),
+            "activityMessageManager": JSON.json(object: activityMessageManager.state),
+            "orderedValues": JSON.json(array: orderedValues.value),
+        ]
         do {
+            let data = try JSON.json(any: json)
             try data.write(to: archivePath, options: Data.WritingOptions.atomic)
-        } catch let error {
+        } catch {
             NSLog("LiveManager.archive: error: \(error)")
         }
     }
 
-    func unarchiveObjects(unarchiver: NSKeyedUnarchiver) {
-        unarchiveSchedule(unarchiver: unarchiver)
-        valueMessageManager.unarchive(unarchiver: unarchiver, prefix: "valueMessageManager.")
-        activityMessageManager.unarchive(unarchiver: unarchiver, prefix: "activityMessageManager.")
-        if let orderedValues = unarchiver.decodeObject(forKey: "orderedValues") as? [String] {
-            self.orderedValues.value = orderedValues
-        }
-    }
-
     func unarchive() {
-        let data: Data
         do {
-            data = try Data(contentsOf: archivePath, options: [])
+            let data = try Data(contentsOf: archivePath, options: [])
+            guard let json = try JSON.json(data: data) as? [String: Any] else {
+                throw JSON.SerializationError.invalid("root")
+            }
+            let schedule: Schedule = try JSON.jsonObject(json: json, key: "schedule")
+            let valueMessageManager: ValueMessageManager.State = try JSON.jsonObject(json: json, key: "valueMessageManager")
+            let activityMessageManager: ActivityMessageManager.State = try JSON.jsonObject(json: json, key: "activityMessageManager")
+            let orderedValues: [String] = try JSON.jsonArray(json: json, key: "orderedValues")
+
+            self.schedule = schedule
+            self.valueMessageManager.state = valueMessageManager
+            self.activityMessageManager.state = activityMessageManager
+            self.orderedValues.value = orderedValues
         } catch {
             NSLog("LiveManager.unarchive: error: \(error)")
-            return
-        }
-        let unarchiver = NSKeyedUnarchiver(forReadingWith: data)
-
-        do {
-            try ObjectiveCException.catch() {
-                self.unarchiveObjects(unarchiver: unarchiver)
-            }
-        } catch {
-            NSLog("unarchive error")
         }
     }
 

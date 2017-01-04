@@ -8,31 +8,40 @@
 
 import Foundation
 
-class ActivityMessageManager : MessageManagerBase {
+class ActivityMessageManager: MessageManager {
 
-    var lastGroup: String?
+    class State: JSONConvertable {
 
-    override func archive(archiver: NSKeyedArchiver, prefix: String) {
-        super.archive(archiver: archiver, prefix: prefix)
-        if let lastGroup = lastGroup {
-            Archiver.archive(archiver: archiver, prefix: prefix, key: "lastGroup", property: lastGroup)
+        var messageKeySequence: [Message.Key]
+        var lastGroup: String?
+
+        init(messageKeySequence: [Message.Key] = [], lastGroup: String? = nil) {
+            self.messageKeySequence = messageKeySequence
+            self.lastGroup = lastGroup
         }
-    }
 
-    override func unarchive(unarchiver: NSKeyedUnarchiver, prefix: String) {
-        super.unarchive(unarchiver: unarchiver, prefix: prefix)
-        Archiver.unarchive(unarchiver: unarchiver, prefix: prefix, key: "lastGroup", property: &lastGroup)
-    }
+        required init(json: [String: Any]) throws {
+            let messageKeySequence: [Message.Key] = try JSON.jsonArray(json: json, key: "messageKeySequence")
+            let lastGroup = try JSON.jsonOptionalString(json: json, key: "lastGroup")
 
-    override func next() -> Message.Key {
-        if messageKeySequence.isEmpty {
-            messageKeySequence = MessageSequencer().getMessageKeySequence(messages: messages, initialGroup: lastGroup)
-            if let messageKey = messageKeySequence.last {
-                lastGroup = messageKey.group
+            self.messageKeySequence = messageKeySequence
+            self.lastGroup = lastGroup
+        }
+
+        func json() -> [String: Any] {
+            var object: [String: Any] = [
+                "messageKeySequence": JSON.json(array: messageKeySequence),
+                ]
+            if let lastGroup = lastGroup {
+                object["lastGroup"] = JSON.json(string: lastGroup)
             }
+            return object
         }
-        return messageKeySequence.removeFirst()
+        
     }
+
+    let messages: [Message]
+    var state: State
 
     init() {
         let how = "how"
@@ -40,7 +49,7 @@ class ActivityMessageManager : MessageManagerBase {
         let risk = "risk"
         let inactive = "inactive"
 
-        super.init(messages: [
+        messages = [
             // PA1 Active How
             Message(group: how, identifier: "1", string: "The best parking spots are the ones that are farther away. Choose the last row of a parking lot or the top floor so you have farther to walk."),
             Message(group: how, identifier: "2", string: "Stairs are a great way to /stay/ active. Take the stairs instead of the elevator - start with going up short distances and always walking down.", variants: [inactive: ["stay": "get more"]]),
@@ -127,7 +136,19 @@ class ActivityMessageManager : MessageManagerBase {
             Message(group: risk, identifier: "17", string: "If you /become/ sedentary, you could shorten your life. Inactive people tend to die before more active people.", variants: [inactive: ["become": "are"]]),
             Message(group: risk, identifier: "18", string: "Inactive lifestyle can worsen your memory as you get older. /Becoming/ sedentary can shrink the brain's memory areas with age.", variants: [inactive: ["Becoming": "Remaining"]]),
             Message(group: risk, identifier: "19", string: "If you /start/ to sit most of the time, your muscles will become weak. Weak muscles make it difficult for you to get around and do the things you enjoy.", variants: [inactive: ["start": "continue"]]),
-        ])
+        ]
+
+        state = State()
     }
     
+    func next() -> Message.Key {
+        if state.messageKeySequence.isEmpty {
+            state.messageKeySequence = MessageSequencer().getMessageKeySequence(messages: messages, initialGroup: state.lastGroup)
+            if let messageKey = state.messageKeySequence.last {
+                state.lastGroup = messageKey.group
+            }
+        }
+        return state.messageKeySequence.removeFirst()
+    }
+
 }

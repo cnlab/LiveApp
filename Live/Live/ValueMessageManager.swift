@@ -8,49 +8,60 @@
 
 import Foundation
 
-class ValueMessageManager : MessageManagerBase {
+class ValueMessageManager: MessageManager {
 
-    var filterGroup: String
-    var lastMessage: String?
+    class State: JSONConvertable {
 
-    override func archive(archiver: NSKeyedArchiver, prefix: String) {
-        super.archive(archiver: archiver, prefix: prefix)
-        Archiver.archive(archiver: archiver, prefix: prefix, key: "filterGroup", property: filterGroup)
-        if let lastMessage = lastMessage {
-            Archiver.archive(archiver: archiver, prefix: prefix, key: "lastMessage", property: lastMessage)
+        var messageKeySequence: [Message.Key]
+        var filterGroup: String
+        var lastMessage: String?
+
+        init(messageKeySequence: [Message.Key] = [], filterGroup: String, lastMessage: String? = nil) {
+            self.messageKeySequence = messageKeySequence
+            self.filterGroup = filterGroup
+            self.lastMessage = lastMessage
         }
+
+        required init(json: [String: Any]) throws {
+            let messageKeySequence: [Message.Key] = try JSON.jsonArray(json: json, key: "messageKeySequence")
+            let filterGroup = try JSON.jsonString(json: json, key: "filterGroup")
+            let lastMessage = try JSON.jsonOptionalString(json: json, key: "lastMessage")
+
+            self.messageKeySequence = messageKeySequence
+            self.filterGroup = filterGroup
+            self.lastMessage = lastMessage
+        }
+
+        func json() -> [String: Any] {
+            var object: [String: Any] = [
+                "messageKeySequence": JSON.json(array: messageKeySequence),
+                "filterGroup": JSON.json(string: filterGroup),
+            ]
+            if let lastMessage = lastMessage {
+                object["lastMessage"] = JSON.json(string: lastMessage)
+            }
+            return object
+        }
+
     }
 
-    override func unarchive(unarchiver: NSKeyedUnarchiver, prefix: String) {
-        super.unarchive(unarchiver: unarchiver, prefix: prefix)
-        Archiver.unarchive(unarchiver: unarchiver, prefix: prefix, key: "filterGroup", property: &filterGroup)
-        Archiver.unarchive(unarchiver: unarchiver, prefix: prefix, key: "lastMessage", property: &lastMessage)
-    }
+    let messages: [Message]
+    var state: State
 
     var group: String {
 
         get {
-            return filterGroup
+            return state.filterGroup
         }
 
         set {
-            if filterGroup != newValue {
-                lastMessage = nil
-                messageKeySequence.removeAll()
+            if state.filterGroup != newValue {
+                state.lastMessage = nil
+                state.messageKeySequence.removeAll()
             }
-            filterGroup = newValue
+            state.filterGroup = newValue
         }
 
-    }
-
-    override func next() -> Message.Key {
-        if messageKeySequence.isEmpty {
-            messageKeySequence = MessageSequencer().getMessageKeySequence(messages: messages, group: filterGroup, lastMessage: lastMessage)
-            if let messageKey = messageKeySequence.last {
-                lastMessage = messageKey.identifier
-            }
-        }
-        return messageKeySequence.removeFirst()
     }
 
     init() {
@@ -63,9 +74,9 @@ class ValueMessageManager : MessageManagerBase {
         let familyAndFriends = "Family and Friends"
         let compassionAndKindness = "Compassion and Kindness"
 
-        filterGroup = independence
+        state = State(filterGroup: independence)
 
-        super.init(messages: [
+        messages = [
             Message(group: independence, identifier: "1", string: "Think about not being swayed by the thoughts or feelings of others."),
             Message(group: independence, identifier: "2", string: "Think about deciding to do something because you felt that it was the right thing to do."),
             Message(group: independence, identifier: "3", string: "Think about standing up for yourself."),
@@ -233,7 +244,17 @@ class ValueMessageManager : MessageManagerBase {
             Message(group: compassionAndKindness, identifier: "18", string: "Think about showing people how much you love them by expressing kindness."),
             Message(group: compassionAndKindness, identifier: "19", string: "Think about letting someone know how much they mean to you."),
             Message(group: compassionAndKindness, identifier: "20", string: "Think about being tender to someone who is in trouble."),
-        ])
+        ]
+    }
+
+    func next() -> Message.Key {
+        if state.messageKeySequence.isEmpty {
+            state.messageKeySequence = MessageSequencer().getMessageKeySequence(messages: messages, group: state.filterGroup, lastMessage: state.lastMessage)
+            if let messageKey = state.messageKeySequence.last {
+                state.lastMessage = messageKey.identifier
+            }
+        }
+        return state.messageKeySequence.removeFirst()
     }
 
 }

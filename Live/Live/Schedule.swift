@@ -8,9 +8,9 @@
 
 import Foundation
 
-class Schedule : NSObject, NSCoding {
+class Schedule: JSONConvertable {
 
-    class Day : NSObject, NSCoding {
+    class Day: JSONConvertable {
 
         let date: Date
         let notes: [Note]
@@ -20,22 +20,21 @@ class Schedule : NSObject, NSCoding {
             self.notes = notes
         }
 
-        required convenience init?(coder decoder: NSCoder) {
-            guard
-                let date = decoder.decodeObject(forKey: "date") as? Date,
-                let notes = decoder.decodeObject(forKey: "notes") as? [Note]
-                else {
-                    return nil
-            }
+        required init(json: [String: Any]) throws {
+            let date = try JSON.jsonDate(json: json, key: "date")
+            let notes: [Note] = try JSON.jsonArray(json: json, key: "notes")
 
-            self.init(date: date, notes: notes)
+            self.date = date
+            self.notes = notes
         }
 
-        func encode(with encoder: NSCoder) {
-            encoder.encode(date, forKey: "date")
-            encoder.encode(notes, forKey: "notes")
+        func json() -> [String: Any] {
+            return [
+                "date": JSON.json(date: date),
+                "notes": JSON.json(array: notes),
+            ]
         }
-
+        
         var isPending: Bool {
             get {
                 return notes.reduce(false) { $0 || $1.isPending }
@@ -50,18 +49,16 @@ class Schedule : NSObject, NSCoding {
         self.days = days
     }
 
-    required convenience init?(coder decoder: NSCoder) {
-        guard
-            let days = decoder.decodeObject(forKey: "days") as? [Day]
-            else {
-                return nil
-        }
+    required init(json: [String: Any]) throws {
+        let days: [Day] = try JSON.jsonArray(json: json, key: "days")
 
-        self.init(days: days)
+        self.days = days
     }
 
-    func encode(with encoder: NSCoder) {
-        encoder.encode(days, forKey: "days")
+    func json() -> [String: Any] {
+        return [
+            "days": JSON.json(array: days),
+        ]
     }
 
     var isPending: Bool {
