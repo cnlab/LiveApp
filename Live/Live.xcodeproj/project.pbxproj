@@ -24,6 +24,9 @@
 		924878341D8733C2000C86FF /* ValueMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924878331D8733C2000C86FF /* ValueMessageManager.swift */; };
 		924878361D873A92000C86FF /* ActivityMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924878351D873A92000C86FF /* ActivityMessageManager.swift */; };
 		9248783A1D873B3E000C86FF /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924878391D873B3E000C86FF /* MessageManager.swift */; };
+		9249919D1E1C027E002B7E97 /* SurveyTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9249919C1E1C027E002B7E97 /* SurveyTabBarItem.swift */; };
+		924991A11E1C1CFC002B7E97 /* SurveyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924991A01E1C1CFC002B7E97 /* SurveyManager.swift */; };
+		924991A31E1C3295002B7E97 /* Ancestor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924991A21E1C3295002B7E97 /* Ancestor.swift */; };
 		925443D71E12D33900BD5687 /* LiveViews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925443CE1E12D33900BD5687 /* LiveViews.framework */; };
 		925443DE1E12D33900BD5687 /* LiveViewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925443DD1E12D33900BD5687 /* LiveViewsTests.swift */; };
 		925443E01E12D33900BD5687 /* LiveViews.h in Headers */ = {isa = PBXBuildFile; fileRef = 925443D01E12D33900BD5687 /* LiveViews.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -171,6 +174,9 @@
 		924878331D8733C2000C86FF /* ValueMessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueMessageManager.swift; sourceTree = "<group>"; };
 		924878351D873A92000C86FF /* ActivityMessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityMessageManager.swift; sourceTree = "<group>"; };
 		924878391D873B3E000C86FF /* MessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
+		9249919C1E1C027E002B7E97 /* SurveyTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyTabBarItem.swift; sourceTree = "<group>"; };
+		924991A01E1C1CFC002B7E97 /* SurveyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyManager.swift; sourceTree = "<group>"; };
+		924991A21E1C3295002B7E97 /* Ancestor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ancestor.swift; sourceTree = "<group>"; };
 		925443CE1E12D33900BD5687 /* LiveViews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LiveViews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		925443D01E12D33900BD5687 /* LiveViews.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiveViews.h; sourceTree = "<group>"; };
 		925443D11E12D33900BD5687 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -349,6 +355,7 @@
 				92062C3B1DB272F70001DE0C /* ObjectiveCException.h */,
 				92062C3C1DB272F70001DE0C /* ObjectiveCException.m */,
 				92062C3A1DB272F60001DE0C /* Live-Bridging-Header.h */,
+				924991A21E1C3295002B7E97 /* Ancestor.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -395,6 +402,8 @@
 				927E72AD1E1B4155003CFD5A /* SurveyIntroductionViewController.swift */,
 				927E72A91E1B4135003CFD5A /* SurveyFormViewController.swift */,
 				927E72AB1E1B4145003CFD5A /* SurveyNextViewController.swift */,
+				9249919C1E1C027E002B7E97 /* SurveyTabBarItem.swift */,
+				924991A01E1C1CFC002B7E97 /* SurveyManager.swift */,
 			);
 			name = Survey;
 			sourceTree = "<group>";
@@ -792,6 +801,7 @@
 				927DEAC41DAC5C8600B5C8C0 /* Archiver.swift in Sources */,
 				9204FDA71E160B9100E9CFF9 /* PickerViewController.swift in Sources */,
 				92EE6E931E1AD13100645F8E /* HeightPickerViewDataSource.swift in Sources */,
+				924991A11E1C1CFC002B7E97 /* SurveyManager.swift in Sources */,
 				92CAC2431DB2BF21009615C3 /* Note.swift in Sources */,
 				9233565B1D833843005161A8 /* ConsentTask.swift in Sources */,
 				929CE6A91DB5544100330FFB /* ValuesPopupViewController.swift in Sources */,
@@ -810,6 +820,7 @@
 				925F5ABF1E15FB080051DF1B /* ShareFieldsTableViewController.swift in Sources */,
 				927E72AE1E1B4155003CFD5A /* SurveyIntroductionViewController.swift in Sources */,
 				923E62BE1E14526B00D191EC /* ImportancePopupViewController.swift in Sources */,
+				924991A31E1C3295002B7E97 /* Ancestor.swift in Sources */,
 				9291F68D1DAC306500042F42 /* Time.swift in Sources */,
 				92F7CDBE1DAF033E009E2924 /* NotificationManager.swift in Sources */,
 				925F5ABB1E15F6E70051DF1B /* MeFieldsTableViewController.swift in Sources */,
@@ -819,6 +830,7 @@
 				9204FDA31E160B5500E9CFF9 /* PickerPopupViewController.swift in Sources */,
 				927B69041E15949B00C80F76 /* AboutViewController.swift in Sources */,
 				92DA5F961DAFF2EB00132B16 /* Schedule.swift in Sources */,
+				9249919D1E1C027E002B7E97 /* SurveyTabBarItem.swift in Sources */,
 				92716C401D94CDCD00980CA3 /* CollectionViewListLayout.swift in Sources */,
 				9232234B1E157ADB00F300AC /* Layout.swift in Sources */,
 				927E72AC1E1B4145003CFD5A /* SurveyNextViewController.swift in Sources */,

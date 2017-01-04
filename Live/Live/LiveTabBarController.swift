@@ -19,6 +19,15 @@ class LiveTabBarController: UITabBarController, Ancestor, LiveManagerDelegate, I
     var type: String?
     var messageKey: Message.Key?
 
+    func findTabBarItem<T>() -> T? where T: UITabBarItem {
+        if let items = tabBar.items {
+            if let index = (items.index { $0 is T }) {
+                return items[index] as? T
+            }
+        }
+        return nil
+    }
+
     func findViewController<T>() -> T? where T: UIViewController {
         if let index = (viewControllers?.index { $0 is T }) {
             return viewControllers?[index] as? T
@@ -38,8 +47,14 @@ class LiveTabBarController: UITabBarController, Ancestor, LiveManagerDelegate, I
             }
         }
 
-        if let surveyViewController: SurveyViewController = findViewController() {
-            surveyViewController.surveyTabBarItem?.hilite = liveManager.surveyManager.isScheduledDue()
+        let surveyManager = liveManager.surveyManager
+        surveyManager.observable.subscribe(owner: self, observer: surveyManagerChanged)
+        surveyManagerChanged()
+    }
+
+    func surveyManagerChanged() {
+        if let surveyTabBarItem: SurveyTabBarItem = findTabBarItem() {
+            surveyTabBarItem.hilite = LiveManager.shared.surveyManager.isScheduledDue()
         }
     }
 

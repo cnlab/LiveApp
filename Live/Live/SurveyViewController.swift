@@ -14,12 +14,6 @@ class SurveyViewController: UIViewController {
     @IBOutlet var formView: UIView?
     @IBOutlet var nextView: UIView?
 
-    var surveyTabBarItem: SurveyTabBarItem? {
-        get {
-            return tabBarItem as? SurveyTabBarItem
-        }
-    }
-
     func findChildViewController<T>() -> T? where T: UIViewController {
         if let index = (childViewControllers.index { $0 is T }) {
             return childViewControllers[index] as? T
@@ -54,18 +48,31 @@ class SurveyViewController: UIViewController {
         }
 
         let surveyManager = LiveManager.shared.surveyManager
-        if surveyManager.isScheduledFirst() {
-            expose(view: introductionView)
-        } else
+        surveyManager.observable.subscribe(owner: self, observer: surveyManagerChanged)
+        update()
+    }
+
+    func surveyManagerChanged() {
+        update()
+    }
+
+    func update() {
+        let surveyManager = LiveManager.shared.surveyManager
         if surveyManager.isScheduledDue() {
             expose(view: formView)
         } else {
-            expose(view: nextView)
+            if surveyManager.isScheduledFirst() {
+                expose(view: introductionView)
+            } else {
+                expose(view: nextView)
+            }
         }
 
-        expose(view: formView)
+        if let viewController: SurveyNextViewController = findChildViewController() {
+            viewController.update()
+        }
     }
-
+    
     func expose(view: UIView?) {
         introductionView?.isHidden = view != introductionView
         formView?.isHidden = view != formView

@@ -1543,16 +1543,8 @@ All shared data is anonymous and will only be used to improve the app experience
                         <rect key="frame" x="0.0" y="0.0" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your next survey is due in 14 days." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="loD-le-OVr">
-                                <rect key="frame" x="0.0" y="49" width="288" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cs-ga-c5M">
-                                <rect key="frame" x="0.0" y="20" width="288" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cs-ga-c5M">
+                                <rect key="frame" x="16" y="20" width="288" height="21"/>
                                 <string key="text">Thanks for checking in!
 
 Your next survey is due in ## days</string>
@@ -1560,9 +1552,26 @@ Your next survey is due in ## days</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your next survey is due in 14 days." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="loD-le-OVr">
+                                <rect key="frame" x="16" y="49" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6cs-ga-c5M" firstAttribute="leading" secondItem="loD-le-OVr" secondAttribute="leading" id="2pl-Pg-5lE"/>
+                            <constraint firstItem="6cs-ga-c5M" firstAttribute="top" secondItem="Rvj-UK-jUy" secondAttribute="top" constant="20" symbolic="YES" id="7Zd-k0-A0F"/>
+                            <constraint firstItem="loD-le-OVr" firstAttribute="top" secondItem="6cs-ga-c5M" secondAttribute="bottom" constant="8" symbolic="YES" id="Juj-R0-MKd"/>
+                            <constraint firstItem="6cs-ga-c5M" firstAttribute="trailing" secondItem="loD-le-OVr" secondAttribute="trailing" id="Vo7-HI-xNl"/>
+                            <constraint firstItem="6cs-ga-c5M" firstAttribute="leading" secondItem="Rvj-UK-jUy" secondAttribute="leadingMargin" id="ZS5-CF-0es"/>
+                            <constraint firstItem="6cs-ga-c5M" firstAttribute="trailing" secondItem="Rvj-UK-jUy" secondAttribute="trailingMargin" id="p98-ab-bni"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="whenLabel" destination="loD-le-OVr" id="EBE-KZ-ZRZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WgN-D3-AsU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
