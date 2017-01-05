@@ -57,12 +57,14 @@ class HomeViewController: UIViewController {
         stepsButton!.frame.size = stepsView!.frame.size
     }
 
-    func calculateAverage(stepCounts: [Int?]) -> Int? {
+    func calculateAverages(stepCounts: [Int?]) -> (fiveDays: Int, sixDays: Int)? {
         let count = stepCounts.reduce(0) { (($1 ?? 0) != 0) ? $0 + 1 : $0 }
         if count != 7 {
             return nil
         }
-        return stepCounts[0 ..< 5].reduce(0) { $0 + $1! } / count
+        let fiveDays = stepCounts[0 ..< 5].reduce(0) { $0 + $1! } / 5
+        let sixDays = stepCounts[0 ..< 6].reduce(0) { $0 + $1! } / 6
+        return (fiveDays: fiveDays, sixDays: sixDays)
     }
 
     func substitute(string: String, substitutions: [String : String]) -> String {
@@ -98,9 +100,9 @@ class HomeViewController: UIViewController {
             stepCounts = []
         }
 
-        if let averageStepCount = calculateAverage(stepCounts: stepCounts) {
+        if let (fiveDayAverageStepCount, sixDayAverageStepCount) = calculateAverages(stepCounts: stepCounts) {
             let yesterdaysStepCount = stepCounts.last!!
-            let ratio = Double(yesterdaysStepCount) / Double(averageStepCount)
+            let ratio = Double(yesterdaysStepCount) / Double(fiveDayAverageStepCount)
             if ratio < motivationalBelowRatio {
                 let percent = Int(floor((1.0 - ratio) * 100.0))
                 motivationalLabel?.text = substitute(string: motivationalBelow, substitutions: ["percent": "\(percent)"])
@@ -115,7 +117,7 @@ class HomeViewController: UIViewController {
 
             let numberFormatter = NumberFormatter()
             numberFormatter.numberStyle = NumberFormatter.Style.decimal
-            let steps = numberFormatter.string(for: averageStepCount) ?? "?"
+            let steps = numberFormatter.string(for: sixDayAverageStepCount) ?? "?"
             averageStepsLabel?.text = substitute(string: averageSteps, substitutions: ["steps": steps])
         } else {
             motivationalLabel?.text = motivationalInsufficientData

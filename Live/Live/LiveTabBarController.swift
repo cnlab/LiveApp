@@ -52,6 +52,17 @@ class LiveTabBarController: UITabBarController, Ancestor, LiveManagerDelegate, I
         surveyManagerChanged()
     }
 
+    func addDebug() {
+        guard let debugViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DebugViewController") as? DebugViewController else {
+            return
+        }
+        debugViewController.loadViewIfNeeded()
+        var tabs = viewControllers ?? []
+        tabs.append(debugViewController)
+        setViewControllers(tabs, animated: true)
+        selectedViewController = debugViewController
+    }
+
     func surveyManagerChanged() {
         if let surveyTabBarItem: SurveyTabBarItem = findTabBarItem() {
             surveyTabBarItem.hilite = LiveManager.shared.surveyManager.isScheduledDue()
@@ -65,6 +76,19 @@ class LiveTabBarController: UITabBarController, Ancestor, LiveManagerDelegate, I
         }
         if let surveyFormViewController = viewController as? SurveyFormViewController {
             surveyFormViewController.submitCallback = LiveManager.shared.surveyManager.submit
+        }
+        if let aboutViewController = viewController as? AboutViewController {
+            let swipe = UISwipeGestureRecognizer(target: self, action: #selector(self.aboutSwiped(_:)))
+            swipe.direction = .right
+            swipe.numberOfTouchesRequired = 1
+            aboutViewController.view.addGestureRecognizer(swipe)
+        }
+    }
+
+    func aboutSwiped(_ gesture: UIGestureRecognizer) {
+        let debugViewController: DebugViewController? = findViewController()
+        if debugViewController == nil {
+            addDebug()
         }
     }
 

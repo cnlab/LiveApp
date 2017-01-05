@@ -24,6 +24,8 @@ class AboutViewController: UIViewController, UITextViewDelegate, MFMailComposeVi
 
             versionLabel?.text = "\(name) Version \(version) Build \(build)"
         }
+
+        AncestorUtility.notifyAncestorDidLoad(parent: parent, viewController: self)
     }
 
     open override func viewDidLayoutSubviews() {

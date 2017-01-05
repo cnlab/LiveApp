@@ -21,30 +21,17 @@ class SurveyViewController: UIViewController {
         return nil
     }
 
-    func notifyAncestorDidLoad(viewController child: UIViewController) {
-        var ancestor = parent
-        while ancestor != nil {
-            let viewController = ancestor!
-            if let relation = viewController as? Ancestor {
-                relation.ancestorDidLoad(viewController: child)
-                break
-            }
-            ancestor = viewController.parent
-        }
-
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if let viewController: SurveyIntroductionViewController = findChildViewController() {
-            notifyAncestorDidLoad(viewController: viewController)
+            AncestorUtility.notifyAncestorDidLoad(parent: parent, viewController: viewController)
         }
         if let viewController: SurveyFormViewController = findChildViewController() {
-            notifyAncestorDidLoad(viewController: viewController)
+            AncestorUtility.notifyAncestorDidLoad(parent: parent, viewController: viewController)
         }
         if let viewController: SurveyNextViewController = findChildViewController() {
-            notifyAncestorDidLoad(viewController: viewController)
+            AncestorUtility.notifyAncestorDidLoad(parent: parent, viewController: viewController)
         }
 
         let surveyManager = LiveManager.shared.surveyManager

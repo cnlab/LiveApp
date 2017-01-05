@@ -234,35 +234,6 @@ This list will be used to customize your daily messages. Don’t worry if you ar
             </objects>
             <point key="canvasLocation" x="810" y="-723.75"/>
         </scene>
-        <!--Consent-->
-        <scene sceneID="fib-Td-98v">
-            <objects>
-                <viewController id="Oc1-GC-lxU" customClass="ConsentViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ahM-0h-zLR"/>
-                        <viewControllerLayoutGuide type="bottom" id="1k1-vY-37h"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rVH-UX-psy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eed-1F-ee3">
-                                <rect key="frame" x="114" y="225" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Give Consent"/>
-                                <connections>
-                                    <action selector="consentTapped:" destination="Oc1-GC-lxU" eventType="touchUpInside" id="UaX-F6-Jzq"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Consent" id="u9B-HP-pTL"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="S4M-vf-2Pl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1594" y="793"/>
-        </scene>
         <!--Survey-->
         <scene sceneID="Pjq-OL-dMo">
             <objects>
@@ -717,7 +688,7 @@ http://cn.asc.upenn.edu</string>
         <!--Debug-->
         <scene sceneID="5hU-MK-FGp">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="414-fa-cwJ" customClass="DebugViewController" customModule="Live" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DebugViewController" automaticallyAdjustsScrollViewInsets="NO" id="414-fa-cwJ" customClass="DebugViewController" customModule="Live" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OKn-hv-PRz"/>
                         <viewControllerLayoutGuide type="bottom" id="oya-L7-lP3"/>
@@ -727,7 +698,7 @@ http://cn.asc.upenn.edu</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Debug text..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PvX-LF-UeI">
-                                <rect key="frame" x="16" y="66" width="288" height="445"/>
+                                <rect key="frame" x="16" y="66" width="288" height="494"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -757,7 +728,7 @@ http://cn.asc.upenn.edu</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="710-Gu-q4e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="810" y="792.25352112676057"/>
+            <point key="canvasLocation" x="0.0" y="783"/>
         </scene>
         <!--Settings-->
         <scene sceneID="82i-fP-bX3">
@@ -797,11 +768,20 @@ What time do you want to receive the first one?</string>
                                     <action selector="timeChanged" destination="0nq-5A-lxm" eventType="valueChanged" id="dT6-Y9-52W"/>
                                 </connections>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wb3-98-nKr">
+                                <rect key="frame" x="16" y="400" width="288" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Open Settings To Enable Notifications"/>
+                                <connections>
+                                    <action selector="showSettings" destination="0nq-5A-lxm" eventType="touchUpInside" id="Exd-cL-58t"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" id="RRd-XL-Hc4"/>
                     <connections>
+                        <outlet property="showSettingsButton" destination="wb3-98-nKr" id="jbL-fc-l5J"/>
                         <outlet property="timePicker" destination="sM0-PY-JFf" id="gOB-bc-jkL"/>
                     </connections>
                 </viewController>
@@ -866,8 +846,6 @@ Data is anonymous and has a random ID assigned to it. We do not share your data 
                         <segue destination="Km8-Zb-u6F" kind="relationship" relationship="viewControllers" id="EXL-6u-BEf"/>
                         <segue destination="sQW-e9-Mru" kind="relationship" relationship="viewControllers" id="gaY-A4-eI8"/>
                         <segue destination="cx8-BX-xki" kind="relationship" relationship="viewControllers" id="Ldi-tI-YID"/>
-                        <segue destination="414-fa-cwJ" kind="relationship" relationship="viewControllers" id="rGD-nB-Ic0"/>
-                        <segue destination="Oc1-GC-lxU" kind="relationship" relationship="viewControllers" id="jTD-di-1ZJ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>

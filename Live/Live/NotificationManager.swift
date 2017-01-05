@@ -27,8 +27,9 @@ protocol NotificationManagerDelegate {
 protocol NotificationManager {
 
     var delegate: NotificationManagerDelegate? { get set }
-    var authorized: Bool { get }
-    func authorize(_ completion: @escaping ((_ success: Bool, _ error: Error?) -> Void))
+    var authorized: Observable<Bool> { get }
+    func queryAuthorization()
+    func authorize()
     func cancel()
     func request(date: Date, uuid: String, type: String, message: Message)
     func getOutstanding()
@@ -47,9 +48,13 @@ func createNotificationManager() -> NotificationManager {
 class NotificationManager9: NotificationManager {
 
     var delegate: NotificationManagerDelegate? = nil
-    var authorized: Bool = false
+    var authorized = Observable<Bool>(value: false)
 
-    func authorize(_ completion: @escaping ((_ success: Bool, _ error: Error?) -> Void)) {
+    func queryAuthorization() {
+        // !!! To Do
+    }
+
+    func authorize() {
         let notificationSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
         UIApplication.shared.registerUserNotificationSettings(notificationSettings)
     }
@@ -93,16 +98,27 @@ class NotificationManager9: NotificationManager {
 class NotificationManager10: NSObject, UNUserNotificationCenterDelegate, NotificationManager {
 
     var delegate: NotificationManagerDelegate? = nil
-    var authorized: Bool = false
+    var authorized = Observable<Bool>(value: false)
 
-    func authorize(_ completion: @escaping ((_ success: Bool, _ error: Error?) -> Void)) {
+    func queryAuthorization() {
+        let userNotificationCenter = UNUserNotificationCenter.current()
+        userNotificationCenter.getNotificationSettings { (settings) in
+            DispatchQueue.main.sync {
+                self.authorized.value = settings.alertSetting == .enabled
+            }
+        }
+    }
+
+    func authorize() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(success, error) in
-            self.authorized(success: success, error: error)
+            DispatchQueue.main.sync {
+                self.authorized(success: success, error: error)
+            }
         }
     }
 
     func authorized(success: Bool, error: Error?) {
-        authorized = success
+        authorized.value = success
         
         if !success {
             print("Notification access denied.")

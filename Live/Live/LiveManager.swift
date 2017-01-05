@@ -93,6 +93,7 @@ class LiveManager: NotificationManagerDelegate {
 
     init() {
         notificationManager.delegate = self
+        notificationManager.authorized.subscribe(owner: self, observer: notificationManagerAuthorizationChanged)
     }
 
     var archivePath: URL {
@@ -217,7 +218,7 @@ class LiveManager: NotificationManagerDelegate {
     func authorizeNotificationManager() {
         didAuthorizeNotificationManager = true
 
-        notificationManager.authorize() { (success: Bool, error: Error?) in self.notificationManagerUpdate() }
+        notificationManager.authorize()
     }
 
     func affirm(uuid: String, type: String, messageKey: Message.Key, rank: Double) {
@@ -276,7 +277,7 @@ class LiveManager: NotificationManagerDelegate {
     }
 
     func notificationManagerUpdate() {
-        if !notificationManager.authorized {
+        if !notificationManager.authorized.value {
             return
         }
 
@@ -298,6 +299,10 @@ class LiveManager: NotificationManagerDelegate {
                 }
             }
         }
+    }
+
+    func notificationManagerAuthorizationChanged() {
+        notificationManagerUpdate()
     }
 
     func setScheduleDays(days: [Schedule.Day]) {
