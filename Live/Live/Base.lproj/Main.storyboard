@@ -465,15 +465,6 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9QZ-J4-Xmg">
-                                                    <rect key="frame" x="8" y="11" width="57" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="120" id="Cm8-6G-2bo"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="U9f-fA-eU8">
                                                     <rect key="frame" x="136" y="8" width="176" height="29"/>
                                                     <segments>
@@ -485,14 +476,20 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                                         <action selector="fieldChanged" destination="c6z-zU-SlP" eventType="valueChanged" id="t3s-ji-Gs5"/>
                                                     </connections>
                                                 </segmentedControl>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9QZ-J4-Xmg">
+                                                    <rect key="frame" x="8" y="11" width="57" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="9QZ-J4-Xmg" firstAttribute="centerY" secondItem="fBU-RF-Tl8" secondAttribute="centerY" id="0AC-tD-b5a"/>
-                                                <constraint firstItem="U9f-fA-eU8" firstAttribute="baseline" secondItem="9QZ-J4-Xmg" secondAttribute="firstBaseline" id="5eJ-4B-q94"/>
-                                                <constraint firstItem="9QZ-J4-Xmg" firstAttribute="baseline" secondItem="U9f-fA-eU8" secondAttribute="firstBaseline" id="693-cu-gj7"/>
-                                                <constraint firstItem="U9f-fA-eU8" firstAttribute="top" secondItem="fBU-RF-Tl8" secondAttribute="topMargin" id="7VD-FV-a9b"/>
-                                                <constraint firstItem="U9f-fA-eU8" firstAttribute="trailing" secondItem="fBU-RF-Tl8" secondAttribute="trailingMargin" id="QUy-Yu-EZH"/>
-                                                <constraint firstItem="9QZ-J4-Xmg" firstAttribute="leading" secondItem="fBU-RF-Tl8" secondAttribute="leadingMargin" id="Rcr-5A-NDK"/>
+                                                <constraint firstItem="U9f-fA-eU8" firstAttribute="top" secondItem="fBU-RF-Tl8" secondAttribute="topMargin" id="0M7-ZX-zve"/>
+                                                <constraint firstItem="U9f-fA-eU8" firstAttribute="trailing" secondItem="fBU-RF-Tl8" secondAttribute="trailingMargin" id="HqC-gz-2dJ"/>
+                                                <constraint firstItem="9QZ-J4-Xmg" firstAttribute="centerY" secondItem="fBU-RF-Tl8" secondAttribute="centerY" id="Ls6-So-ytX"/>
+                                                <constraint firstItem="9QZ-J4-Xmg" firstAttribute="baseline" secondItem="U9f-fA-eU8" secondAttribute="firstBaseline" id="O2b-xA-Djc"/>
+                                                <constraint firstItem="U9f-fA-eU8" firstAttribute="baseline" secondItem="9QZ-J4-Xmg" secondAttribute="firstBaseline" id="Zxd-f4-Bht"/>
+                                                <constraint firstItem="9QZ-J4-Xmg" firstAttribute="leading" secondItem="fBU-RF-Tl8" secondAttribute="leadingMargin" id="gaF-nl-uTf"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -678,7 +675,8 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">The Live Active! App was built by researchers at the University of Pennsylvania and HopeLab.
 
-The Communication Neuroscience Lab (Director: Emily Falk, PhD), is leading development efforts and you can learn more about their work here. 
+The Communication Neuroscience Lab (Director: Emily Falk, PhD), is leading development efforts and you can learn more about their work here:
+http://cn.asc.upenn.edu
 
 Questions?
 liveapp@gmail.com
@@ -725,18 +723,27 @@ http://cn.asc.upenn.edu</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Debug text..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PvX-LF-UeI">
-                                <rect key="frame" x="16" y="28" width="288" height="483"/>
+                                <rect key="frame" x="16" y="66" width="288" height="445"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P4Z-7Z-HhU">
+                                <rect key="frame" x="268" y="28" width="36" height="30"/>
+                                <state key="normal" title="Send"/>
+                                <connections>
+                                    <action selector="send" destination="414-fa-cwJ" eventType="touchUpInside" id="LOd-7j-cBP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PvX-LF-UeI" firstAttribute="top" secondItem="OKn-hv-PRz" secondAttribute="bottom" constant="8" symbolic="YES" id="4YO-Sv-54D"/>
-                            <constraint firstItem="PvX-LF-UeI" firstAttribute="trailing" secondItem="jYx-LC-mnj" secondAttribute="trailingMargin" id="CA8-ns-jsC"/>
-                            <constraint firstItem="PvX-LF-UeI" firstAttribute="leading" secondItem="jYx-LC-mnj" secondAttribute="leadingMargin" id="aIE-At-bL2"/>
-                            <constraint firstItem="oya-L7-lP3" firstAttribute="top" secondItem="PvX-LF-UeI" secondAttribute="bottom" constant="8" symbolic="YES" id="u4Y-3a-lbk"/>
+                            <constraint firstItem="oya-L7-lP3" firstAttribute="top" secondItem="PvX-LF-UeI" secondAttribute="bottom" constant="8" symbolic="YES" id="99n-Np-XZB"/>
+                            <constraint firstItem="PvX-LF-UeI" firstAttribute="leading" secondItem="jYx-LC-mnj" secondAttribute="leadingMargin" id="K9M-t1-4Ew"/>
+                            <constraint firstItem="P4Z-7Z-HhU" firstAttribute="top" secondItem="OKn-hv-PRz" secondAttribute="bottom" constant="8" symbolic="YES" id="YlD-VL-EXW"/>
+                            <constraint firstItem="P4Z-7Z-HhU" firstAttribute="trailing" secondItem="jYx-LC-mnj" secondAttribute="trailingMargin" id="qkq-un-4li"/>
+                            <constraint firstItem="PvX-LF-UeI" firstAttribute="top" secondItem="P4Z-7Z-HhU" secondAttribute="bottom" constant="8" symbolic="YES" id="u2N-0o-XyY"/>
+                            <constraint firstItem="P4Z-7Z-HhU" firstAttribute="trailing" secondItem="PvX-LF-UeI" secondAttribute="trailing" id="xVM-kP-ybG"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Debug" id="LRL-1U-X7X"/>
@@ -746,7 +753,7 @@ http://cn.asc.upenn.edu</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="710-Gu-q4e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="810" y="793"/>
+            <point key="canvasLocation" x="810" y="792.25352112676057"/>
         </scene>
         <!--Settings-->
         <scene sceneID="82i-fP-bX3">
@@ -1011,15 +1018,20 @@ Data is anonymous and has a random ID assigned to it. We do not share your data 
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Jv-F7-1dS">
-                                <rect key="frame" x="0.0" y="157" width="320" height="254"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Jv-F7-1dS">
+                                <rect key="frame" x="16" y="157" width="288" height="254"/>
                                 <connections>
                                     <segue destination="QJo-3U-ppj" kind="embed" id="7vX-bl-9zx"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4Jv-F7-1dS" firstAttribute="leading" secondItem="pKE-6H-MDd" secondAttribute="leadingMargin" id="DvS-oO-vK4"/>
+                            <constraint firstItem="4Jv-F7-1dS" firstAttribute="trailing" secondItem="pKE-6H-MDd" secondAttribute="trailingMargin" id="EQz-aP-bZn"/>
+                            <constraint firstItem="4Jv-F7-1dS" firstAttribute="centerY" secondItem="pKE-6H-MDd" secondAttribute="centerY" id="GXG-K0-6vD"/>
+                            <constraint firstItem="4Jv-F7-1dS" firstAttribute="top" secondItem="p5R-Jz-Hdz" secondAttribute="bottom" constant="137" id="bks-pC-Ghu"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1y3-K8-35u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1357,21 +1369,21 @@ Cg
                         <viewControllerLayoutGuide type="bottom" id="EYw-zD-xTN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fNc-Hp-dc5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="254"/>
+                        <rect key="frame" x="0.0" y="0.0" width="288" height="254"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PSI-wG-09t">
+                                <rect key="frame" x="0.0" y="38" width="288" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xT1-oU-vae">
-                                <rect key="frame" x="283" y="0.0" width="37" height="30"/>
+                                <rect key="frame" x="235" y="0.0" width="37" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
                                     <action selector="doneAction" destination="QJo-3U-ppj" eventType="touchUpInside" id="Mgv-OU-oGk"/>
                                 </connections>
                             </button>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PSI-wG-09t">
-                                <rect key="frame" x="0.0" y="38" width="320" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

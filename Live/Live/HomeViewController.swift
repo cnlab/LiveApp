@@ -161,14 +161,28 @@ class HomeViewController: UIViewController {
     func respondToValueTouched() {
         let liveManager = LiveManager.shared
         if let note = liveManager.valueNote.value {
-            liveManager.delegate?.liveManagerAffirm(liveManager, uuid: note.uuid, type: note.type, messageKey: note.messageKey)
+            var rank = 0.5
+            switch note.status {
+            case .rated(_, let ratedRank):
+                rank = ratedRank
+            default:
+                break
+            }
+            liveManager.delegate?.liveManagerAffirm(liveManager, uuid: note.uuid, type: note.type, messageKey: note.messageKey, rank: rank)
         }
     }
 
     func respondToActivityTouched() {
         let liveManager = LiveManager.shared
         if let note = liveManager.activityNote.value {
-            liveManager.delegate?.liveManagerAffirm(liveManager, uuid: note.uuid, type: note.type, messageKey: note.messageKey)
+            var rank = 0.5
+            switch note.status {
+            case .rated(_, let ratedRank):
+                rank = ratedRank
+            default:
+                break
+            }
+            liveManager.delegate?.liveManagerAffirm(liveManager, uuid: note.uuid, type: note.type, messageKey: note.messageKey, rank: rank)
         }
     }
     

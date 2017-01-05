@@ -13,7 +13,7 @@ var sharedLiveManager = LiveManager()
 
 protocol LiveManagerDelegate {
 
-    func liveManagerAffirm(_ liveManager: LiveManager, uuid: String, type: String, messageKey: Message.Key)
+    func liveManagerAffirm(_ liveManager: LiveManager, uuid: String, type: String, messageKey: Message.Key, rank: Double)
 
 }
 
@@ -78,7 +78,7 @@ class LiveManager: NotificationManagerDelegate {
     var schedule = Schedule(days: [])
     let horizon = 14
     var trigger = Observable<DateComponents>(value: DateComponents(hour: 9, minute: 0))
-    var triggerOffsets: [String: TimeInterval] = ["Value": 0, "Activity": 5 * 60]
+    var triggerOffsets: [String: TimeInterval] = ["Activity": 0, "Value": 10]
     var modificationDate = Date()
     var dirty = false {
         didSet {
@@ -146,7 +146,7 @@ class LiveManager: NotificationManagerDelegate {
         }
     }
 
-    func unarchive() {
+    func unarchive() -> Bool {
         do {
             let data = try Data(contentsOf: archivePath, options: [])
             guard let json = try JSON.json(data: data) as? [String: Any] else {
@@ -184,7 +184,9 @@ class LiveManager: NotificationManagerDelegate {
             dirty = false
         } catch {
             NSLog("LiveManager.unarchive: error: \(error)")
+            return false
         }
+        return true
     }
 
     func checkDirty() {
@@ -224,12 +226,6 @@ class LiveManager: NotificationManagerDelegate {
             for note in day.notes {
                 if note.uuid == uuid {
                     note.status = .rated(date: Date(), rank: rank)
-                    if note.type == "Value" {
-                        valueNote.value = note
-                    } else
-                    if note.type == "Activity" {
-                        activityNote.value = note
-                    }
                     found = true
                     break
                 }
@@ -238,6 +234,9 @@ class LiveManager: NotificationManagerDelegate {
         if !found {
             NSLog("could not find uuid \(uuid)")
         }
+        valueNote.value = valueNote.value
+        activityNote.value = activityNote.value
+        dirty = true
         if !schedule.isPending {
             notificationManager.nothingPending()
         }
@@ -248,8 +247,32 @@ class LiveManager: NotificationManagerDelegate {
         if action == "affirm" {
             affirm(uuid: uuid, type: type, messageKey: messageKey, rank: 1.0)
         } else {
-            delegate?.liveManagerAffirm(self, uuid: uuid, type: type, messageKey: messageKey)
+            delegate?.liveManagerAffirm(self, uuid: uuid, type: type, messageKey: messageKey, rank: 0.5)
         }
+    }
+
+    func showCurrentNotifications() {
+        var valueNote: Note? = nil
+        var activityNote: Note? = nil
+        for day in schedule.days {
+            for note in day.notes {
+                if !note.isPending {
+                    if note.type == "Value" {
+                        valueNote = note
+                    } else
+                    if note.type == "Activity" {
+                        activityNote = note
+                    }
+                }
+            }
+        }
+        if let valueNote = valueNote {
+            self.valueNote.value = valueNote
+        }
+        if let activityNote = activityNote {
+            self.activityNote.value = activityNote
+        }
+
     }
 
     func notificationManagerUpdate() {
@@ -279,6 +302,8 @@ class LiveManager: NotificationManagerDelegate {
 
     func setScheduleDays(days: [Schedule.Day]) {
         schedule = Schedule(days: days)
+        showCurrentNotifications()
+        dirty = true
         notificationManagerUpdate()
     }
 
@@ -302,22 +327,39 @@ class LiveManager: NotificationManagerDelegate {
         }
     }
 
-    func nextNotes() -> [Note] {
+    func nextNotes(status: Note.Status, date: Date) -> [Note] {
         var notes: [Note] = []
         for (type, messageManager) in messageManagers {
-            notes.append(Note(uuid: UUID().uuidString, type: type, messageKey: messageManager.next(), status: .pending))
+            notes.append(Note(uuid: UUID().uuidString, type: type, messageKey: messageManager.next(), status: status, date: date))
         }
         return notes
     }
 
+    // append days up to the horizon (keep all notes from the past)
     func reschedule() {
-        // append days up to the horizon
-        // !!! should keep all notes from the past -denis
         var days: [Schedule.Day] = []
+        for day in schedule.days {
+            var retainNotes: [Note] = []
+            for note in day.notes {
+                if !note.isPending {
+                    retainNotes.append(note)
+                }
+            }
+            if retainNotes.isEmpty {
+                break;
+            }
+            days.append(Schedule.Day(date: day.date, notes: retainNotes))
+        }
         let now = Date()
-        var date = Time.next(date: now, at: trigger.value)
+        var date = Time.previous(date: now, at: trigger.value)
         for _ in 0 ..< horizon {
-            let notes = nextNotes()
+            var notes = nextNotes(status: date < now ? .expired : .pending, date: date)
+            if let lastDay = days.last {
+                if lastDay.date == date {
+                    notes = lastDay.notes + notes
+                    days.removeLast()
+                }
+            }
             days.append(Schedule.Day(date: date, notes: notes))
             date = Time.next(date: date)
         }
@@ -335,14 +377,14 @@ class LiveManager: NotificationManagerDelegate {
         var days: [Schedule.Day] = Array<Schedule.Day>(schedule.days)
         let calendar = Calendar.current
         let now = Date()
-        let startDate = Time.next(date: now, at: trigger.value)
+        let startDate = Time.previous(date: now, at: trigger.value)
         let endDate = calendar.date(byAdding: .day, value: horizon, to: startDate)!
 
         // append days up to the horizon
         let nextDate = Time.next(date: lastDay.date, at: trigger.value)
         var date = nextDate > startDate ? nextDate : startDate
         while date < endDate {
-            let notes = nextNotes()
+            let notes = nextNotes(status: date < now ? .expired : .pending, date: date)
             days.append(Schedule.Day(date: date, notes: notes))
             date = Time.next(date: date)
         }

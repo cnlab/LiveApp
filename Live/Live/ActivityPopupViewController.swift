@@ -31,9 +31,10 @@ class ActivityPopupViewController: PopupViewController {
         rankViewController?.popupViewController = self
     }
 
-    func show(inView parent: UIView, text: String) {
+    func show(inView parent: UIView, text: String, rank: Double) {
         thinkViewController?.textView?.text = text
         rankViewController?.textView?.text = text
+        rankViewController?.slider?.value = Float(rank)
         presentThink()
         super.show(inView: parent, animated: true)
     }

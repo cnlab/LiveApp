@@ -106,19 +106,19 @@ class LiveTabBarController: UITabBarController, Ancestor, LiveManagerDelegate, I
     }
 
 
-    func liveManagerAffirm(_ liveManager: LiveManager, uuid: String, type: String, messageKey: Message.Key) {
+    func liveManagerAffirm(_ liveManager: LiveManager, uuid: String, type: String, messageKey: Message.Key, rank: Double) {
         self.uuid = uuid
         self.type = type
         self.messageKey = messageKey
         if type == "Value" {
-            showValues(messageKey: messageKey)
+            showValues(messageKey: messageKey, rank: rank)
         }
         if type == "Activity" {
-            showActivity(messageKey: messageKey)
+            showActivity(messageKey: messageKey, rank: rank)
         }
     }
 
-    func showValues(messageKey: Message.Key) {
+    func showValues(messageKey: Message.Key, rank: Double) {
         if valuesPopupViewController == nil {
             valuesPopupViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ValuesPopupViewController") as? ValuesPopupViewController
             valuesPopupViewController?.loadViewIfNeeded()
@@ -128,10 +128,10 @@ class LiveTabBarController: UITabBarController, Ancestor, LiveManagerDelegate, I
         guard let message = liveManager.valueMessageManager.find(messageKey: messageKey) else {
             return
         }
-        valuesPopupViewController?.show(inView: view, text: message.format())
+        valuesPopupViewController?.show(inView: view, text: message.format(), rank: rank)
     }
 
-    func showActivity(messageKey: Message.Key) {
+    func showActivity(messageKey: Message.Key, rank: Double) {
         if activityPopupViewController == nil {
             activityPopupViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ActivityPopupViewController") as? ActivityPopupViewController
             activityPopupViewController?.loadViewIfNeeded()
@@ -141,7 +141,7 @@ class LiveTabBarController: UITabBarController, Ancestor, LiveManagerDelegate, I
         guard let message = liveManager.activityMessageManager.find(messageKey: messageKey) else {
             return
         }
-        activityPopupViewController?.show(inView: view, text: message.format())
+        activityPopupViewController?.show(inView: view, text: message.format(), rank: rank)
     }
 
     func affirm(rank: Double) {

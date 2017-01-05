@@ -67,12 +67,14 @@ class Note: JSONConvertable {
     let type: String
     let messageKey: Message.Key
     var status: Status
+    var date: Date
 
-    init(uuid: String, type: String, messageKey: Message.Key, status: Status) {
+    init(uuid: String, type: String, messageKey: Message.Key, status: Status, date: Date) {
         self.uuid = uuid
         self.type = type
         self.messageKey = messageKey
         self.status = status
+        self.date = date
     }
 
     required init(json: [String: Any]) throws {
@@ -80,11 +82,13 @@ class Note: JSONConvertable {
         let type = try JSON.jsonString(json: json, key: "type")
         let messageKey: Message.Key = try JSON.jsonObject(json: json, key: "messageKey")
         let status: Status = try JSON.jsonObject(json: json, key: "status")
+        let date: Date = try JSON.jsonDate(json: json, key: "date")
 
         self.uuid = uuid
         self.type = type
         self.messageKey = messageKey
         self.status = status
+        self.date = date
     }
 
     func json() -> [String: Any] {
@@ -93,6 +97,7 @@ class Note: JSONConvertable {
             "type": JSON.json(string: type),
             "messageKey": JSON.json(object: messageKey),
             "status": JSON.json(object: status),
+            "date": JSON.json(date: date),
         ]
     }
 

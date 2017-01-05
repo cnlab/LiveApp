@@ -20,7 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         let liveManager = LiveManager.shared
-        liveManager.unarchive()
+        if !liveManager.unarchive() {
+            liveManager.archive()
+        }
         liveManager.activate()
 
         if let launchOptions = launchOptions {

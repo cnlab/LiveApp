@@ -10,6 +10,15 @@ import Foundation
 
 class Time {
 
+    static func previous(date: Date, at: DateComponents) -> Date {
+        let calendar = Calendar.current
+        let atDate = calendar.date(bySettingHour: at.hour ?? 0, minute: at.minute ?? 0, second: at.second ?? 0, of: date)!
+        if atDate < date {
+            return atDate
+        }
+        return calendar.date(byAdding: .day, value: -1, to: atDate)!
+    }
+
     static func next(date: Date, at: DateComponents) -> Date {
         let calendar = Calendar.current
         let atDate = calendar.date(bySettingHour: at.hour ?? 0, minute: at.minute ?? 0, second: at.second ?? 0, of: date)!
