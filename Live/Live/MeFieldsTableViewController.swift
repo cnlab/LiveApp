@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MeFieldsTableViewController: UITableViewController {
+class MeFieldsTableViewController: UITableViewController, UITextFieldDelegate {
 
     let weightPerceptionValues = ["perception...", "about right", "heavier than I would like", "lighter than I would like"]
 
@@ -21,6 +21,11 @@ class MeFieldsTableViewController: UITableViewController {
     @IBOutlet var heightButton: UIButton?
 
     var pickerPopupViewController: PickerPopupViewController? = nil
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
 
     func ensurePicker() {
         if pickerPopupViewController == nil {
