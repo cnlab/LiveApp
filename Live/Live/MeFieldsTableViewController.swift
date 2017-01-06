@@ -97,7 +97,7 @@ class MeFieldsTableViewController: UITableViewController, UITextFieldDelegate {
         guard let meViewController = parent as? MeViewController else {
             return
         }
-        let height = LiveManager.shared.personalInformation.height ?? 0
+        let height = LiveManager.shared.personalInformation.value.height ?? 0
         let feet = height / 12
         let inches = height - feet * 12
         pickerPopupViewController?.show(inView: meViewController.view, feet: feet, inches: inches, action: heightChanged)
@@ -130,27 +130,50 @@ class MeFieldsTableViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let personalInformation = LiveManager.shared.personalInformation
+        LiveManager.shared.personalInformation.subscribe(owner: self, observer: personalInformationChanged)
+        update()
+    }
+
+    func personalInformationChanged() {
+        update()
+    }
+
+    func update() {
+        let personalInformation = LiveManager.shared.personalInformation.value
         if let age = personalInformation.age {
             ageTextField?.text = "\(age)"
+        } else {
+            ageTextField?.text = ""
         }
         if let gender = personalInformation.gender {
             select(segmentedControl: genderSegmentedControl, title: gender)
+        } else {
+            genderSegmentedControl?.selectedSegmentIndex = 0
         }
         if let weight = personalInformation.weight {
             weightTextField?.text = "\(weight)"
+        } else {
+            weightTextField?.text = ""
         }
         if let weightPerception = personalInformation.weightPerception {
             weightPerceptionButton?.setTitle(weightPerception, for: .normal)
+        } else {
+            weightPerceptionButton?.setTitle(weightPerceptionValues[0], for: .normal)
         }
         if let height = personalInformation.height {
             heightButton?.setTitle(format(height: height), for: .normal)
+        } else {
+            heightButton?.setTitle(format(height: 0), for: .normal)
         }
         if let zipCode = personalInformation.zipCode {
             zipCodeTextField?.text = zipCode
+        } else {
+            zipCodeTextField?.text = ""
         }
         if let comment = personalInformation.comment {
             commentTextField?.text = comment
+        } else {
+            commentTextField?.text = ""
         }
     }
 
@@ -162,7 +185,7 @@ class MeFieldsTableViewController: UITableViewController, UITextFieldDelegate {
         let height = parse(height: heightButton?.title(for: .normal))
         let zipCode = zipCodeTextField?.text
         let comment = commentTextField?.text
-        LiveManager.shared.personalInformation = PersonalInformation(age: age, gender: gender, weight: weight, weightPerception: weightPerception, height: height, zipCode: zipCode, comment: comment)
+        LiveManager.shared.personalInformation.value = PersonalInformation(age: age, gender: gender, weight: weight, weightPerception: weightPerception, height: height, zipCode: zipCode, comment: comment)
     }
     
 }

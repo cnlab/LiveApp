@@ -14,7 +14,7 @@ class HealthKitManager {
         case healthDataNotAvailable
     }
 
-    var authorized = false
+    var authorized = Observable<Bool>(value: false)
 
     let identifierDateOfBirth = HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.dateOfBirth)!
     let identifierBiologicalSex = HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.biologicalSex)!
@@ -22,8 +22,8 @@ class HealthKitManager {
     let identifierHeight = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)!
     let identifierStepCount = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!
 
-    var bodyMass: HKQuantitySample? = nil
-    var height: HKQuantitySample? = nil
+    var bodyMass = Observable<HKQuantitySample?>(value: nil)
+    var height = Observable<HKQuantitySample?>(value: nil)
 
     let healthStore = HKHealthStore()
 
@@ -48,8 +48,10 @@ class HealthKitManager {
         )
         healthStore.requestAuthorization(toShare: typesToWrite, read: typesToRead) {
             (success, error) -> Void in
-            self.authorized = success
-            completion(success, error as NSError?)
+            DispatchQueue.main.async {
+                self.authorized.value = success
+                completion(success, error as NSError?)
+            }
         }
     }
 
@@ -82,8 +84,16 @@ class HealthKitManager {
     }
 
     func queryMostRecentSamples() {
-        queryMostRecentSample(identifierBodyMass) { self.bodyMass = $0 }
-        queryMostRecentSample(identifierHeight) { self.height = $0 }
+        queryMostRecentSample(identifierBodyMass) { sample in
+            DispatchQueue.main.async {
+                self.bodyMass.value = sample
+            }
+        }
+        queryMostRecentSample(identifierHeight) { sample in
+            DispatchQueue.main.async {
+                self.height.value = sample
+            }
+        }
     }
 
     func saveSample(_ sampleType: HKQuantityType, value: Double) {

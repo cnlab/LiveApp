@@ -72,4 +72,15 @@ class PersonalInformation: JSONConvertable {
         return json
     }
 
+    func bySetting(age: Int? = nil, gender: String? = nil, weight: Int? = nil, weightPerception: String? = nil, height: Int? = nil, zipCode: String? = nil, comment: String? = nil) -> PersonalInformation {
+        let newAge = age != nil ? age : self.age
+        let newGender = gender != nil ? gender : self.gender
+        let newWeight = weight != nil ? weight : self.weight
+        let newWeightPerception = weightPerception != nil ? weightPerception : self.weightPerception
+        let newHeight = height != nil ? height : self.height
+        let newZipCode = zipCode != nil ? zipCode : self.zipCode
+        let newComment = comment != nil ? comment : self.comment
+        return PersonalInformation(age: newAge, gender: newGender, weight: newWeight, weightPerception: newWeightPerception, height: newHeight, zipCode: newZipCode, comment: newComment)
+    }
+
 }

@@ -56,13 +56,7 @@ class LiveManager: NotificationManagerDelegate {
     var messageManagers: [String: MessageManager] {
         get { return ["Value": valueMessageManager, "Activity": activityMessageManager] }
     }
-    var personalInformation: PersonalInformation = PersonalInformation()  {
-        willSet(newValue) {
-            if newValue !== personalInformation {
-                dirty = true
-            }
-        }
-    }
+    var personalInformation = Observable<PersonalInformation>(value: PersonalInformation())
     var shareDataWithResearchers: Bool = false {
         willSet(newValue) {
             if newValue != shareDataWithResearchers {
@@ -92,8 +86,37 @@ class LiveManager: NotificationManagerDelegate {
     }
 
     init() {
+        orderedValues.subscribe(owner: self, observer: orderedValuesChanged)
+        trigger.subscribe(owner: self, observer: triggerChanged)
+        personalInformation.subscribe(owner: self, observer: personalInformationChanged)
+
         notificationManager.delegate = self
         notificationManager.authorized.subscribe(owner: self, observer: notificationManagerAuthorizationChanged)
+
+        healthKitManager.bodyMass.subscribe(owner: self, observer: bodyMassChanged)
+        healthKitManager.height.subscribe(owner: self, observer: heightChanged)
+    }
+
+    func personalInformationChanged() {
+        dirty = true
+    }
+
+    func bodyMassChanged() {
+        if let sample = healthKitManager.bodyMass.value {
+            if personalInformation.value.weight == nil {
+                let weight = Int(sample.quantity.doubleValue(for: HKUnit.pound()))
+                personalInformation.value = personalInformation.value.bySetting(weight: weight)
+            }
+        }
+    }
+
+    func heightChanged() {
+        if let sample = healthKitManager.height.value {
+            if personalInformation.value.height == nil {
+                let height = Int(sample.quantity.doubleValue(for: HKUnit.inch()))
+                personalInformation.value = personalInformation.value.bySetting(height: height)
+            }
+        }
     }
 
     var archivePath: URL {
@@ -135,7 +158,7 @@ class LiveManager: NotificationManagerDelegate {
             "didAuthorizeHealthKit": JSON.json(bool: didAuthorizeHealthKit),
             "didShowGetStarted": JSON.json(bool: didShowGetStarted),
             "surveyManager": JSON.json(object: surveyManager.state),
-            "personalInformation": JSON.json(object: personalInformation),
+            "personalInformation": JSON.json(object: personalInformation.value),
             "shareDataWithResearchers": JSON.json(bool: shareDataWithResearchers),
         ]
         do {
@@ -165,7 +188,7 @@ class LiveManager: NotificationManagerDelegate {
             let didAuthorizeHealthKit: Bool = try JSON.jsonDefaultBool(json: json, key: "didAuthorizeHealthKit")
             let didShowGetStarted: Bool = try JSON.jsonDefaultBool(json: json, key: "didShowGetStarted")
             let surveyManager: SurveyManager.State = try JSON.jsonDefaultObject(json: json, key: "surveyManager", fallback: self.surveyManager.state)
-            let personalInformation: PersonalInformation = try JSON.jsonDefaultObject(json: json, key: "personalInformation", fallback: self.personalInformation)
+            let personalInformation: PersonalInformation = try JSON.jsonDefaultObject(json: json, key: "personalInformation", fallback: self.personalInformation.value)
             let shareDataWithResearchers: Bool = try JSON.jsonDefaultBool(json: json, key: "shareDataWithResearchers")
 
             self.installationUUID = installationUUID
@@ -179,7 +202,7 @@ class LiveManager: NotificationManagerDelegate {
             self.didAuthorizeHealthKit = didAuthorizeHealthKit
             self.didShowGetStarted = didShowGetStarted
             self.surveyManager.state = surveyManager
-            self.personalInformation = personalInformation
+            self.personalInformation.value = personalInformation
             self.shareDataWithResearchers = shareDataWithResearchers
 
             dirty = false
@@ -201,9 +224,6 @@ class LiveManager: NotificationManagerDelegate {
             installationUUID = UUID().uuidString
             dirty = true
         }
-
-        orderedValues.subscribe(owner: self, observer: orderedValuesChanged)
-        trigger.subscribe(owner: self, observer: triggerChanged)
 
         extend()
 
@@ -424,8 +444,9 @@ class LiveManager: NotificationManagerDelegate {
     func refresh() {
         extend()
 
-        if healthKitManager.authorized {
+        if healthKitManager.authorized.value {
             queryDailyStepCounts()
+            queryHealthKitPersonalInformation()
         }
     }
 
@@ -436,7 +457,7 @@ class LiveManager: NotificationManagerDelegate {
             try healthKitManager.authorizeHealthKit { (authorized,  error) -> Void in
                 if authorized {
                     DispatchQueue.main.async {
-                        self.queryDailyStepCounts()
+                        self.healthKitAuthorized()
                     }
                 } else {
                     print("HealthKit authorization denied!")
@@ -450,12 +471,42 @@ class LiveManager: NotificationManagerDelegate {
         }
     }
 
-    func queryHealthKit() {
+    func queryDailyStepCounts() {
+        let _ = healthKitManager.queryDailyStepCounts(week: Time.lastWeek(), handler: dailyStepCounts)
+    }
+
+    func queryHealthKitPersonalInformation() {
+        if let biologicalSex = try? healthKitManager.biologicalSex() {
+            let gender: String?
+            switch biologicalSex {
+            case .male:
+                gender = "Male"
+            case .female:
+                gender = "Female"
+            case .other:
+                gender = "Other"
+            default:
+                gender = nil
+            }
+            if let gender = gender {
+                if personalInformation.value.gender == nil {
+                    personalInformation.value = personalInformation.value.bySetting(gender: gender)
+                }
+            }
+        }
+        if let dateOfBirth = try? healthKitManager.dateOfBirth() {
+            let dateComponents = Calendar.current.dateComponents([.year], from: dateOfBirth, to: Date())
+            let age = dateComponents.year
+            if personalInformation.value.age == nil {
+                personalInformation.value = personalInformation.value.bySetting(age: age)
+            }
+        }
         healthKitManager.queryMostRecentSamples()
     }
 
-    func queryDailyStepCounts() {
-        let _ = healthKitManager.queryDailyStepCounts(week: Time.lastWeek(), handler: dailyStepCounts)
+    func healthKitAuthorized() {
+        queryDailyStepCounts()
+        queryHealthKitPersonalInformation()
     }
 
     func dailyStepCounts(startDate: Date, stepCounts: [Int?]) {
