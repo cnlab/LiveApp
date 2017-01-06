@@ -28,7 +28,15 @@ class SettingsViewController: UIViewController {
     }
 
     func notificationManagerAuthorizationChanged() {
-        showSettingsButton?.isHidden = LiveManager.shared.notificationManager.authorized.value
+        guard let showSettingsButton = showSettingsButton else {
+            return
+        }
+        let hide = LiveManager.shared.notificationManager.authorized.value
+        let hidden = showSettingsButton.isHidden
+        if hide != hidden {
+            showSettingsButton.isHidden = hide
+            view.setNeedsLayout()
+        }
     }
 
     func queryAuthorization() {

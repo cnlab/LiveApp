@@ -446,6 +446,7 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                                     </segments>
                                                     <connections>
                                                         <action selector="fieldChanged" destination="c6z-zU-SlP" eventType="valueChanged" id="t3s-ji-Gs5"/>
+                                                        <action selector="genderChanged" destination="c6z-zU-SlP" eventType="valueChanged" id="33Q-QK-jbb"/>
                                                     </connections>
                                                 </segmentedControl>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9QZ-J4-Xmg">

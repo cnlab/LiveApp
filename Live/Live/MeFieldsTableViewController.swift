@@ -116,6 +116,10 @@ class MeFieldsTableViewController: UITableViewController, UITextFieldDelegate {
         segmentedControl?.selectedSegmentIndex = 0
     }
 
+    @IBAction func genderChanged() {
+        UIApplication.shared.sendAction(#selector(UIApplication.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+
     func title(segmentedControl: UISegmentedControl?) -> String? {
         guard let segmentedControl = segmentedControl else {
             return nil

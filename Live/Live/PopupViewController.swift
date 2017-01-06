@@ -58,6 +58,8 @@ class PopupViewController: UIViewController {
     }
 
     func show(inView parent: UIView, animated: Bool) {
+        UIApplication.shared.sendAction(#selector(UIApplication.resignFirstResponder), to: nil, from: nil, for: nil)
+        
         parent.addSubview(self.view)
         if animated {
             showAnimate()

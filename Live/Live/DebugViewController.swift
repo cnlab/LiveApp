@@ -41,7 +41,7 @@ class DebugViewController: UIViewController, MFMailComposeViewControllerDelegate
             mailCompose.setMessageBody("See attachment for details.", isHTML: false)
             let path = LiveManager.shared.archivePath
             if let data = try? Data(contentsOf: path, options: []) {
-                let fileName = path.relativePath
+                let fileName = path.lastPathComponent
                 mailCompose.addAttachmentData(data, mimeType: "text/plain", fileName: fileName)
             }
             present(mailCompose, animated: true, completion: nil)
