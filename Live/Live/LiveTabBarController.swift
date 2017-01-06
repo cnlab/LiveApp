@@ -8,9 +8,10 @@
 
 import UIKit
 
-class LiveTabBarController: UITabBarController, Ancestor, LiveManagerDelegate, ImportancePopupViewControllerDelegate, ValuesPopupViewControllerDelegate, ActivityPopupViewControllerDelegate {
+class LiveTabBarController: UITabBarController, Ancestor, LiveManagerDelegate, ImportancePopupViewControllerDelegate, ShareReminderPopupViewControllerDelegate, ValuesPopupViewControllerDelegate, ActivityPopupViewControllerDelegate {
 
     var importancePopupViewController: ImportancePopupViewController?
+    var shareReminderPopupViewController: ShareReminderPopupViewController?
 
     var valuesPopupViewController: ValuesPopupViewController?
     var activityPopupViewController: ActivityPopupViewController?
@@ -44,6 +45,21 @@ class LiveTabBarController: UITabBarController, Ancestor, LiveManagerDelegate, I
         if !liveManager.didShowGetStarted {
             DispatchQueue.main.async {
                 self.showGetStarted()
+            }
+        } else {
+            if !liveManager.didShowShareReminder {
+                if liveManager.shareDataWithResearchers {
+                    liveManager.didShowShareReminder = true
+                } else {
+                    if let installationDate = liveManager.installationDate {
+                        let reminderTimeInterval = 7 * 24 * 60 * 60.0
+                        if Date().timeIntervalSince(installationDate) > reminderTimeInterval {
+                            DispatchQueue.main.async {
+                                self.showShareReminder()
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -129,6 +145,21 @@ class LiveTabBarController: UITabBarController, Ancestor, LiveManagerDelegate, I
         importancePopupViewController?.show(inView: view, values: values)
     }
 
+    func shareReminderPopupViewController(_ shareReminderPopupViewController: ShareReminderPopupViewController) {
+        let liveManager = LiveManager.shared
+        liveManager.didShowShareReminder = true
+
+        selectShare()
+    }
+
+    func showShareReminder() {
+        if shareReminderPopupViewController == nil {
+            shareReminderPopupViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ShareReminderPopupViewController") as? ShareReminderPopupViewController
+            shareReminderPopupViewController?.loadViewIfNeeded()
+            shareReminderPopupViewController?.delegate = self
+        }
+        shareReminderPopupViewController?.show(inView: view)
+    }
 
     func liveManagerAffirm(_ liveManager: LiveManager, uuid: String, type: String, messageKey: Message.Key, rank: Double) {
         self.uuid = uuid

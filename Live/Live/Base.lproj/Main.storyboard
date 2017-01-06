@@ -1163,6 +1163,33 @@ Cg
             </objects>
             <point key="canvasLocation" x="1593.75" y="-2148.5915492957747"/>
         </scene>
+        <!--Share Reminder Popup View Controller-->
+        <scene sceneID="Ten-lm-RGf">
+            <objects>
+                <viewController storyboardIdentifier="ShareReminderPopupViewController" id="yAA-2i-TAd" customClass="ShareReminderPopupViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GFw-uR-1UR"/>
+                        <viewControllerLayoutGuide type="bottom" id="X9K-8H-UdV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="68v-Tx-7sf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XsE-Ot-CZ6">
+                                <rect key="frame" x="40" y="220" width="240" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="MR0-f3-G1K" kind="embed" id="K3A-pm-mma"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aut-XE-dpI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2328.75" y="-2149.6478873239439"/>
+        </scene>
         <!--Activity Popup View Controller-->
         <scene sceneID="BRZ-Lu-DFA">
             <objects>
@@ -1577,6 +1604,44 @@ Your next survey is due in ## days</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WgN-D3-AsU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2328.75" y="1897.7112676056338"/>
+        </scene>
+        <!--Share Reminder View Controller-->
+        <scene sceneID="VrE-CB-T2Y">
+            <objects>
+                <viewController id="MR0-f3-G1K" customClass="ShareReminderViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lsR-CY-K9D">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="162"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="You can chose to share the data tracked in the app to help us improve the experience." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5oe-lm-Hjh">
+                                <rect key="frame" x="16" y="20" width="208" height="84"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="62I-yL-cAz">
+                                <rect key="frame" x="16" y="112" width="208" height="30"/>
+                                <state key="normal" title="Show Sharing Options"/>
+                                <connections>
+                                    <action selector="doneAction" destination="MR0-f3-G1K" eventType="touchUpInside" id="4od-kn-jnM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5oe-lm-Hjh" firstAttribute="leading" secondItem="lsR-CY-K9D" secondAttribute="leadingMargin" id="2yv-99-2kU"/>
+                            <constraint firstAttribute="bottom" secondItem="62I-yL-cAz" secondAttribute="bottom" constant="20" symbolic="YES" id="8qY-zT-794"/>
+                            <constraint firstItem="5oe-lm-Hjh" firstAttribute="leading" secondItem="62I-yL-cAz" secondAttribute="leading" id="Q0m-sd-l4X"/>
+                            <constraint firstItem="5oe-lm-Hjh" firstAttribute="top" secondItem="lsR-CY-K9D" secondAttribute="top" constant="20" symbolic="YES" id="hOH-aS-6uk"/>
+                            <constraint firstItem="5oe-lm-Hjh" firstAttribute="trailing" secondItem="62I-yL-cAz" secondAttribute="trailing" id="jPD-08-dMC"/>
+                            <constraint firstItem="5oe-lm-Hjh" firstAttribute="trailing" secondItem="lsR-CY-K9D" secondAttribute="trailingMargin" id="qiJ-0p-9nd"/>
+                            <constraint firstItem="62I-yL-cAz" firstAttribute="top" secondItem="5oe-lm-Hjh" secondAttribute="bottom" constant="8" symbolic="YES" id="sye-uK-jGw"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qcu-CO-Ziq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2753" y="-2147"/>
         </scene>
     </scenes>
     <resources>

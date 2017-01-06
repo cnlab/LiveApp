@@ -130,6 +130,13 @@ class JSON {
         return date
     }
 
+    static func jsonOptionalDate(json: [String: Any], key: String) throws -> Date? {
+        if json[key] == nil {
+            return nil
+        }
+        return try jsonDate(json: json, key: key)
+    }
+
     static func jsonDefaultDate(json: [String: Any], key: String, fallback: Date) throws -> Date {
         if json[key] == nil {
             return fallback

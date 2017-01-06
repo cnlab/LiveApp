@@ -56,6 +56,8 @@
 		929CE6A91DB5544100330FFB /* ValuesPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929CE6A81DB5544100330FFB /* ValuesPopupViewController.swift */; };
 		929CE6AB1DB5548000330FFB /* ValuesThinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929CE6AA1DB5548000330FFB /* ValuesThinkViewController.swift */; };
 		929CE6AD1DB5548C00330FFB /* ValuesRankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929CE6AC1DB5548C00330FFB /* ValuesRankViewController.swift */; };
+		92A1D5F71E1F3BBA004E5D3F /* ShareReminderPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A1D5F61E1F3BBA004E5D3F /* ShareReminderPopupViewController.swift */; };
+		92A1D5F91E1F3BD6004E5D3F /* ShareReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A1D5F81E1F3BD6004E5D3F /* ShareReminderViewController.swift */; };
 		92B2F4CB1E134E92002A3CF4 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B2F4C91E134E92002A3CF4 /* checked.png */; };
 		92B2F4CC1E134E92002A3CF4 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B2F4CA1E134E92002A3CF4 /* unchecked.png */; };
 		92B89C501E15A92F00E7D5CC /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B89C4F1E15A92F00E7D5CC /* ShareViewController.swift */; };
@@ -205,6 +207,8 @@
 		929CE6A81DB5544100330FFB /* ValuesPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesPopupViewController.swift; sourceTree = "<group>"; };
 		929CE6AA1DB5548000330FFB /* ValuesThinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesThinkViewController.swift; sourceTree = "<group>"; };
 		929CE6AC1DB5548C00330FFB /* ValuesRankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesRankViewController.swift; sourceTree = "<group>"; };
+		92A1D5F61E1F3BBA004E5D3F /* ShareReminderPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareReminderPopupViewController.swift; sourceTree = "<group>"; };
+		92A1D5F81E1F3BD6004E5D3F /* ShareReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareReminderViewController.swift; sourceTree = "<group>"; };
 		92B2F4C91E134E92002A3CF4 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		92B2F4CA1E134E92002A3CF4 /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
 		92B89C4F1E15A92F00E7D5CC /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -303,8 +307,12 @@
 				926ECB271DB9639A00A36584 /* LiveTabBarController.swift */,
 				92CAC2421DB2BF21009615C3 /* Note.swift */,
 				92DA5F951DAFF2EB00132B16 /* Schedule.swift */,
-				92F7CDBD1DAF033E009E2924 /* NotificationManager.swift */,
 				9255DC4D1E1D7CAD00B931E3 /* PersonalInformation.swift */,
+				92F7CDBD1DAF033E009E2924 /* NotificationManager.swift */,
+				923E62BD1E14526B00D191EC /* ImportancePopupViewController.swift */,
+				923E62B91E14522700D191EC /* ImportanceViewController.swift */,
+				92A1D5F61E1F3BBA004E5D3F /* ShareReminderPopupViewController.swift */,
+				92A1D5F81E1F3BD6004E5D3F /* ShareReminderViewController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -380,8 +388,6 @@
 				924878331D8733C2000C86FF /* ValueMessageManager.swift */,
 				924878351D873A92000C86FF /* ActivityMessageManager.swift */,
 				924878391D873B3E000C86FF /* MessageManager.swift */,
-				923E62B91E14522700D191EC /* ImportanceViewController.swift */,
-				923E62BD1E14526B00D191EC /* ImportancePopupViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -796,6 +802,7 @@
 				924991A11E1C1CFC002B7E97 /* SurveyManager.swift in Sources */,
 				92CAC2431DB2BF21009615C3 /* Note.swift in Sources */,
 				929CE6A91DB5544100330FFB /* ValuesPopupViewController.swift in Sources */,
+				92A1D5F91E1F3BD6004E5D3F /* ShareReminderViewController.swift in Sources */,
 				92CA91981D8304B9000491CD /* AppDelegate.swift in Sources */,
 				926ECB311DB975EF00A36584 /* ActivityRankViewController.swift in Sources */,
 				926ECB2D1DB975B300A36584 /* ActivityPopupViewController.swift in Sources */,
@@ -814,6 +821,7 @@
 				924991A31E1C3295002B7E97 /* Ancestor.swift in Sources */,
 				9291F68D1DAC306500042F42 /* Time.swift in Sources */,
 				92F7CDBE1DAF033E009E2924 /* NotificationManager.swift in Sources */,
+				92A1D5F71E1F3BBA004E5D3F /* ShareReminderPopupViewController.swift in Sources */,
 				925F5ABB1E15F6E70051DF1B /* MeFieldsTableViewController.swift in Sources */,
 				927E72AA1E1B4135003CFD5A /* SurveyFormViewController.swift in Sources */,
 				92986D921D99A5FF008B8533 /* SurveyViewController.swift in Sources */,

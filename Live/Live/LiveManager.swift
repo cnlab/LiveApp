@@ -26,6 +26,7 @@ class LiveManager: NotificationManagerDelegate {
         let stepCounts: [Int?]
     }
 
+    var installationDate: Date? = nil
     var installationUUID: String? = nil
     var delegate: LiveManagerDelegate?
     let notificationManager = createNotificationManager()
@@ -48,6 +49,13 @@ class LiveManager: NotificationManagerDelegate {
     var didShowGetStarted = false {
         willSet(newValue) {
             if newValue != didShowGetStarted {
+                dirty = true
+            }
+        }
+    }
+    var didShowShareReminder = false {
+        willSet(newValue) {
+            if newValue != didShowShareReminder {
                 dirty = true
             }
         }
@@ -147,6 +155,7 @@ class LiveManager: NotificationManagerDelegate {
 
     func archive() {
         let json: [String: Any] = [
+            "installationDate": JSON.json(date: installationDate ?? Date()),
             "installationUUID": JSON.json(string: installationUUID ?? ""),
             "modificationDate": JSON.json(date: modificationDate),
             "trigger": LiveManager.json(dateComponents: trigger.value),
@@ -157,6 +166,7 @@ class LiveManager: NotificationManagerDelegate {
             "didAuthorizeNotificationManager": JSON.json(bool: didAuthorizeNotificationManager),
             "didAuthorizeHealthKit": JSON.json(bool: didAuthorizeHealthKit),
             "didShowGetStarted": JSON.json(bool: didShowGetStarted),
+            "didShowShareReminder": JSON.json(bool: didShowShareReminder),
             "surveyManager": JSON.json(object: surveyManager.state),
             "personalInformation": JSON.json(object: personalInformation.value),
             "shareDataWithResearchers": JSON.json(bool: shareDataWithResearchers),
@@ -177,6 +187,7 @@ class LiveManager: NotificationManagerDelegate {
                 throw JSON.SerializationError.invalid("root")
             }
 
+            let installationDate = try JSON.jsonOptionalDate(json: json, key: "installationDate")
             let installationUUID = try JSON.jsonOptionalString(json: json, key: "installationUUID")
             let modificationDate = try JSON.jsonDefaultDate(json: json, key: "modificationDate", fallback: self.modificationDate)
             let trigger = try LiveManager.jsonDefaultDateComponents(json: json, key: "trigger", fallback: self.trigger.value)
@@ -187,10 +198,12 @@ class LiveManager: NotificationManagerDelegate {
             let didAuthorizeNotificationManager: Bool = try JSON.jsonDefaultBool(json: json, key: "didAuthorizeNotificationManager")
             let didAuthorizeHealthKit: Bool = try JSON.jsonDefaultBool(json: json, key: "didAuthorizeHealthKit")
             let didShowGetStarted: Bool = try JSON.jsonDefaultBool(json: json, key: "didShowGetStarted")
+            let didShowShareReminder: Bool = try JSON.jsonDefaultBool(json: json, key: "didShowShareReminder")
             let surveyManager: SurveyManager.State = try JSON.jsonDefaultObject(json: json, key: "surveyManager", fallback: self.surveyManager.state)
             let personalInformation: PersonalInformation = try JSON.jsonDefaultObject(json: json, key: "personalInformation", fallback: self.personalInformation.value)
             let shareDataWithResearchers: Bool = try JSON.jsonDefaultBool(json: json, key: "shareDataWithResearchers")
 
+            self.installationDate = installationDate
             self.installationUUID = installationUUID
             self.modificationDate = modificationDate
             self.trigger.value = trigger
@@ -201,6 +214,7 @@ class LiveManager: NotificationManagerDelegate {
             self.didAuthorizeNotificationManager = didAuthorizeNotificationManager
             self.didAuthorizeHealthKit = didAuthorizeHealthKit
             self.didShowGetStarted = didShowGetStarted
+            self.didShowShareReminder = didShowShareReminder
             self.surveyManager.state = surveyManager
             self.personalInformation.value = personalInformation
             self.shareDataWithResearchers = shareDataWithResearchers
@@ -221,6 +235,7 @@ class LiveManager: NotificationManagerDelegate {
 
     func activate() {
         if installationUUID == nil {
+            installationDate = Date()
             installationUUID = UUID().uuidString
             dirty = true
         }
