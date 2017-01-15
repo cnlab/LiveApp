@@ -43,13 +43,18 @@ class Layout {
             return
         }
 
-        let topMargin = viewController.topLayoutGuide.length + insets.top
-        let bottomMargin = viewController.bottomLayoutGuide.length + insets.bottom
-        let x: CGFloat = insets.left
-        var y: CGFloat = topMargin
-        let width = viewController.view.bounds.width - insets.right - insets.left
-        let contentHeight = view.bounds.height - topMargin - bottomMargin
+        var fullInsets = insets
+        fullInsets.top += viewController.topLayoutGuide.length
+        fullInsets.bottom += viewController.bottomLayoutGuide.length
 
+        vertical(viewController: viewController, view: view, flexibleView: flexibleView, insets: fullInsets, spacing: spacing)
+    }
+
+    static func vertical(viewController: UIViewController, view: UIView, flexibleView: UIView? = nil, insets: UIEdgeInsets = UIEdgeInsets(top: 8.0, left: 16.0, bottom: 8.0, right: 16.0), spacing: CGFloat = 8.0) {
+        let x: CGFloat = insets.left
+        let y: CGFloat = insets.top
+        let width = view.bounds.width - insets.right - insets.left
+        let contentHeight = view.bounds.height - insets.top - insets.bottom
         let flexibleHeight: CGFloat?
         if let flexibleView = flexibleView {
             flexibleHeight = contentHeight - Layout.totalHeight(subviews: view.subviews, excluding: [flexibleView], spacing: spacing)
@@ -57,14 +62,14 @@ class Layout {
             flexibleHeight = nil
         }
 
+        var cy = y
         for subview in view.subviews {
             if subview.isHidden {
                 break
             }
-            Layout.place(subview: subview, x: x, y: &y, width: width, height: subview == flexibleView ? flexibleHeight : nil)
-            y += spacing
+            Layout.place(subview: subview, x: x, y: &cy, width: width, height: subview == flexibleView ? flexibleHeight : nil)
+            cy += spacing
         }
     }
-
 
 }

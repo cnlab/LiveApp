@@ -48,7 +48,7 @@ import UIKit
         }
     }
 
-    @IBInspectable open var defaultStepCounts: String = "nil, 872, 3701, 2000, 440, 2032, 12007"
+    @IBInspectable open var defaultStepCounts: String = "1003, 2872, 3701, 4600, 2332, 740, 4900"
     open var defaultStepCountsArray: [Int?] {
         get {
             var stepCounts: [Int?] = []

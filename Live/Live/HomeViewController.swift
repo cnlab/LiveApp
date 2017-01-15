@@ -19,9 +19,9 @@ class HomeViewController: UIViewController {
     @IBOutlet var valueTextView: UITextView?
     @IBOutlet var activityTextView: UITextView?
 
-    @IBInspectable var unratedPrefix: String = "▶︎"
+    @IBInspectable var unratedSuffix: String = "▶︎"
     @IBInspectable var unratedColor: UIColor = UIColor.orange
-    @IBInspectable var ratedPrefix: String = "✔︎"
+    @IBInspectable var ratedSuffix: String = "✔︎"
     @IBInspectable var ratedColor: UIColor = UIColor(hue: 120.0 / 360.0, saturation: 1.0, brightness: 0.5, alpha: 1.0)
 
     @IBInspectable var averageStepsInsufficientData: String = "Average steps will be calculated on day 7."
@@ -133,12 +133,11 @@ class HomeViewController: UIViewController {
 
         let liveManager = LiveManager.shared
         if let message = liveManager.message(forNote: note) {
-            let prefix = note!.status.isRated ? ratedPrefix : unratedPrefix
-            let color = note!.status.isRated ? ratedColor : unratedColor
             let message = message.format()
-            let string = NSMutableAttributedString(string: prefix)
-            string.addAttribute(NSForegroundColorAttributeName, value: color, range: NSRange(location: 0, length: string.length))
-            string.append(NSAttributedString(string: " \(message)"))
+            let string = NSMutableAttributedString(string: "\(message) ")
+            let suffix = note!.status.isRated ? ratedSuffix : unratedSuffix
+            let color = note!.status.isRated ? ratedColor : unratedColor
+            string.append(NSAttributedString(string: suffix, attributes: [NSForegroundColorAttributeName: color]))
             view.attributedText = string
         } else {
             view.text = "?"

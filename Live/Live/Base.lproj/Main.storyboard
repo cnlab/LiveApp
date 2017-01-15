@@ -38,6 +38,8 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n3A-Me-v6X">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="235"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.94723588228225708" blue="0.80058354139328003" alpha="0.73951198630136983" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="Track Your Steps"/>
                                         <connections>
                                             <action selector="respondToStepsTouched:" destination="9pv-A4-QxB" eventType="touchUpInside" id="ytA-Vs-D75"/>
@@ -106,7 +108,7 @@ five</string>
                                 <rect key="frame" x="16" y="28" width="288" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">To get started, take a moment to think about what is important to you. 
+                                <string key="text">Take a moment to think about what is important to you. 
 
 Drag the value words in order of importance to you.
 
@@ -346,7 +348,7 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share With Researchers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bh7-gY-LUV">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bh7-gY-LUV">
                                                     <rect key="frame" x="8" y="11" width="224" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -746,9 +748,9 @@ http://cn.asc.upenn.edu</string>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7k-gT-VUs">
                                 <rect key="frame" x="16" y="20" width="288" height="119"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">You will get 2 notifications a day.
+                                <string key="text">We will send you a daily notification. 
 
-What time do you want to receive the first one?</string>
+What time do you want to receive it?</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textView>
@@ -1035,27 +1037,23 @@ Data is anonymous and has a random ID assigned to it. We do not share your data 
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1g-Fr-4yW">
                                 <rect key="frame" x="40" y="72" width="240" height="424"/>
-                                <subviews>
-                                    <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hiI-l7-S2x">
-                                        <rect key="frame" x="8" y="8" width="224" height="408"/>
-                                        <connections>
-                                            <segue destination="d6f-4P-Ofx" kind="embed" id="BQe-uL-NZq"/>
-                                        </connections>
-                                    </containerView>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="hiI-l7-S2x" firstAttribute="top" secondItem="S1g-Fr-4yW" secondAttribute="topMargin" id="EPY-jY-MYE"/>
-                                    <constraint firstItem="hiI-l7-S2x" firstAttribute="bottom" secondItem="S1g-Fr-4yW" secondAttribute="bottomMargin" id="RGK-k2-Xlh"/>
-                                    <constraint firstItem="hiI-l7-S2x" firstAttribute="leading" secondItem="S1g-Fr-4yW" secondAttribute="leadingMargin" id="m9J-nf-2yu"/>
-                                    <constraint firstItem="hiI-l7-S2x" firstAttribute="trailing" secondItem="S1g-Fr-4yW" secondAttribute="trailingMargin" id="nMf-5I-zVM"/>
-                                </constraints>
                             </view>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hiI-l7-S2x">
+                                <rect key="frame" x="48" y="61" width="224" height="446"/>
+                                <connections>
+                                    <segue destination="d6f-4P-Ofx" kind="embed" id="BQe-uL-NZq"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="hiI-l7-S2x" firstAttribute="top" secondItem="aji-jp-9JU" secondAttribute="topMargin" constant="61" id="Du5-zZ-dTS"/>
                             <constraint firstItem="S1g-Fr-4yW" firstAttribute="top" secondItem="flK-Ed-Dlf" secondAttribute="bottom" constant="52" id="G0y-t8-cYw"/>
                             <constraint firstItem="S1g-Fr-4yW" firstAttribute="leading" secondItem="aji-jp-9JU" secondAttribute="leadingMargin" constant="24" id="GvS-ti-72U"/>
+                            <constraint firstItem="hiI-l7-S2x" firstAttribute="leading" secondItem="aji-jp-9JU" secondAttribute="leadingMargin" constant="32" id="HxE-of-li7"/>
+                            <constraint firstItem="hiI-l7-S2x" firstAttribute="trailing" secondItem="aji-jp-9JU" secondAttribute="trailingMargin" constant="-32" id="NlR-aY-FIT"/>
+                            <constraint firstItem="hiI-l7-S2x" firstAttribute="bottom" secondItem="aji-jp-9JU" secondAttribute="bottomMargin" constant="-61" id="RvP-qF-tP9"/>
                             <constraint firstItem="S1g-Fr-4yW" firstAttribute="centerY" secondItem="aji-jp-9JU" secondAttribute="centerY" id="rwf-Je-Nlm"/>
                             <constraint firstItem="S1g-Fr-4yW" firstAttribute="centerX" secondItem="aji-jp-9JU" secondAttribute="centerX" id="scK-iw-fus"/>
                         </constraints>
@@ -1067,7 +1065,7 @@ Data is anonymous and has a random ID assigned to it. We do not share your data 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lHs-Lx-cfD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="801" y="-2147"/>
+            <point key="canvasLocation" x="800.625" y="-2147.5352112676055"/>
         </scene>
         <!--Importance View Controller-->
         <scene sceneID="1Ga-mk-gi8">
@@ -1078,16 +1076,17 @@ Data is anonymous and has a random ID assigned to it. We do not share your data 
                         <viewControllerLayoutGuide type="bottom" id="Prx-uM-bVg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zg7-lh-zEd">
-                        <rect key="frame" x="0.0" y="0.0" width="224" height="408"/>
+                        <rect key="frame" x="0.0" y="0.0" width="224" height="446"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cS6-Lf-mEL">
-                                <rect key="frame" x="0.0" y="0.0" width="224" height="123"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cS6-Lf-mEL">
+                                <rect key="frame" x="0.0" y="0.0" width="224" height="146"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">Connect to your Values
-Increase your Physical Activity</string>
+Increase your Physical Activity
+</string>
                                         <attributes>
                                             <font key="NSFont" size="15" name=".SFNSText"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -1098,45 +1097,67 @@ Increase your Physical Activity</string>
 Cg
 </string>
                                         <attributes>
-                                            <font key="NSFont" metaFont="system" size="14"/>
+                                            <font key="NSFont" metaFont="smallSystem"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment>
-                                        <string key="content" base64-UTF8="YES">
-Cg
-</string>
+                                    <fragment content="To help you get more active, we will send ">
                                         <attributes>
-                                            <color key="NSColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="12" name=".AppleSystemUIFont"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                            <font key="NSFont" metaFont="smallSystem"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" minimumLineHeight="17" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                            <real key="NSStrokeWidth" value="0.0"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="To help you get more active, we will send you 2 messages a day and ask you to respond to a couple of quick questions.">
+                                    <fragment content="you daily reminders of your values and provide tips for being more active">
                                         <attributes>
-                                            <color key="NSColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="12" name=".AppleSystemUIFont"/>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
+                                            <font key="NSFont" metaFont="smallSystem"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" minimumLineHeight="17" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
+                                            <real key="NSStrokeWidth" value="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=".">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                            <font key="NSFont" metaFont="smallSystem"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" minimumLineHeight="17" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                            <real key="NSStrokeWidth" value="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your most important value:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Om-Wh-DsS">
-                                <rect key="frame" x="0.0" y="131" width="224" height="15"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLR-IP-b45">
-                                <rect key="frame" x="0.0" y="154" width="224" height="216"/>
+                                <rect key="frame" x="0.0" y="192" width="224" height="216"/>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pf4-B6-ndW">
-                                <rect key="frame" x="0.0" y="378" width="224" height="30"/>
-                                <state key="normal" title="Get Started"/>
+                                <rect key="frame" x="0.0" y="416" width="224" height="30"/>
+                                <state key="normal" title="Let's Go"/>
                                 <connections>
                                     <action selector="doneAction" destination="d6f-4P-Ofx" eventType="touchUpInside" id="VLs-SC-eek"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Om-Wh-DsS">
+                                <rect key="frame" x="0.0" y="154" width="224" height="30"/>
+                                <string key="text">Choose your most important value
+to get started</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1427,7 +1448,7 @@ Cg
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OLg-Wd-Wzk">
-                                <rect key="frame" x="16" y="20" width="256" height="153"/>
+                                <rect key="frame" x="16" y="20" width="288" height="178"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Your phone may not track some kinds of activities like swimming or yoga. To keep track of them, you can answer questions about other activities every other week.
@@ -1437,35 +1458,44 @@ The SURVEY tab will be highlighted when you have one to complete.
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Yza-b7-LA7">
-                                <rect key="frame" x="16" y="181" width="256" height="157"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ur-Le-H0N">
+                                <rect key="frame" x="16" y="206" width="288" height="273"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">This app was developed by researchers. You can help them improve it by sharing your survey data and steps. 
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yza-b7-LA7">
+                                        <rect key="frame" x="8" y="20" width="268" height="157"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">This app was developed by researchers. You can help them improve it by sharing your survey data and steps. 
 
 All shared data is anonymous and will only be used to improve the app experience.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBB-S8-RXR">
-                                <rect key="frame" x="16" y="346" width="256" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Share With Researchers"/>
-                                <connections>
-                                    <action selector="share" destination="xo4-wB-Yo4" eventType="touchUpInside" id="F1o-9l-jqP"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="936-fU-zuX">
-                                <rect key="frame" x="16" y="384" width="256" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="About The Researchers"/>
-                                <connections>
-                                    <action selector="about" destination="xo4-wB-Yo4" eventType="touchUpInside" id="XJW-9J-XnL"/>
-                                </connections>
-                            </button>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBB-S8-RXR">
+                                        <rect key="frame" x="8" y="185" width="268" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Share Data"/>
+                                        <connections>
+                                            <action selector="share" destination="xo4-wB-Yo4" eventType="touchUpInside" id="F1o-9l-jqP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="936-fU-zuX">
+                                        <rect key="frame" x="8" y="223" width="268" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="About The Researchers"/>
+                                        <connections>
+                                            <action selector="about" destination="xo4-wB-Yo4" eventType="touchUpInside" id="XJW-9J-XnL"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.9865993857383728" green="0.89929252862930298" blue="0.80249017477035522" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="tipView" destination="9ur-Le-H0N" id="La6-Kb-cuh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bRh-bY-JKH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1609,6 +1639,10 @@ Your next survey is due in ## days</string>
         <scene sceneID="VrE-CB-T2Y">
             <objects>
                 <viewController id="MR0-f3-G1K" customClass="ShareReminderViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3PH-hU-I4R"/>
+                        <viewControllerLayoutGuide type="bottom" id="CeA-AO-W21"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lsR-CY-K9D">
                         <rect key="frame" x="0.0" y="0.0" width="240" height="162"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1641,7 +1675,7 @@ Your next survey is due in ## days</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qcu-CO-Ziq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2753" y="-2147"/>
+            <point key="canvasLocation" x="3077" y="-2148"/>
         </scene>
     </scenes>
     <resources>

@@ -10,6 +10,8 @@ import UIKit
 
 class SurveyIntroductionViewController: UIViewController {
 
+    @IBOutlet var tipView: UIView?
+    
     var shareCallback: ((Void) -> Void)? = nil
     var aboutCallback: ((Void) -> Void)? = nil
 
@@ -17,8 +19,15 @@ class SurveyIntroductionViewController: UIViewController {
         super.viewDidLoad()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        tipView?.isHidden = LiveManager.shared.shareDataWithResearchers
+    }
+
     open override func viewDidLayoutSubviews() {
         Layout.vertical(viewController: self)
+        if let tipView = tipView {
+            Layout.vertical(viewController: self, view: tipView, flexibleView: nil, insets: UIEdgeInsets())
+        }
     }
 
     @IBAction func share() {
