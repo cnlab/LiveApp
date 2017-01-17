@@ -492,8 +492,7 @@ class LiveManager: NotificationManagerDelegate {
     }
 
     func dailyStepCounts(startDate: Date, stepCounts: [Int?]) {
-//        dailyStepCounts.value = DailyStepCounts(startDate: startDate, stepCounts: stepCounts)
-        dailyStepCounts.value = DailyStepCounts(startDate: startDate, stepCounts: [0, 0, 0, 0, 10, 20, 0])
+        dailyStepCounts.value = DailyStepCounts(startDate: startDate, stepCounts: stepCounts)
     }
 
 }
