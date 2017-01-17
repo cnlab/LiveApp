@@ -135,8 +135,9 @@ class HomeViewController: UIViewController {
         if let message = liveManager.message(forNote: note) {
             let message = message.format()
             let string = NSMutableAttributedString(string: "\(message) ")
-            let suffix = note!.status.isRated ? ratedSuffix : unratedSuffix
-            let color = note!.status.isRated ? ratedColor : unratedColor
+            let rated = note!.rating != nil
+            let suffix = rated ? ratedSuffix : unratedSuffix
+            let color = rated ? ratedColor : unratedColor
             string.append(NSAttributedString(string: suffix, attributes: [NSForegroundColorAttributeName: color]))
             view.attributedText = string
         } else {
@@ -162,13 +163,7 @@ class HomeViewController: UIViewController {
     func respondToValueTouched() {
         let liveManager = LiveManager.shared
         if let note = liveManager.valueNote.value {
-            var rank = 0.5
-            switch note.status {
-            case .rated(_, let ratedRank):
-                rank = ratedRank
-            default:
-                break
-            }
+            let rank = note.rating?.rank ?? 0.5
             liveManager.delegate?.liveManagerAffirm(liveManager, uuid: note.uuid, type: note.type, messageKey: note.messageKey, rank: rank)
         }
     }
@@ -176,13 +171,7 @@ class HomeViewController: UIViewController {
     func respondToActivityTouched() {
         let liveManager = LiveManager.shared
         if let note = liveManager.activityNote.value {
-            var rank = 0.5
-            switch note.status {
-            case .rated(_, let ratedRank):
-                rank = ratedRank
-            default:
-                break
-            }
+            let rank = note.rating?.rank ?? 0.5
             liveManager.delegate?.liveManagerAffirm(liveManager, uuid: note.uuid, type: note.type, messageKey: note.messageKey, rank: rank)
         }
     }

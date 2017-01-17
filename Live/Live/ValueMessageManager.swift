@@ -45,6 +45,11 @@ class ValueMessageManager: MessageManager {
 
     }
 
+    var type: String {
+        get {
+            return "Value"
+        }
+    }
     let messages: [Message]
     var state: State
 
@@ -64,15 +69,26 @@ class ValueMessageManager: MessageManager {
 
     }
 
+    static let independence = "Independence"
+    static let politics = "Politics"
+    static let spirituality = "Spirituality"
+    static let humor = "Humor"
+    static let fame = "Fame"
+    static let powerAndStatus = "Power & Status"
+    static let familyAndFriends = "Family & Friends"
+    static let compassionAndKindness = "Compassion & Kindness"
+
+    static let groups = [familyAndFriends, compassionAndKindness, spirituality, humor, independence, powerAndStatus, politics, fame]
+
     init() {
-        let independence = "Independence"
-        let politics = "Politics"
-        let spirituality = "Spirituality"
-        let humor = "Humor"
-        let fame = "Fame"
-        let powerAndStatus = "Power and Status"
-        let familyAndFriends = "Family and Friends"
-        let compassionAndKindness = "Compassion and Kindness"
+        let independence = ValueMessageManager.independence
+        let politics = ValueMessageManager.politics
+        let spirituality = ValueMessageManager.spirituality
+        let humor = ValueMessageManager.humor
+        let fame = ValueMessageManager.fame
+        let powerAndStatus = ValueMessageManager.powerAndStatus
+        let familyAndFriends = ValueMessageManager.familyAndFriends
+        let compassionAndKindness = ValueMessageManager.compassionAndKindness
 
         state = State(filterGroup: independence)
 

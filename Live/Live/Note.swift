@@ -10,26 +10,28 @@ import Foundation
 
 class Note: JSONConvertable {
 
+    // pending: The note is scheduled for a future date.
+    // current: The note is current.
+    // expired: The note has expired (there is a newer current note).
+    // closed: The note is not registered in the notifcation manager any longer.
     enum Status: JSONConvertable {
 
         case pending
+        case current
         case expired
         case closed
-        case rated(date: Date, rank: Double)
 
         init(json: [String: Any]) throws {
             let type = try JSON.jsonString(json: json, key: "type")
             switch type {
             case "pending":
                 self = .pending
+            case "current":
+                self = .current
             case "expired":
                 self = .expired
             case "closed":
                 self = .closed
-            case "rated":
-                let date = try JSON.jsonDate(json: json, key: "date")
-                let rank = try JSON.jsonDouble(json: json, key: "rank")
-                self = .rated(date: date, rank: rank)
             default:
                 throw JSON.SerializationError.invalid(type)
             }
@@ -39,42 +41,55 @@ class Note: JSONConvertable {
             switch self {
             case .pending:
                 return ["type": "pending"]
+            case .current:
+                return ["type": "current"]
             case .expired:
                 return ["type": "expired"]
             case .closed:
                 return ["type": "closed"]
-            case .rated(let date, let rank):
-                return [
-                    "type": "rated",
-                    "date": JSON.json(date: date),
-                    "rank": JSON.json(double: rank)
-                ]
             }
         }
 
-        var isRated: Bool {
-            get {
-                if case Note.Status.rated(date: _, rank: _) = self {
-                    return true
-                }
-                return false
-            }
+    }
+
+    struct Rating: JSONConvertable {
+
+        let date: Date
+        let rank: Double
+
+        init(date: Date, rank: Double) {
+            self.date = date
+            self.rank = rank
+        }
+        
+        init(json: [String: Any]) throws {
+            let date = try JSON.jsonDate(json: json, key: "date")
+            let rank = try JSON.jsonDouble(json: json, key: "rank")
+
+            self.date = date
+            self.rank = rank
         }
 
+        func json() -> [String: Any] {
+            return [
+                "date": JSON.json(date: date),
+                "rank": JSON.json(double: rank),
+            ]
+        }
+        
     }
 
     let uuid: String
     let type: String
     let messageKey: Message.Key
     var status: Status
-    var date: Date
+    var rating: Rating?
 
     init(uuid: String, type: String, messageKey: Message.Key, status: Status, date: Date) {
         self.uuid = uuid
         self.type = type
         self.messageKey = messageKey
         self.status = status
-        self.date = date
     }
 
     required init(json: [String: Any]) throws {
@@ -82,23 +97,26 @@ class Note: JSONConvertable {
         let type = try JSON.jsonString(json: json, key: "type")
         let messageKey: Message.Key = try JSON.jsonObject(json: json, key: "messageKey")
         let status: Status = try JSON.jsonObject(json: json, key: "status")
-        let date: Date = try JSON.jsonDate(json: json, key: "date")
+        let rating: Rating? = try JSON.jsonOptionalObject(json: json, key: "rating")
 
         self.uuid = uuid
         self.type = type
         self.messageKey = messageKey
         self.status = status
-        self.date = date
+        self.rating = rating
     }
 
     func json() -> [String: Any] {
-        return [
+        var values: [String: Any] = [
             "uuid": JSON.json(string: uuid),
             "type": JSON.json(string: type),
             "messageKey": JSON.json(object: messageKey),
             "status": JSON.json(object: status),
-            "date": JSON.json(date: date),
         ]
+        if let rating = rating {
+            values["rating"] = rating.json()
+        }
+        return values
     }
 
     var isPending: Bool {
@@ -109,5 +127,14 @@ class Note: JSONConvertable {
             return false
         }
     }
-    
+
+    var isCurrent: Bool {
+        get {
+            if case .current = status {
+                return true
+            }
+            return false
+        }
+    }
+
 }

@@ -713,15 +713,24 @@ http://cn.asc.upenn.edu</string>
                                     <action selector="send" destination="414-fa-cwJ" eventType="touchUpInside" id="LOd-7j-cBP"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88k-J9-8of">
+                                <rect key="frame" x="16" y="28" width="107" height="30"/>
+                                <state key="normal" title="Reset Schedule"/>
+                                <connections>
+                                    <action selector="resetSchedule" destination="414-fa-cwJ" eventType="touchUpInside" id="rQF-cD-dS3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="oya-L7-lP3" firstAttribute="top" secondItem="PvX-LF-UeI" secondAttribute="bottom" constant="8" symbolic="YES" id="99n-Np-XZB"/>
-                            <constraint firstItem="PvX-LF-UeI" firstAttribute="leading" secondItem="jYx-LC-mnj" secondAttribute="leadingMargin" id="K9M-t1-4Ew"/>
-                            <constraint firstItem="P4Z-7Z-HhU" firstAttribute="top" secondItem="OKn-hv-PRz" secondAttribute="bottom" constant="8" symbolic="YES" id="YlD-VL-EXW"/>
-                            <constraint firstItem="P4Z-7Z-HhU" firstAttribute="trailing" secondItem="jYx-LC-mnj" secondAttribute="trailingMargin" id="qkq-un-4li"/>
-                            <constraint firstItem="PvX-LF-UeI" firstAttribute="top" secondItem="P4Z-7Z-HhU" secondAttribute="bottom" constant="8" symbolic="YES" id="u2N-0o-XyY"/>
-                            <constraint firstItem="P4Z-7Z-HhU" firstAttribute="trailing" secondItem="PvX-LF-UeI" secondAttribute="trailing" id="xVM-kP-ybG"/>
+                            <constraint firstItem="88k-J9-8of" firstAttribute="baseline" secondItem="P4Z-7Z-HhU" secondAttribute="baseline" id="51I-kK-eTN"/>
+                            <constraint firstItem="88k-J9-8of" firstAttribute="top" secondItem="OKn-hv-PRz" secondAttribute="bottom" constant="8" symbolic="YES" id="BW9-1c-nUb"/>
+                            <constraint firstItem="oya-L7-lP3" firstAttribute="top" secondItem="PvX-LF-UeI" secondAttribute="bottom" constant="8" symbolic="YES" id="Hl2-cX-FLG"/>
+                            <constraint firstItem="P4Z-7Z-HhU" firstAttribute="trailing" secondItem="PvX-LF-UeI" secondAttribute="trailing" id="MwK-vP-pwE"/>
+                            <constraint firstItem="PvX-LF-UeI" firstAttribute="top" secondItem="88k-J9-8of" secondAttribute="bottom" constant="8" symbolic="YES" id="kpH-ca-1Ca"/>
+                            <constraint firstItem="88k-J9-8of" firstAttribute="leading" secondItem="jYx-LC-mnj" secondAttribute="leadingMargin" id="qUz-hK-6Zi"/>
+                            <constraint firstItem="P4Z-7Z-HhU" firstAttribute="trailing" secondItem="jYx-LC-mnj" secondAttribute="trailingMargin" id="s2D-HN-nsA"/>
+                            <constraint firstItem="88k-J9-8of" firstAttribute="leading" secondItem="PvX-LF-UeI" secondAttribute="leading" id="z04-Iz-D7A"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Debug" id="LRL-1U-X7X"/>
@@ -748,9 +757,9 @@ http://cn.asc.upenn.edu</string>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7k-gT-VUs">
                                 <rect key="frame" x="16" y="20" width="288" height="119"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">We will send you a daily notification. 
+                                <string key="text">We will send you daily reminders of your values and a tip for being more physically active.
 
-What time do you want to receive it?</string>
+What time do you want to receive these reminders?</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textView>
@@ -1079,7 +1088,7 @@ Data is anonymous and has a random ID assigned to it. We do not share your data 
                         <rect key="frame" x="0.0" y="0.0" width="224" height="446"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cS6-Lf-mEL">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cS6-Lf-mEL">
                                 <rect key="frame" x="0.0" y="0.0" width="224" height="146"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <attributedString key="attributedText">
@@ -1113,7 +1122,7 @@ Cg
                                             <real key="NSStrokeWidth" value="0.0"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="you daily reminders of your values and provide tips for being more active">
+                                    <fragment content="you a daily reminder of your values and provide tips for being more active">
                                         <attributes>
                                             <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
                                             <font key="NSFont" metaFont="smallSystem"/>
@@ -1150,8 +1159,11 @@ Cg
                                     <action selector="doneAction" destination="d6f-4P-Ofx" eventType="touchUpInside" id="VLs-SC-eek"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Om-Wh-DsS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Om-Wh-DsS">
                                 <rect key="frame" x="0.0" y="154" width="224" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="djv-Z1-nMw"/>
+                                </constraints>
                                 <string key="text">Choose your most important value
 to get started</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -1161,19 +1173,19 @@ to get started</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cS6-Lf-mEL" firstAttribute="trailing" secondItem="0Om-Wh-DsS" secondAttribute="trailing" id="1fm-t8-6MJ"/>
-                            <constraint firstItem="0Om-Wh-DsS" firstAttribute="top" secondItem="cS6-Lf-mEL" secondAttribute="bottom" constant="8" symbolic="YES" id="3PN-ma-YsF"/>
-                            <constraint firstItem="pf4-B6-ndW" firstAttribute="bottom" secondItem="Prx-uM-bVg" secondAttribute="top" id="6nP-yv-3TP"/>
-                            <constraint firstItem="cS6-Lf-mEL" firstAttribute="leading" secondItem="0Om-Wh-DsS" secondAttribute="leading" id="KJX-4y-axS"/>
-                            <constraint firstItem="cS6-Lf-mEL" firstAttribute="leading" secondItem="zg7-lh-zEd" secondAttribute="leading" id="Oqh-EU-jJa"/>
-                            <constraint firstItem="0Om-Wh-DsS" firstAttribute="leading" secondItem="fLR-IP-b45" secondAttribute="leading" id="VW7-ZY-8eK"/>
-                            <constraint firstAttribute="trailing" secondItem="cS6-Lf-mEL" secondAttribute="trailing" id="bdB-YP-clB"/>
-                            <constraint firstItem="fLR-IP-b45" firstAttribute="top" secondItem="0Om-Wh-DsS" secondAttribute="bottom" constant="8" symbolic="YES" id="ddL-4f-mhF"/>
-                            <constraint firstItem="fLR-IP-b45" firstAttribute="trailing" secondItem="pf4-B6-ndW" secondAttribute="trailing" id="h31-8C-ix6"/>
-                            <constraint firstItem="fLR-IP-b45" firstAttribute="leading" secondItem="pf4-B6-ndW" secondAttribute="leading" id="lBA-nv-OAj"/>
-                            <constraint firstItem="pf4-B6-ndW" firstAttribute="top" secondItem="fLR-IP-b45" secondAttribute="bottom" constant="8" symbolic="YES" id="oay-Od-q3k"/>
-                            <constraint firstItem="cS6-Lf-mEL" firstAttribute="top" secondItem="dhp-vE-AtX" secondAttribute="bottom" id="tXr-mB-Cz5"/>
-                            <constraint firstItem="0Om-Wh-DsS" firstAttribute="trailing" secondItem="fLR-IP-b45" secondAttribute="trailing" id="vj4-WY-rXk"/>
+                            <constraint firstItem="cS6-Lf-mEL" firstAttribute="leading" secondItem="zg7-lh-zEd" secondAttribute="leading" id="9aK-EG-vMJ"/>
+                            <constraint firstItem="fLR-IP-b45" firstAttribute="trailing" secondItem="pf4-B6-ndW" secondAttribute="trailing" id="IbK-kN-YkB"/>
+                            <constraint firstItem="cS6-Lf-mEL" firstAttribute="leading" secondItem="0Om-Wh-DsS" secondAttribute="leading" id="JT8-1V-Z0n"/>
+                            <constraint firstItem="pf4-B6-ndW" firstAttribute="top" secondItem="fLR-IP-b45" secondAttribute="bottom" constant="8" symbolic="YES" id="O5q-uB-DK9"/>
+                            <constraint firstAttribute="trailing" secondItem="cS6-Lf-mEL" secondAttribute="trailing" id="Rjh-a6-yF3"/>
+                            <constraint firstItem="fLR-IP-b45" firstAttribute="leading" secondItem="pf4-B6-ndW" secondAttribute="leading" id="THb-DF-qpO"/>
+                            <constraint firstItem="0Om-Wh-DsS" firstAttribute="trailing" secondItem="fLR-IP-b45" secondAttribute="trailing" id="U8a-7R-mMG"/>
+                            <constraint firstItem="pf4-B6-ndW" firstAttribute="bottom" secondItem="Prx-uM-bVg" secondAttribute="top" id="bz8-Ld-NXI"/>
+                            <constraint firstItem="cS6-Lf-mEL" firstAttribute="trailing" secondItem="0Om-Wh-DsS" secondAttribute="trailing" id="dxN-Ie-JF6"/>
+                            <constraint firstItem="cS6-Lf-mEL" firstAttribute="top" secondItem="dhp-vE-AtX" secondAttribute="bottom" id="gPA-h1-fCd"/>
+                            <constraint firstItem="0Om-Wh-DsS" firstAttribute="top" secondItem="cS6-Lf-mEL" secondAttribute="bottom" constant="8" symbolic="YES" id="o16-r8-YyR"/>
+                            <constraint firstItem="0Om-Wh-DsS" firstAttribute="leading" secondItem="fLR-IP-b45" secondAttribute="leading" id="p8c-7C-lUx"/>
+                            <constraint firstItem="fLR-IP-b45" firstAttribute="top" secondItem="0Om-Wh-DsS" secondAttribute="bottom" constant="8" symbolic="YES" id="vfn-dA-yHs"/>
                         </constraints>
                     </view>
                     <connections>

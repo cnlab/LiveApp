@@ -69,6 +69,8 @@ class Message {
 
 protocol MessageManager {
 
+    var type: String { get }
+    
     var messages: [Message] { get }
 
     func find(group: String, identifier: String) -> Message?

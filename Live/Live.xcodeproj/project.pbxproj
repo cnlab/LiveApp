@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		920224B31E2C57FC0000929D /* SchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920224B21E2C57FC0000929D /* SchedulerTests.swift */; };
 		9204FDA31E160B5500E9CFF9 /* PickerPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204FDA21E160B5500E9CFF9 /* PickerPopupViewController.swift */; };
 		9204FDA71E160B9100E9CFF9 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204FDA61E160B9100E9CFF9 /* PickerViewController.swift */; };
 		9204FDA91E16127F00E9CFF9 /* StringArrayPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204FDA81E16127F00E9CFF9 /* StringArrayPickerViewDataSource.swift */; };
 		92062C371DB26C8C0001DE0C /* ScheduleCoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92062C361DB26C8C0001DE0C /* ScheduleCoderTests.swift */; };
 		92062C3D1DB272F70001DE0C /* ObjectiveCException.m in Sources */ = {isa = PBXBuildFile; fileRef = 92062C3C1DB272F70001DE0C /* ObjectiveCException.m */; };
+		9209CE921E2D6379008E83BB /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9209CE911E2D6379008E83BB /* Moment.swift */; };
 		922AB4401E1B06D000A33C8D /* thumb-down-22x24.png in Resources */ = {isa = PBXBuildFile; fileRef = 922AB43E1E1B06D000A33C8D /* thumb-down-22x24.png */; };
 		922AB4411E1B06D000A33C8D /* thumb-up-22x24.png in Resources */ = {isa = PBXBuildFile; fileRef = 922AB43F1E1B06D000A33C8D /* thumb-up-22x24.png */; };
 		922C70AF1D93576400F1C401 /* MessageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922C70AE1D93576400F1C401 /* MessageManagerTests.swift */; };
@@ -62,6 +64,7 @@
 		92B2F4CC1E134E92002A3CF4 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B2F4CA1E134E92002A3CF4 /* unchecked.png */; };
 		92B89C501E15A92F00E7D5CC /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B89C4F1E15A92F00E7D5CC /* ShareViewController.swift */; };
 		92B89C531E15BBC600E7D5CC /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B89C521E15BBC600E7D5CC /* MeViewController.swift */; };
+		92C97F8B1E2C1EE400798FD7 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C97F8A1E2C1EE400798FD7 /* Scheduler.swift */; };
 		92CA91981D8304B9000491CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA91971D8304B9000491CD /* AppDelegate.swift */; };
 		92CA919A1D8304B9000491CD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA91991D8304B9000491CD /* HomeViewController.swift */; };
 		92CA919C1D8304B9000491CD /* ValuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA919B1D8304B9000491CD /* ValuesViewController.swift */; };
@@ -154,6 +157,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		920224B21E2C57FC0000929D /* SchedulerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulerTests.swift; sourceTree = "<group>"; };
 		9204FDA21E160B5500E9CFF9 /* PickerPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerPopupViewController.swift; sourceTree = "<group>"; };
 		9204FDA61E160B9100E9CFF9 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		9204FDA81E16127F00E9CFF9 /* StringArrayPickerViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringArrayPickerViewDataSource.swift; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 		92062C3A1DB272F60001DE0C /* Live-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Live-Bridging-Header.h"; sourceTree = "<group>"; };
 		92062C3B1DB272F70001DE0C /* ObjectiveCException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCException.h; sourceTree = "<group>"; };
 		92062C3C1DB272F70001DE0C /* ObjectiveCException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveCException.m; sourceTree = "<group>"; };
+		9209CE911E2D6379008E83BB /* Moment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moment.swift; sourceTree = "<group>"; };
 		922AB43E1E1B06D000A33C8D /* thumb-down-22x24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb-down-22x24.png"; sourceTree = "<group>"; };
 		922AB43F1E1B06D000A33C8D /* thumb-up-22x24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb-up-22x24.png"; sourceTree = "<group>"; };
 		922C70AE1D93576400F1C401 /* MessageManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageManagerTests.swift; sourceTree = "<group>"; };
@@ -213,6 +218,7 @@
 		92B2F4CA1E134E92002A3CF4 /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
 		92B89C4F1E15A92F00E7D5CC /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		92B89C521E15BBC600E7D5CC /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		92C97F8A1E2C1EE400798FD7 /* Scheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
 		92CA91941D8304B9000491CD /* Live.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Live.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92CA91971D8304B9000491CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92CA91991D8304B9000491CD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -306,7 +312,9 @@
 				9291F6851DABF85400042F42 /* LiveManager.swift */,
 				926ECB271DB9639A00A36584 /* LiveTabBarController.swift */,
 				92CAC2421DB2BF21009615C3 /* Note.swift */,
+				9209CE911E2D6379008E83BB /* Moment.swift */,
 				92DA5F951DAFF2EB00132B16 /* Schedule.swift */,
+				92C97F8A1E2C1EE400798FD7 /* Scheduler.swift */,
 				9255DC4D1E1D7CAD00B931E3 /* PersonalInformation.swift */,
 				92F7CDBD1DAF033E009E2924 /* NotificationManager.swift */,
 				923E62BD1E14526B00D191EC /* ImportancePopupViewController.swift */,
@@ -496,6 +504,7 @@
 				92CA91B01D8304B9000491CD /* Info.plist */,
 				922C70AE1D93576400F1C401 /* MessageManagerTests.swift */,
 				92062C361DB26C8C0001DE0C /* ScheduleCoderTests.swift */,
+				920224B21E2C57FC0000929D /* SchedulerTests.swift */,
 			);
 			path = LiveTests;
 			sourceTree = "<group>";
@@ -797,6 +806,7 @@
 				929CE6AD1DB5548C00330FFB /* ValuesRankViewController.swift in Sources */,
 				923E62BA1E14522700D191EC /* ImportanceViewController.swift in Sources */,
 				92554D121DBA7F3800009A21 /* SettingsViewController.swift in Sources */,
+				9209CE921E2D6379008E83BB /* Moment.swift in Sources */,
 				9204FDA71E160B9100E9CFF9 /* PickerViewController.swift in Sources */,
 				92EE6E931E1AD13100645F8E /* HeightPickerViewDataSource.swift in Sources */,
 				924991A11E1C1CFC002B7E97 /* SurveyManager.swift in Sources */,
@@ -813,6 +823,7 @@
 				9248783A1D873B3E000C86FF /* MessageManager.swift in Sources */,
 				926ECB281DB9639A00A36584 /* LiveTabBarController.swift in Sources */,
 				9255DC4E1E1D7CAD00B931E3 /* PersonalInformation.swift in Sources */,
+				92C97F8B1E2C1EE400798FD7 /* Scheduler.swift in Sources */,
 				924878361D873A92000C86FF /* ActivityMessageManager.swift in Sources */,
 				92986D9A1D99A87A008B8533 /* StepsView.swift in Sources */,
 				925F5ABF1E15FB080051DF1B /* ShareFieldsTableViewController.swift in Sources */,
@@ -843,6 +854,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				920224B31E2C57FC0000929D /* SchedulerTests.swift in Sources */,
 				92062C371DB26C8C0001DE0C /* ScheduleCoderTests.swift in Sources */,
 				922C70AF1D93576400F1C401 /* MessageManagerTests.swift in Sources */,
 			);

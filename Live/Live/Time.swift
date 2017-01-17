@@ -10,6 +10,19 @@ import Foundation
 
 class Time {
 
+    static func date(moment: Moment, trigger: DateComponents) -> Date {
+        var components = trigger
+        components.year = moment.year
+        components.month = moment.month
+        components.day = moment.day
+        return Calendar.current.date(from: components)!
+    }
+
+    static func current(date: Date, at: DateComponents) -> Date {
+        let calendar = Calendar.current
+        return calendar.date(bySettingHour: at.hour ?? 0, minute: at.minute ?? 0, second: at.second ?? 0, of: date)!
+    }
+
     static func previous(date: Date, at: DateComponents) -> Date {
         let calendar = Calendar.current
         let atDate = calendar.date(bySettingHour: at.hour ?? 0, minute: at.minute ?? 0, second: at.second ?? 0, of: date)!
@@ -19,19 +32,9 @@ class Time {
         return calendar.date(byAdding: .day, value: -1, to: atDate)!
     }
 
-    static func next(date: Date, at: DateComponents) -> Date {
-        let calendar = Calendar.current
-        let atDate = calendar.date(bySettingHour: at.hour ?? 0, minute: at.minute ?? 0, second: at.second ?? 0, of: date)!
-        if atDate > date {
-            return atDate
-        }
-        return calendar.date(byAdding: .day, value: 1, to: atDate)!
-    }
-
     static func next(date: Date) -> Date {
         let calendar = Calendar.current
-        let startOfToday = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: date)!
-        return calendar.date(byAdding: .day, value: 1, to: startOfToday)!
+        return calendar.date(byAdding: .day, value: 1, to: date)!
     }
 
     static func countOfDaysBetween(start: Date, end: Date) -> Int {

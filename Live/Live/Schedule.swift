@@ -12,25 +12,26 @@ class Schedule: JSONConvertable {
 
     class Day: JSONConvertable {
 
-        let date: Date
+        let moment: Moment
         let notes: [Note]
 
-        init(date: Date, notes: [Note]) {
-            self.date = date
+        init(moment: Moment, notes: [Note]) {
+            self.moment = moment
             self.notes = notes
         }
 
         required init(json: [String: Any]) throws {
-            let date = try JSON.jsonDate(json: json, key: "date")
+            let momentString = try JSON.jsonString(json: json, key: "date")
+            let moment = try Moment.parse(string: momentString)
             let notes: [Note] = try JSON.jsonArray(json: json, key: "notes")
 
-            self.date = date
+            self.moment = moment
             self.notes = notes
         }
 
         func json() -> [String: Any] {
             return [
-                "date": JSON.json(date: date),
+                "date": JSON.json(string: Moment.format(moment: moment)),
                 "notes": JSON.json(array: notes),
             ]
         }

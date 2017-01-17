@@ -40,6 +40,11 @@ class ActivityMessageManager: MessageManager {
         
     }
 
+    var type: String {
+        get {
+            return "Activity"
+        }
+    }
     let messages: [Message]
     var state: State
 

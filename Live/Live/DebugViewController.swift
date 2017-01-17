@@ -19,6 +19,10 @@ class DebugViewController: UIViewController, MFMailComposeViewControllerDelegate
         }
     }
 
+    @IBAction func resetSchedule() {
+        LiveManager.shared.resetSchedule()
+    }
+
     @IBAction func send() {
         sendMail(recipients: ["denis@fireflydesign.com"])
     }

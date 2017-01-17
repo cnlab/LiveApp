@@ -19,6 +19,7 @@ struct NoteKey {
 
 protocol NotificationManagerDelegate {
 
+    func notificationManagerWillPresent(_ notificationManager: NotificationManager)
     func notificationManager(_ notificationManager: NotificationManager, action: String, uuid: String, type: String, messageKey: Message.Key)
     func notificationManager(_ notificationManager: NotificationManager, outstanding: [NoteKey])
     
@@ -133,6 +134,9 @@ class NotificationManager10: NSObject, UNUserNotificationCenterDelegate, Notific
     }
 
     public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Swift.Void) {
+        if let delegate = delegate {
+            delegate.notificationManagerWillPresent(self)
+        }
         completionHandler(UNNotificationPresentationOptions.alert)
     }
 
@@ -166,8 +170,8 @@ class NotificationManager10: NSObject, UNUserNotificationCenterDelegate, Notific
 
     func request(date: Date, uuid: String, type: String, message: Message) {
         let trigger: UNNotificationTrigger?
-        if date > Date(timeIntervalSinceNow: 60.0) {
-            let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        if date > Date(timeIntervalSinceNow: 5.0) {
+            let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
             trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         } else {
             trigger = nil

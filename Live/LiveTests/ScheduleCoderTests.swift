@@ -21,34 +21,32 @@ class ScheduleCoderTests: XCTestCase {
         super.tearDown()
     }
 
-    func encodeAndDecode<T>(_ object: T) -> T {
-        let data = NSMutableData()
-        let archiver = NSKeyedArchiver(forWritingWith: data)
-        archiver.encode(object, forKey: "object")
-        archiver.finishEncoding()
-        let unarchiver = NSKeyedUnarchiver(forReadingWith: data as Data)
-        return unarchiver.decodeObject(forKey: "object") as! T
+    func encodeAndDecode<T>(_ object: T) throws -> T where T: JSONConvertable {
+        let data = object.json()
+        return try T(json: data)
     }
 
-    func testNoteCoder() {
-        let note = Schedule.Note(uuid: "uuid", type: "type", messageKey: Message.Key(group: "group", identifier: "identifier"), status: .pending)
-        let unarchivedNote = encodeAndDecode(note)
+    func testNoteCoder() throws {
+        let note = Note(uuid: "uuid", type: "type", messageKey: Message.Key(group: "group", identifier: "identifier"), status: .pending, date: Date())
+        let unarchivedNote = try encodeAndDecode(note)
         XCTAssertEqual(note.uuid, unarchivedNote.uuid)
     }
 
-    func testDayCoder() {
-        let note = Schedule.Note(uuid: "uuid", type: "type", messageKey: Message.Key(group: "group", identifier: "identifier"), status: .pending)
-        let day = Schedule.Day(date: Date(), notes: [note])
-        let unarchivedDay = encodeAndDecode(day)
-        XCTAssertEqual(day.date, unarchivedDay.date)
+    func testDayCoder() throws {
+        let note = Note(uuid: "uuid", type: "type", messageKey: Message.Key(group: "group", identifier: "identifier"), status: .pending, date: Date())
+        let day = Schedule.Day(moment: Moment(year: 2017, month: 1, day: 16), notes: [note])
+        let unarchivedDay = try encodeAndDecode(day)
+        XCTAssertEqual(day.moment.year, unarchivedDay.moment.year)
+        XCTAssertEqual(day.moment.month, unarchivedDay.moment.month)
+        XCTAssertEqual(day.moment.day, unarchivedDay.moment.day)
         XCTAssertEqual(day.notes.count, unarchivedDay.notes.count)
     }
 
-    func testScheduleCoder() {
-        let note = Schedule.Note(uuid: "uuid", type: "type", messageKey: Message.Key(group: "group", identifier: "identifier"), status: .pending)
-        let day = Schedule.Day(date: Date(), notes: [note])
+    func testScheduleCoder() throws {
+        let note = Note(uuid: "uuid", type: "type", messageKey: Message.Key(group: "group", identifier: "identifier"), status: .pending, date: Date())
+        let day = Schedule.Day(moment: Moment(year: 2017, month: 1, day: 16), notes: [note])
         let schedule = Schedule(days: [day])
-        let unarchivedSchedule = encodeAndDecode(schedule)
+        let unarchivedSchedule = try encodeAndDecode(schedule)
         XCTAssertEqual(schedule.days.count, unarchivedSchedule.days.count)
     }
 

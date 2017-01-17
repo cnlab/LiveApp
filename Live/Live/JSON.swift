@@ -159,6 +159,14 @@ class JSON {
         return try T(json: jsonDictionary)
     }
 
+    static func jsonOptionalObject<T>(json: [String: Any], key: String) throws -> T? where T: JSONConvertable {
+        if json[key] == nil {
+            return nil
+        }
+        let result: T = try jsonObject(json: json, key: key)
+        return result
+    }
+
     static func jsonDefaultObject<T>(json: [String: Any], key: String, fallback: T) throws -> T where T: JSONConvertable {
         if json[key] == nil {
             return fallback
@@ -213,7 +221,7 @@ class JSON {
     }
 
     static func json(any: Any) throws -> Data {
-        if let data = try? JSONSerialization.data(withJSONObject: any, options: []) {
+        if let data = try? JSONSerialization.data(withJSONObject: any, options: [.prettyPrinted]) {
             return data
         }
         throw SerializationError.invalid("\(any)")
