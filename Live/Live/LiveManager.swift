@@ -331,7 +331,7 @@ class LiveManager: NotificationManagerDelegate {
         for day in schedule.days {
             for note in day.notes {
                 if
-                    note.isPending || note.isCurrent,
+                    (note.isPending || note.isCurrent) && (note.rating == nil),
                     let messageManager = messageManagerFor(type: note.type),
                     let message = messageManager.find(messageKey: note.messageKey),
                     let triggerOffset = triggerOffsets[note.type]
@@ -492,7 +492,8 @@ class LiveManager: NotificationManagerDelegate {
     }
 
     func dailyStepCounts(startDate: Date, stepCounts: [Int?]) {
-        dailyStepCounts.value = DailyStepCounts(startDate: startDate, stepCounts: stepCounts)
+//        dailyStepCounts.value = DailyStepCounts(startDate: startDate, stepCounts: stepCounts)
+        dailyStepCounts.value = DailyStepCounts(startDate: startDate, stepCounts: [0, 0, 0, 0, 10, 20, 0])
     }
 
 }

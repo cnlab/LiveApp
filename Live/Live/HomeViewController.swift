@@ -24,7 +24,7 @@ class HomeViewController: UIViewController {
     @IBInspectable var ratedSuffix: String = "✔︎"
     @IBInspectable var ratedColor: UIColor = UIColor(hue: 120.0 / 360.0, saturation: 1.0, brightness: 0.5, alpha: 1.0)
 
-    @IBInspectable var averageStepsInsufficientData: String = "Average steps will be calculated on day 7."
+    @IBInspectable var averageStepsInsufficientData: String = "No steps? Get going and we'll show your progress."
     @IBInspectable var averageSteps: String = "Average Daily Steps: /steps/"
 
     @IBInspectable var motivationalInsufficientData: String = "Welcome To Live Active!"
@@ -57,14 +57,12 @@ class HomeViewController: UIViewController {
         stepsButton!.frame.size = stepsView!.frame.size
     }
 
-    func calculateAverages(stepCounts: [Int?]) -> (fiveDays: Int, sixDays: Int)? {
-        let count = stepCounts.reduce(0) { (($1 ?? 0) != 0) ? $0 + 1 : $0 }
-        if count != 7 {
+    func calculateAverage(values: [Int?]) -> Int? {
+        let usableValues = values.filter() { ($0 != nil) && ($0! != 0) }
+        if usableValues.count == 0 {
             return nil
         }
-        let fiveDays = stepCounts[0 ..< 5].reduce(0) { $0 + $1! } / 5
-        let sixDays = stepCounts[0 ..< 6].reduce(0) { $0 + $1! } / 6
-        return (fiveDays: fiveDays, sixDays: sixDays)
+        return (usableValues.reduce(0) { $0 + $1! }) / usableValues.count
     }
 
     func substitute(string: String, substitutions: [String : String]) -> String {
@@ -89,19 +87,21 @@ class HomeViewController: UIViewController {
             stepsView?.update(startDate: dailyStepCounts.startDate, stepCounts: dailyStepCounts.stepCounts)
             stepCounts = dailyStepCounts.stepCounts
         } else {
+            stepCounts = [nil, nil, nil, nil, nil, nil, nil]
             stepsView?.isEnabled = false
             if liveManager.didAuthorizeHealthKit {
                 stepsButton?.isHidden = true
-                stepsView?.update(startDate: Date(), stepCounts: [nil, nil, nil, nil, nil, nil, nil])
+                stepsView?.update(startDate: Date(), stepCounts: stepCounts)
             } else {
                 stepsButton?.isHidden = false
                 stepsView?.setDefaults()
             }
-            stepCounts = []
         }
 
-        if let (fiveDayAverageStepCount, sixDayAverageStepCount) = calculateAverages(stepCounts: stepCounts) {
-            let yesterdaysStepCount = stepCounts.last!!
+        if
+            let fiveDayAverageStepCount = calculateAverage(values: Array(stepCounts[0...4])),
+            let yesterdaysStepCount = stepCounts[5]
+        {
             let ratio = Double(yesterdaysStepCount) / Double(fiveDayAverageStepCount)
             if ratio < motivationalBelowRatio {
                 let percent = Int(floor((1.0 - ratio) * 100.0))
@@ -114,14 +114,16 @@ class HomeViewController: UIViewController {
                 let percent = Int(ceil((ratio - 1.0) * 100.0))
                 motivationalLabel?.text = substitute(string: motivationalAbove, substitutions: ["percent": "\(percent)"])
             }
+        } else {
+            motivationalLabel?.text = motivationalInsufficientData
+        }
 
+        if let sixDayAverageStepCount = calculateAverage(values: Array(stepCounts[0...5])) {
             let numberFormatter = NumberFormatter()
             numberFormatter.numberStyle = NumberFormatter.Style.decimal
             let steps = numberFormatter.string(for: sixDayAverageStepCount) ?? "?"
             averageStepsLabel?.text = substitute(string: averageSteps, substitutions: ["steps": steps])
         } else {
-            motivationalLabel?.text = motivationalInsufficientData
-
             averageStepsLabel?.text = averageStepsInsufficientData
         }
     }

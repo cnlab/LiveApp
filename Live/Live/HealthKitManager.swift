@@ -42,10 +42,11 @@ class HealthKitManager {
             identifierHeight,
             identifierStepCount
         )
-        let typesToWrite = Set(arrayLiteral:
-            identifierBodyMass,
-            identifierHeight
-        )
+        let typesToWrite = Set<HKSampleType>()
+//        let typesToWrite = Set(arrayLiteral:
+//            identifierBodyMass,
+//            identifierHeight
+//        )
         healthStore.requestAuthorization(toShare: typesToWrite, read: typesToRead) {
             (success, error) -> Void in
             DispatchQueue.main.async {
@@ -146,8 +147,12 @@ class HealthKitManager {
                     if let quantity = statistics.sumQuantity() {
                         let stepCount = Int(quantity.doubleValue(for: HKUnit.count()))
                         let day = self.numberOfDays(from: startDate, to: statistics.startDate)
-                        print("step count \(startDate) \(day) \(stepCount)")
-                        stepCounts[day] = stepCount
+//                        print("step count \(startDate) \(statistics.startDate) \(day) \(stepCount)")
+                        if day < stepCounts.count {
+                            stepCounts[day] = stepCount
+                        } else {
+                            NSLog("invalid step count day \(day)")
+                        }
                     }
                 }
             }

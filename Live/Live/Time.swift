@@ -48,8 +48,10 @@ class Time {
 
     static func lastWeek() -> (startDate: Date, endDate: Date) {
         let calendar = Calendar.current
-        let endDate = next(date: Date())
-        let startDate = calendar.date(byAdding: .day, value: -7, to: endDate)!
+        let today = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: Date()))!
+        let tomorrow = calendar.date(byAdding: .day, value: 1, to: today)!
+        let endDate = calendar.date(byAdding: .second, value: -1, to: tomorrow)!
+        let startDate = calendar.date(byAdding: .day, value: -6, to: today)!
         return (startDate: startDate, endDate: endDate)
     }
 
