@@ -26,6 +26,8 @@ class LiveManager: NotificationManagerDelegate {
         let stepCounts: [Int?]
     }
 
+    let reminderTimeInterval = 7 * 24 * 60 * 60.0
+
     var installationDate: Date? = nil
     var installationUUID: String? = nil
     var delegate: LiveManagerDelegate?
@@ -103,6 +105,17 @@ class LiveManager: NotificationManagerDelegate {
 
         healthKitManager.bodyMass.subscribe(owner: self, observer: bodyMassChanged)
         healthKitManager.height.subscribe(owner: self, observer: heightChanged)
+    }
+
+    // !!! just for testing and debug
+    func changeShareReminderDateToNow() {
+        guard let installationDate = installationDate else {
+            return
+        }
+        let date = Date().addingTimeInterval(-reminderTimeInterval)
+        if date < installationDate {
+            self.installationDate = date
+        }
     }
 
     func personalInformationChanged() {

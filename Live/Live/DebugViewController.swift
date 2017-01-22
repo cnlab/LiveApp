@@ -23,6 +23,18 @@ class DebugViewController: UIViewController, MFMailComposeViewControllerDelegate
         LiveManager.shared.resetSchedule()
     }
 
+    @IBAction func advanceTime() {
+        let liveManager = LiveManager.shared
+        liveManager.surveyManager.changeDueDateToNow()
+        guard let installationDate = liveManager.installationDate else {
+            return
+        }
+        let date = Date().addingTimeInterval(-liveManager.reminderTimeInterval)
+        if date < installationDate {
+            liveManager.installationDate = date
+        }
+    }
+
     @IBAction func send() {
         sendMail(recipients: ["denis@fireflydesign.com"])
     }

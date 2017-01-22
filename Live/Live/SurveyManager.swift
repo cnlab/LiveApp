@@ -118,4 +118,10 @@ class SurveyManager {
         update()
     }
 
+    // !!! just for testing and debug
+    func changeDueDateToNow() {
+        state.scheduledDate = Date()
+        update()
+    }
+
 }

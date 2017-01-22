@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LiveTabBarController: UITabBarController, Ancestor, LiveManagerDelegate, ImportancePopupViewControllerDelegate, ShareReminderPopupViewControllerDelegate, ValuesPopupViewControllerDelegate, ActivityPopupViewControllerDelegate {
+class LiveTabBarController: UITabBarController, UITabBarControllerDelegate, Ancestor, LiveManagerDelegate, ImportancePopupViewControllerDelegate, ShareReminderPopupViewControllerDelegate, ValuesPopupViewControllerDelegate, ActivityPopupViewControllerDelegate {
 
     var importancePopupViewController: ImportancePopupViewController?
     var shareReminderPopupViewController: ShareReminderPopupViewController?
@@ -39,33 +39,51 @@ class LiveTabBarController: UITabBarController, Ancestor, LiveManagerDelegate, I
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.delegate = self
+
         let liveManager = LiveManager.shared
         liveManager.delegate = self
 
+        checkPopups()
+
+        let surveyManager = liveManager.surveyManager
+        surveyManager.observable.subscribe(owner: self, observer: surveyManagerChanged)
+        surveyManagerChanged()
+    }
+
+    func checkPopups() {
+        if importancePopupViewController != nil {
+            return
+        }
+        let liveManager = LiveManager.shared
         if !liveManager.didShowGetStarted {
             DispatchQueue.main.async {
                 self.showGetStarted()
             }
         } else {
-            if !liveManager.didShowShareReminder {
-                if liveManager.shareDataWithResearchers {
-                    liveManager.didShowShareReminder = true
-                } else {
-                    if let installationDate = liveManager.installationDate {
-                        let reminderTimeInterval = 7 * 24 * 60 * 60.0
-                        if Date().timeIntervalSince(installationDate) > reminderTimeInterval {
-                            DispatchQueue.main.async {
-                                self.showShareReminder()
-                            }
+            checkShareReminder()
+        }
+    }
+
+    func checkShareReminder() {
+        let liveManager = LiveManager.shared
+        if !liveManager.didShowShareReminder {
+            if liveManager.shareDataWithResearchers {
+                liveManager.didShowShareReminder = true
+            } else {
+                if let installationDate = liveManager.installationDate {
+                    if Date().timeIntervalSince(installationDate) > liveManager.reminderTimeInterval {
+                        DispatchQueue.main.async {
+                            self.showShareReminder()
                         }
                     }
                 }
             }
         }
+    }
 
-        let surveyManager = liveManager.surveyManager
-        surveyManager.observable.subscribe(owner: self, observer: surveyManagerChanged)
-        surveyManagerChanged()
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        checkShareReminder()
     }
 
     func addDebug() {
