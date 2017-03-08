@@ -52,7 +52,11 @@ class NotificationManager9: NotificationManager {
     var authorized = Observable<Bool>(value: false)
 
     func queryAuthorization() {
-        // !!! To Do
+        if let notificationSettings = UIApplication.shared.currentUserNotificationSettings {
+            authorized.value = notificationSettings.types.contains(.alert)
+        } else {
+            authorized.value = false
+        }
     }
 
     func authorize() {
@@ -60,9 +64,6 @@ class NotificationManager9: NotificationManager {
         UIApplication.shared.registerUserNotificationSettings(notificationSettings)
     }
 
-    func getDelivered() {
-    }
-    
     func cancel() {
         let application = UIApplication.shared
         if let notifications = application.scheduledLocalNotifications {
@@ -76,16 +77,40 @@ class NotificationManager9: NotificationManager {
     
     func request(date: Date, uuid: String, type: String, message: Message) {
         let notification = UILocalNotification()
-        notification.fireDate = Date(timeIntervalSinceNow: 5.0)
+        notification.fireDate = date
         notification.alertAction = "Affirm"
         notification.alertBody = message.format()
         notification.alertTitle = type
+        notification.userInfo = [
+            "date": date,
+            "uuid": uuid,
+            "type": type,
+            "group": message.key.group,
+            "identifier": message.key.identifier
+        ]
         notification.applicationIconBadgeNumber = 1
         let application = UIApplication.shared
         application.scheduleLocalNotification(notification)
+        NSLog("request \(date)")
     }
 
     func getOutstanding() {
+        var outstanding: [NoteKey] = []
+        if let notifications = UIApplication.shared.scheduledLocalNotifications {
+            for notification in notifications {
+                if
+                    let userInfo = notification.userInfo,
+                    let date = userInfo["date"] as? Date,
+                    let uuid = userInfo["uuid"] as? String,
+                    let type = userInfo["type"] as? String,
+                    let group = userInfo["group"] as? String,
+                    let identifier = userInfo["identifier"] as? String
+                {
+                    outstanding.append(NoteKey(date: date, uuid: uuid, type: type, messageKey: Message.Key(group: group, identifier: identifier)))
+                }
+            }
+        }
+        delegate?.notificationManager(self, outstanding: outstanding)
     }
     
     func nothingPending() {
