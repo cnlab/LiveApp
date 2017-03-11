@@ -21,6 +21,8 @@
 		9232234B1E157ADB00F300AC /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9232234A1E157ADB00F300AC /* Layout.swift */; };
 		923E62BA1E14522700D191EC /* ImportanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E62B91E14522700D191EC /* ImportanceViewController.swift */; };
 		923E62BE1E14526B00D191EC /* ImportancePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E62BD1E14526B00D191EC /* ImportancePopupViewController.swift */; };
+		92458B691E746369007B3320 /* GZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92458B681E746369007B3320 /* GZip.swift */; };
+		92458B6E1E74673D007B3320 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 92458B6C1E7465EE007B3320 /* libz.tbd */; };
 		9248782F1D86F6F5000C86FF /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9248782E1D86F6F5000C86FF /* HealthKit.framework */; };
 		924878321D86F88B000C86FF /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924878311D86F88B000C86FF /* HealthKitManager.swift */; };
 		924878341D8733C2000C86FF /* ValueMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924878331D8733C2000C86FF /* ValueMessageManager.swift */; };
@@ -175,6 +177,8 @@
 		9232234A1E157ADB00F300AC /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		923E62B91E14522700D191EC /* ImportanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportanceViewController.swift; sourceTree = "<group>"; };
 		923E62BD1E14526B00D191EC /* ImportancePopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportancePopupViewController.swift; sourceTree = "<group>"; };
+		92458B681E746369007B3320 /* GZip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZip.swift; sourceTree = "<group>"; };
+		92458B6C1E7465EE007B3320 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		9248782E1D86F6F5000C86FF /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		924878301D86F6F5000C86FF /* Live.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Live.entitlements; sourceTree = "<group>"; };
 		924878311D86F88B000C86FF /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
@@ -266,6 +270,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92458B6E1E74673D007B3320 /* libz.tbd in Frameworks */,
 				92AF48281E71DB1100313FB1 /* CloudKit.framework in Frameworks */,
 				927B69011E1592E200C80F76 /* MessageUI.framework in Frameworks */,
 				92CA91D41D830A31000491CD /* ResearchKit.framework in Frameworks */,
@@ -327,6 +332,7 @@
 				92A1D5F61E1F3BBA004E5D3F /* ShareReminderPopupViewController.swift */,
 				92A1D5F81E1F3BD6004E5D3F /* ShareReminderViewController.swift */,
 				9221F70B1E70EF89009A5127 /* CloudManager.swift */,
+				92458B681E746369007B3320 /* GZip.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -334,6 +340,7 @@
 		925691941E12D72B00E820F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				92458B6C1E7465EE007B3320 /* libz.tbd */,
 				92AF48271E71DB1100313FB1 /* CloudKit.framework */,
 				927B69001E1592E200C80F76 /* MessageUI.framework */,
 				925691951E12D72C00E820F7 /* UIKit.framework */,
@@ -831,6 +838,7 @@
 				926ECB311DB975EF00A36584 /* ActivityRankViewController.swift in Sources */,
 				926ECB2D1DB975B300A36584 /* ActivityPopupViewController.swift in Sources */,
 				9291F6861DABF85400042F42 /* LiveManager.swift in Sources */,
+				92458B691E746369007B3320 /* GZip.swift in Sources */,
 				924878321D86F88B000C86FF /* HealthKitManager.swift in Sources */,
 				929CE6AB1DB5548000330FFB /* ValuesThinkViewController.swift in Sources */,
 				92B89C501E15A92F00E7D5CC /* ShareViewController.swift in Sources */,
@@ -1118,10 +1126,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Live/Live.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Live/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fireflydesign.Live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/Modules/zlib";
 				SWIFT_OBJC_BRIDGING_HEADER = "Live/Live-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1136,10 +1146,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Live/Live.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Live/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fireflydesign.Live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/Modules/zlib";
 				SWIFT_OBJC_BRIDGING_HEADER = "Live/Live-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

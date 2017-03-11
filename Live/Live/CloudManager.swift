@@ -23,7 +23,8 @@ class CloudManager {
     var state: State? = nil
     var lastModificationDate: Date? = nil
 
-    var updateTimeInterval: TimeInterval = 60
+    let compress: Bool = false
+    let updateTimeInterval: TimeInterval = 5 // 24 * 60 * 60 // update the cloud at most once a day
 
     var database: CKDatabase {
         get {
@@ -51,7 +52,20 @@ class CloudManager {
         let recordID = CKRecordID(recordName: state.name)
         let record = CKRecord(recordType: state.type, recordID: recordID)
         record["assetModificationDate" ] = state.modificationDate as NSDate
-        record["asset"] = CKAsset(fileURL: state.fileURL)
+        if compress {
+            do {
+                let data = try Data(contentsOf: state.fileURL)
+                let compressedData = try GZip.compress(data: data)
+                let compressedFileURL = URL(fileURLWithPath: NSTemporaryDirectory() + "/" + NSUUID().uuidString)
+                try compressedData.write(to: compressedFileURL)
+                record["asset"] = CKAsset(fileURL: compressedFileURL)
+            } catch {
+                NSLog("CloudManager.save compress error: \(error.localizedDescription)")
+                record["asset"] = CKAsset(fileURL: state.fileURL)
+            }
+        } else {
+            record["asset"] = CKAsset(fileURL: state.fileURL)
+        }
         let operation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
         operation.qualityOfService = .userInteractive
         operation.savePolicy = .allKeys
