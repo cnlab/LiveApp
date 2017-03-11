@@ -31,6 +31,7 @@ class LiveManager: NotificationManagerDelegate {
     var installationDate: Date? = nil
     var installationUUID: String? = nil
     var delegate: LiveManagerDelegate?
+    let cloudManager = CloudManager()
     let notificationManager = createNotificationManager()
     var didAuthorizeNotificationManager = false {
         willSet(newValue) {
@@ -188,6 +189,12 @@ class LiveManager: NotificationManagerDelegate {
             let data = try JSON.json(any: json)
             try data.write(to: archivePath, options: Data.WritingOptions.atomic)
             NSLog("LiveManager.archive: success")
+
+            if shareDataWithResearchers {
+                if let installationUUID = installationUUID {
+                    cloudManager.update(type: "Archive", name: installationUUID, fileURL: archivePath, modificationDate: modificationDate)
+                }
+            }
         } catch {
             NSLog("LiveManager.archive: error: \(error)")
         }
