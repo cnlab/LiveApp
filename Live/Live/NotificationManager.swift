@@ -62,6 +62,7 @@ class NotificationManager9: NotificationManager {
     func authorize() {
         let notificationSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
         UIApplication.shared.registerUserNotificationSettings(notificationSettings)
+        queryAuthorization()
     }
 
     func cancel() {

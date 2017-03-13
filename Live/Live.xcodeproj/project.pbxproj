@@ -76,8 +76,6 @@
 		92CA91A11D8304B9000491CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92CA91A01D8304B9000491CD /* Assets.xcassets */; };
 		92CA91A41D8304B9000491CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92CA91A21D8304B9000491CD /* LaunchScreen.storyboard */; };
 		92CA91BA1D8304B9000491CD /* LiveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA91B91D8304B9000491CD /* LiveUITests.swift */; };
-		92CA91D41D830A31000491CD /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92CA91CE1D8309CC000491CD /* ResearchKit.framework */; };
-		92CA91D51D830A31000491CD /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 92CA91CE1D8309CC000491CD /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		92CAC2431DB2BF21009615C3 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CAC2421DB2BF21009615C3 /* Note.swift */; };
 		92DA5F961DAFF2EB00132B16 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA5F951DAFF2EB00132B16 /* Schedule.swift */; };
 		92E34EC31DB3F51A002DCB87 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E34EC21DB3F51A002DCB87 /* DebugViewController.swift */; };
@@ -122,27 +120,6 @@
 			remoteGlobalIDString = 92CA91931D8304B9000491CD;
 			remoteInfo = Live;
 		};
-		92CA91CD1D8309CC000491CD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 92CA91C71D8309CC000491CD /* ResearchKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B183A5951A8535D100C76870;
-			remoteInfo = ResearchKit;
-		};
-		92CA91CF1D8309CC000491CD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 92CA91C71D8309CC000491CD /* ResearchKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
-			remoteInfo = ResearchKitTests;
-		};
-		92CA91D61D830A31000491CD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 92CA91C71D8309CC000491CD /* ResearchKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B183A4731A8535D100C76870;
-			remoteInfo = ResearchKit;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -152,7 +129,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				92CA91D51D830A31000491CD /* ResearchKit.framework in Embed Frameworks */,
 				925443E41E12D33900BD5687 /* LiveViews.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -240,7 +216,6 @@
 		92CA91B51D8304B9000491CD /* LiveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92CA91B91D8304B9000491CD /* LiveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveUITests.swift; sourceTree = "<group>"; };
 		92CA91BB1D8304B9000491CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		92CA91C71D8309CC000491CD /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = ../ResearchKit/ResearchKit.xcodeproj; sourceTree = "<group>"; };
 		92CAC2421DB2BF21009615C3 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		92DA5F951DAFF2EB00132B16 /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		92E34EC21DB3F51A002DCB87 /* DebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
@@ -273,7 +248,6 @@
 				92458B6E1E74673D007B3320 /* libz.tbd in Frameworks */,
 				92AF48281E71DB1100313FB1 /* CloudKit.framework in Frameworks */,
 				927B69011E1592E200C80F76 /* MessageUI.framework in Frameworks */,
-				92CA91D41D830A31000491CD /* ResearchKit.framework in Frameworks */,
 				925443E31E12D33900BD5687 /* LiveViews.framework in Frameworks */,
 				9248782F1D86F6F5000C86FF /* HealthKit.framework in Frameworks */,
 			);
@@ -470,7 +444,6 @@
 			isa = PBXGroup;
 			children = (
 				9248782E1D86F6F5000C86FF /* HealthKit.framework */,
-				92CA91C71D8309CC000491CD /* ResearchKit.xcodeproj */,
 				925443CF1E12D33900BD5687 /* LiveViews */,
 				92CA91961D8304B9000491CD /* Live */,
 				92CA91AD1D8304B9000491CD /* LiveTests */,
@@ -530,15 +503,6 @@
 				92CA91BB1D8304B9000491CD /* Info.plist */,
 			);
 			path = LiveUITests;
-			sourceTree = "<group>";
-		};
-		92CA91C81D8309CC000491CD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				92CA91CE1D8309CC000491CD /* ResearchKit.framework */,
-				92CA91D01D8309CC000491CD /* ResearchKitTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		92E34EBC1DB3F4B3002DCB87 /* Debug */ = {
@@ -612,7 +576,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				92CA91D71D830A31000491CD /* PBXTargetDependency */,
 				925443E21E12D33900BD5687 /* PBXTargetDependency */,
 			);
 			name = Live;
@@ -686,7 +649,7 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.iCloud = {
 								enabled = 1;
@@ -716,12 +679,6 @@
 			mainGroup = 92CA918B1D8304B9000491CD;
 			productRefGroup = 92CA91951D8304B9000491CD /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 92CA91C81D8309CC000491CD /* Products */;
-					ProjectRef = 92CA91C71D8309CC000491CD /* ResearchKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				92CA91931D8304B9000491CD /* Live */,
@@ -732,23 +689,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		92CA91CE1D8309CC000491CD /* ResearchKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ResearchKit.framework;
-			remoteRef = 92CA91CD1D8309CC000491CD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		92CA91D01D8309CC000491CD /* ResearchKitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ResearchKitTests.xctest;
-			remoteRef = 92CA91CF1D8309CC000491CD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		925443CC1E12D33900BD5687 /* Resources */ = {
@@ -917,11 +857,6 @@
 			isa = PBXTargetDependency;
 			target = 92CA91931D8304B9000491CD /* Live */;
 			targetProxy = 92CA91B61D8304B9000491CD /* PBXContainerItemProxy */;
-		};
-		92CA91D71D830A31000491CD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ResearchKit;
-			targetProxy = 92CA91D61D830A31000491CD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1121,11 +1056,11 @@
 		92CA91BF1D8304B9000491CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Live/Live.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = TVNL896ZKT;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Live/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1141,11 +1076,11 @@
 		92CA91C01D8304B9000491CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Live/Live.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = TVNL896ZKT;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Live/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import ResearchKit
+import HealthKit
 
 var sharedLiveManager = LiveManager()
 

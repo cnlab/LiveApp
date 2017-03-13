@@ -24,7 +24,7 @@ class CloudManager {
     var lastModificationDate: Date? = nil
 
     let compress: Bool = false
-    let updateTimeInterval: TimeInterval = 5 // 24 * 60 * 60 // update the cloud at most once a day
+    let updateTimeInterval: TimeInterval = 24 * 60 * 60 // update the cloud at most once a day
 
     var database: CKDatabase {
         get {

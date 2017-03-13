@@ -6,7 +6,6 @@
 //  Copyright © 2016 Firefly Design LLC. All rights reserved.
 //
 
-import ResearchKit
 import UIKit
 import LiveViews
 
