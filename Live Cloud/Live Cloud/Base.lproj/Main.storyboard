@@ -664,7 +664,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Live Cloud" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -687,7 +687,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vco-Ri-e7z">
-                                <rect key="frame" x="205" y="117" width="70" height="32"/>
+                                <rect key="frame" x="14" y="222" width="70" height="32"/>
                                 <buttonCell key="cell" type="push" title="Sync" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KdR-wT-1QP">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -696,12 +696,52 @@
                                     <action selector="sync:" target="XfG-lQ-9wD" id="Y6D-P8-vTE"/>
                                 </connections>
                             </button>
+                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08J-YY-kmH">
+                                <rect key="frame" x="20" y="20" width="440" height="189"/>
+                                <clipView key="contentView" id="FOp-dU-8FS">
+                                    <rect key="frame" x="1" y="1" width="438" height="187"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView editable="NO" importsGraphics="NO" usesFontPanel="YES" findStyle="panel" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="IUl-5m-2tr">
+                                            <rect key="frame" x="0.0" y="0.0" width="438" height="187"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="minSize" width="438" height="187"/>
+                                            <size key="maxSize" width="463" height="10000000"/>
+                                            <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="HSL-D8-dNz">
+                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Ybz-aS-g0b">
+                                    <rect key="frame" x="423" y="1" width="16" height="187"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Wcf-jm-P2D">
+                                <rect key="frame" x="86" y="232" width="16" height="16"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="vco-Ri-e7z" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="1EU-qU-HiH"/>
-                            <constraint firstItem="vco-Ri-e7z" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="gQi-tx-n4A"/>
+                            <constraint firstItem="vco-Ri-e7z" firstAttribute="centerY" secondItem="Wcf-jm-P2D" secondAttribute="centerY" id="32J-Wp-jJr"/>
+                            <constraint firstItem="vco-Ri-e7z" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="49e-Jy-kfO"/>
+                            <constraint firstItem="vco-Ri-e7z" firstAttribute="leading" secondItem="08J-YY-kmH" secondAttribute="leading" id="KJb-7x-9yl"/>
+                            <constraint firstItem="08J-YY-kmH" firstAttribute="top" secondItem="vco-Ri-e7z" secondAttribute="bottom" constant="20" symbolic="YES" id="ZYf-09-rEn"/>
+                            <constraint firstAttribute="bottom" secondItem="08J-YY-kmH" secondAttribute="bottom" constant="20" symbolic="YES" id="ehJ-Kx-ES2"/>
+                            <constraint firstItem="Wcf-jm-P2D" firstAttribute="leading" secondItem="vco-Ri-e7z" secondAttribute="trailing" constant="8" symbolic="YES" id="g5N-nS-rie"/>
+                            <constraint firstItem="vco-Ri-e7z" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="gJn-RI-8rk"/>
+                            <constraint firstAttribute="trailing" secondItem="08J-YY-kmH" secondAttribute="trailing" constant="20" symbolic="YES" id="lTu-Mq-s1o"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="logTextView" destination="IUl-5m-2tr" id="vq2-si-ifP"/>
+                        <outlet property="syncButton" destination="vco-Ri-e7z" id="lPc-6U-v0q"/>
+                        <outlet property="syncProgressIndicator" destination="Wcf-jm-P2D" id="a4a-jJ-Bog"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

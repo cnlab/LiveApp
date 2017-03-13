@@ -11,6 +11,10 @@ import Cocoa
 
 class ViewController: NSViewController {
 
+    @IBOutlet var syncButton: NSButton?
+    @IBOutlet var syncProgressIndicator: NSProgressIndicator?
+    @IBOutlet var logTextView: NSTextView?
+    
     enum LocalError: Error {
         case contentModificationDateNotFound
         case directoryNotFound
@@ -19,6 +23,7 @@ class ViewController: NSViewController {
 
     struct State {
         let type: String
+        let completionClosure: () -> Void
         let queryOperation: CKQueryOperation
     }
 
@@ -43,13 +48,17 @@ class ViewController: NSViewController {
     }
 
     func queryComplete(records: [CKRecord], error: Error?) {
+        let completionClosure = state?.completionClosure
         state = nil
+        defer {
+            completionClosure?()
+        }
 
         if let error = error {
-            print("CloudManager.queryComplete Error: \(error.localizedDescription)")
+            log("iCloud query error: \(error.localizedDescription)")
             return
         }
-        print("CloudManager.queryComplete success")
+        log("iCloud query completed...")
 
         let directory = "\(FileManager.default.homeDirectoryForCurrentUser)/Desktop/Live"
         for record in records {
@@ -65,17 +74,21 @@ class ViewController: NSViewController {
                         }
                         let data = try Data(contentsOf: asset.fileURL)
                         try data.write(to: destinationURL)
+                        log("updated out of date asset for UUID " + record.recordID.recordName)
+                    } else {
+                        log("skipping up to date asset for UUID " + record.recordID.recordName)
                     }
                 } catch {
-                    NSLog("can't copy asset: \(error.localizedDescription)")
+                    log("can't copy asset: \(error.localizedDescription)")
                 }
             }
         }
     }
 
-    func query(type: String) {
+    func query(type: String, completionClosure: @escaping () -> Void) {
         if state != nil {
-            NSLog("query already in progress...")
+            debug("query already in progress!")
+            completionClosure()
             return
         }
 
@@ -85,20 +98,39 @@ class ViewController: NSViewController {
         operation.qualityOfService = .userInteractive
         var records: [CKRecord] = []
         operation.recordFetchedBlock = { (record) in
-            records.append(record)
-            print("query record \(record)")
+            DispatchQueue.main.async {
+                records.append(record)
+                self.debug("query record \(record)")
+            }
         }
         operation.queryCompletionBlock = { (cursor, error) in
             DispatchQueue.main.async {
                 self.queryComplete(records: records, error: error)
             }
         }
-        state = State(type: type, queryOperation: operation)
+        state = State(type: type, completionClosure: completionClosure, queryOperation: operation)
+        log("Querying iCloud for asset metadata...")
         database.add(operation)
     }
 
     @IBAction func sync(_ sender: AnyObject) {
-        query(type: "Archive")
+        syncButton?.isEnabled = false
+        syncProgressIndicator?.isHidden = false
+        syncProgressIndicator?.startAnimation(self)
+        logTextView?.textStorage?.mutableString.setString("")
+        query(type: "Archive") {
+            self.syncButton?.isEnabled = true
+            self.syncProgressIndicator?.stopAnimation(self)
+            self.syncProgressIndicator?.isHidden = true
+        }
+    }
+
+    func log(_ string: String) {
+        logTextView?.textStorage?.mutableString.append(string + "\n")
+    }
+
+    func debug(_ string: String) {
+//        logTextView?.textStorage?.mutableString.append(string + "\n")
     }
 
 }
