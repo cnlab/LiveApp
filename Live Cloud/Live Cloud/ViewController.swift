@@ -65,7 +65,7 @@ class ViewController: NSViewController {
             if let recordModificationDate = record.modificationDate {
                 let name = record.recordID.recordName
                 do {
-                    guard let destinationURL = URL(string: "\(directory)/\(name)") else {
+                    guard let destinationURL = URL(string: "\(directory)/\(name)-archive.json") else {
                         throw LocalError.directoryNotFound
                     }
                     if try isOutOfDate(url: destinationURL, date: recordModificationDate) {
