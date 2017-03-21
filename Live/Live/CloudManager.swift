@@ -97,7 +97,7 @@ class CloudManager {
 
         if
             let record = record,
-            let recordModificationDate = record.modificationDate
+            let recordModificationDate = record["assetModificationDate"] as? Date
         {
             lastModificationDate = recordModificationDate
             if withinUpdateTimeInterval() {
@@ -123,7 +123,7 @@ class CloudManager {
         let query = CKQuery(recordType: type, predicate: predicate)
         let operation = CKQueryOperation(query: query)
         operation.qualityOfService = .userInteractive
-        operation.desiredKeys = ["modificationDate"]
+        operation.desiredKeys = ["modificationDate", "assetModificationDate"]
         var resultRecord: CKRecord? = nil
         operation.recordFetchedBlock = { (record) in
             resultRecord = record
