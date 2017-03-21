@@ -268,6 +268,8 @@ class LiveManager: NotificationManagerDelegate {
         if didAuthorizeHealthKit {
             authorizeHealthKit()
         }
+
+        surveyManager.update()
     }
 
     func authorizeNotificationManager() {
