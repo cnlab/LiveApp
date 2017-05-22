@@ -95,7 +95,7 @@ class AboutViewController: UIViewController, UITextViewDelegate, MFMailComposeVi
             case .sent:
                 alert(message: "Mail was sent.")
             case .failed:
-                alert(message: "Sending mail failed: \(error).")
+                alert(message: "Sending mail failed: \(String(describing: error)).")
         }
         dismiss(animated: false, completion: nil)
     }

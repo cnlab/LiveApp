@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let launchOptions = launchOptions {
             NSLog("for pre-iOS 10")
             if let notification = launchOptions[UIApplicationLaunchOptionsKey.localNotification] as? UILocalNotification {
-                NSLog("\(notification.userInfo)")
+                NSLog("\(String(describing: notification.userInfo))")
             }
         }
 

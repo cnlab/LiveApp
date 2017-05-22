@@ -32,7 +32,7 @@ class LiveManager: NotificationManagerDelegate {
     var installationUUID: String? = nil
     var delegate: LiveManagerDelegate?
     let cloudManager = CloudManager()
-    let notificationManager = createNotificationManager()
+    var notificationManager = createNotificationManager()
     var didAuthorizeNotificationManager = false {
         willSet(newValue) {
             if newValue != didAuthorizeNotificationManager {
@@ -466,7 +466,7 @@ class LiveManager: NotificationManagerDelegate {
                 } else {
                     print("HealthKit authorization denied!")
                     if error != nil {
-                        print("\(error)")
+                        print("\(String(describing: error))")
                     }
                 }
             }

@@ -31,7 +31,7 @@ class SchedulerTests: XCTestCase {
     func newScheduler(for string: String) -> Scheduler {
         let activityMessageManager = ActivityMessageManager()
         let valueMessageManager = ValueMessageManager()
-        let messageManagers: [String: MessageManager] = ["Value": valueMessageManager, "Activity": activityMessageManager]
+        let messageManagers: [MessageManager] = [valueMessageManager, activityMessageManager]
         let now = date(from: string)
         let trigger = DateComponents(hour: 9, minute: 0)
         let triggerOffsets: [String: TimeInterval] = ["Activity": 0, "Value": 10]

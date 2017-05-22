@@ -220,7 +220,7 @@ class NotificationManager10: NSObject, UNUserNotificationCenterDelegate, Notific
         let request = UNNotificationRequest(identifier: uuid, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request) {(error) in
             if let error = error {
-                NSLog("add notification error: \(trigger) \(uuid) \(error)")
+                NSLog("add notification error: \(String(describing: trigger)) \(uuid) \(error)")
             }
         }
     }
