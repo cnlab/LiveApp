@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -78,7 +78,7 @@ five</string>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="ic_homeOn" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="activityTextView" destination="oiS-1Q-LYP" id="iIz-lN-uo2"/>
                         <outlet property="averageStepsLabel" destination="6ve-r3-LfS" id="Asa-pl-HUZ"/>
@@ -168,7 +168,7 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Values" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Values" image="ic_valuesOn" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="collectionView" destination="BOA-Mb-Zld" id="4VK-uD-3yb"/>
                     </connections>
@@ -283,7 +283,7 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                             <constraint firstItem="sOV-gS-Zlb" firstAttribute="top" secondItem="uD8-Rn-7vg" secondAttribute="bottom" id="yjK-1E-zvi"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Survey" id="Wf3-Bd-uW0" customClass="SurveyTabBarItem" customModule="Live" customModuleProvider="target"/>
+                    <tabBarItem key="tabBarItem" title="Survey" image="ic_surveyOn" id="Wf3-Bd-uW0" customClass="SurveyTabBarItem" customModule="Live" customModuleProvider="target"/>
                     <connections>
                         <outlet property="formView" destination="XIK-6p-er2" id="yCe-Qz-Mzp"/>
                         <outlet property="introductionView" destination="sOV-gS-Zlb" id="IEg-ef-r2j"/>
@@ -800,7 +800,7 @@ What time do you want to receive these reminders?</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="RRd-XL-Hc4"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="ic_settingOn" id="RRd-XL-Hc4"/>
                     <connections>
                         <outlet property="showSettingsButton" destination="wb3-98-nKr" id="jbL-fc-l5J"/>
                         <outlet property="timePicker" destination="sM0-PY-JFf" id="gOB-bc-jkL"/>
@@ -955,7 +955,7 @@ Data is anonymous and has a random ID assigned to it. We do not share your data 
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" minimumValueImage="thumb-down-22x24.png" maximumValueImage="thumb-up-22x24.png" translatesAutoresizingMaskIntoConstraints="NO" id="nqJ-03-74K">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" minimumValueImage="ic_thumbDown" maximumValueImage="ic_thumbUp" translatesAutoresizingMaskIntoConstraints="NO" id="nqJ-03-74K">
                                 <rect key="frame" x="-2" y="329" width="228" height="31"/>
                             </slider>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Value..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yTA-Ct-hQZ">
@@ -1700,6 +1700,12 @@ Your next survey is due in ## days</string>
         </scene>
     </scenes>
     <resources>
+        <image name="ic_homeOn" width="21" height="23"/>
+        <image name="ic_settingOn" width="24" height="24"/>
+        <image name="ic_surveyOn" width="25" height="21"/>
+        <image name="ic_thumbDown" width="27" height="24"/>
+        <image name="ic_thumbUp" width="27" height="24"/>
+        <image name="ic_valuesOn" width="25" height="21"/>
         <image name="thumb-down-22x24.png" width="22" height="24"/>
         <image name="thumb-up-22x24.png" width="22" height="24"/>
     </resources>

@@ -231,7 +231,7 @@ class ValueMessageManager: MessageManager {
             Message(group: familyAndFriends, identifier: "10", string: "Think about being able to rely on your friends and family."),
             Message(group: familyAndFriends, identifier: "11", string: "Think about telling a friend or family member that you love them."),
             Message(group: familyAndFriends, identifier: "12", string: "Think about feeling you belong to a family or friendship."),
-            Message(group: familyAndFriends, identifier: "13", string: "Think about reuniting with friends or family after a long absence."),
+            Message(group: familyAndFriends, identifier: "13", string: "Think about reuniting with friends or family after a long absence ."),
             Message(group: familyAndFriends, identifier: "14", string: "Think about maintaining traditions with your friends or family."),
             Message(group: familyAndFriends, identifier: "15", string: "Think about your friends or family showing you love."),
             Message(group: familyAndFriends, identifier: "16", string: "Think about having connection with your friends and family."),

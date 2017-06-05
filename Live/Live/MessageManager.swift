@@ -47,6 +47,16 @@ class Message {
         self.variants = variants
     }
 
+    init(group: String, identifier: String, alternatives: (variant: String, string: String)...) {
+        self.key = Key(group: group, identifier: identifier)
+        var variants: [String: [String: String]] = [:]
+        self.string = alternatives.first!.string
+        for (variant, string) in alternatives.dropFirst() {
+            variants[variant] = [self.string: string]
+        }
+        self.variants = variants
+    }
+
     func format(variant: String? = nil) -> String {
         let parts = string.components(separatedBy: "/")
         if let variant = variant {

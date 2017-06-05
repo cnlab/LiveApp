@@ -52,95 +52,242 @@ class ActivityMessageManager: MessageManager {
         let how = "how"
         let why = "why"
         let risk = "risk"
+        let active = "active"
         let inactive = "inactive"
 
         messages = [
             // PA1 Active How
-            Message(group: how, identifier: "1", string: "The best parking spots are the ones that are farther away. Choose the last row of a parking lot or the top floor so you have farther to walk."),
-            Message(group: how, identifier: "2", string: "Stairs are a great way to /stay/ active. Take the stairs instead of the elevator - start with going up short distances and always walking down.", variants: [inactive: ["stay": "get more"]]),
-            Message(group: how, identifier: "3", string: "Think of ways to squeeze in /even/ more walking or biking. Think about the places you go each week and see if any are close enough to walk or bike to.", variants: [inactive: ["even": "a little"]]),
-            Message(group: how, identifier: "4", string: "Dancing is a great activity, even if you don't know how. Pick your favorite music, and just start dancing - it doesn't have to look good, moving your body at all counts."),
-            Message(group: how, identifier: "5", string: "Some types of entertainment are more active than others. Bowling, roller skating, swimming, and ice skating are some good things to mix in from time to time."),
-            Message(group: how, identifier: "6", string: "You might be able to /stay active during/ weekends. Visit places where you walk a lot - like the store, the mall, a park, or museum.", variants: [inactive: ["stay active during": "include more activity into your"]]),
-            Message(group: how, identifier: "7", string: "Doing work around your house can /keep/ you moving. Put on some music while you tidy, do dishes, or dust, and dance around while you're working.", variants: [inactive: ["keep": "get"]]),
+            Message(group: how, identifier: "1", alternatives:
+                (active, "The best parking spots are the ones farther away. Choose the last row or the top floor so you have farther to walk."),
+                (inactive, "The best parking spots are the ones farther away. Choose the last row or the top floor so you have farther to walk.")),
+            Message(group: how, identifier: "2", alternatives:
+                (active, "Stairs can keep you active. Instead of the elevator, start with going up short distances and always walking down."),
+                (inactive, "Stairs can get you active. Instead of the elevator, start with going up short distances and always walking down.")),
+            Message(group: how, identifier: "3", alternatives:
+                (active, "Squeeze in even more walking or biking. Think about places you go and see if any are close enough to walk or bike to."),
+                (inactive, "Squeeze in more walking or biking. Think about places you go and see if any are close enough to walk or bike to.")),
+            Message(group: how, identifier: "4", alternatives:
+                (active, "Dancing is a great activity. Pick your song and start dancing. No need to look good, moving your body at all counts."),
+                (inactive, "Dancing is a great activity. Pick your song and start dancing. No need to look good, moving your body at all counts.")),
+            Message(group: how, identifier: "5", alternatives:
+                (active, "Some types of entertainment are more active than others. Bowling, skating, or swimming are some good things to mix in."),
+                (inactive, "Some types of entertainment are more active than others. Bowling, skating, or swimming are some good things to mix in.")),
+            Message(group: how, identifier: "6", alternatives:
+                (active, "You can stay active during weekends. Visit places where you walk a lot, like the store, mall, park, or museum."),
+                (inactive, "You can be more active during weekends. Visit places where you walk a lot, like the store, mall, park, or museum.")),
+            Message(group: how, identifier: "7", alternatives:
+                (active, "Doing housework can keep you moving. Put on some music when you tidy, do dishes or dust, and dance around while working."),
+                (inactive, "Doing housework can get you moving. Put on some music when you tidy, do dishes or dust, and dance around while working.")),
 
             // PA1 Sedentary How
-            Message(group: how, identifier: "8", string: "When you've sat for an hour, try going for a 5-minute walk. Take a walk around the block, go upstairs and come back down, or walk the halls."),
-            Message(group: how, identifier: "9", string: "After an hour of sitting, try standing for 5 minutes. Stand up while you read, watch TV, talk on the phone, fold laundry, or write an email."),
-            Message(group: how, identifier: "10", string: "When you go to the bathroom or get a drink, take the long way. Walk to a bathroom that's farther away - for example, on a different floor."),
-            Message(group: how, identifier: "11", string: "After you've been still for a while, try to stand up and stretch. Stretch everything you can think of - arms, legs, neck, shoulders, back, ankles."),
-            Message(group: how, identifier: "12", string: "Think of activities you can do while you're on the phone. While you're chatting on the phone, walk around, twist, stretch, or do deep knee bends."),
-            Message(group: how, identifier: "13", string: "Move more while you watch TV or watch less. Exchange a portion of your TV watching for something more active - like going for a walk."),
-            Message(group: how, identifier: "14", string: "Make the time you spend with your family more active. Instead of sitting while you catch up with family, go for a walk while you chat."),
-            Message(group: how, identifier: "15", string: "Depending on how you do it, yard work can be get you moving. Instead of using a leaf blower, raking your leaves the old fashioned way to move around more."),
+            Message(group: how, identifier: "8", alternatives:
+                (active, "When you sat for an hour, go for a 5-minute walk. Walk around the block, go up and down the stairs, or walk the halls."),
+                (inactive, "When you sat for an hour, go for a 5-minute walk. Walk around the block, go up and down the stairs, or walk the halls.")),
+            Message(group: how, identifier: "9", alternatives:
+                (active, "After an hour of sitting, stand up. Stand while you read, watch TV, talk on the phone, fold laundry, or write an email."),
+                (inactive, "After an hour of sitting, stand up. Stand while you read, watch TV, talk on the phone, fold laundry, or write an email.")),
+            Message(group: how, identifier: "10", alternatives:
+                (active, "When you go to the bathroom, take the long way. Walk to a bathroom that's farther away, maybe on a different floor."),
+                (inactive, "When you go to the bathroom, take the long way. Walk to a bathroom that's farther away, maybe on a different floor.")),
+            Message(group: how, identifier: "11", alternatives:
+                (active, "After you've been still for a while, stand up. Stretch everything you can think of, arms, legs, neck, shoulders, ankles."),
+                (inactive, "After you've been still for a while, stand up. Stretch everything you can think of, arms, legs, neck, shoulders, ankles.")),
+            Message(group: how, identifier: "12", alternatives:
+                (active, "Think of activities you can do while on the phone. While chatting, walk around, twist, stretch, or do deep knee bends."),
+                (inactive, "Think of activities you can do while on the phone. While chatting, walk around, twist, stretch, or do deep knee bends.")),
+            Message(group: how, identifier: "13", alternatives:
+                (active, "Move more while you watch TV or watch less. Exchange TV watching for something more active - like going for a walk."),
+                (inactive, "Move more while you watch TV or watch less. Exchange TV watching for something more active - like going for a walk.")),
+            Message(group: how, identifier: "14", alternatives:
+                (active, "Make your family time more active. Instead of sitting while you catch up with family, go for a walk while you chat."),
+                (inactive, "Make your family time more active. Instead of sitting while you catch up with family, go for a walk while you chat.")),
+            Message(group: how, identifier: "15", alternatives:
+                (active, "Yard work can be keep you moving. Instead of using a leaf blower, rake your leaves to move around more."),
+                (inactive, "Yard work can be get you moving. Instead of using a leaf blower, rake your leaves to move around more.")),
 
             // PA2 How
-            Message(group: how, identifier: "16", string: "Think of nearby places you go to often. Try walking to these places instead of driving."),
-            Message(group: how, identifier: "17", string: "Find a time every day when you can get out and walk around for at least 15 minutes. For example, maybe you can walk to and from your job every day."),
-            Message(group: how, identifier: "18", string: "Make a habit of walking up and down the stairs whenever you can. Avoid taking the elevator as often as possible."),
-            Message(group: how, identifier: "19", string: "Visit places where you can walk around as often as possible. Go to places like the mall, a park, or museum to do lots of walking."),
-            Message(group: how, identifier: "20", string: "Put on some music while you do housework and move to the beat. Dance around to music while you tidy, do dishes, or dust."),
-            Message(group: how, identifier: "21", string: "Try out fun and active hobbies both indoors and outdoors. Try hobbies like bowling, swimming, or roller-skating."),
-            Message(group: how, identifier: "22", string: "Try to stand up, stretch, and move around as often as you can. You can also encourage your family and friends to stretch together with you."),
-            Message(group: how, identifier: "23", string: "Find a time to go for a 15-20 minute walk 3-4 times a week. Try casual walks to and from nearby places."),
-            Message(group: how, identifier: "24", string: "Try to /do/ muscle-strengthening activity at least 2 days a week. You can do muscle-strengthening activities around the house such as lifting or carrying.", variants: [inactive: ["do": "start"]]),
-            Message(group: how, identifier: "25", string: "While you are watching TV, stand up and move around if a show or movie ends. When a show or video clip you were watching on your computer ends, use that as a reminder to stretch."),
+            Message(group: how, identifier: "16", alternatives:
+                (active, "Think of nearby places you go to often. Try walking to these places instead of driving."),
+                (inactive, "Think of nearby places you go to often. Try walking to these places instead of driving.")),
+            Message(group: how, identifier: "17", alternatives:
+                (active, "Find a time every day when you can get out and walk around for at least 15 minutes. Maybe to and from your job."),
+                (inactive, "Find a time every day when you can get out and walk around for at least 15 minutes. Maybe to and from your job.")),
+            Message(group: how, identifier: "18", alternatives:
+                (active, "Make a habit of walking up and down the stairs whenever you can. Avoid taking the elevator as often as possible."),
+                (inactive, "Make a habit of walking up and down the stairs whenever you can. Avoid taking the elevator as often as possible.")),
+            Message(group: how, identifier: "19", alternatives:
+                (active, "Visit places where you can walk around. Go to places like the mall, a park, or museum to do lots of walking."),
+                (inactive, "Visit places where you can walk around. Go to places like the mall, a park, or museum to do lots of walking.")),
+            Message(group: how, identifier: "20", alternatives:
+                (active, "Put on some music while you do housework and move to the beat. Dance around while you tidy, do dishes, or dust."),
+                (inactive, "Put on some music while you do housework and move to the beat. Dance around while you tidy, do dishes, or dust.")),
+            Message(group: how, identifier: "21", alternatives:
+                (active, "Try out fun and active hobbies both indoors and outdoors. Try hobbies like bowling, swimming, or roller-skating."),
+                (inactive, "Try out fun and active hobbies both indoors and outdoors. Try hobbies like bowling, swimming, or roller-skating.")),
+            Message(group: how, identifier: "22", alternatives:
+                (active, "Stand up, stretch, and move around. You can also encourage your family and friends to stretch together with you."),
+                (inactive, "Stand up, stretch, and move around. You can also encourage your family and friends to stretch together with you.")),
+            Message(group: how, identifier: "23", alternatives:
+                (active, "Find a time to go for a 15-20 minute walk 3-4 times a week. Try casual walks to and from nearby places."),
+                (inactive, "Find a time to go for a 15-20 minute walk 3-4 times a week. Try casual walks to and from nearby places.")),
+            Message(group: how, identifier: "24", alternatives:
+                (active, "Start muscle-strengthening activity at least 2 days a week. You can do it around the house such as lifting or carrying."),
+                (inactive, "Start muscle-strengthening activity at least 2 days a week. You can do it around the house such as lifting or carrying.")),
+            Message(group: how, identifier: "25", alternatives:
+                (active, "While you watch TV, stand up and move around if a show ends. When a show ends, use that as a reminder to stretch."),
+                (inactive, "While you watch TV, stand up and move around if a show ends. When a show ends, use that as a reminder to stretch.")),
 
             // PA1 Active Why
-            Message(group: why, identifier: "1", string: "/Staying/ active can help with back pain. When people are stronger and more active, they have better posture, which is the best way to manage and prevent back pain.", variants: [inactive: ["Staying": "Getting more"]]),
-            Message(group: why, identifier: "2", string: "/Staying/ active gives you a chance to learn how to do new things. It takes about 3 weeks for your brain to get used to new physical skills - but after that, it's a lot easier.", variants: [inactive: ["Staying": "Getting more"]]),
-            Message(group: why, identifier: "3", string: "/Staying/ active can help you feel more alert, positive, and energetic. Physical activity helps your brain make chemicals that make you feel happier and more relaxed, even after you're done working out.", variants: [inactive: ["Staying": "Becoming more"]]),
-            Message(group: why, identifier: "4", string: "You can feel proud when you reach your goals. /Staying/ active feels good, gives you more energy, and makes you feel better about yourself.", variants: [inactive: ["Staying": "Becoming more"]]),
-            Message(group: why, identifier: "5", string: "Getting more activity can help you sleep better at night. People who are active have an easier time falling asleep and staying asleep - they feel more rested in the morning."),
-            Message(group: why, identifier: "6", string: "/Staying/ physically active can sometimes help people's sex lives. People who are active can get aroused more easily and may be able to stay aroused for longer periods of time.", variants: [inactive: ["Staying": "Becoming more"]]),
-            Message(group: why, identifier: "7", string: "If you find something you like, exercise can be fun. /Staying/ active can help you connect with other people in fun, social settings - like taking classes, being on a team, or just playing with friends.", variants: [inactive: ["Staying": "Getting"]]),
-            Message(group: why, identifier: "8", string: "/Staying/ active helps build muscle. Becoming even stronger makes it easier to do everyday things and might help you feel more powerful in life.", variants: [inactive: ["Staying": "Getting"]]),
-            Message(group: why, identifier: "9", string: "Physical activity helps you live better as you grow older. /Staying/ active will help you reach, bend, lift, carry, and move around more easily, so you can continue doing the things you like to do.", variants: [inactive: ["Staying": "Becoming"]]),
-            Message(group: why, identifier: "10", string: "Exercise can help you deal with stress. /Staying/ active can give you a mental break from what's troubling you - it helps you take a step back and make time for yourself.", variants: [inactive: ["Staying": "Getting"]]),
+            Message(group: why, identifier: "1", alternatives:
+                (active, "Staying active can help with back pain. You will have better posture, the best way to manage and prevent back pain."),
+                (inactive, "Becoming active can help with back pain. You will have better posture, the best way to manage and prevent back pain.")),
+            Message(group: why, identifier: "2", alternatives:
+                (active, "Staying active helps with new things. Your brain takes ~3 weeks to learn new skills, but after that it's a lot easier."),
+                (inactive, "Getting more active helps with new things. Your brain takes ~3 weeks to learn new skills, but after that it's a lot easier.")),
+            Message(group: why, identifier: "3", alternatives:
+                (active, "Staying active can help your brain make chemicals that make you feel happier and more relaxed, even after working out."),
+                (inactive, "Getting active can help your brain make chemicals that make you feel happier and more relaxed, even after working out.")),
+            Message(group: why, identifier: "4", alternatives:
+                (active, "You can feel proud when you reach your goals. Staying active feels good and makes you feel better about yourself."),
+                (inactive, "You can feel proud when you reach your goals. Becoming more active feels good and makes you feel better about yourself.")),
+            Message(group: why, identifier: "5", alternatives:
+                (active, "Staying active can help you sleep better. It will help you fall and stay asleep, and feel more rested."),
+                (inactive, "Getting more active can help you sleep better. It will help you fall and stay asleep, and feel more rested.")),
+            Message(group: why, identifier: "6", alternatives:
+                (active, "Staying active can help sex lives. Active people can get and stay aroused more easily for longer periods of time."),
+                (inactive, "Getting active can help sex lives. Active people can get and stay aroused more easily for longer periods of time.")),
+            Message(group: why, identifier: "7", alternatives:
+                (active, "Staying active can connect you with others in fun social settings, like in classes, teams, or just playing with friends."),
+                (inactive, "Getting active can connect you with others in fun social settings, like in classes, teams, or just playing with friends.")),
+            Message(group: why, identifier: "8", alternatives:
+                (active, "Staying active builds muscle. Becoming even stronger helps with everyday things and help you feel more powerful in life."),
+                (inactive, "Getting more active builds muscle. Becoming stronger helps with everyday things and help you feel more powerful in life.")),
+            Message(group: why, identifier: "9", alternatives:
+                (active, "Physical activity helps you age better. Staying active will help you continue doing things you like."),
+                (inactive, "Physical activity helps you age better. Becoming active will help you continue doing things you like.")),
+            Message(group: why, identifier: "10", alternatives:
+                (active, "Exercise helps with stress. Staying active can give a mental break from troubles, step back and make time for yourself."),
+                (inactive, "Exercise helps with stress. Getting active can give a mental break from troubles, step back and make time for yourself.")),
 
             // PA1 Sedentary Why
-            Message(group: why, identifier: "11", string: "Imagine what you'd fill your time with if you watched less TV. People get more checked off their to-do lists when they don't watch TV - imagine how good that would feel."),
-            Message(group: why, identifier: "12", string: "The more you /sit/, the more damage it does to your body. When you sit for long periods of time, your body can't handle sugar and fat - this can mean higher risk for disease.", variants: [inactive: ["sit": "continue to sit"]]),
-            Message(group: why, identifier: "13", string: "Sitting for a long time can make you sore and tired. After you've sat for an hour, notice how your body feels - then, stand up and notice any changes you feel."),
-            Message(group: why, identifier: "14", string: "You might inspire others by /continuing to move more and sit less/. It might be hard /sometimes/ - to turn off the TV or to stand during meetings - but after a while, other people will probably thank you.", variants: [inactive: ["continuing to move more and sit less": "getting more active and sitting less", "sometimes": "at first"]]),
-            Message(group: why, identifier: "15", string: "The more you get off your seat, the better your chances of having a healthier body for longer. /Maintaining/ a healthy body means less worry, pills, and doctor's appointments. It also means more time and energy to enjoy life.", variants: [inactive: ["Maintaining": "Achieving"]]),
-            Message(group: why, identifier: "16", string: "A lack of activity can be linked to a shorter life. By /continuing/ to sit less and move more, you can help make sure you live longer - to enjoy the things that mean the most to you in life.", variants: [inactive: ["continuing": "starting"]]),
-            Message(group: why, identifier: "17", string: "People who sit less are at lower risk for certain diseases. People who sit less are less likely to have diabetes, and heart disease than people who are more active."),
-            Message(group: why, identifier: "18", string: "People who sit less have an easier time controlling their weight. You don't need to turn into an athlete or join a gym - even sitting less throughout the day can make a difference."),
-            Message(group: why, identifier: "19", string: "/Continue/ to sit less can mean you have more energy to get you through the day. Getting off your seat helps get oxygen to your heart, lungs, and veins - your body feels better when it works better.", variants: [inactive: ["Continue": "Starting"]]),
-            Message(group: why, identifier: "20", string: "Sitting less over time might mean fewer pills. When you /continue/ to sit less your body is better at making good cholesterol, and lowering bad cholesterol, blood pressure, and blood sugar.", variants: [inactive: ["continue": "start"]]),
+            Message(group: why, identifier: "11", alternatives:
+                (active, "Imagine what you'd fill your time with if you watched less TV. Imagine how good that would feel to get more done in free time."),
+                (inactive, "Imagine what you'd fill your time with if you watched less TV. Imagine how good that would feel to get more done in free time.")),
+            Message(group: why, identifier: "12", alternatives:
+                (active, "The more you sit, the more damage it does. Your body won't handle sugar and fat, increasing risk for disease."),
+                (inactive, "The more you continue to sit, the more damage it does. Your body won't handle sugar and fat, increasing risk for disease.")),
+            Message(group: why, identifier: "13", alternatives:
+                (active, "Sitting makes you sore and tired. Notice how you feel after sitting for an hour. Stand up and notice if you feel better."),
+                (inactive, "Sitting makes you sore and tired. Notice how you feel after sitting for an hour. Stand up and notice if you feel better.")),
+            Message(group: why, identifier: "14", alternatives:
+                (active, "Sitting makes you sore and tired. Notice how you feel after sitting for an hour. Stand up and notice if you feel better."),
+                (inactive, "You may inspire others by sitting less. Turn off TV or stand during work. People may eventually thank you.")),
+            Message(group: why, identifier: "15", alternatives:
+                (active, "Sitting less and achieving a healthy body means less worry and hospital visits, and more time and energy to enjoy life."),
+                (inactive, "Sitting less and achieving a healthy body means less worry and hospital visits, and more time and energy to enjoy life.")),
+            Message(group: why, identifier: "16", alternatives:
+                (active, "A lack of activity means a shorter life. Continuing to sit less to enjoy the things that mean the most to you for longer."),
+                (inactive, "A lack of activity means a shorter life. Starting to sit less to enjoy the things that mean the most to you for longer.")),
+            Message(group: why, identifier: "17", alternatives:
+                (active, "People who sit less have lower risk for certain diseases like diabetes and heart disease than those who sit more."),
+                (inactive, "People who sit less have lower risk for certain diseases like diabetes and heart disease than those who sit more.")),
+            Message(group: why, identifier: "18", alternatives:
+                (active, "Sitting less helps control weight. No need to become an athlete or join a gym, just sitting less can make a difference."),
+                (inactive, "Sitting less helps control weight. No need to become an athlete or join a gym, just sitting less can make a difference.")),
+            Message(group: why, identifier: "19", alternatives:
+                (active, "Sitting less can energize you. It delivers oxygen to your heart, lungs, and veins, making you feel better."),
+                (inactive, "Sitting less can energize you. It delivers oxygen to your heart, lungs, and veins, making you feel better.")),
+            Message(group: why, identifier: "20", alternatives:
+                (active, "Sitting less means fewer pills. Your body will make good cholesterol, and lowering blood pressure and blood sugar."),
+                (inactive, "Sitting less means fewer pills. Your body will make good cholesterol, and lowering blood pressure and blood sugar.")),
 
             // PA2 Why
-            Message(group: why, identifier: "21", string: "You can live longer to enjoy the things you love if you /continue/ to sit less and move more. You will spend a longer time with the people you love.", variants: [inactive: ["continue": "start"]]),
-            Message(group: why, identifier: "22", string: "As you /move/ around even more, your body can use blood sugar. This can keep your arteries healthy.", variants: [inactive: ["move": "start to move"]]),
-            Message(group: why, identifier: "23", string: "As you /remain/ active, your bones will grow stronger. Stronger bones will help you stay pain free.", variants: [inactive: ["remain": "become more"]]),
-            Message(group: why, identifier: "24", string: "You can lower your risk of getting cancer even more if you /continue to exercise/ regularly. This means you can live longer and healthier.", variants: [inactive: ["continue to exercise": "exercise"]]),
-            Message(group: why, identifier: "25", string: "If you /stay/ active, you will be less likely to get diabetes. This means you can enjoy a longer and healthier life with more freedom.", variants: [inactive: ["stay": "become more"]]),
-            Message(group: why, identifier: "26", string: "Active people tend to live longer than people who are less physically active. You can live longer and healthier by /staying/ active.", variants: [inactive: ["staying": "becoming"]]),
-            Message(group: why, identifier: "27", string: "You can help prevent age-related memory loss with more exercise. This means your mind will be more clear and alert as you become older."),
-            Message(group: why, identifier: "28", string: "/Staying/ active will strengthen your muscles. Stronger muscles will make it easier for you to get around and do the things you enjoy for longer.", variants: [inactive: ["Staying": "Getting more"]]),
-            Message(group: why, identifier: "29", string: "Spending less time in front of the TV or computer can strengthen your heart. This means you will live longer and healthier."),
+            Message(group: why, identifier: "21", alternatives:
+                (active, "You can live longer doing things you love if you continue to sit less. You can spend more time with the people you love."),
+                (inactive, "You can live longer doing things you love if you start to sit less. You can spend more time with the people you love.")),
+            Message(group: why, identifier: "22", alternatives:
+                (active, "If you move around more even more, your body can use blood sugar. This can keep your arteries healthy."),
+                (inactive, "As you start to move around more, your body can use blood sugar. This can keep your arteries healthy.")),
+            Message(group: why, identifier: "23", alternatives:
+                (active, "As you remain active, your bones will grow stronger. Stronger bones will help you stay pain free."),
+                (inactive, "As you become more active, your bones will grow stronger. Stronger bones will help you stay pain free.")),
+            Message(group: why, identifier: "24", alternatives:
+                (active, "You can lower the risk of cancer if you keep exercising regularly. This means you can live longer and healthier."),
+                (inactive, "You can lower the risk of cancer if you exercise regularly. This means you can live longer and healthier.")),
+            Message(group: why, identifier: "25", alternatives:
+                (active, "Staying active means less risk for diabetes. This means you can enjoy a longer and healthier life with more freedom."),
+                (inactive, "Getting active means less risk for diabetes. This means you can enjoy a longer and healthier life with more freedom.")),
+            Message(group: why, identifier: "26", alternatives:
+                (active, "Active people tend to live longer than less active people. You can live longer and healthier by staying active."),
+                (inactive, "Active people tend to live longer than less active people. You can live longer and healthier by becoming more active.")),
+            Message(group: why, identifier: "27", alternatives:
+                (active, "You can help prevent age-related memory loss with even more exercise. Your mind will be more clear as you become older."),
+                (inactive, "You can help prevent age-related memory loss with more exercise. Your mind will be more clear as you become older.")),
+            Message(group: why, identifier: "28", alternatives:
+                (active, "Staying active will strengthen your muscles. Stronger muscles can help you do the things you enjoy for longer."),
+                (inactive, "Getting more active will strengthen your muscles. Stronger muscles can help you do the things you enjoy for longer.")),
+            Message(group: why, identifier: "29", alternatives:
+                (active, "Spending less time with the TV or computer can strengthen your heart. This means you will live longer and healthier."),
+                (inactive, "Spending less time with the TV or computer can strengthen your heart. This means you will live longer and healthier.")),
 
             // RISK MESSAGES
-            Message(group: risk, identifier: "1", string: "Doctors have called physical inactivity \"the biggest public health problem of the 21st century.\""),
-            Message(group: risk, identifier: "2", string: "According to the American Heart Association, people who are physically inactive are at much higher risk for developing heart disease."),
-            Message(group: risk, identifier: "3", string: "A sedentary lifestyle increases the risk of developing diabetes, hypertension, colon cancer, depression and anxiety, obesity, and weak muscles and bones."),
-            Message(group: risk, identifier: "4", string: "Remaining inactive puts you at risk for health problems related to lack of exercise."),
-            Message(group: risk, identifier: "5", string: "On average, physically active people outlive those who are inactive."),
-            Message(group: risk, identifier: "6", string: "Physical inactivity affects at least 20 of the deadliest chronic disorders."),
-            Message(group: risk, identifier: "7", string: "Sitting for extended periods of time without breaks to move around does significant damage to your health."),
-            Message(group: risk, identifier: "8", string: "Each hour spent sitting watching TV is linked to an 18% increase in the risk of dying from cardiovascular disease."),
-            Message(group: risk, identifier: "9", string: "/Sitting/ for several hours each day is bad for you, like smoking is bad for you, regardless of whether you do healthful activities, too.", variants: [inactive: ["Sitting": "Continuing to sit"]]),
-            Message(group: risk, identifier: "10", string: "The less you move, the less blood sugar your body uses, which causes health problems."),
-            Message(group: risk, identifier: "11", string: "Doing more regular physical activity can help people feel less depressed."),
-            Message(group: risk, identifier: "12", string: "Bones, like muscles, require regular exercise to maintain their mineral content and strength."),
-            Message(group: risk, identifier: "13", string: "Bone loss progresses much faster in people who remain physically inactive."),
-            Message(group: risk, identifier: "14", string: "Sedentary lifestyles are one of the ten leading causes of death and disability in the world."),
-            Message(group: risk, identifier: "15", string: "/Active people often have lower/ blood sugar. High blood sugar levels can hurt your arteries/, so stay active!/", variants: [inactive: ["Active people often have lower": "Inactive people often have high", ", so stay active!": "."]]),
-            Message(group: risk, identifier: "16", string: "The American Heart Association encourages people to do more aerobic exercise. /Doing/ more aerobic exercise can lower your risk of getting heart disease.", variants: [inactive: ["Doing": "Starting"]]),
-            Message(group: risk, identifier: "17", string: "If you /become/ sedentary, you could shorten your life. Inactive people tend to die before more active people.", variants: [inactive: ["become": "are"]]),
-            Message(group: risk, identifier: "18", string: "Inactive lifestyle can worsen your memory as you get older. /Becoming/ sedentary can shrink the brain's memory areas with age.", variants: [inactive: ["Becoming": "Remaining"]]),
-            Message(group: risk, identifier: "19", string: "If you /start/ to sit most of the time, your muscles will become weak. Weak muscles make it difficult for you to get around and do the things you enjoy.", variants: [inactive: ["start": "continue"]]),
+            Message(group: risk, identifier: "1", alternatives:
+                (active, "Doctors have called physical inactivity \"the biggest public health problem of the 21st century.\""),
+                (inactive, "Doctors have called physical inactivity \"the biggest public health problem of the 21st century.\"")),
+            Message(group: risk, identifier: "2", alternatives:
+                (active, "According to the American Heart Association, inactive people are at much higher risk for developing heart disease."),
+                (inactive, "According to the American Heart Association, inactive people are at much higher risk for developing heart disease.")),
+            Message(group: risk, identifier: "3", alternatives:
+                (active, "A sedentary lifestyle increases the risk of diabetes, hypertension, colon cancer, depression, anxiety, and obesity."),
+                (inactive, "A sedentary lifestyle increases the risk of diabetes, hypertension, colon cancer, depression, anxiety, and obesity.")),
+            Message(group: risk, identifier: "4", alternatives:
+                (active, "Becoming inactive puts you at risk for health problems related to lack of exercise."),
+                (inactive, "Remaining inactive puts you at risk for health problems related to lack of exercise.")),
+            Message(group: risk, identifier: "5", alternatives:
+                (active, "On average, physically active people outlive those who are inactive."),
+                (inactive, "On average, physically active people outlive those who are inactive.")),
+            Message(group: risk, identifier: "6", alternatives:
+                (active, "Physical inactivity affects at least 20 of the deadliest chronic disorders."),
+                (inactive, "Physical inactivity affects at least 20 of the deadliest chronic disorders.")),
+            Message(group: risk, identifier: "7", alternatives:
+                (active, "Sitting for extended periods of time without breaks to move around does significant damage to your health."),
+                (inactive, "Sitting for extended periods of time without breaks to move around does significant damage to your health.")),
+            Message(group: risk, identifier: "8", alternatives:
+                (active, "Each hour spent sitting watching TV is linked to an 18% increase in the risk of dying from cardiovascular disease."),
+                (inactive, "Each hour spent sitting watching TV is linked to an 18% increase in the risk of dying from cardiovascular disease.")),
+            Message(group: risk, identifier: "9", alternatives:
+                (active, "Sitting for long each day is bad for you, like smoking is bad for you, regardless of whether you do healthy activities."),
+                (inactive, "Sitting for long each day is bad for you, like smoking is bad for you, regardless of whether you do healthy activities.")),
+            Message(group: risk, identifier: "10", alternatives:
+                (active, "The less you move, the less blood sugar your body uses, which causes health problems."),
+                (inactive, "The less you move, the less blood sugar your body uses, which causes health problems.")),
+            Message(group: risk, identifier: "11", alternatives:
+                (active, "Doing more regular physical activity can help people feel less depressed."),
+                (inactive, "Doing more regular physical activity can help people feel less depressed.")),
+            Message(group: risk, identifier: "12", alternatives:
+                (active, "Bones, like muscles, require regular exercise to maintain their mineral content and strength."),
+                (inactive, "Bones, like muscles, require regular exercise to maintain their mineral content and strength.")),
+            Message(group: risk, identifier: "13", alternatives:
+                (active, "Bone loss progresses much faster in people who remain physically inactive."),
+                (inactive, "Bone loss progresses much faster in people who remain physically inactive.")),
+            Message(group: risk, identifier: "14", alternatives:
+                (active, "Sedentary lifestyles are one of the ten leading causes of death and disability in the world."),
+                (inactive, "Sedentary lifestyles are one of the ten leading causes of death and disability in the world.")),
+            Message(group: risk, identifier: "15", alternatives:
+                (active, "Active people often have lower blood sugar. High blood sugar levels can hurt your arteries."),
+                (inactive, "Inactive people often have high blood sugar. High blood sugar levels can hurt your arteries.")),
+            Message(group: risk, identifier: "16", alternatives:
+                (active, "The American Heart Association recommends aerobic exercise. This can lower your risk of getting heart disease."),
+                (inactive, "The American Heart Association recommends aerobic exercise. This can lower your risk of getting heart disease.")),
+            Message(group: risk, identifier: "17", alternatives:
+                (active, "If you become sedentary, you could shorten your life. Inactive people tend to die before more active people."),
+                (inactive, "If you are sedentary, you could shorten your life. Inactive people tend to die before more active people.")),
+            Message(group: risk, identifier: "18", alternatives:
+                (active, "Inactive lifestyle can worsen your memory. Becoming sedentary can shrink the brain's memory areas with age."),
+                (inactive, "Inactive lifestyle can worsen your memory. Remaining sedentary can shrink the brain's memory areas with age.")),
+            Message(group: risk, identifier: "19", alternatives:
+                (active, "Sitting most of the time weakens your muscles, making it difficult to get around and do the things you enjoy."),
+                (inactive, "Sitting most of the time weakens your muscles, making it difficult to get around and do the things you enjoy.")),
         ]
 
         state = State()

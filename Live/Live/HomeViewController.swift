@@ -18,11 +18,6 @@ class HomeViewController: UIViewController {
     @IBOutlet var valueTextView: UITextView?
     @IBOutlet var activityTextView: UITextView?
 
-    @IBInspectable var unratedSuffix: String = "▶︎"
-    @IBInspectable var unratedColor: UIColor = UIColor.orange
-    @IBInspectable var ratedSuffix: String = "✔︎"
-    @IBInspectable var ratedColor: UIColor = UIColor(hue: 120.0 / 360.0, saturation: 1.0, brightness: 0.5, alpha: 1.0)
-
     @IBInspectable var averageStepsInsufficientData: String = "No steps? Get going and we'll show your progress."
     @IBInspectable var averageSteps: String = "Average Daily Steps: /steps/"
 
@@ -134,12 +129,20 @@ class HomeViewController: UIViewController {
 
         let liveManager = LiveManager.shared
         if let message = liveManager.message(forNote: note) {
-            let message = message.format()
-            let string = NSMutableAttributedString(string: "\(message) ")
+            let string = NSMutableAttributedString()
             let rated = note!.rating != nil
-            let suffix = rated ? ratedSuffix : unratedSuffix
-            let color = rated ? ratedColor : unratedColor
-            string.append(NSAttributedString(string: suffix, attributes: [NSForegroundColorAttributeName: color]))
+            if rated {
+                if let image = UIImage(named: "ic_checked") {
+                    let attachment = NSTextAttachment()
+                    attachment.image = image
+                    attachment.bounds = CGRect(origin: CGPoint(x: 0, y: 0), size: image.size)
+                    string.append(NSAttributedString(attachment: attachment))
+                    string.append(NSAttributedString(string: " "))
+                }
+            }
+            let message = message.format()
+            string.append(NSAttributedString(string: message))
+
             view.attributedText = string
         } else {
             view.text = "?"
