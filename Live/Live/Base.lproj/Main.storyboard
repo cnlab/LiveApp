@@ -104,53 +104,47 @@ five</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x78-VR-Ouw">
-                                <rect key="frame" x="16" y="28" width="288" height="180"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Take a moment to think about what is important to you. 
-
-Drag the value words in order of importance to you.
-
-This list will be used to customize your daily messages. Don’t worry if you are unsure. You can change the order at anytime.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Most Important" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFY-HQ-kFQ">
-                                <rect key="frame" x="116" y="216" width="87" height="14.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BOA-Mb-Zld">
-                                <rect key="frame" x="16" y="239" width="288" height="240"/>
+                                <rect key="frame" x="45" y="28" width="230" height="451"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewLayout key="collectionViewLayout" id="9tP-sD-irw" customClass="CollectionViewListLayout" customModule="Live" customModuleProvider="target"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ValueCell" id="EXS-BF-Tvj">
-                                        <rect key="frame" x="0.5" y="0.0" width="287" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="230" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="30"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="230" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Raa-aN-q1s">
-                                                    <rect key="frame" x="8" y="-12" width="271" height="54"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sj5-sW-f5V" customClass="ImageLabelView" customModule="LiveViews">
+                                                    <rect key="frame" x="0.0" y="0.0" width="230" height="50"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="text" value="Sample"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="ic_compassion"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                                            <real key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="highlightColor">
+                                                            <color key="value" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="outlineColor">
+                                                            <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="Raa-aN-q1s" firstAttribute="leading" secondItem="EXS-BF-Tvj" secondAttribute="leadingMargin" id="3yr-oJ-Wk6"/>
-                                            <constraint firstItem="Raa-aN-q1s" firstAttribute="top" secondItem="EXS-BF-Tvj" secondAttribute="topMargin" constant="-20" id="PEp-RE-XKK"/>
-                                            <constraint firstItem="Raa-aN-q1s" firstAttribute="trailing" secondItem="EXS-BF-Tvj" secondAttribute="trailingMargin" id="qvJ-7K-W95"/>
-                                            <constraint firstItem="Raa-aN-q1s" firstAttribute="centerY" secondItem="EXS-BF-Tvj" secondAttribute="centerY" id="tTv-mN-AHp"/>
+                                            <constraint firstItem="Sj5-sW-f5V" firstAttribute="leading" secondItem="EXS-BF-Tvj" secondAttribute="leading" id="2m8-Ev-2xl"/>
+                                            <constraint firstItem="Sj5-sW-f5V" firstAttribute="top" secondItem="EXS-BF-Tvj" secondAttribute="top" id="M1d-aK-uo7"/>
+                                            <constraint firstAttribute="bottom" secondItem="Sj5-sW-f5V" secondAttribute="bottom" id="TQs-Mx-f3g"/>
+                                            <constraint firstAttribute="trailing" secondItem="Sj5-sW-f5V" secondAttribute="trailing" id="mBb-aU-qfJ"/>
                                         </constraints>
-                                        <size key="customSize" width="287" height="30"/>
+                                        <size key="customSize" width="230" height="50"/>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -158,19 +152,45 @@ This list will be used to customize your daily messages. Don’t worry if you ar
                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="9ID-L2-ARz"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Least Important" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDX-a5-tT1">
-                                <rect key="frame" x="116" y="487" width="89.5" height="14.5"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ceu-om-TjF" customClass="VerticalLabelView" customModule="LiveViews">
+                                <rect key="frame" x="16" y="380" width="21" height="99"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="Least Important"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LET'S GO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVX-7E-hHu">
+                                <rect key="frame" x="45" y="487" width="230" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jzd-Q8-jEW" customClass="VerticalLabelView" customModule="LiveViews">
+                                <rect key="frame" x="16" y="28" width="21" height="101"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="Most Important"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="alignRight" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Values" image="ic_valuesOn" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="collectionView" destination="BOA-Mb-Zld" id="4VK-uD-3yb"/>
+                        <outlet property="leastImportantLabel" destination="Ceu-om-TjF" id="nho-iK-ARO"/>
+                        <outlet property="letsGoLabel" destination="rVX-7E-hHu" id="WLM-G1-p0U"/>
+                        <outlet property="mostImportantLabel" destination="jzd-Q8-jEW" id="PLQ-Ij-oXg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -1700,6 +1720,7 @@ Your next survey is due in ## days</string>
         </scene>
     </scenes>
     <resources>
+        <image name="ic_compassion" width="22" height="18"/>
         <image name="ic_homeOn" width="21" height="23"/>
         <image name="ic_settingOn" width="24" height="24"/>
         <image name="ic_surveyOn" width="25" height="21"/>
@@ -1709,4 +1730,5 @@ Your next survey is due in ## days</string>
         <image name="thumb-down-22x24.png" width="22" height="24"/>
         <image name="thumb-up-22x24.png" width="22" height="24"/>
     </resources>
+    <color key="tintColor" red="0.39116036891937256" green="0.71924936771392822" blue="0.68365627527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

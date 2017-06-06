@@ -40,6 +40,7 @@
 		925691961E12D72C00E820F7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925691951E12D72C00E820F7 /* UIKit.framework */; };
 		925F5ABB1E15F6E70051DF1B /* MeFieldsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925F5ABA1E15F6E70051DF1B /* MeFieldsTableViewController.swift */; };
 		925F5ABF1E15FB080051DF1B /* ShareFieldsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925F5ABE1E15FB080051DF1B /* ShareFieldsTableViewController.swift */; };
+		9263D69D1EE59055006902DF /* ImageLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9263D69C1EE59055006902DF /* ImageLabelView.swift */; };
 		926ECB281DB9639A00A36584 /* LiveTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926ECB271DB9639A00A36584 /* LiveTabBarController.swift */; };
 		926ECB2D1DB975B300A36584 /* ActivityPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926ECB2C1DB975B300A36584 /* ActivityPopupViewController.swift */; };
 		926ECB2F1DB975E100A36584 /* ActivityThinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926ECB2E1DB975E100A36584 /* ActivityThinkViewController.swift */; };
@@ -50,6 +51,7 @@
 		927E72AA1E1B4135003CFD5A /* SurveyFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927E72A91E1B4135003CFD5A /* SurveyFormViewController.swift */; };
 		927E72AC1E1B4145003CFD5A /* SurveyNextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927E72AB1E1B4145003CFD5A /* SurveyNextViewController.swift */; };
 		927E72AE1E1B4155003CFD5A /* SurveyIntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927E72AD1E1B4155003CFD5A /* SurveyIntroductionViewController.swift */; };
+		928E72A61EE5E6BB00086853 /* VerticalLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928E72A51EE5E6BB00086853 /* VerticalLabelView.swift */; };
 		9291F6861DABF85400042F42 /* LiveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9291F6851DABF85400042F42 /* LiveManager.swift */; };
 		9291F68A1DAC0DC100042F42 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9291F6891DAC0DC100042F42 /* Observable.swift */; };
 		9291F68D1DAC306500042F42 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9291F68C1DAC306500042F42 /* Time.swift */; };
@@ -170,6 +172,7 @@
 		925691951E12D72C00E820F7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		925F5ABA1E15F6E70051DF1B /* MeFieldsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeFieldsTableViewController.swift; sourceTree = "<group>"; };
 		925F5ABE1E15FB080051DF1B /* ShareFieldsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareFieldsTableViewController.swift; sourceTree = "<group>"; };
+		9263D69C1EE59055006902DF /* ImageLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLabelView.swift; sourceTree = "<group>"; };
 		926ECB271DB9639A00A36584 /* LiveTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveTabBarController.swift; sourceTree = "<group>"; };
 		926ECB2C1DB975B300A36584 /* ActivityPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPopupViewController.swift; sourceTree = "<group>"; };
 		926ECB2E1DB975E100A36584 /* ActivityThinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityThinkViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +183,7 @@
 		927E72A91E1B4135003CFD5A /* SurveyFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyFormViewController.swift; sourceTree = "<group>"; };
 		927E72AB1E1B4145003CFD5A /* SurveyNextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyNextViewController.swift; sourceTree = "<group>"; };
 		927E72AD1E1B4155003CFD5A /* SurveyIntroductionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyIntroductionViewController.swift; sourceTree = "<group>"; };
+		928E72A51EE5E6BB00086853 /* VerticalLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalLabelView.swift; sourceTree = "<group>"; };
 		9291F6851DABF85400042F42 /* LiveManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveManager.swift; sourceTree = "<group>"; };
 		9291F6891DAC0DC100042F42 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		9291F68C1DAC306500042F42 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
@@ -266,6 +270,8 @@
 			isa = PBXGroup;
 			children = (
 				92986D991D99A87A008B8533 /* StepsView.swift */,
+				9263D69C1EE59055006902DF /* ImageLabelView.swift */,
+				928E72A51EE5E6BB00086853 /* VerticalLabelView.swift */,
 				925443D01E12D33900BD5687 /* LiveViews.h */,
 				925443D11E12D33900BD5687 /* Info.plist */,
 			);
@@ -619,7 +625,7 @@
 				TargetAttributes = {
 					925443CD1E12D33900BD5687 = {
 						CreatedOnToolsVersion = 8.2.1;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					925443D51E12D33900BD5687 = {
@@ -724,6 +730,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9263D69D1EE59055006902DF /* ImageLabelView.swift in Sources */,
+				928E72A61EE5E6BB00086853 /* VerticalLabelView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -921,6 +929,7 @@
 		925443E71E12D33900BD5687 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				DEVELOPMENT_TEAM = TVNL896ZKT;
 				INFOPLIST_FILE = LiveViewsTests/Info.plist;
@@ -937,6 +946,7 @@
 		925443E81E12D33900BD5687 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				DEVELOPMENT_TEAM = TVNL896ZKT;
 				INFOPLIST_FILE = LiveViewsTests/Info.plist;
@@ -1040,6 +1050,7 @@
 		92CA91BF1D8304B9000491CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Live/Live.entitlements;
@@ -1060,6 +1071,7 @@
 		92CA91C01D8304B9000491CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Live/Live.entitlements;

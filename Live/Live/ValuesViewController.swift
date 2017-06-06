@@ -7,17 +7,40 @@
 //
 
 import UIKit
+import LiveViews
 
 class ValuesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     let reuseIdentifier = "ValueCell"
     
     @IBOutlet var collectionView: UICollectionView? = nil
+    @IBOutlet var mostImportantLabel: VerticalLabelView? = nil
+    @IBOutlet var leastImportantLabel: VerticalLabelView? = nil
+    @IBOutlet var letsGoLabel: UILabel? = nil
 
     var values = [String]()
+    var valueImages: [String: UIImage] = [:]
+    var valueImageSize = CGSize()
+
+    var gestureBeganLocation = CGPoint()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        valueImages[ValueMessageManager.independence] = UIImage(named: "ic_independence")
+        valueImages[ValueMessageManager.politics] = UIImage(named: "ic_politics")
+        valueImages[ValueMessageManager.spirituality] = UIImage(named: "ic_spirituality")
+        valueImages[ValueMessageManager.humor] = UIImage(named: "ic_humor")
+        valueImages[ValueMessageManager.fame] = UIImage(named: "ic_fame")
+        valueImages[ValueMessageManager.powerAndStatus] = UIImage(named: "ic_power")
+        valueImages[ValueMessageManager.familyAndFriends] = UIImage(named: "ic_familyAndFriends")
+        valueImages[ValueMessageManager.compassionAndKindness] = UIImage(named: "ic_compassion")
+        var imageSize = CGSize()
+        for image in valueImages.values {
+            imageSize.width = max(imageSize.width, image.size.width)
+            imageSize.height = max(imageSize.height, image.size.height)
+        }
+        valueImageSize = imageSize
 
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(ValuesViewController.handleLongGesture(gesture:)))
         longPressGesture.minimumPressDuration = 0.1
@@ -28,19 +51,69 @@ class ValuesViewController: UIViewController, UICollectionViewDataSource, UIColl
         liveManager.orderedValues.subscribe(owner: self, observer: orderedValuesChanged)
     }
 
+    // !!! workaround cell content having wrong size on initial load -denis
+    open override func viewDidAppear(_ animated: Bool) {
+        collectionView?.reloadData()
+        collectionView?.setNeedsLayout()
+        collectionView?.layoutIfNeeded()
+        collectionView?.reloadData()
+    }
+
     open override func viewDidLayoutSubviews() {
-        Layout.vertical(viewController: self)
+        guard
+            let collectionView = self.collectionView,
+            let letsGoLabel = self.letsGoLabel,
+            let mostImportantLabel = self.mostImportantLabel,
+            let leastImportantLabel = self.leastImportantLabel
+        else {
+            return
+        }
+
+        let basicInsets = UIEdgeInsets(top: 8.0, left: 16.0, bottom: 20.0, right: 16.0)
+        var insets = basicInsets
+        insets.top += topLayoutGuide.length
+        insets.bottom += bottomLayoutGuide.length
+        let spacing: CGFloat = 16.0
+        let margin: CGFloat = 12.0
+        let x: CGFloat = insets.left + mostImportantLabel.frame.size.width + margin
+        let y: CGFloat = insets.top
+        let width = view.bounds.width - insets.right - margin - insets.left - 2.0 * mostImportantLabel.frame.size.width
+        let contentHeight = view.bounds.height - insets.top - insets.bottom - spacing
+        let flexibleHeight = contentHeight - Layout.totalHeight(subviews: [collectionView, letsGoLabel], excluding: [collectionView], spacing: spacing)
+
+        if let layout = collectionView.collectionViewLayout as? CollectionViewListLayout {
+            let count = CGFloat(values.count)
+            layout.itemHeight = (flexibleHeight - layout.minimumLineSpacing * (count - 1)) / count
+        }
+
+        var cy = y
+        for subview in [collectionView, letsGoLabel] {
+            Layout.place(subview: subview, x: x, y: &cy, width: width, height: subview == collectionView ? flexibleHeight : nil)
+            cy += spacing
+        }
+        let lx = mostImportantLabel.frame.origin.x
+        let lw = mostImportantLabel.frame.size.width
+        let lh = collectionView.frame.size.height / 2.0
+        cy = mostImportantLabel.frame.origin.y
+        Layout.place(subview: mostImportantLabel, x: lx, y: &cy, width: lw, height: lh)
+        Layout.place(subview: leastImportantLabel, x: lx, y: &cy, width: lw, height: lh)
     }
 
     func handleLongGesture(gesture: UILongPressGestureRecognizer) {
         switch(gesture.state) {
         case UIGestureRecognizerState.began:
-            guard let selectedIndexPath = self.collectionView?.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
+            let location = gesture.location(in: gesture.view!)
+            guard let selectedIndexPath = self.collectionView?.indexPathForItem(at: location) else {
                 break
             }
+            gestureBeganLocation = location
             collectionView?.beginInteractiveMovementForItem(at: selectedIndexPath)
         case UIGestureRecognizerState.changed:
-            collectionView?.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+            var location = gesture.location(in: gesture.view!)
+            if let collectionView = self.collectionView {
+                location.x = collectionView.frame.size.width / 2.0
+            }
+            collectionView?.updateInteractiveMovementTargetPosition(location)
         case UIGestureRecognizerState.ended:
             collectionView?.endInteractiveMovement()
         default:
@@ -76,13 +149,24 @@ class ValuesViewController: UIViewController, UICollectionViewDataSource, UIColl
 
         // Configure the cell
         if let view = cell.subviews.first {
-            if let label = view.subviews.first as? UILabel {
+            if let label = view.subviews.first as? ImageLabelView {
                 if let index = indexPath.last {
-                    label.text = values[index]
-                    label.textColor = label.tintColor
+                    let value = values[index]
+                    if let icon = valueImages[value] {
+                        label.image = icon
+                    }
+                    label.text = value
+                    label.textColor = UIColor.white
+                    label.highlightColor = label.tintColor
+                    label.margin = CGFloat(indexPath.row) * 4.0
+                    label.imageWidth = valueImageSize.width
+                    label.setNeedsDisplay()
                 }
             }
         }
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
+        cell.setNeedsDisplay()
 
         return cell
     }
@@ -97,6 +181,12 @@ class ValuesViewController: UIViewController, UICollectionViewDataSource, UIColl
 
         let liveManager = LiveManager.shared
         liveManager.orderedValues.value = values
+
+        var indexPaths: [IndexPath] = []
+        for i in 0 ..< values.count {
+            indexPaths.append(IndexPath(row: i, section: 0))
+        }
+        collectionView.reloadItems(at: indexPaths)
     }
 
     /*

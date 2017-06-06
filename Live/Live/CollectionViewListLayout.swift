@@ -10,7 +10,7 @@ import UIKit
 
 class CollectionViewListLayout: UICollectionViewFlowLayout {
 
-    let itemHeight: CGFloat = 30
+    var itemHeight: CGFloat = 50
 
     override init() {
         super.init()
@@ -24,7 +24,7 @@ class CollectionViewListLayout: UICollectionViewFlowLayout {
 
     func setupLayout() {
         minimumInteritemSpacing = 0
-        minimumLineSpacing = 0
+        minimumLineSpacing = 12
         scrollDirection = .vertical
     }
 
