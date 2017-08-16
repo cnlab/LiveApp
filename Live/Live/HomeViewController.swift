@@ -76,16 +76,27 @@ class HomeViewController: UIViewController {
         let stepCounts: [Int?]
         let liveManager = LiveManager.shared
         if let dailyStepCounts = liveManager.dailyStepCounts.value {
+            let sixDayAverageStepCount = calculateAverage(values: Array(dailyStepCounts.stepCounts[0...5]))
+            let todayStepCount = dailyStepCounts.stepCounts[6] ?? 0
+            let todayImage: UIImage?
+            if todayStepCount < 100 {
+                todayImage = UIImage(named: "ic_standing")
+            } else
+            if let average = sixDayAverageStepCount, todayStepCount > average {
+                todayImage = UIImage(named: "ic_running")
+            } else {
+                todayImage = UIImage(named: "ic_walking")
+            }
             stepsButton?.isHidden = true
             stepsView?.isEnabled = true
-            stepsView?.update(startDate: dailyStepCounts.startDate, stepCounts: dailyStepCounts.stepCounts)
+            stepsView?.update(startDate: dailyStepCounts.startDate, stepCounts: dailyStepCounts.stepCounts, todayImage: todayImage)
             stepCounts = dailyStepCounts.stepCounts
         } else {
             stepCounts = [nil, nil, nil, nil, nil, nil, nil]
             stepsView?.isEnabled = false
             if liveManager.didAuthorizeHealthKit {
                 stepsButton?.isHidden = true
-                stepsView?.update(startDate: Date(), stepCounts: stepCounts)
+                stepsView?.update(startDate: Date(), stepCounts: stepCounts, todayImage: UIImage(named: "ic_standing"))
             } else {
                 stepsButton?.isHidden = false
                 stepsView?.setDefaults()

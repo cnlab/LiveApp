@@ -11,10 +11,10 @@ import UIKit
 @IBDesignable open class StepsView: UIView {
 
     @IBInspectable open var enabledStepsColor: UIColor? = UIColor.gray
-    @IBInspectable open var enabledBarColor: UIColor? = UIColor.gray
+    @IBInspectable open var enabledBarColor: UIColor? = UIColor(red:0.59, green:0.83, blue:0.81, alpha:1.0) // 150, 212, 206 #96d4ce
     @IBInspectable open var enabledDateColor: UIColor? = UIColor.gray
     @IBInspectable open var enabledTodayStepsColor: UIColor? = UIColor.darkGray
-    @IBInspectable open var enabledTodayBarColor: UIColor? = UIColor.orange
+    @IBInspectable open var enabledTodayBarColor: UIColor? = UIColor(red:0.42, green:0.76, blue:0.73, alpha:1.0) // 106, 193, 185 #6ac1b9
     @IBInspectable open var enabledTodayDateColor: UIColor? = UIColor.darkGray
 
     @IBInspectable open var disabledStepsColor: UIColor? = UIColor.lightGray
@@ -32,11 +32,12 @@ import UIKit
         }
     }
 
-    @IBInspectable open var minimumBarHeight: CGFloat = 1.0
+    @IBInspectable open var dateMargin: CGFloat = 8.0
+    @IBInspectable open var todayImageMargin: CGFloat = 8.0
+    @IBInspectable open var stepCountMargin: CGFloat = 8.0
     @IBInspectable open var margin: CGFloat = 8.0
-    @IBInspectable open var fontSize: CGFloat = 9.0
+    @IBInspectable open var fontSize: CGFloat = 14.0
     @IBInspectable open var missingSteps: String = "?"
-    @IBInspectable open var todayFormat: String? = "'Today'"
 
     @IBInspectable open var topInset: CGFloat = 4.0
     @IBInspectable open var leftInset: CGFloat = 8.0
@@ -48,7 +49,7 @@ import UIKit
         }
     }
 
-    @IBInspectable open var defaultStepCounts: String = "1003, 2872, 3701, 4600, 2332, 740, 4900"
+    @IBInspectable open var defaultStepCounts: String = "1003, 2872, 3701, 4600, 2332, 74, 4900"
     open var defaultStepCountsArray: [Int?] {
         get {
             var stepCounts: [Int?] = []
@@ -76,6 +77,7 @@ import UIKit
 
     open var startDate = Date()
     open var stepCounts: [Int?] = [nil, nil, nil, nil, nil, nil, nil]
+    open var todayImage: UIImage? = nil
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -102,9 +104,10 @@ import UIKit
         setNeedsDisplay()
     }
 
-    open func update(startDate: Date, stepCounts: [Int?]) {
-        self.startDate = startDate
-        self.stepCounts = stepCounts
+    open func update(startDate: Date, stepCounts: [Int?], todayImage: UIImage?) {
+//        self.startDate = startDate
+//        self.stepCounts = stepCounts
+        self.todayImage = todayImage
         setNeedsDisplay()
     }
 
@@ -118,7 +121,7 @@ import UIKit
         let font = UIFont.systemFont(ofSize: fontSize)
         let style = NSMutableParagraphStyle()
         style.setParagraphStyle(NSParagraphStyle.default)
-        style.alignment = NSTextAlignment.center
+        style.alignment = NSTextAlignment.left
 
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
@@ -134,53 +137,83 @@ import UIKit
         }
 
         let content = CGRect(x: insets.left, y: insets.top, width: frame.size.width - insets.left - insets.right, height: frame.size.height - insets.top - insets.bottom)
-        let fontHeight = font.ascender - font.descender
-        let barTopY = content.origin.y + fontHeight
-        let barHeight = content.size.height - fontHeight - fontHeight
-        var x: CGFloat = content.origin.x
-        let dateY: CGFloat = content.maxY - fontHeight
-        let maxStepCount = stepCounts.reduce(0) { max($0, $1 ?? 0) }
         let days = 7
-        let width = (content.size.width - margin * (CGFloat(days) - 1.0)) / CGFloat(days)
-        var lastMonth = -1
+
+        let todayImageWidth: CGFloat = todayImage?.size.width ?? 0
+        var maxDateWidth: CGFloat = 0
+        var maxStepCountWidth: CGFloat = 0
         for day in 0 ..< days {
             let isToday = day == days - 1
             let stepCount = stepCounts[day] ?? 0
-            let height = max(minimumBarHeight, barHeight * CGFloat(stepCount) / CGFloat(maxStepCount))
-            let barY = barTopY + barHeight - height
 
-            if let color = isToday ? todayBarColor : barColor {
-                color.setFill()
-                let bar = UIBezierPath(rect: CGRect(x: x, y: barY, width: width, height: height))
-                bar.fill()
+            var width: CGFloat = stepCountMargin
+            if isToday && (todayImage != nil) {
+                width += todayImageWidth
+                width += todayImageMargin
             }
 
-            if let color = isToday ? todayStepsColor : stepsColor {
-                let text = (stepCounts[day] != nil ? numberFormatter.string(for: stepCount)! : missingSteps) as NSString
-                let rect = CGRect(x: x, y: barY - fontHeight, width: width, height: fontHeight)
-                let attributes: [String : Any] = [NSFontAttributeName: font, NSParagraphStyleAttributeName: style, NSForegroundColorAttributeName: color]
-                text.draw(in: rect, withAttributes: attributes)
+            let text = (stepCounts[day] != nil ? numberFormatter.string(for: stepCount)! : missingSteps) as NSString
+            let attributes: [String : Any] = [NSFontAttributeName: font, NSParagraphStyleAttributeName: style]
+            width += text.size(attributes: attributes).width
+
+            if width > maxStepCountWidth {
+                maxStepCountWidth = width
             }
 
             let date = nextDate(date: startDate, days: day)
-            let month = Calendar.current.component(Calendar.Component.month, from: date)
-            var formatter = lastMonth != month ? startDateFormatter : dateFormatter
-            if isToday {
-                if let todayFormat = todayFormat {
-                    formatter = DateFormatter()
-                    formatter.dateFormat = todayFormat
-                }
+            let dateText = dateFormatter.string(from: date)
+            let dateWidth = dateText.size(attributes: attributes).width + dateMargin
+            if dateWidth > maxDateWidth {
+                maxDateWidth = dateWidth
             }
-            lastMonth = month
+        }
 
+        let barWidth = content.size.width - maxDateWidth - maxStepCountWidth
+        let maxStepCount = stepCounts.reduce(0) { max($0, $1 ?? 0) }
+        let height = (content.size.height - margin * (CGFloat(days) - 1.0)) / CGFloat(days)
+        let cornerRadius = height / 2.0 - 2.0
+        let minimumBarWidth = cornerRadius * 2.0
+        var y: CGFloat = 0
+        for day in 0 ..< days {
+            let isToday = day == days - 1
+            let stepCount = stepCounts[day] ?? 0
+            let width = max(minimumBarWidth, barWidth * CGFloat(stepCount) / CGFloat(maxStepCount))
+
+            var x = content.origin.x
             if let color = isToday ? todayDateColor : dateColor {
-                let text = formatter.string(from: date) as NSString
-                let rect = CGRect(x: x, y: dateY, width: width, height: fontHeight)
+                let date = nextDate(date: startDate, days: day)
+                let dateText = dateFormatter.string(from: date)
                 let attributes: [String : Any] = [NSFontAttributeName: font, NSParagraphStyleAttributeName: style, NSForegroundColorAttributeName: color]
-                text.draw(in: rect, withAttributes: attributes)
+                let dateSize = dateText.size(attributes: attributes)
+                let datePoint = CGPoint(x: x + maxDateWidth - dateMargin - dateSize.width, y: y + (height - dateSize.height) / 2.0)
+                dateText.draw(at: datePoint, withAttributes: attributes)
+            }
+            x += maxDateWidth
+
+            if let color = isToday ? todayBarColor : barColor {
+                color.setFill()
+                let bar = UIBezierPath(roundedRect: CGRect(x: x, y: y, width: width, height: height), cornerRadius: cornerRadius)
+                bar.fill()
+                x += width
             }
 
-            x += margin + width
+            if isToday, let todayImage = todayImage {
+                x += todayImageMargin
+                let point = CGPoint(x: x, y: y + (height - todayImage.size.height) / 2.0)
+                todayImage.draw(at: point)
+                x += todayImage.size.width
+            }
+
+            if let color = isToday ? todayStepsColor : stepsColor {
+                x += stepCountMargin
+                let text = (stepCounts[day] != nil ? numberFormatter.string(for: stepCount)! : missingSteps) as NSString
+                let attributes: [String : Any] = [NSFontAttributeName: font, NSParagraphStyleAttributeName: style, NSForegroundColorAttributeName: color]
+                let size = text.size(attributes: attributes)
+                let point = CGPoint(x: x, y: y + (height - size.height) / 2.0)
+                text.draw(at: point, withAttributes: attributes)
+            }
+
+            y += margin + height
         }
     }
 
