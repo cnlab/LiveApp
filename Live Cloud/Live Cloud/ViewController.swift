@@ -71,7 +71,7 @@ class ViewController: NSViewController {
             return
         }
  */
-        guard let directory = URL(string: "\(FileManager.default.homeDirectoryForCurrentUser)Downloads/Live") else {
+        guard let directory = URL(string: "\(FileManager.default.homeDirectoryForCurrentUser)Downloads/Live/") else {
             log("can't resolve directory")
             return
         }
@@ -80,7 +80,7 @@ class ViewController: NSViewController {
             do {
                 try FileManager.default.createDirectory(atPath: directory.path, withIntermediateDirectories: false, attributes: nil)
             } catch {
-                log("can't create ~/Desktop/Live directory")
+                log("can't create directory")
             }
         }
         for record in records {
