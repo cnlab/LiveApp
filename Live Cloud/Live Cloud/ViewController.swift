@@ -60,12 +60,34 @@ class ViewController: NSViewController {
         }
         log("iCloud query completed...")
 
-        let directory = "\(FileManager.default.homeDirectoryForCurrentUser)/Desktop/Live"
+/*
+        selectDirectory()
+        guard let directory = UserDefaults.standard.url(forKey: "directory") else {
+            log("no directory selected")
+            return
+        }
+        guard directory.startAccessingSecurityScopedResource() else {
+            log("can't access directory")
+            return
+        }
+ */
+        guard let directory = URL(string: "\(FileManager.default.homeDirectoryForCurrentUser)Downloads/Live") else {
+            log("can't resolve directory")
+            return
+        }
+        log("destinatioin directory: \(directory.path)")
+        if !FileManager.default.fileExists(atPath: directory.path) {
+            do {
+                try FileManager.default.createDirectory(atPath: directory.path, withIntermediateDirectories: false, attributes: nil)
+            } catch {
+                log("can't create ~/Desktop/Live directory")
+            }
+        }
         for record in records {
             if let recordModificationDate = record.modificationDate {
                 let name = record.recordID.recordName
                 do {
-                    guard let destinationURL = URL(string: "\(directory)/\(name)-archive.json") else {
+                    guard let destinationURL = URL(string: "\(name)-archive.json", relativeTo: directory) else {
                         throw LocalError.directoryNotFound
                     }
                     if try isOutOfDate(url: destinationURL, date: recordModificationDate) {
@@ -83,6 +105,7 @@ class ViewController: NSViewController {
                 }
             }
         }
+        directory.stopAccessingSecurityScopedResource()
     }
 
     func query(type: String, completionClosure: @escaping () -> Void) {
@@ -131,6 +154,31 @@ class ViewController: NSViewController {
 
     func debug(_ string: String) {
 //        logTextView?.textStorage?.mutableString.append(string + "\n")
+    }
+    
+    func selectDirectory() {
+        let openPanel = NSOpenPanel()
+        openPanel.prompt = "Select Directory"
+        openPanel.worksWhenModal = true
+        openPanel.allowsMultipleSelection = false
+        openPanel.canChooseDirectories = true
+        openPanel.canCreateDirectories = true
+        openPanel.canChooseFiles = false
+        openPanel.resolvesAliases = true
+        openPanel.beginSheetModal(for: view.window!, completionHandler: { result in
+            if result == NSModalResponseOK {
+                let url = openPanel.url!
+                print(url.path)
+                let bookmarkData = try! url.bookmarkData(options: .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
+                var stale: Bool = false
+                let bookmarkURL = try! URL(resolvingBookmarkData: bookmarkData, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &stale)
+                print(bookmarkURL!.path)
+                UserDefaults.standard.set(bookmarkURL, forKey: "directory")
+                UserDefaults.standard.synchronize()
+            } else {
+                print("nothing chosen")
+            }
+        })
     }
 
 }
