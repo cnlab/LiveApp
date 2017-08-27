@@ -38,7 +38,6 @@
 		9255DC4C1E1D4CC600B931E3 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9255DC4B1E1D4CC600B931E3 /* JSON.swift */; };
 		9255DC4E1E1D7CAD00B931E3 /* PersonalInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9255DC4D1E1D7CAD00B931E3 /* PersonalInformation.swift */; };
 		925691961E12D72C00E820F7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925691951E12D72C00E820F7 /* UIKit.framework */; };
-		925F5ABB1E15F6E70051DF1B /* MeFieldsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925F5ABA1E15F6E70051DF1B /* MeFieldsTableViewController.swift */; };
 		925F5ABF1E15FB080051DF1B /* ShareFieldsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925F5ABE1E15FB080051DF1B /* ShareFieldsTableViewController.swift */; };
 		9263D69D1EE59055006902DF /* ImageLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9263D69C1EE59055006902DF /* ImageLabelView.swift */; };
 		926ECB281DB9639A00A36584 /* LiveTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926ECB271DB9639A00A36584 /* LiveTabBarController.swift */; };
@@ -63,6 +62,8 @@
 		929CE6AD1DB5548C00330FFB /* ValuesRankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929CE6AC1DB5548C00330FFB /* ValuesRankViewController.swift */; };
 		92A1D5F71E1F3BBA004E5D3F /* ShareReminderPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A1D5F61E1F3BBA004E5D3F /* ShareReminderPopupViewController.swift */; };
 		92A1D5F91E1F3BD6004E5D3F /* ShareReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A1D5F81E1F3BD6004E5D3F /* ShareReminderViewController.swift */; };
+		92AD62FA1F508278001592CE /* HorizontalLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AD62F91F508278001592CE /* HorizontalLineView.swift */; };
+		92AD62FC1F50900E001592CE /* WeightPerceptionTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AD62FB1F50900E001592CE /* WeightPerceptionTableViewDataSource.swift */; };
 		92AF48281E71DB1100313FB1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92AF48271E71DB1100313FB1 /* CloudKit.framework */; };
 		92B89C501E15A92F00E7D5CC /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B89C4F1E15A92F00E7D5CC /* ShareViewController.swift */; };
 		92B89C531E15BBC600E7D5CC /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B89C521E15BBC600E7D5CC /* MeViewController.swift */; };
@@ -170,7 +171,6 @@
 		9255DC4B1E1D4CC600B931E3 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		9255DC4D1E1D7CAD00B931E3 /* PersonalInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInformation.swift; sourceTree = "<group>"; };
 		925691951E12D72C00E820F7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		925F5ABA1E15F6E70051DF1B /* MeFieldsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeFieldsTableViewController.swift; sourceTree = "<group>"; };
 		925F5ABE1E15FB080051DF1B /* ShareFieldsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareFieldsTableViewController.swift; sourceTree = "<group>"; };
 		9263D69C1EE59055006902DF /* ImageLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLabelView.swift; sourceTree = "<group>"; };
 		926ECB271DB9639A00A36584 /* LiveTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveTabBarController.swift; sourceTree = "<group>"; };
@@ -195,6 +195,8 @@
 		929CE6AC1DB5548C00330FFB /* ValuesRankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesRankViewController.swift; sourceTree = "<group>"; };
 		92A1D5F61E1F3BBA004E5D3F /* ShareReminderPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareReminderPopupViewController.swift; sourceTree = "<group>"; };
 		92A1D5F81E1F3BD6004E5D3F /* ShareReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareReminderViewController.swift; sourceTree = "<group>"; };
+		92AD62F91F508278001592CE /* HorizontalLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalLineView.swift; sourceTree = "<group>"; };
+		92AD62FB1F50900E001592CE /* WeightPerceptionTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightPerceptionTableViewDataSource.swift; sourceTree = "<group>"; };
 		92AF48271E71DB1100313FB1 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		92B89C4F1E15A92F00E7D5CC /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		92B89C521E15BBC600E7D5CC /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				928E72A51EE5E6BB00086853 /* VerticalLabelView.swift */,
 				925443D01E12D33900BD5687 /* LiveViews.h */,
 				925443D11E12D33900BD5687 /* Info.plist */,
+				92AD62F91F508278001592CE /* HorizontalLineView.swift */,
 			);
 			path = LiveViews;
 			sourceTree = "<group>";
@@ -429,7 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				92B89C521E15BBC600E7D5CC /* MeViewController.swift */,
-				925F5ABA1E15F6E70051DF1B /* MeFieldsTableViewController.swift */,
+				92AD62FB1F50900E001592CE /* WeightPerceptionTableViewDataSource.swift */,
 			);
 			name = Me;
 			sourceTree = "<group>";
@@ -732,6 +735,7 @@
 			files = (
 				9263D69D1EE59055006902DF /* ImageLabelView.swift in Sources */,
 				928E72A61EE5E6BB00086853 /* VerticalLabelView.swift in Sources */,
+				92AD62FA1F508278001592CE /* HorizontalLineView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,6 +770,7 @@
 				92CAC2431DB2BF21009615C3 /* Note.swift in Sources */,
 				929CE6A91DB5544100330FFB /* ValuesPopupViewController.swift in Sources */,
 				92A1D5F91E1F3BD6004E5D3F /* ShareReminderViewController.swift in Sources */,
+				92AD62FC1F50900E001592CE /* WeightPerceptionTableViewDataSource.swift in Sources */,
 				92CA91981D8304B9000491CD /* AppDelegate.swift in Sources */,
 				926ECB311DB975EF00A36584 /* ActivityRankViewController.swift in Sources */,
 				926ECB2D1DB975B300A36584 /* ActivityPopupViewController.swift in Sources */,
@@ -787,7 +792,6 @@
 				9291F68D1DAC306500042F42 /* Time.swift in Sources */,
 				92F7CDBE1DAF033E009E2924 /* NotificationManager.swift in Sources */,
 				92A1D5F71E1F3BBA004E5D3F /* ShareReminderPopupViewController.swift in Sources */,
-				925F5ABB1E15F6E70051DF1B /* MeFieldsTableViewController.swift in Sources */,
 				927E72AA1E1B4135003CFD5A /* SurveyFormViewController.swift in Sources */,
 				92986D921D99A5FF008B8533 /* SurveyViewController.swift in Sources */,
 				92CA919A1D8304B9000491CD /* HomeViewController.swift in Sources */,
