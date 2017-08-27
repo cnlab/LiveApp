@@ -23,13 +23,6 @@ class SurveyIntroductionViewController: UIViewController {
         tipView?.isHidden = LiveManager.shared.shareDataWithResearchers
     }
 
-    open override func viewDidLayoutSubviews() {
-        Layout.vertical(viewController: self)
-        if let tipView = tipView {
-            Layout.vertical(viewController: self, view: tipView, flexibleView: nil, insets: UIEdgeInsets())
-        }
-    }
-
     @IBAction func share() {
         if let shareCallback = shareCallback {
             shareCallback()

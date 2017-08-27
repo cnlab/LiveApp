@@ -58,10 +58,6 @@ class SettingsViewController: UIViewController {
         }
     }
 
-    open override func viewDidLayoutSubviews() {
-        Layout.vertical(viewController: self)
-    }
-
     func triggerChanged() {
         let liveManager = LiveManager.shared
         var dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())

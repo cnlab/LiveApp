@@ -23,6 +23,7 @@ import UIKit
     @IBInspectable open var outlineColor: UIColor?
     @IBInspectable open var highlightColor: UIColor?
     @IBInspectable open var fontSize: CGFloat = 26.0
+    @IBInspectable open var minimumFontSize: CGFloat = 10.0
     @IBInspectable open var textColor: UIColor?
     @IBInspectable open var textLeftInset: CGFloat = 8.0
     @IBInspectable open var imageLeftInset: CGFloat = 40.0
@@ -48,11 +49,6 @@ import UIKit
     override open func draw(_ rect: CGRect) {
         super.draw(rect)
 
-        let font = UIFont.systemFont(ofSize: fontSize)
-        let style = NSMutableParagraphStyle()
-        style.setParagraphStyle(NSParagraphStyle.default)
-        style.alignment = NSTextAlignment.left
-
         let content = CGRect(x: insets.left, y: insets.top, width: frame.size.width - insets.left - insets.right, height: frame.size.height - insets.top - insets.bottom)
 
         var highlightRect = content
@@ -77,8 +73,23 @@ import UIKit
         }
 
         if let text = self.text, let textColor = self.textColor {
-            let point = CGPoint(x: content.origin.x + imageLeftInset + imageWidth + textLeftInset, y: content.origin.y + (content.size.height - font.lineHeight) / 2.0)
-            let attributes: [String : Any] = [NSFontAttributeName: font, NSParagraphStyleAttributeName: style, NSForegroundColorAttributeName: textColor]
+            var fontSize = self.fontSize
+            var point: CGPoint
+            var attributes: [String : Any]
+            var size: CGSize
+            var width: CGFloat
+            repeat {
+                let font = UIFont.systemFont(ofSize: fontSize)
+                point = CGPoint(x: content.origin.x + imageLeftInset + imageWidth + textLeftInset, y: content.origin.y + (content.size.height - font.lineHeight) / 2.0)
+                let style = NSMutableParagraphStyle()
+                style.setParagraphStyle(NSParagraphStyle.default)
+                style.alignment = NSTextAlignment.left
+                attributes = [NSFontAttributeName: font, NSParagraphStyleAttributeName: style, NSForegroundColorAttributeName: textColor]
+                size = text.size(attributes: attributes)
+                width = highlightRect.maxX - point.x
+                fontSize -= 1.0
+            } while (size.width > width) && (fontSize > minimumFontSize)
+            
             text.draw(at: point, withAttributes: attributes)
         }
     }

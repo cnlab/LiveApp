@@ -139,7 +139,6 @@ class ValuesViewController: UIViewController, UICollectionViewDataSource, UIColl
         return 1
     }
 
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return values.count
     }
@@ -157,7 +156,7 @@ class ValuesViewController: UIViewController, UICollectionViewDataSource, UIColl
                     }
                     label.text = value
                     label.textColor = UIColor.white
-                    label.highlightColor = label.tintColor
+                    label.highlightColor = self.view.tintColor
                     label.margin = CGFloat(indexPath.row) * 4.0
                     label.imageWidth = valueImageSize.width
                     label.setNeedsDisplay()
