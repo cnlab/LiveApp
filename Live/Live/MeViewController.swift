@@ -15,6 +15,7 @@ class MeViewController: UIViewController, UITextFieldDelegate, UITextViewDelegat
     @IBOutlet var weightPerceptionTableView: UITableView?
     @IBOutlet var ageTextField: UITextField?
     @IBOutlet var zipCodeTextField: UITextField?
+    @IBOutlet var studyIdTextField: UITextField?
     @IBOutlet var commentTextView: UITextView?
     @IBOutlet var genderSegmentedControl: UISegmentedControl?
     @IBOutlet var weightTextField: UITextField?
@@ -108,6 +109,9 @@ class MeViewController: UIViewController, UITextFieldDelegate, UITextViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let weightPerceptionTableViewDataSource = weightPerceptionTableView?.dataSource as? WeightPerceptionTableViewDataSource
+        weightPerceptionTableViewDataSource?.valueChangedCallback = fieldChanged
+        
         LiveManager.shared.personalInformation.subscribe(owner: self, observer: personalInformationChanged)
         update()
     }
@@ -149,6 +153,11 @@ class MeViewController: UIViewController, UITextFieldDelegate, UITextViewDelegat
         } else {
             zipCodeTextField?.text = ""
         }
+        if let studyId = personalInformation.studyId {
+            studyIdTextField?.text = studyId
+        } else {
+            studyIdTextField?.text = ""
+        }
         if let comment = personalInformation.comment {
             commentTextView?.text = comment
         } else {
@@ -164,8 +173,9 @@ class MeViewController: UIViewController, UITextFieldDelegate, UITextViewDelegat
         let weightPerception = weightPerceptionTableViewDataSource?.weightPerception ?? ""
         let height = parse(height: heightButton?.title(for: .normal))
         let zipCode = zipCodeTextField?.text
+        let studyId = studyIdTextField?.text
         let comment = commentTextView?.text
-        LiveManager.shared.personalInformation.value = PersonalInformation(age: age, gender: gender, weight: weight, weightPerception: weightPerception, height: height, zipCode: zipCode, comment: comment)
+        LiveManager.shared.personalInformation.value = PersonalInformation(age: age, gender: gender, weight: weight, weightPerception: weightPerception, height: height, zipCode: zipCode, studyId: studyId, comment: comment)
     }
 
 }

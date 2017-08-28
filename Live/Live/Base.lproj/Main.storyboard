@@ -215,8 +215,8 @@ five</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P03-8j-QfI">
                                 <rect key="frame" x="40" y="51" width="240" height="424"/>
                                 <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cpv-wf-UMH">
-                                        <rect key="frame" x="8" y="8" width="224" height="408"/>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpv-wf-UMH">
+                                        <rect key="frame" x="8" y="0.0" width="224" height="416"/>
                                         <connections>
                                             <segue destination="pJ8-OH-Hze" kind="embed" id="oPi-iN-1kI"/>
                                         </connections>
@@ -225,6 +225,7 @@ five</string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="cpv-wf-UMH" firstAttribute="trailing" secondItem="P03-8j-QfI" secondAttribute="trailingMargin" id="AVH-Cc-yrv"/>
+                                    <constraint firstItem="cpv-wf-UMH" firstAttribute="top" secondItem="P03-8j-QfI" secondAttribute="top" id="IYI-sV-cUT"/>
                                     <constraint firstItem="cpv-wf-UMH" firstAttribute="bottom" secondItem="P03-8j-QfI" secondAttribute="bottomMargin" id="K03-nw-TOS"/>
                                     <constraint firstItem="cpv-wf-UMH" firstAttribute="leading" secondItem="P03-8j-QfI" secondAttribute="leadingMargin" id="T6i-bw-Ofk"/>
                                 </constraints>
@@ -314,14 +315,14 @@ five</string>
                         <viewControllerLayoutGuide type="bottom" id="csp-4u-WMO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bB5-xs-bsl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f7U-37-Ace">
-                                <rect key="frame" x="0.0" y="20" width="320" height="831"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="931"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p6u-yP-8Pb">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="900"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cv-c9-N2f">
                                                 <rect key="frame" x="8" y="37" width="304" height="93"/>
@@ -338,7 +339,8 @@ five</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
-                                                    <action selector="fieldChanged" destination="sQW-e9-Mru" eventType="valueChanged" id="gjg-RV-EAH"/>
+                                                    <action selector="fieldChanged" destination="sQW-e9-Mru" eventType="editingChanged" id="0Ae-ET-Dwv"/>
+                                                    <outlet property="delegate" destination="sQW-e9-Mru" id="shD-Kk-5oO"/>
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FP2-PO-Df2">
@@ -395,7 +397,8 @@ five</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
-                                                    <action selector="fieldChanged" destination="sQW-e9-Mru" eventType="valueChanged" id="eck-en-udX"/>
+                                                    <action selector="fieldChanged" destination="sQW-e9-Mru" eventType="editingChanged" id="vH2-iQ-CyP"/>
+                                                    <outlet property="delegate" destination="sQW-e9-Mru" id="AtJ-tT-CL3"/>
                                                 </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wl8-9J-W6G" customClass="HorizontalLineView" customModule="LiveViews">
@@ -479,6 +482,13 @@ five</string>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Study ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6p-Ni-TGb">
+                                                <rect key="frame" x="8" y="661" width="56" height="17"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D87-gh-URs" customClass="HorizontalLineView" customModule="LiveViews">
                                                 <rect key="frame" x="8" y="652" width="304" height="1"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -489,8 +499,18 @@ five</string>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e9I-Oq-Jek" customClass="HorizontalLineView" customModule="LiveViews">
+                                                <rect key="frame" x="8" y="724" width="304" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                        <color key="value" red="0.61966812609999999" green="0.61964416499999997" blue="0.61966037750000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tTG-bU-AkL">
-                                                <rect key="frame" x="8" y="686" width="304" height="106"/>
+                                                <rect key="frame" x="8" y="758" width="304" height="134"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -516,7 +536,8 @@ five</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
-                                                    <action selector="fieldChanged" destination="sQW-e9-Mru" eventType="valueChanged" id="pPb-mH-wcx"/>
+                                                    <action selector="fieldChanged" destination="sQW-e9-Mru" eventType="editingChanged" id="MTm-UF-coU"/>
+                                                    <outlet property="delegate" destination="sQW-e9-Mru" id="rCA-wS-dZK"/>
                                                 </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wMP-Qk-f3M" customClass="HorizontalLineView" customModule="LiveViews">
@@ -529,8 +550,19 @@ five</string>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ir5-Ky-C4w">
+                                                <rect key="frame" x="8" y="686" width="97" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="fieldChanged" destination="sQW-e9-Mru" eventType="editingChanged" id="IHp-ww-0nt"/>
+                                                    <outlet property="delegate" destination="sQW-e9-Mru" id="eyF-2V-Z3a"/>
+                                                </connections>
+                                            </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sB0-Ix-UQ1">
-                                                <rect key="frame" x="8" y="661" width="63" height="17"/>
+                                                <rect key="frame" x="8" y="733" width="63" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -539,7 +571,7 @@ five</string>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="800" id="IqD-M2-M4C"/>
+                                            <constraint firstAttribute="height" constant="900" id="IqD-M2-M4C"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -564,12 +596,13 @@ five</string>
                     </view>
                     <tabBarItem key="tabBarItem" title="Me" id="IvX-eW-05b"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="900"/>
+                    <size key="freeformSize" width="320" height="1000"/>
                     <connections>
                         <outlet property="ageTextField" destination="tT2-m9-dor" id="hPd-C3-RGl"/>
                         <outlet property="commentTextView" destination="tTG-bU-AkL" id="JpA-nY-VlT"/>
                         <outlet property="genderSegmentedControl" destination="U9f-fA-eU8" id="ME8-pF-gOr"/>
                         <outlet property="heightButton" destination="8IF-T0-Yp7" id="OA2-Yp-bzy"/>
+                        <outlet property="studyIdTextField" destination="Ir5-Ky-C4w" id="TEK-lL-DXq"/>
                         <outlet property="weightPerceptionTableView" destination="gxa-3n-67W" id="iM7-gB-BRW"/>
                         <outlet property="weightTextField" destination="cbD-yK-M3L" id="d9q-0Q-Rov"/>
                         <outlet property="zipCodeTextField" destination="9NT-UA-1AR" id="5rs-Fc-1TX"/>
@@ -904,7 +937,7 @@ Data is anonymous and has a random ID assigned to it. We do not share your data 
                         <viewControllerLayoutGuide type="bottom" id="5Ze-K7-tli"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XYl-j0-lfc">
-                        <rect key="frame" x="0.0" y="0.0" width="224" height="408"/>
+                        <rect key="frame" x="0.0" y="0.0" width="224" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" text="Take a minute to think of a specific situation in the future when this might happen…" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jqY-vI-v6m">
@@ -1076,7 +1109,7 @@ Data is anonymous and has a random ID assigned to it. We do not share your data 
                         <rect key="frame" x="0.0" y="0.0" width="224" height="350"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jVU-EX-5Nl">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jVU-EX-5Nl">
                                 <rect key="frame" x="16" y="62" width="192" height="191"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Connect to your Values.
@@ -1091,12 +1124,12 @@ Increase your Physical Activity.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jVU-EX-5Nl" firstAttribute="top" secondItem="Rlx-RR-KGl" secondAttribute="bottom" constant="8" symbolic="YES" id="FgN-6c-hY2"/>
-                            <constraint firstItem="jVU-EX-5Nl" firstAttribute="leading" secondItem="G97-2X-JuY" secondAttribute="leadingMargin" id="Wye-BY-Ml8"/>
-                            <constraint firstItem="Rlx-RR-KGl" firstAttribute="centerX" secondItem="jVU-EX-5Nl" secondAttribute="centerX" id="Xl4-6H-rOe"/>
-                            <constraint firstItem="Rlx-RR-KGl" firstAttribute="top" secondItem="zVg-vF-Ykt" secondAttribute="bottom" constant="8" symbolic="YES" id="llC-2B-oRQ"/>
-                            <constraint firstItem="S7C-Nw-WB5" firstAttribute="top" secondItem="jVU-EX-5Nl" secondAttribute="bottom" constant="198" id="ons-Hr-EHP"/>
-                            <constraint firstItem="jVU-EX-5Nl" firstAttribute="trailing" secondItem="G97-2X-JuY" secondAttribute="trailingMargin" id="wFe-id-mJ0"/>
+                            <constraint firstItem="jVU-EX-5Nl" firstAttribute="leading" secondItem="G97-2X-JuY" secondAttribute="leadingMargin" id="0e0-z8-nY4"/>
+                            <constraint firstItem="jVU-EX-5Nl" firstAttribute="trailing" secondItem="G97-2X-JuY" secondAttribute="trailingMargin" id="7WH-Pv-d6z"/>
+                            <constraint firstItem="S7C-Nw-WB5" firstAttribute="top" secondItem="jVU-EX-5Nl" secondAttribute="bottom" constant="97" id="A1E-gg-P6A"/>
+                            <constraint firstItem="Rlx-RR-KGl" firstAttribute="centerX" secondItem="jVU-EX-5Nl" secondAttribute="centerX" id="Wjz-l5-37U"/>
+                            <constraint firstItem="jVU-EX-5Nl" firstAttribute="top" secondItem="Rlx-RR-KGl" secondAttribute="bottom" constant="8" symbolic="YES" id="oju-6R-Fh2"/>
+                            <constraint firstItem="Rlx-RR-KGl" firstAttribute="top" secondItem="zVg-vF-Ykt" secondAttribute="bottom" constant="8" symbolic="YES" id="tzH-iU-P2Q"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
