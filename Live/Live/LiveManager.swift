@@ -68,13 +68,7 @@ class LiveManager: NotificationManagerDelegate {
         get { return [activityMessageManager, valueMessageManager] }
     }
     var personalInformation = Observable<PersonalInformation>(value: PersonalInformation())
-    var shareDataWithResearchers: Bool = false {
-        willSet(newValue) {
-            if newValue != shareDataWithResearchers {
-                dirty = true
-            }
-        }
-    }
+    var shareDataWithResearchers = Observable<Bool>(value: false)
     let surveyManager = SurveyManager()
     var dailyStepCounts = Observable<DailyStepCounts?>(value: nil)
     let orderedValues = Observable(value: ValueMessageManager.groups)
@@ -100,6 +94,7 @@ class LiveManager: NotificationManagerDelegate {
         orderedValues.subscribe(owner: self, observer: orderedValuesChanged)
         trigger.subscribe(owner: self, observer: triggerChanged)
         personalInformation.subscribe(owner: self, observer: personalInformationChanged)
+        shareDataWithResearchers.subscribe(owner: self, observer: shareDataWithResearchersChanged)
 
         notificationManager.delegate = self
         notificationManager.authorized.subscribe(owner: self, observer: notificationManagerAuthorizationChanged)
@@ -122,7 +117,11 @@ class LiveManager: NotificationManagerDelegate {
     func personalInformationChanged() {
         dirty = true
     }
-
+    
+    func shareDataWithResearchersChanged() {
+        dirty = true
+    }
+    
     func bodyMassChanged() {
         if let sample = healthKitManager.bodyMass.value {
             if personalInformation.value.weight == nil {
@@ -183,14 +182,14 @@ class LiveManager: NotificationManagerDelegate {
             "didShowShareReminder": JSON.json(bool: didShowShareReminder),
             "surveyManager": JSON.json(object: surveyManager.state),
             "personalInformation": JSON.json(object: personalInformation.value),
-            "shareDataWithResearchers": JSON.json(bool: shareDataWithResearchers),
+            "shareDataWithResearchers": JSON.json(bool: shareDataWithResearchers.value),
         ]
         do {
             let data = try JSON.json(any: json)
             try data.write(to: archivePath, options: Data.WritingOptions.atomic)
             NSLog("LiveManager.archive: success")
 
-            if shareDataWithResearchers {
+            if shareDataWithResearchers.value {
                 if let installationUUID = installationUUID {
                     cloudManager.update(type: "Archive", name: installationUUID, fileURL: archivePath, modificationDate: modificationDate)
                 }
@@ -237,7 +236,7 @@ class LiveManager: NotificationManagerDelegate {
             self.didShowShareReminder = didShowShareReminder
             self.surveyManager.state = surveyManager
             self.personalInformation.value = personalInformation
-            self.shareDataWithResearchers = shareDataWithResearchers
+            self.shareDataWithResearchers.value = shareDataWithResearchers
 
             dirty = false
         } catch {

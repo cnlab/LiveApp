@@ -68,7 +68,7 @@ class LiveTabBarController: UITabBarController, UITabBarControllerDelegate, Ance
     func checkShareReminder() {
         let liveManager = LiveManager.shared
         if !liveManager.didShowShareReminder {
-            if liveManager.shareDataWithResearchers {
+            if liveManager.shareDataWithResearchers.value {
                 liveManager.didShowShareReminder = true
             } else {
                 if let installationDate = liveManager.installationDate {

@@ -20,7 +20,7 @@ class SurveyIntroductionViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        tipView?.isHidden = LiveManager.shared.shareDataWithResearchers
+        tipView?.isHidden = LiveManager.shared.shareDataWithResearchers.value
     }
 
     @IBAction func share() {

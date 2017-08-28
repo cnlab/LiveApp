@@ -895,10 +895,21 @@ Data is anonymous and has a random ID assigned to it. We do not share your data 
                                     <segue destination="SlT-nm-yds" kind="embed" id="Yhw-Re-Atc"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BWK-un-ufd">
+                                <rect key="frame" x="16" y="342" width="288" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Share Now"/>
+                                <connections>
+                                    <action selector="shareNow" destination="Km8-Zb-u6F" eventType="touchUpInside" id="sHR-mp-3bU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Share" id="PeG-m9-RwD"/>
+                    <connections>
+                        <outlet property="shareNowButton" destination="BWK-un-ufd" id="CeP-Te-0p8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JCZ-m8-Ez7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
