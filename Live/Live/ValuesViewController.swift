@@ -11,12 +11,14 @@ import LiveViews
 
 class ValuesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
+    var letsGoCallback: ((Void) -> Void)? = nil
+
     let reuseIdentifier = "ValueCell"
     
     @IBOutlet var collectionView: UICollectionView? = nil
     @IBOutlet var mostImportantLabel: VerticalLabelView? = nil
     @IBOutlet var leastImportantLabel: VerticalLabelView? = nil
-    @IBOutlet var letsGoLabel: UILabel? = nil
+    @IBOutlet var letsGoButton: UIButton? = nil
 
     var values = [String]()
     var valueImages: [String: UIImage] = [:]
@@ -49,6 +51,8 @@ class ValuesViewController: UIViewController, UICollectionViewDataSource, UIColl
         let liveManager = LiveManager.shared
         values = liveManager.orderedValues.value
         liveManager.orderedValues.subscribe(owner: self, observer: orderedValuesChanged)
+        
+        AncestorUtility.notifyAncestorDidLoad(parent: parent, viewController: self)
     }
 
     // !!! workaround cell content having wrong size on initial load -denis
@@ -62,7 +66,7 @@ class ValuesViewController: UIViewController, UICollectionViewDataSource, UIColl
     open override func viewDidLayoutSubviews() {
         guard
             let collectionView = self.collectionView,
-            let letsGoLabel = self.letsGoLabel,
+            let letsGoButton = self.letsGoButton,
             let mostImportantLabel = self.mostImportantLabel,
             let leastImportantLabel = self.leastImportantLabel
         else {
@@ -79,7 +83,7 @@ class ValuesViewController: UIViewController, UICollectionViewDataSource, UIColl
         let y: CGFloat = insets.top
         let width = view.bounds.width - insets.right - margin - insets.left - 2.0 * mostImportantLabel.frame.size.width
         let contentHeight = view.bounds.height - insets.top - insets.bottom - spacing
-        let flexibleHeight = contentHeight - Layout.totalHeight(subviews: [collectionView, letsGoLabel], excluding: [collectionView], spacing: spacing)
+        let flexibleHeight = contentHeight - Layout.totalHeight(subviews: [collectionView, letsGoButton], excluding: [collectionView], spacing: spacing)
 
         if let layout = collectionView.collectionViewLayout as? CollectionViewListLayout {
             let count = CGFloat(values.count)
@@ -87,7 +91,7 @@ class ValuesViewController: UIViewController, UICollectionViewDataSource, UIColl
         }
 
         var cy = y
-        for subview in [collectionView, letsGoLabel] {
+        for subview in [collectionView, letsGoButton] {
             Layout.place(subview: subview, x: x, y: &cy, width: width, height: subview == collectionView ? flexibleHeight : nil)
             cy += spacing
         }
@@ -125,6 +129,12 @@ class ValuesViewController: UIViewController, UICollectionViewDataSource, UIColl
         let liveManager = LiveManager.shared
         if values != liveManager.orderedValues.value {
             collectionView?.setNeedsDisplay()
+        }
+    }
+    
+    @IBAction func letsGo() {
+        if let letsGoCallback = letsGoCallback {
+            letsGoCallback()
         }
     }
 

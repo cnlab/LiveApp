@@ -107,7 +107,7 @@ five</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BOA-Mb-Zld">
-                                <rect key="frame" x="45" y="28" width="230" height="451"/>
+                                <rect key="frame" x="45" y="28" width="230" height="445"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewLayout key="collectionViewLayout" id="9tP-sD-irw" customClass="CollectionViewListLayout" customModule="Live" customModuleProvider="target"/>
@@ -165,13 +165,6 @@ five</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LET'S GO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVX-7E-hHu">
-                                <rect key="frame" x="45" y="487" width="230" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jzd-Q8-jEW" customClass="VerticalLabelView" customModule="LiveViews">
                                 <rect key="frame" x="16" y="28" width="21" height="101"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -184,6 +177,14 @@ five</string>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="alignRight" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tuN-ea-UBl">
+                                <rect key="frame" x="45" y="481" width="230" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="LET'S GO"/>
+                                <connections>
+                                    <action selector="letsGo" destination="8rJ-Kc-sve" eventType="touchUpInside" id="sVz-8E-G0r"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -191,7 +192,7 @@ five</string>
                     <connections>
                         <outlet property="collectionView" destination="BOA-Mb-Zld" id="4VK-uD-3yb"/>
                         <outlet property="leastImportantLabel" destination="Ceu-om-TjF" id="nho-iK-ARO"/>
-                        <outlet property="letsGoLabel" destination="rVX-7E-hHu" id="WLM-G1-p0U"/>
+                        <outlet property="letsGoButton" destination="tuN-ea-UBl" id="Lpz-Dh-0QZ"/>
                         <outlet property="mostImportantLabel" destination="jzd-Q8-jEW" id="PLQ-Ij-oXg"/>
                     </connections>
                 </viewController>

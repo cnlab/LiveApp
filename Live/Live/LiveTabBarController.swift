@@ -104,6 +104,9 @@ class LiveTabBarController: UITabBarController, UITabBarControllerDelegate, Ance
     }
 
     func ancestorDidLoad(viewController: UIViewController) {
+        if let valuesViewController = viewController as? ValuesViewController {
+            valuesViewController.letsGoCallback = selectHome
+        }
         if let surveyIntroductionViewController = viewController as? SurveyIntroductionViewController {
             surveyIntroductionViewController.aboutCallback = selectAbout
             surveyIntroductionViewController.shareCallback = selectShare
@@ -140,6 +143,12 @@ class LiveTabBarController: UITabBarController, UITabBarControllerDelegate, Ance
     
     func selectValues() {
         if let viewController: ValuesViewController = findViewController() {
+            selectedViewController = viewController
+        }
+    }
+    
+    func selectHome() {
+        if let viewController: HomeViewController = findViewController() {
             selectedViewController = viewController
         }
     }
