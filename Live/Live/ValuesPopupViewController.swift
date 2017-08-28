@@ -17,48 +17,29 @@ protocol ValuesPopupViewControllerDelegate {
 class ValuesPopupViewController: PopupViewController {
 
     @IBOutlet var thinkView: UIView?
-    @IBOutlet var rankView: UIView?
 
     var delegate: ValuesPopupViewControllerDelegate?
 
     var thinkViewController: ValuesThinkViewController? { get { return getContainerViewController() } }
-    var rankViewController: ValuesRankViewController? { get { return getContainerViewController() } }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         thinkViewController?.popupViewController = self
-        rankViewController?.popupViewController = self
     }
 
     func show(inView parent: UIView, text: String, rank: Double) {
         thinkViewController?.textView?.text = text
-        rankViewController?.textView?.text = text
-        rankViewController?.slider?.value = Float(rank)
-        presentThink()
+        thinkViewController?.rank = rank
         super.show(inView: parent, animated: true)
     }
 
-    func presentThink() {
-        thinkView?.isHidden = false
-        rankView?.isHidden = true
-    }
-
-    func presentRank() {
-        thinkView?.isHidden = true
-        rankView?.isHidden = false
-    }
-
-    func thinkOkAction() {
-        presentRank()
-    }
-
-    func rankDoneAction() {
+    func saveAction() {
         closeAction()
-        guard let rankViewController = rankViewController else {
+        guard let thinkViewController = thinkViewController else {
             return
         }
-        delegate?.valuesPopupViewController(self, rank: rankViewController.rank)
+        delegate?.valuesPopupViewController(self, rank: thinkViewController.rank)
     }
 
 }

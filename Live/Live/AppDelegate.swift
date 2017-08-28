@@ -18,7 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if NSClassFromString("XCTestCase") != nil {
             return true
         }
-
+        
+        let pageControl = UIPageControl.appearance()
+        pageControl.pageIndicatorTintColor = UIColor.lightGray
+        pageControl.currentPageIndicatorTintColor = UIColor.gray
+        pageControl.backgroundColor = UIColor.white
+ 
         let liveManager = LiveManager.shared
         if !liveManager.unarchive() {
             liveManager.archive()

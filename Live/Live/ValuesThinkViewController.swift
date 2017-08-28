@@ -11,11 +11,51 @@ import UIKit
 class ValuesThinkViewController: UIViewController {
 
     @IBOutlet var textView: UITextView?
+    @IBOutlet var importantButton: UIButton?
+    @IBOutlet var unimportantButton: UIButton?
 
     var popupViewController: ValuesPopupViewController?
 
-    @IBAction func okAction() {
-        popupViewController?.thinkOkAction()
+    var rank: Double {
+        get {
+            if importantButton?.isSelected ?? false {
+                return +1.0
+            }
+            if unimportantButton?.isSelected ?? false {
+                return -1.0
+            }
+            return 0.0
+        }
+        set(value) {
+            if value > 0.0 {
+                importantButton?.isSelected = true
+                unimportantButton?.isSelected = false
+                return
+            }
+            if value < 0.0 {
+                importantButton?.isSelected = false
+                unimportantButton?.isSelected = true
+                return
+            }
+            importantButton?.isSelected = false
+            unimportantButton?.isSelected = false
+        }
+    }
+
+    @IBAction func importantAction() {
+        if importantButton?.isSelected ?? false {
+            unimportantButton?.isSelected = false
+        }
+    }
+    
+    @IBAction func unimportantAction() {
+        if unimportantButton?.isSelected ?? false {
+            importantButton?.isSelected = false
+        }
+    }
+    
+    @IBAction func saveAction() {
+        popupViewController?.saveAction()
     }
 
 }

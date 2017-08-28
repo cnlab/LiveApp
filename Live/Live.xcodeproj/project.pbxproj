@@ -14,11 +14,11 @@
 		92062C371DB26C8C0001DE0C /* ScheduleCoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92062C361DB26C8C0001DE0C /* ScheduleCoderTests.swift */; };
 		92062C3D1DB272F70001DE0C /* ObjectiveCException.m in Sources */ = {isa = PBXBuildFile; fileRef = 92062C3C1DB272F70001DE0C /* ObjectiveCException.m */; };
 		9209CE921E2D6379008E83BB /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9209CE911E2D6379008E83BB /* Moment.swift */; };
+		921E91311F539F6F00F2E090 /* IntroductionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921E91301F539F6F00F2E090 /* IntroductionPageViewController.swift */; };
 		9221F70C1E70EF89009A5127 /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9221F70B1E70EF89009A5127 /* CloudManager.swift */; };
 		922C70AF1D93576400F1C401 /* MessageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922C70AE1D93576400F1C401 /* MessageManagerTests.swift */; };
 		9232234B1E157ADB00F300AC /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9232234A1E157ADB00F300AC /* Layout.swift */; };
-		923E62BA1E14522700D191EC /* ImportanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E62B91E14522700D191EC /* ImportanceViewController.swift */; };
-		923E62BE1E14526B00D191EC /* ImportancePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E62BD1E14526B00D191EC /* ImportancePopupViewController.swift */; };
+		923E62BE1E14526B00D191EC /* IntroductionPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E62BD1E14526B00D191EC /* IntroductionPopupViewController.swift */; };
 		92458B691E746369007B3320 /* GZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92458B681E746369007B3320 /* GZip.swift */; };
 		92458B6E1E74673D007B3320 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 92458B6C1E7465EE007B3320 /* libz.tbd */; };
 		9248782F1D86F6F5000C86FF /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9248782E1D86F6F5000C86FF /* HealthKit.framework */; };
@@ -43,7 +43,6 @@
 		926ECB281DB9639A00A36584 /* LiveTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926ECB271DB9639A00A36584 /* LiveTabBarController.swift */; };
 		926ECB2D1DB975B300A36584 /* ActivityPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926ECB2C1DB975B300A36584 /* ActivityPopupViewController.swift */; };
 		926ECB2F1DB975E100A36584 /* ActivityThinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926ECB2E1DB975E100A36584 /* ActivityThinkViewController.swift */; };
-		926ECB311DB975EF00A36584 /* ActivityRankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926ECB301DB975EF00A36584 /* ActivityRankViewController.swift */; };
 		92716C401D94CDCD00980CA3 /* CollectionViewListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92716C3F1D94CDCD00980CA3 /* CollectionViewListLayout.swift */; };
 		927B69011E1592E200C80F76 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927B69001E1592E200C80F76 /* MessageUI.framework */; };
 		927B69041E15949B00C80F76 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927B69031E15949B00C80F76 /* AboutViewController.swift */; };
@@ -59,9 +58,9 @@
 		929CE6A51DB5393900330FFB /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929CE6A41DB5393900330FFB /* PopupViewController.swift */; };
 		929CE6A91DB5544100330FFB /* ValuesPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929CE6A81DB5544100330FFB /* ValuesPopupViewController.swift */; };
 		929CE6AB1DB5548000330FFB /* ValuesThinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929CE6AA1DB5548000330FFB /* ValuesThinkViewController.swift */; };
-		929CE6AD1DB5548C00330FFB /* ValuesRankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929CE6AC1DB5548C00330FFB /* ValuesRankViewController.swift */; };
 		92A1D5F71E1F3BBA004E5D3F /* ShareReminderPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A1D5F61E1F3BBA004E5D3F /* ShareReminderPopupViewController.swift */; };
 		92A1D5F91E1F3BD6004E5D3F /* ShareReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A1D5F81E1F3BD6004E5D3F /* ShareReminderViewController.swift */; };
+		92AD149A1F53BCB400E8DEC0 /* IntroductionPage2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AD14991F53BCB400E8DEC0 /* IntroductionPage2ViewController.swift */; };
 		92AD62FA1F508278001592CE /* HorizontalLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AD62F91F508278001592CE /* HorizontalLineView.swift */; };
 		92AD62FC1F50900E001592CE /* WeightPerceptionTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AD62FB1F50900E001592CE /* WeightPerceptionTableViewDataSource.swift */; };
 		92AF48281E71DB1100313FB1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92AF48271E71DB1100313FB1 /* CloudKit.framework */; };
@@ -145,11 +144,11 @@
 		92062C3B1DB272F70001DE0C /* ObjectiveCException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCException.h; sourceTree = "<group>"; };
 		92062C3C1DB272F70001DE0C /* ObjectiveCException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveCException.m; sourceTree = "<group>"; };
 		9209CE911E2D6379008E83BB /* Moment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moment.swift; sourceTree = "<group>"; };
+		921E91301F539F6F00F2E090 /* IntroductionPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionPageViewController.swift; sourceTree = "<group>"; };
 		9221F70B1E70EF89009A5127 /* CloudManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudManager.swift; sourceTree = "<group>"; };
 		922C70AE1D93576400F1C401 /* MessageManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageManagerTests.swift; sourceTree = "<group>"; };
 		9232234A1E157ADB00F300AC /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		923E62B91E14522700D191EC /* ImportanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportanceViewController.swift; sourceTree = "<group>"; };
-		923E62BD1E14526B00D191EC /* ImportancePopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportancePopupViewController.swift; sourceTree = "<group>"; };
+		923E62BD1E14526B00D191EC /* IntroductionPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionPopupViewController.swift; sourceTree = "<group>"; };
 		92458B681E746369007B3320 /* GZip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZip.swift; sourceTree = "<group>"; };
 		92458B6C1E7465EE007B3320 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		9248782E1D86F6F5000C86FF /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -176,7 +175,6 @@
 		926ECB271DB9639A00A36584 /* LiveTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveTabBarController.swift; sourceTree = "<group>"; };
 		926ECB2C1DB975B300A36584 /* ActivityPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPopupViewController.swift; sourceTree = "<group>"; };
 		926ECB2E1DB975E100A36584 /* ActivityThinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityThinkViewController.swift; sourceTree = "<group>"; };
-		926ECB301DB975EF00A36584 /* ActivityRankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityRankViewController.swift; sourceTree = "<group>"; };
 		92716C3F1D94CDCD00980CA3 /* CollectionViewListLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewListLayout.swift; sourceTree = "<group>"; };
 		927B69001E1592E200C80F76 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		927B69031E15949B00C80F76 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -192,9 +190,9 @@
 		929CE6A41DB5393900330FFB /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		929CE6A81DB5544100330FFB /* ValuesPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesPopupViewController.swift; sourceTree = "<group>"; };
 		929CE6AA1DB5548000330FFB /* ValuesThinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesThinkViewController.swift; sourceTree = "<group>"; };
-		929CE6AC1DB5548C00330FFB /* ValuesRankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesRankViewController.swift; sourceTree = "<group>"; };
 		92A1D5F61E1F3BBA004E5D3F /* ShareReminderPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareReminderPopupViewController.swift; sourceTree = "<group>"; };
 		92A1D5F81E1F3BD6004E5D3F /* ShareReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareReminderViewController.swift; sourceTree = "<group>"; };
+		92AD14991F53BCB400E8DEC0 /* IntroductionPage2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionPage2ViewController.swift; sourceTree = "<group>"; };
 		92AD62F91F508278001592CE /* HorizontalLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalLineView.swift; sourceTree = "<group>"; };
 		92AD62FB1F50900E001592CE /* WeightPerceptionTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightPerceptionTableViewDataSource.swift; sourceTree = "<group>"; };
 		92AF48271E71DB1100313FB1 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -268,6 +266,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		921E912F1F539F5100F2E090 /* Introduction */ = {
+			isa = PBXGroup;
+			children = (
+				921E91301F539F6F00F2E090 /* IntroductionPageViewController.swift */,
+				923E62BD1E14526B00D191EC /* IntroductionPopupViewController.swift */,
+				92AD14991F53BCB400E8DEC0 /* IntroductionPage2ViewController.swift */,
+			);
+			name = Introduction;
+			sourceTree = "<group>";
+		};
 		925443CF1E12D33900BD5687 /* LiveViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,10 +310,6 @@
 				92C97F8A1E2C1EE400798FD7 /* Scheduler.swift */,
 				9255DC4D1E1D7CAD00B931E3 /* PersonalInformation.swift */,
 				92F7CDBD1DAF033E009E2924 /* NotificationManager.swift */,
-				923E62BD1E14526B00D191EC /* ImportancePopupViewController.swift */,
-				923E62B91E14522700D191EC /* ImportanceViewController.swift */,
-				92A1D5F61E1F3BBA004E5D3F /* ShareReminderPopupViewController.swift */,
-				92A1D5F81E1F3BD6004E5D3F /* ShareReminderViewController.swift */,
 				9221F70B1E70EF89009A5127 /* CloudManager.swift */,
 				92458B681E746369007B3320 /* GZip.swift */,
 			);
@@ -328,10 +332,8 @@
 			children = (
 				929CE6A81DB5544100330FFB /* ValuesPopupViewController.swift */,
 				929CE6AA1DB5548000330FFB /* ValuesThinkViewController.swift */,
-				929CE6AC1DB5548C00330FFB /* ValuesRankViewController.swift */,
 				926ECB2C1DB975B300A36584 /* ActivityPopupViewController.swift */,
 				926ECB2E1DB975E100A36584 /* ActivityThinkViewController.swift */,
-				926ECB301DB975EF00A36584 /* ActivityRankViewController.swift */,
 			);
 			name = Affirm;
 			sourceTree = "<group>";
@@ -424,6 +426,8 @@
 			children = (
 				92B89C4F1E15A92F00E7D5CC /* ShareViewController.swift */,
 				925F5ABE1E15FB080051DF1B /* ShareFieldsTableViewController.swift */,
+				92A1D5F61E1F3BBA004E5D3F /* ShareReminderPopupViewController.swift */,
+				92A1D5F81E1F3BD6004E5D3F /* ShareReminderViewController.swift */,
 			);
 			name = Share;
 			sourceTree = "<group>";
@@ -467,6 +471,7 @@
 			isa = PBXGroup;
 			children = (
 				9255DC481E1D4BCE00B931E3 /* Main */,
+				921E912F1F539F5100F2E090 /* Introduction */,
 				926ECB2B1DB9687600A36584 /* Affirm */,
 				92986D931D99A67F008B8533 /* Home */,
 				92986D941D99A68E008B8533 /* Values */,
@@ -760,19 +765,17 @@
 				9204FDA91E16127F00E9CFF9 /* StringArrayPickerViewDataSource.swift in Sources */,
 				92062C3D1DB272F70001DE0C /* ObjectiveCException.m in Sources */,
 				924878341D8733C2000C86FF /* ValueMessageManager.swift in Sources */,
-				929CE6AD1DB5548C00330FFB /* ValuesRankViewController.swift in Sources */,
-				923E62BA1E14522700D191EC /* ImportanceViewController.swift in Sources */,
 				92554D121DBA7F3800009A21 /* SettingsViewController.swift in Sources */,
 				9209CE921E2D6379008E83BB /* Moment.swift in Sources */,
 				9204FDA71E160B9100E9CFF9 /* PickerViewController.swift in Sources */,
 				92EE6E931E1AD13100645F8E /* HeightPickerViewDataSource.swift in Sources */,
 				924991A11E1C1CFC002B7E97 /* SurveyManager.swift in Sources */,
 				92CAC2431DB2BF21009615C3 /* Note.swift in Sources */,
+				921E91311F539F6F00F2E090 /* IntroductionPageViewController.swift in Sources */,
 				929CE6A91DB5544100330FFB /* ValuesPopupViewController.swift in Sources */,
 				92A1D5F91E1F3BD6004E5D3F /* ShareReminderViewController.swift in Sources */,
 				92AD62FC1F50900E001592CE /* WeightPerceptionTableViewDataSource.swift in Sources */,
 				92CA91981D8304B9000491CD /* AppDelegate.swift in Sources */,
-				926ECB311DB975EF00A36584 /* ActivityRankViewController.swift in Sources */,
 				926ECB2D1DB975B300A36584 /* ActivityPopupViewController.swift in Sources */,
 				9291F6861DABF85400042F42 /* LiveManager.swift in Sources */,
 				92458B691E746369007B3320 /* GZip.swift in Sources */,
@@ -787,7 +790,7 @@
 				92986D9A1D99A87A008B8533 /* StepsView.swift in Sources */,
 				925F5ABF1E15FB080051DF1B /* ShareFieldsTableViewController.swift in Sources */,
 				927E72AE1E1B4155003CFD5A /* SurveyIntroductionViewController.swift in Sources */,
-				923E62BE1E14526B00D191EC /* ImportancePopupViewController.swift in Sources */,
+				923E62BE1E14526B00D191EC /* IntroductionPopupViewController.swift in Sources */,
 				924991A31E1C3295002B7E97 /* Ancestor.swift in Sources */,
 				9291F68D1DAC306500042F42 /* Time.swift in Sources */,
 				92F7CDBE1DAF033E009E2924 /* NotificationManager.swift in Sources */,
@@ -795,6 +798,7 @@
 				927E72AA1E1B4135003CFD5A /* SurveyFormViewController.swift in Sources */,
 				92986D921D99A5FF008B8533 /* SurveyViewController.swift in Sources */,
 				92CA919A1D8304B9000491CD /* HomeViewController.swift in Sources */,
+				92AD149A1F53BCB400E8DEC0 /* IntroductionPage2ViewController.swift in Sources */,
 				9204FDA31E160B5500E9CFF9 /* PickerPopupViewController.swift in Sources */,
 				927B69041E15949B00C80F76 /* AboutViewController.swift in Sources */,
 				92DA5F961DAFF2EB00132B16 /* Schedule.swift in Sources */,

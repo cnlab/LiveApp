@@ -8,9 +8,9 @@
 
 import UIKit
 
-class LiveTabBarController: UITabBarController, UITabBarControllerDelegate, Ancestor, LiveManagerDelegate, ImportancePopupViewControllerDelegate, ShareReminderPopupViewControllerDelegate, ValuesPopupViewControllerDelegate, ActivityPopupViewControllerDelegate {
+class LiveTabBarController: UITabBarController, UITabBarControllerDelegate, Ancestor, LiveManagerDelegate, IntroductionPopupViewControllerDelegate, ShareReminderPopupViewControllerDelegate, ValuesPopupViewControllerDelegate, ActivityPopupViewControllerDelegate {
 
-    var importancePopupViewController: ImportancePopupViewController?
+    var introductionPopupViewController: IntroductionPopupViewController?
     var shareReminderPopupViewController: ShareReminderPopupViewController?
 
     var valuesPopupViewController: ValuesPopupViewController?
@@ -52,7 +52,7 @@ class LiveTabBarController: UITabBarController, UITabBarControllerDelegate, Ance
     }
 
     func checkPopups() {
-        if importancePopupViewController != nil {
+        if introductionPopupViewController != nil {
             return
         }
         let liveManager = LiveManager.shared
@@ -137,30 +137,29 @@ class LiveTabBarController: UITabBarController, UITabBarControllerDelegate, Ance
             selectedViewController = viewController
         }
     }
-
-    func importancePopupViewController(_ importancePopupViewController: ImportancePopupViewController, value: String) {
+    
+    func selectValues() {
+        if let viewController: ValuesViewController = findViewController() {
+            selectedViewController = viewController
+        }
+    }
+    
+    func introductionPopupViewControllerNext(_ introductionPopupViewController: IntroductionPopupViewController) {
         let liveManager = LiveManager.shared
         liveManager.didShowGetStarted = true
 
         liveManager.authorizeNotificationManager()
 
-        var values = liveManager.orderedValues.value
-        if let index = values.index(of: value) {
-            values.remove(at: index)
-            values.insert(value, at: 0)
-        }
-        liveManager.orderedValues.value = values
+        selectValues()
     }
     
     func showGetStarted() {
-        if importancePopupViewController == nil {
-            importancePopupViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImportancePopupViewController") as? ImportancePopupViewController
-            importancePopupViewController?.loadViewIfNeeded()
-            importancePopupViewController?.delegate = self
+        if introductionPopupViewController == nil {
+            introductionPopupViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "IntroductionPopupViewController") as? IntroductionPopupViewController
+            introductionPopupViewController?.loadViewIfNeeded()
+            introductionPopupViewController?.delegate = self
         }
-        let liveManager = LiveManager.shared
-        let values = liveManager.orderedValues.value
-        importancePopupViewController?.show(inView: view, values: values)
+        introductionPopupViewController?.show(inView: view)
     }
 
     func shareReminderPopupViewController(_ shareReminderPopupViewController: ShareReminderPopupViewController) {
