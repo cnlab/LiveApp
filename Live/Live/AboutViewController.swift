@@ -28,10 +28,6 @@ class AboutViewController: UIViewController, UITextViewDelegate, MFMailComposeVi
         AncestorUtility.notifyAncestorDidLoad(parent: parent, viewController: self)
     }
 
-    open override func viewDidLayoutSubviews() {
-        Layout.vertical(viewController: self, flexibleView: textView)
-    }
-
     func alert(message: String) {
         let alertController = UIAlertController(title: "Mail Result", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

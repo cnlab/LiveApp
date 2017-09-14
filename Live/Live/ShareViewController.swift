@@ -12,10 +12,6 @@ class ShareViewController: UIViewController {
 
     @IBOutlet var shareNowButton: UIButton?
 
-    open override func viewDidLayoutSubviews() {
-        Layout.vertical(viewController: self)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

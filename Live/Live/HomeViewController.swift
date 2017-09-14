@@ -42,13 +42,6 @@ class HomeViewController: UIViewController {
         activityChanged()
     }
 
-    /*
-    open override func viewDidLayoutSubviews() {
-        Layout.vertical(viewController: self, flexibleView: stepsView!)
-        introductionView!.frame.size = dataView!.frame.size
-    }
- */
-
     func dailyStepCountsChanged() {
         let liveManager = LiveManager.shared
         if liveManager.dailyStepCounts.value != nil {
