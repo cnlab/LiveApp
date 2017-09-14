@@ -43,15 +43,13 @@ class ValuesThinkViewController: UIViewController {
     }
 
     @IBAction func importantAction() {
-        if importantButton?.isSelected ?? false {
-            unimportantButton?.isSelected = false
-        }
+        importantButton?.isSelected = true
+        unimportantButton?.isSelected = false
     }
     
     @IBAction func unimportantAction() {
-        if unimportantButton?.isSelected ?? false {
-            importantButton?.isSelected = false
-        }
+        unimportantButton?.isSelected = true
+        importantButton?.isSelected = false
     }
     
     @IBAction func saveAction() {

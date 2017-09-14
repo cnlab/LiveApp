@@ -16,6 +16,7 @@
 		9209CE921E2D6379008E83BB /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9209CE911E2D6379008E83BB /* Moment.swift */; };
 		921E91311F539F6F00F2E090 /* IntroductionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921E91301F539F6F00F2E090 /* IntroductionPageViewController.swift */; };
 		9221F70C1E70EF89009A5127 /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9221F70B1E70EF89009A5127 /* CloudManager.swift */; };
+		922821AF1F56241500F6A597 /* CheckboxTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922821AE1F56241500F6A597 /* CheckboxTextView.swift */; };
 		922C70AF1D93576400F1C401 /* MessageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922C70AE1D93576400F1C401 /* MessageManagerTests.swift */; };
 		9232234B1E157ADB00F300AC /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9232234A1E157ADB00F300AC /* Layout.swift */; };
 		923E62BE1E14526B00D191EC /* IntroductionPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E62BD1E14526B00D191EC /* IntroductionPopupViewController.swift */; };
@@ -44,6 +45,8 @@
 		926ECB2D1DB975B300A36584 /* ActivityPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926ECB2C1DB975B300A36584 /* ActivityPopupViewController.swift */; };
 		926ECB2F1DB975E100A36584 /* ActivityThinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926ECB2E1DB975E100A36584 /* ActivityThinkViewController.swift */; };
 		92716C401D94CDCD00980CA3 /* CollectionViewListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92716C3F1D94CDCD00980CA3 /* CollectionViewListLayout.swift */; };
+		92785F811F6AE557007D55E1 /* HomeDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92785F801F6AE557007D55E1 /* HomeDataViewController.swift */; };
+		92785F831F6AE6EB007D55E1 /* HomeIntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92785F821F6AE6EB007D55E1 /* HomeIntroductionViewController.swift */; };
 		927B69011E1592E200C80F76 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927B69001E1592E200C80F76 /* MessageUI.framework */; };
 		927B69041E15949B00C80F76 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927B69031E15949B00C80F76 /* AboutViewController.swift */; };
 		927E72AA1E1B4135003CFD5A /* SurveyFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927E72A91E1B4135003CFD5A /* SurveyFormViewController.swift */; };
@@ -66,6 +69,8 @@
 		92AF48281E71DB1100313FB1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92AF48271E71DB1100313FB1 /* CloudKit.framework */; };
 		92B89C501E15A92F00E7D5CC /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B89C4F1E15A92F00E7D5CC /* ShareViewController.swift */; };
 		92B89C531E15BBC600E7D5CC /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B89C521E15BBC600E7D5CC /* MeViewController.swift */; };
+		92C7A28A1F54F47D004678A7 /* UIColor+Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C7A2891F54F47D004678A7 /* UIColor+Brightness.swift */; };
+		92C7A28C1F54F99A004678A7 /* MessageTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C7A28B1F54F99A004678A7 /* MessageTableViewDataSource.swift */; };
 		92C97F8B1E2C1EE400798FD7 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C97F8A1E2C1EE400798FD7 /* Scheduler.swift */; };
 		92CA91981D8304B9000491CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA91971D8304B9000491CD /* AppDelegate.swift */; };
 		92CA919A1D8304B9000491CD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA91991D8304B9000491CD /* HomeViewController.swift */; };
@@ -146,6 +151,7 @@
 		9209CE911E2D6379008E83BB /* Moment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moment.swift; sourceTree = "<group>"; };
 		921E91301F539F6F00F2E090 /* IntroductionPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionPageViewController.swift; sourceTree = "<group>"; };
 		9221F70B1E70EF89009A5127 /* CloudManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudManager.swift; sourceTree = "<group>"; };
+		922821AE1F56241500F6A597 /* CheckboxTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxTextView.swift; sourceTree = "<group>"; };
 		922C70AE1D93576400F1C401 /* MessageManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageManagerTests.swift; sourceTree = "<group>"; };
 		9232234A1E157ADB00F300AC /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		923E62BD1E14526B00D191EC /* IntroductionPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionPopupViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +182,8 @@
 		926ECB2C1DB975B300A36584 /* ActivityPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPopupViewController.swift; sourceTree = "<group>"; };
 		926ECB2E1DB975E100A36584 /* ActivityThinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityThinkViewController.swift; sourceTree = "<group>"; };
 		92716C3F1D94CDCD00980CA3 /* CollectionViewListLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewListLayout.swift; sourceTree = "<group>"; };
+		92785F801F6AE557007D55E1 /* HomeDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeDataViewController.swift; sourceTree = "<group>"; };
+		92785F821F6AE6EB007D55E1 /* HomeIntroductionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeIntroductionViewController.swift; sourceTree = "<group>"; };
 		927B69001E1592E200C80F76 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		927B69031E15949B00C80F76 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		927E72A91E1B4135003CFD5A /* SurveyFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyFormViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +206,8 @@
 		92AF48271E71DB1100313FB1 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		92B89C4F1E15A92F00E7D5CC /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		92B89C521E15BBC600E7D5CC /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		92C7A2891F54F47D004678A7 /* UIColor+Brightness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Brightness.swift"; sourceTree = "<group>"; };
+		92C7A28B1F54F99A004678A7 /* MessageTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewDataSource.swift; sourceTree = "<group>"; };
 		92C97F8A1E2C1EE400798FD7 /* Scheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
 		92CA91941D8304B9000491CD /* Live.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Live.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92CA91971D8304B9000491CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -285,6 +295,8 @@
 				925443D01E12D33900BD5687 /* LiveViews.h */,
 				925443D11E12D33900BD5687 /* Info.plist */,
 				92AD62F91F508278001592CE /* HorizontalLineView.swift */,
+				92C7A2891F54F47D004678A7 /* UIColor+Brightness.swift */,
+				922821AE1F56241500F6A597 /* CheckboxTextView.swift */,
 			);
 			path = LiveViews;
 			sourceTree = "<group>";
@@ -379,10 +391,13 @@
 			isa = PBXGroup;
 			children = (
 				92CA91991D8304B9000491CD /* HomeViewController.swift */,
+				92785F821F6AE6EB007D55E1 /* HomeIntroductionViewController.swift */,
+				92785F801F6AE557007D55E1 /* HomeDataViewController.swift */,
 				924878311D86F88B000C86FF /* HealthKitManager.swift */,
 				924878331D8733C2000C86FF /* ValueMessageManager.swift */,
 				924878351D873A92000C86FF /* ActivityMessageManager.swift */,
 				924878391D873B3E000C86FF /* MessageManager.swift */,
+				92C7A28B1F54F99A004678A7 /* MessageTableViewDataSource.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -738,6 +753,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92C7A28A1F54F47D004678A7 /* UIColor+Brightness.swift in Sources */,
+				922821AF1F56241500F6A597 /* CheckboxTextView.swift in Sources */,
 				9263D69D1EE59055006902DF /* ImageLabelView.swift in Sources */,
 				928E72A61EE5E6BB00086853 /* VerticalLabelView.swift in Sources */,
 				92AD62FA1F508278001592CE /* HorizontalLineView.swift in Sources */,
@@ -757,6 +774,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9221F70C1E70EF89009A5127 /* CloudManager.swift in Sources */,
+				92785F831F6AE6EB007D55E1 /* HomeIntroductionViewController.swift in Sources */,
 				926ECB2F1DB975E100A36584 /* ActivityThinkViewController.swift in Sources */,
 				92EE6E911E1ABFD800645F8E /* PickerViewDataSource.swift in Sources */,
 				9291F68A1DAC0DC100042F42 /* Observable.swift in Sources */,
@@ -784,6 +802,7 @@
 				92B89C501E15A92F00E7D5CC /* ShareViewController.swift in Sources */,
 				9248783A1D873B3E000C86FF /* MessageManager.swift in Sources */,
 				926ECB281DB9639A00A36584 /* LiveTabBarController.swift in Sources */,
+				92785F811F6AE557007D55E1 /* HomeDataViewController.swift in Sources */,
 				9255DC4E1E1D7CAD00B931E3 /* PersonalInformation.swift in Sources */,
 				92C97F8B1E2C1EE400798FD7 /* Scheduler.swift in Sources */,
 				924878361D873A92000C86FF /* ActivityMessageManager.swift in Sources */,
@@ -793,6 +812,7 @@
 				923E62BE1E14526B00D191EC /* IntroductionPopupViewController.swift in Sources */,
 				924991A31E1C3295002B7E97 /* Ancestor.swift in Sources */,
 				9291F68D1DAC306500042F42 /* Time.swift in Sources */,
+				92C7A28C1F54F99A004678A7 /* MessageTableViewDataSource.swift in Sources */,
 				92F7CDBE1DAF033E009E2924 /* NotificationManager.swift in Sources */,
 				92A1D5F71E1F3BBA004E5D3F /* ShareReminderPopupViewController.swift in Sources */,
 				927E72AA1E1B4135003CFD5A /* SurveyFormViewController.swift in Sources */,

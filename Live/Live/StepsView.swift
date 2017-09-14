@@ -10,28 +10,6 @@ import UIKit
 
 @IBDesignable open class StepsView: UIView {
 
-    @IBInspectable open var enabledStepsColor: UIColor? = UIColor.gray
-    @IBInspectable open var enabledBarColor: UIColor? = UIColor(red:0.59, green:0.83, blue:0.81, alpha:1.0) // 150, 212, 206 #96d4ce
-    @IBInspectable open var enabledDateColor: UIColor? = UIColor.gray
-    @IBInspectable open var enabledTodayStepsColor: UIColor? = UIColor.darkGray
-    @IBInspectable open var enabledTodayBarColor: UIColor? = UIColor(red:0.42, green:0.76, blue:0.73, alpha:1.0) // 106, 193, 185 #6ac1b9
-    @IBInspectable open var enabledTodayDateColor: UIColor? = UIColor.darkGray
-
-    @IBInspectable open var disabledStepsColor: UIColor? = UIColor.lightGray
-    @IBInspectable open var disabledBarColor: UIColor? = UIColor.lightGray
-    @IBInspectable open var disabledDateColor: UIColor? = UIColor.lightGray
-    @IBInspectable open var disabledTodayStepsColor: UIColor? = UIColor.gray
-    @IBInspectable open var disabledTodayBarColor: UIColor? = UIColor.gray
-    @IBInspectable open var disabledTodayDateColor: UIColor? = UIColor.gray
-
-    @IBInspectable open var isEnabled: Bool = false {
-        didSet {
-            if isEnabled != oldValue {
-                isEnabledChanged()
-            }
-        }
-    }
-
     @IBInspectable open var dateMargin: CGFloat = 8.0
     @IBInspectable open var todayImageMargin: CGFloat = 8.0
     @IBInspectable open var stepCountMargin: CGFloat = 8.0
@@ -67,13 +45,13 @@ import UIKit
         }
     }
 
-    open var stepsColor: UIColor? { get { return isEnabled ? enabledStepsColor : disabledStepsColor } }
-    open var barColor: UIColor? { get { return isEnabled ? enabledBarColor : disabledBarColor } }
-    open var dateColor: UIColor? { get { return isEnabled ? enabledDateColor : disabledDateColor } }
+    open var stepsColor: UIColor? { get { return tintColor.withBrightness(b: 1.2) } }
+    open var barColor: UIColor? { get { return tintColor.withBrightness(b: 1.2) } }
+    open var dateColor: UIColor? = UIColor.gray
 
-    open var todayStepsColor: UIColor? { get { return isEnabled ? enabledTodayStepsColor : disabledTodayStepsColor } }
-    open var todayBarColor: UIColor? { get { return isEnabled ? enabledTodayBarColor : disabledTodayBarColor } }
-    open var todayDateColor: UIColor? { get { return isEnabled ? enabledTodayDateColor : disabledTodayDateColor } }
+    open var todayStepsColor: UIColor? { get { return tintColor } }
+    open var todayBarColor: UIColor? { get { return tintColor } }
+    open var todayDateColor: UIColor? = UIColor.gray
 
     open var startDate = Date()
     open var stepCounts: [Int?] = [nil, nil, nil, nil, nil, nil, nil]
@@ -97,16 +75,9 @@ import UIKit
         stepCounts = defaultStepCountsArray
     }
 
-    open func isEnabledChanged() {
-        if !isEnabled {
-            setDefaults()
-        }
-        setNeedsDisplay()
-    }
-
     open func update(startDate: Date, stepCounts: [Int?], todayImage: UIImage?) {
-//        self.startDate = startDate
-//        self.stepCounts = stepCounts
+        self.startDate = startDate
+        self.stepCounts = stepCounts
         self.todayImage = todayImage
         setNeedsDisplay()
     }

@@ -11,21 +11,17 @@ import LiveViews
 
 class HomeViewController: UIViewController {
 
-    @IBOutlet var motivationalLabel: UILabel?
-    @IBOutlet var stepsView: StepsView?
-    @IBOutlet var stepsButton: UIButton?
-    @IBOutlet var averageStepsLabel: UILabel?
-    @IBOutlet var valueTextView: UITextView?
-    @IBOutlet var activityTextView: UITextView?
+    @IBOutlet var introductionView: UIView?
+    @IBOutlet var dataView: UIView?
+    @IBOutlet var valueTextView: CheckboxTextView?
+    @IBOutlet var activityTextView: CheckboxTextView?
 
-    @IBInspectable var averageStepsInsufficientData: String = "No steps? Get going and we'll show your progress."
-    @IBInspectable var averageSteps: String = "Average Daily Steps: /steps/"
-
-    @IBInspectable var motivationalInsufficientData: String = "Welcome To Live Active!"
-    @IBInspectable var motivationalBelowRatio: Double = 0.9
-    @IBInspectable var motivationalBelow: String = "Keep at it. Can you beat your average?"
-    @IBInspectable var motivationalAlmost: String = "Getting close. You almost beat your average yesterday!"
-    @IBInspectable var motivationalAbove: String = "Great work yesterday! You beat your average by /percent/%"
+    func findChildViewController<T>() -> T? where T: UIViewController {
+        if let index = (childViewControllers.index { $0 is T }) {
+            return childViewControllers[index] as? T
+        }
+        return nil
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,117 +42,45 @@ class HomeViewController: UIViewController {
         activityChanged()
     }
 
+    /*
     open override func viewDidLayoutSubviews() {
         Layout.vertical(viewController: self, flexibleView: stepsView!)
-        stepsButton!.frame.size = stepsView!.frame.size
+        introductionView!.frame.size = dataView!.frame.size
     }
-
-    func calculateAverage(values: [Int?]) -> Int? {
-        let usableValues = values.filter() { ($0 != nil) && ($0! != 0) }
-        if usableValues.count == 0 {
-            return nil
-        }
-        return (usableValues.reduce(0) { $0 + $1! }) / usableValues.count
-    }
-
-    func substitute(string: String, substitutions: [String : String]) -> String {
-        let parts = string.components(separatedBy: "/")
-        var result = ""
-        for part in parts {
-            if let substitution = substitutions[part] {
-                result += substitution
-            } else {
-                result += part
-            }
-        }
-        return result
-    }
+ */
 
     func dailyStepCountsChanged() {
-        let stepCounts: [Int?]
         let liveManager = LiveManager.shared
-        if let dailyStepCounts = liveManager.dailyStepCounts.value {
-            let sixDayAverageStepCount = calculateAverage(values: Array(dailyStepCounts.stepCounts[0...5]))
-            let todayStepCount = dailyStepCounts.stepCounts[6] ?? 0
-            let todayImage: UIImage?
-            if todayStepCount < 100 {
-                todayImage = UIImage(named: "ic_standing")
-            } else
-            if let average = sixDayAverageStepCount, todayStepCount > average {
-                todayImage = UIImage(named: "ic_running")
-            } else {
-                todayImage = UIImage(named: "ic_walking")
-            }
-            stepsButton?.isHidden = true
-            stepsView?.isEnabled = true
-            stepsView?.update(startDate: dailyStepCounts.startDate, stepCounts: dailyStepCounts.stepCounts, todayImage: todayImage)
-            stepCounts = dailyStepCounts.stepCounts
+        if liveManager.dailyStepCounts.value != nil {
+            introductionView?.isHidden = true
+            dataView?.isHidden = false
         } else {
-            stepCounts = [nil, nil, nil, nil, nil, nil, nil]
-            stepsView?.isEnabled = false
             if liveManager.didAuthorizeHealthKit {
-                stepsButton?.isHidden = true
-                stepsView?.update(startDate: Date(), stepCounts: stepCounts, todayImage: UIImage(named: "ic_standing"))
+                introductionView?.isHidden = true
+                dataView?.isHidden = false
             } else {
-                stepsButton?.isHidden = false
-                stepsView?.setDefaults()
+                introductionView?.isHidden = false
+                dataView?.isHidden = true
             }
         }
-
-        if
-            let fiveDayAverageStepCount = calculateAverage(values: Array(stepCounts[0...4])),
-            let yesterdaysStepCount = stepCounts[5]
-        {
-            let ratio = Double(yesterdaysStepCount) / Double(fiveDayAverageStepCount)
-            if ratio < motivationalBelowRatio {
-                let percent = Int(floor((1.0 - ratio) * 100.0))
-                motivationalLabel?.text = substitute(string: motivationalBelow, substitutions: ["percent": "\(percent)"])
-            } else
-            if ratio < 1.0 {
-                let percent = Int(floor((1.0 - ratio) * 100.0))
-                motivationalLabel?.text = substitute(string: motivationalAlmost, substitutions: ["percent": "\(percent)"])
-            } else {
-                let percent = Int(ceil((ratio - 1.0) * 100.0))
-                motivationalLabel?.text = substitute(string: motivationalAbove, substitutions: ["percent": "\(percent)"])
-            }
-        } else {
-            motivationalLabel?.text = motivationalInsufficientData
-        }
-
-        if let sixDayAverageStepCount = calculateAverage(values: Array(stepCounts[0...5])) {
-            let numberFormatter = NumberFormatter()
-            numberFormatter.numberStyle = NumberFormatter.Style.decimal
-            let steps = numberFormatter.string(for: sixDayAverageStepCount) ?? "?"
-            averageStepsLabel?.text = substitute(string: averageSteps, substitutions: ["steps": steps])
-        } else {
-            averageStepsLabel?.text = averageStepsInsufficientData
+        
+        if let viewController: HomeDataViewController = findChildViewController() {
+            viewController.dailyStepCountsChanged()
         }
     }
 
-    func showMessage(view: UITextView?, note: Note?) {
+    func showMessage(view: CheckboxTextView?, note: Note?) {
         guard let view = view else {
             return
         }
 
         let liveManager = LiveManager.shared
         if let message = liveManager.message(forNote: note) {
-            let string = NSMutableAttributedString()
-            let rated = note!.rating != nil
-            if rated {
-                if let image = UIImage(named: "ic_checked") {
-                    let attachment = NSTextAttachment()
-                    attachment.image = image
-                    attachment.bounds = CGRect(origin: CGPoint(x: 0, y: 0), size: image.size)
-                    string.append(NSAttributedString(attachment: attachment))
-                    string.append(NSAttributedString(string: " "))
-                }
-            }
-            let message = message.format()
-            string.append(NSAttributedString(string: message))
-
-            view.attributedText = string
+            view.text = message.format()
+            view.setChecked(checked: note!.rating != nil)
         } else {
             view.text = "?"
+            view.setChecked(checked: false)
         }
     }
 
@@ -168,11 +92,6 @@ class HomeViewController: UIViewController {
     func activityChanged() {
         let liveManager = LiveManager.shared
         showMessage(view: activityTextView, note: liveManager.activityNote.value)
-    }
-
-    @IBAction func respondToStepsTouched(_ sender: AnyObject) {
-        let liveManager = LiveManager.shared
-        liveManager.authorizeHealthKit()
     }
 
     func respondToValueTouched() {
