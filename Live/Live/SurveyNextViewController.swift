@@ -10,6 +10,7 @@ import UIKit
 
 class SurveyNextViewController: UIViewController {
 
+    @IBOutlet var daysLabel: UILabel?
     @IBOutlet var whenLabel: UILabel?
 
     override func viewDidLoad() {
@@ -21,6 +22,7 @@ class SurveyNextViewController: UIViewController {
     func update() {
         let surveyManager = LiveManager.shared.surveyManager
         let days = Int(ceil(surveyManager.state.scheduledDate.timeIntervalSince(Date()) / (24 * 60 * 60)))
+        daysLabel?.text = "\(days / 10) \(days % 10)"
         whenLabel?.text = "Your next survey is due in \(days) " + (days > 1 ? "days" : "day") + "."
     }
 
