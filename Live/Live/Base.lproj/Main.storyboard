@@ -1266,6 +1266,9 @@ Increase your Physical Activity.</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zrC-pg-qut" customClass="ImageLabelView" customModule="LiveViews">
                                 <rect key="frame" x="16" y="16" width="192" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="nls-4e-Jdh"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="FAMILY &amp; FRIENDS"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="image" value="ic_familyAndFriends"/>
@@ -1286,6 +1289,9 @@ Increase your Physical Activity.</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FLU-yX-fNC" customClass="ImageLabelView" customModule="LiveViews">
                                 <rect key="frame" x="16" y="74" width="192" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="QdF-KD-SZS"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="COMPASSION &amp; KINDNESS"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="image" value="ic_compassion"/>
