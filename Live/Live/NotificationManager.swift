@@ -192,6 +192,7 @@ class NotificationManager10: NSObject, UNUserNotificationCenterDelegate, Notific
 
     func cancel() {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        NSLog("remove all")
     }
 
     func request(date: Date, uuid: String, type: String, message: Message) {
@@ -223,6 +224,7 @@ class NotificationManager10: NSObject, UNUserNotificationCenterDelegate, Notific
                 NSLog("add notification error: \(String(describing: trigger)) \(uuid) \(error)")
             }
         }
+        NSLog("add \(message.key.group).\(message.key.identifier)=\(message.format())")
     }
 
     func deliveredAndPending(delivered: [UNNotification], pending: [UNNotificationRequest]) {

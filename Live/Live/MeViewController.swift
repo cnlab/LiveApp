@@ -49,9 +49,9 @@ class MeViewController: UIViewController, UITextFieldDelegate, UITextViewDelegat
             return nil
         }
         let token0 = tokens[0]
-        let feet = Int(token0.substring(with: token0.startIndex ..< token0.index(before: token0.endIndex))) ?? 0
+        let feet = Int(token0[token0.startIndex ..< token0.index(before: token0.endIndex)]) ?? 0
         let token1 = tokens[1]
-        let inches = Int(token1.substring(with: token1.startIndex ..< token1.index(before: token1.endIndex))) ?? 0
+        let inches = Int(token1[token1.startIndex ..< token1.index(before: token1.endIndex)]) ?? 0
         return feet * 12 + inches
     }
     

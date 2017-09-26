@@ -16,7 +16,7 @@ class HomeDataViewController: UIViewController {
     @IBOutlet var dateLabel: UILabel?
 
     @IBInspectable var averageStepsInsufficientData: String = ""
-    @IBInspectable var averageSteps: String = "Average Daily Steps: /steps/"
+    @IBInspectable var averageSteps: String = "Average /steps/"
     
     @IBInspectable var motivationalInsufficientData: String = "No steps?  Get going and we'll show your progress."
     @IBInspectable var motivationalBelowRatio: Double = 0.9

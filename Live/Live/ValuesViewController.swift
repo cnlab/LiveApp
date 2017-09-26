@@ -11,7 +11,7 @@ import LiveViews
 
 class ValuesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
-    var letsGoCallback: ((Void) -> Void)? = nil
+    var letsGoCallback: (() -> Void)? = nil
 
     let reuseIdentifier = "ValueCell"
     
@@ -103,7 +103,7 @@ class ValuesViewController: UIViewController, UICollectionViewDataSource, UIColl
         Layout.place(subview: leastImportantLabel, x: lx, y: &cy, width: lw, height: lh)
     }
 
-    func handleLongGesture(gesture: UILongPressGestureRecognizer) {
+    @objc func handleLongGesture(gesture: UILongPressGestureRecognizer) {
         switch(gesture.state) {
         case UIGestureRecognizerState.began:
             let location = gesture.location(in: gesture.view!)

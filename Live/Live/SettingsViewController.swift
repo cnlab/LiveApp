@@ -48,7 +48,7 @@ class SettingsViewController: UIViewController {
         queryAuthorization()
     }
 
-    func willEnterForeground() {
+    @objc func willEnterForeground() {
         queryAuthorization()
     }
 

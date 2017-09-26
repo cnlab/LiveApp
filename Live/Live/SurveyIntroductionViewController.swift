@@ -12,8 +12,8 @@ class SurveyIntroductionViewController: UIViewController {
 
     @IBOutlet var tipView: UIView?
     
-    var shareCallback: ((Void) -> Void)? = nil
-    var aboutCallback: ((Void) -> Void)? = nil
+    var shareCallback: (() -> Void)? = nil
+    var aboutCallback: (() -> Void)? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()

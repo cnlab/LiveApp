@@ -187,7 +187,6 @@ class LiveManager: NotificationManagerDelegate {
         do {
             let data = try JSON.json(any: json)
             try data.write(to: archivePath, options: Data.WritingOptions.atomic)
-            NSLog("LiveManager.archive: success")
 
             if shareDataWithResearchers.value {
                 if let installationUUID = installationUUID {
@@ -416,18 +415,21 @@ class LiveManager: NotificationManagerDelegate {
     }
 
     func resetSchedule() {
+        NSLog("reset schedule")
         let scheduler = Scheduler(messageManagers: messageManagers, now: Date(), trigger: trigger.value, triggerOffsets: triggerOffsets, horizon: horizon)
         let days = scheduler.extendDays(previousDays: [])
         setScheduleDays(days: days)
     }
 
     func reschedule() {
+        NSLog("reschedule")
         let scheduler = Scheduler(messageManagers: messageManagers, now: Date(), trigger: trigger.value, triggerOffsets: triggerOffsets, horizon: horizon)
         let days = scheduler.rescheduleDays(previousDays: schedule.days)
         setScheduleDays(days: days)
     }
 
     func extend() {
+        NSLog("extend")
         let scheduler = Scheduler(messageManagers: messageManagers, now: Date(), trigger: trigger.value, triggerOffsets: triggerOffsets, horizon: horizon)
         let days = scheduler.extendDays(previousDays: schedule.days)
         setScheduleDays(days: days)

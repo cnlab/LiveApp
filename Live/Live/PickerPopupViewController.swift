@@ -22,7 +22,7 @@ class PickerPopupViewController: PopupViewController {
         // Do any additional setup after loading the view.
     }
 
-    func show(inView parent: UIView, values: [String], value: String?, action: ((Void) -> Void)?) {
+    func show(inView parent: UIView, values: [String], value: String?, action: (() -> Void)?) {
         guard let pickerViewController = pickerViewController else {
             return
         }
@@ -31,7 +31,7 @@ class PickerPopupViewController: PopupViewController {
         super.show(inView: parent, animated: true)
     }
 
-    func show(inView parent: UIView, feet: Int?, inches: Int?, action: ((Void) -> Void)?) {
+    func show(inView parent: UIView, feet: Int?, inches: Int?, action: (() -> Void)?) {
         guard let pickerViewController = pickerViewController else {
             return
         }

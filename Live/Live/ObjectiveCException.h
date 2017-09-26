@@ -10,6 +10,6 @@
 
 @interface ObjectiveCException : NSObject
 
-+ (BOOL)catch:(void(^)())block error:(__autoreleasing NSError **)error;
++ (BOOL)catch:(void(^)(void))block error:(__autoreleasing NSError **)error;
 
 @end

@@ -10,7 +10,7 @@ import UIKit
 
 class SurveyTabBarItem: UITabBarItem {
 
-    @IBInspectable var hiliteFont: UIFont = UIFont.systemFont(ofSize: 12, weight: UIFontWeightBold)
+    @IBInspectable var hiliteFont: UIFont = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.bold)
     @IBInspectable var hiliteColor: UIColor = UIColor.red
 
     var hiliteState: Bool = false
@@ -20,7 +20,7 @@ class SurveyTabBarItem: UITabBarItem {
         }
         set {
             if newValue {
-                setTitleTextAttributes([NSFontAttributeName: hiliteFont, NSForegroundColorAttributeName: hiliteColor], for: UIControlState.normal)
+                setTitleTextAttributes([NSAttributedStringKey.font: hiliteFont, NSAttributedStringKey.foregroundColor: hiliteColor], for: UIControlState.normal)
             } else {
                 setTitleTextAttributes([:], for: UIControlState.normal)
             }

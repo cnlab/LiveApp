@@ -75,7 +75,7 @@ import UIKit
         if let text = self.text, let textColor = self.textColor {
             var fontSize = self.fontSize
             var point: CGPoint
-            var attributes: [String : Any]
+            var attributes: [NSAttributedStringKey : Any]
             var size: CGSize
             var width: CGFloat
             repeat {
@@ -84,8 +84,8 @@ import UIKit
                 let style = NSMutableParagraphStyle()
                 style.setParagraphStyle(NSParagraphStyle.default)
                 style.alignment = NSTextAlignment.left
-                attributes = [NSFontAttributeName: font, NSParagraphStyleAttributeName: style, NSForegroundColorAttributeName: textColor]
-                size = text.size(attributes: attributes)
+                attributes = [NSAttributedStringKey.font: font, NSAttributedStringKey.paragraphStyle: style, NSAttributedStringKey.foregroundColor: textColor]
+                size = text.size(withAttributes: attributes)
                 width = highlightRect.maxX - point.x
                 fontSize -= 1.0
             } while (size.width > width) && (fontSize > minimumFontSize)

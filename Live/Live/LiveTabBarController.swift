@@ -122,7 +122,7 @@ class LiveTabBarController: UITabBarController, UITabBarControllerDelegate, Ance
         }
     }
 
-    func aboutSwiped(_ gesture: UIGestureRecognizer) {
+    @objc func aboutSwiped(_ gesture: UIGestureRecognizer) {
         let debugViewController: DebugViewController? = findViewController()
         if debugViewController == nil {
             addDebug()

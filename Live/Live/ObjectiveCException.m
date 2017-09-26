@@ -10,7 +10,7 @@
 
 @implementation ObjectiveCException
 
-+ (BOOL)catch:(void(^)())block error:(__autoreleasing NSError **)error {
++ (BOOL)catch:(void(^)(void))block error:(__autoreleasing NSError **)error {
     @try {
         block();
     } @catch (NSException *exception) {

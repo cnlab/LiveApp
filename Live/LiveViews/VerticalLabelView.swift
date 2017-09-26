@@ -37,8 +37,8 @@ import UIKit
         }
 
         let font = UIFont.systemFont(ofSize: fontSize)
-        let attributes: [String : Any] = [NSFontAttributeName: font, NSForegroundColorAttributeName: textColor]
-        let textSize = text.size(attributes: attributes)
+        let attributes: [NSAttributedStringKey : Any] = [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: textColor]
+        let textSize = text.size(withAttributes: attributes)
         let context = UIGraphicsGetCurrentContext()!
         context.saveGState()
         let center = CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0)

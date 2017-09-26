@@ -87,7 +87,7 @@ class HomeViewController: UIViewController {
         showMessage(view: activityTextView, note: liveManager.activityNote.value)
     }
 
-    func respondToValueTouched() {
+    @objc func respondToValueTouched() {
         let liveManager = LiveManager.shared
         if let note = liveManager.valueNote.value {
             let rank = note.rating?.rank ?? 0.5
@@ -95,7 +95,7 @@ class HomeViewController: UIViewController {
         }
     }
 
-    func respondToActivityTouched() {
+    @objc func respondToActivityTouched() {
         let liveManager = LiveManager.shared
         if let note = liveManager.activityNote.value {
             let rank = note.rating?.rank ?? 0.5

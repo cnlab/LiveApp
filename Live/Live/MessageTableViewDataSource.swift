@@ -14,7 +14,7 @@ class MessageTableViewDataSource: NSObject, UITableViewDataSource, UITableViewDe
     
     let text: String = "Sample"
     var isChecked: Bool = false
-    var valueChangedCallback: ((Void) -> Void)? = nil
+    var valueChangedCallback: (() -> Void)? = nil
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1

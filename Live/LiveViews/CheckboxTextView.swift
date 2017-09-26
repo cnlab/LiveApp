@@ -13,7 +13,7 @@ import Foundation
     @IBInspectable open var image: UIImage?
     @IBInspectable var isChecked: Bool = false
     
-    public var tappedCallback: ((Void) -> Void)? = nil
+    public var tappedCallback: (() -> Void)? = nil
 
     let tapGestureRecognizer = UITapGestureRecognizer()
 
@@ -42,7 +42,7 @@ import Foundation
         text = "Sample text that is a really long line of text to see what happens when the text is too long to fit within the space available to the text region"
     }
     
-    func tapped(_ sender: UITapGestureRecognizer) {
+    @objc func tapped(_ sender: UITapGestureRecognizer) {
         if let tappedCallback = tappedCallback {
             tappedCallback()
         } else {

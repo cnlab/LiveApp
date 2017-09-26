@@ -13,9 +13,9 @@ class PickerViewController: UIViewController {
     @IBOutlet var pickerView: UIPickerView?
 
     var dataSource: PickerViewDataSource = StringArrayPickerViewDataSource(values: [])
-    var action: ((Void) -> Void)?
+    var action: (() -> Void)?
 
-    func prepare(dataSource: PickerViewDataSource, selections: [Any?], action: ((Void) -> Void)?) {
+    func prepare(dataSource: PickerViewDataSource, selections: [Any?], action: (() -> Void)?) {
         self.dataSource = dataSource
         self.action = action
 

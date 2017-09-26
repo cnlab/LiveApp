@@ -12,7 +12,7 @@ class WeightPerceptionTableViewDataSource: NSObject, UITableViewDataSource, UITa
     
     let optionsText = ["about right", "heavier than I would like", "lighter than I would like"]
     var option: Int? = nil
-    var valueChangedCallback: ((Void) -> Void)? = nil
+    var valueChangedCallback: (() -> Void)? = nil
     
     var weightPerception: String? {
         get {

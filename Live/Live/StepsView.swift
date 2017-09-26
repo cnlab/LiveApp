@@ -124,8 +124,8 @@ import UIKit
             }
 
             let text = (stepCounts[day] != nil ? numberFormatter.string(for: stepCount)! : missingSteps) as NSString
-            let attributes: [String : Any] = [NSFontAttributeName: font, NSParagraphStyleAttributeName: style]
-            width += text.size(attributes: attributes).width
+            let attributes: [NSAttributedStringKey : Any] = [.font: font, .paragraphStyle: style]
+            width += text.size(withAttributes: attributes).width
 
             if width > maxStepCountWidth {
                 maxStepCountWidth = width
@@ -133,7 +133,7 @@ import UIKit
 
             let date = nextDate(date: startDate, days: day)
             let dateText = dateFormatter.string(from: date)
-            let dateWidth = dateText.size(attributes: attributes).width + dateMargin
+            let dateWidth = dateText.size(withAttributes: attributes).width + dateMargin
             if dateWidth > maxDateWidth {
                 maxDateWidth = dateWidth
             }
@@ -154,8 +154,8 @@ import UIKit
             if let color = isToday ? todayDateColor : dateColor {
                 let date = nextDate(date: startDate, days: day)
                 let dateText = dateFormatter.string(from: date)
-                let attributes: [String : Any] = [NSFontAttributeName: font, NSParagraphStyleAttributeName: style, NSForegroundColorAttributeName: color]
-                let dateSize = dateText.size(attributes: attributes)
+                let attributes: [NSAttributedStringKey : Any] = [.font: font, .paragraphStyle: style, .foregroundColor: color]
+                let dateSize = dateText.size(withAttributes: attributes)
                 let datePoint = CGPoint(x: x + maxDateWidth - dateMargin - dateSize.width, y: y + (height - dateSize.height) / 2.0)
                 dateText.draw(at: datePoint, withAttributes: attributes)
             }
@@ -178,8 +178,8 @@ import UIKit
             if let color = isToday ? todayStepsColor : stepsColor {
                 x += stepCountMargin
                 let text = (stepCounts[day] != nil ? numberFormatter.string(for: stepCount)! : missingSteps) as NSString
-                let attributes: [String : Any] = [NSFontAttributeName: font, NSParagraphStyleAttributeName: style, NSForegroundColorAttributeName: color]
-                let size = text.size(attributes: attributes)
+                let attributes: [NSAttributedStringKey : Any] = [.font: font, .paragraphStyle: style, .foregroundColor: color]
+                let size = text.size(withAttributes: attributes)
                 let point = CGPoint(x: x, y: y + (height - size.height) / 2.0)
                 text.draw(at: point, withAttributes: attributes)
             }
