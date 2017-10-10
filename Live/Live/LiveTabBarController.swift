@@ -104,6 +104,9 @@ class LiveTabBarController: UITabBarController, UITabBarControllerDelegate, Ance
     }
 
     func ancestorDidLoad(viewController: UIViewController) {
+        if let homeViewController = viewController as? HomeViewController {
+            homeViewController.dailyMessagesCallback = selectDailyMessages
+        }
         if let valuesViewController = viewController as? ValuesViewController {
             valuesViewController.letsGoCallback = selectHome
         }
@@ -149,6 +152,12 @@ class LiveTabBarController: UITabBarController, UITabBarControllerDelegate, Ance
     
     func selectHome() {
         if let viewController: HomeViewController = findViewController() {
+            selectedViewController = viewController
+        }
+    }
+    
+    func selectDailyMessages() {
+        if let viewController: DailyMessagesViewController = findViewController() {
             selectedViewController = viewController
         }
     }

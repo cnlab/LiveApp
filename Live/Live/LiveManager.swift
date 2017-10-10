@@ -276,6 +276,23 @@ class LiveManager: NotificationManagerDelegate {
         notificationManager.authorize()
     }
 
+    func delete(uuid: String) {
+        var found = false
+        for day in schedule.days {
+            for note in day.notes {
+                if note.uuid == uuid {
+                    note.deleted = true
+                    found = true
+                    break
+                }
+            }
+        }
+        if !found {
+            NSLog("could not find uuid \(uuid)")
+        }
+        dirty = true
+    }
+    
     func affirm(uuid: String, type: String, messageKey: Message.Key, rank: Double) {
         var found = false
         for day in schedule.days {

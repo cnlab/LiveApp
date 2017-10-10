@@ -14,6 +14,7 @@
 		92062C371DB26C8C0001DE0C /* ScheduleCoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92062C361DB26C8C0001DE0C /* ScheduleCoderTests.swift */; };
 		92062C3D1DB272F70001DE0C /* ObjectiveCException.m in Sources */ = {isa = PBXBuildFile; fileRef = 92062C3C1DB272F70001DE0C /* ObjectiveCException.m */; };
 		9209CE921E2D6379008E83BB /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9209CE911E2D6379008E83BB /* Moment.swift */; };
+		921D18751F8BFF97006C483A /* DailyMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921D18741F8BFF97006C483A /* DailyMessagesViewController.swift */; };
 		921E91311F539F6F00F2E090 /* IntroductionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921E91301F539F6F00F2E090 /* IntroductionPageViewController.swift */; };
 		9221F70C1E70EF89009A5127 /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9221F70B1E70EF89009A5127 /* CloudManager.swift */; };
 		922821AF1F56241500F6A597 /* CheckboxTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922821AE1F56241500F6A597 /* CheckboxTextView.swift */; };
@@ -52,6 +53,7 @@
 		927E72AA1E1B4135003CFD5A /* SurveyFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927E72A91E1B4135003CFD5A /* SurveyFormViewController.swift */; };
 		927E72AC1E1B4145003CFD5A /* SurveyNextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927E72AB1E1B4145003CFD5A /* SurveyNextViewController.swift */; };
 		927E72AE1E1B4155003CFD5A /* SurveyIntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927E72AD1E1B4155003CFD5A /* SurveyIntroductionViewController.swift */; };
+		9280ADF51F8C09E700A8713D /* DailyMessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9280ADF41F8C09E700A8713D /* DailyMessagesTableViewCell.swift */; };
 		928E72A61EE5E6BB00086853 /* VerticalLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928E72A51EE5E6BB00086853 /* VerticalLabelView.swift */; };
 		9291F6861DABF85400042F42 /* LiveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9291F6851DABF85400042F42 /* LiveManager.swift */; };
 		9291F68A1DAC0DC100042F42 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9291F6891DAC0DC100042F42 /* Observable.swift */; };
@@ -84,6 +86,8 @@
 		92E34EC31DB3F51A002DCB87 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E34EC21DB3F51A002DCB87 /* DebugViewController.swift */; };
 		92EE6E911E1ABFD800645F8E /* PickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EE6E901E1ABFD800645F8E /* PickerViewDataSource.swift */; };
 		92EE6E931E1AD13100645F8E /* HeightPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EE6E921E1AD13100645F8E /* HeightPickerViewDataSource.swift */; };
+		92EE8BFD1F7AE3FF0026CA34 /* NotificationManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EE8BFC1F7AE3FF0026CA34 /* NotificationManagerMock.swift */; };
+		92EE8BFF1F7AEC5A0026CA34 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EE8BFE1F7AEC5A0026CA34 /* Mock.swift */; };
 		92F7CDBE1DAF033E009E2924 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F7CDBD1DAF033E009E2924 /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -149,6 +153,7 @@
 		92062C3B1DB272F70001DE0C /* ObjectiveCException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCException.h; sourceTree = "<group>"; };
 		92062C3C1DB272F70001DE0C /* ObjectiveCException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveCException.m; sourceTree = "<group>"; };
 		9209CE911E2D6379008E83BB /* Moment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moment.swift; sourceTree = "<group>"; };
+		921D18741F8BFF97006C483A /* DailyMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMessagesViewController.swift; sourceTree = "<group>"; };
 		921E91301F539F6F00F2E090 /* IntroductionPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionPageViewController.swift; sourceTree = "<group>"; };
 		9221F70B1E70EF89009A5127 /* CloudManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudManager.swift; sourceTree = "<group>"; };
 		922821AE1F56241500F6A597 /* CheckboxTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxTextView.swift; sourceTree = "<group>"; };
@@ -189,6 +194,7 @@
 		927E72A91E1B4135003CFD5A /* SurveyFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyFormViewController.swift; sourceTree = "<group>"; };
 		927E72AB1E1B4145003CFD5A /* SurveyNextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyNextViewController.swift; sourceTree = "<group>"; };
 		927E72AD1E1B4155003CFD5A /* SurveyIntroductionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyIntroductionViewController.swift; sourceTree = "<group>"; };
+		9280ADF41F8C09E700A8713D /* DailyMessagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMessagesTableViewCell.swift; sourceTree = "<group>"; };
 		928E72A51EE5E6BB00086853 /* VerticalLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalLabelView.swift; sourceTree = "<group>"; };
 		9291F6851DABF85400042F42 /* LiveManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveManager.swift; sourceTree = "<group>"; };
 		9291F6891DAC0DC100042F42 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -227,6 +233,8 @@
 		92E34EC21DB3F51A002DCB87 /* DebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		92EE6E901E1ABFD800645F8E /* PickerViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewDataSource.swift; sourceTree = "<group>"; };
 		92EE6E921E1AD13100645F8E /* HeightPickerViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightPickerViewDataSource.swift; sourceTree = "<group>"; };
+		92EE8BFC1F7AE3FF0026CA34 /* NotificationManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManagerMock.swift; sourceTree = "<group>"; };
+		92EE8BFE1F7AEC5A0026CA34 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		92F7CDBD1DAF033E009E2924 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -276,6 +284,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		921D18731F8BFF6A006C483A /* Daily Messages */ = {
+			isa = PBXGroup;
+			children = (
+				921D18741F8BFF97006C483A /* DailyMessagesViewController.swift */,
+				9280ADF41F8C09E700A8713D /* DailyMessagesTableViewCell.swift */,
+			);
+			name = "Daily Messages";
+			sourceTree = "<group>";
+		};
 		921E912F1F539F5100F2E090 /* Introduction */ = {
 			isa = PBXGroup;
 			children = (
@@ -491,6 +508,7 @@
 				92986D931D99A67F008B8533 /* Home */,
 				92986D941D99A68E008B8533 /* Values */,
 				92986D961D99A6A4008B8533 /* Survey */,
+				921D18731F8BFF6A006C483A /* Daily Messages */,
 				927B68FD1E1585AC00C80F76 /* Settings */,
 				92B89C4C1E15A8F800E7D5CC /* Share */,
 				92B89C511E15BBB400E7D5CC /* Me */,
@@ -509,6 +527,8 @@
 				922C70AE1D93576400F1C401 /* MessageManagerTests.swift */,
 				92062C361DB26C8C0001DE0C /* ScheduleCoderTests.swift */,
 				920224B21E2C57FC0000929D /* SchedulerTests.swift */,
+				92EE8BFC1F7AE3FF0026CA34 /* NotificationManagerMock.swift */,
+				92EE8BFE1F7AEC5A0026CA34 /* Mock.swift */,
 			);
 			path = LiveTests;
 			sourceTree = "<group>";
@@ -782,6 +802,7 @@
 				92B89C531E15BBC600E7D5CC /* MeViewController.swift in Sources */,
 				92CA919C1D8304B9000491CD /* ValuesViewController.swift in Sources */,
 				9204FDA91E16127F00E9CFF9 /* StringArrayPickerViewDataSource.swift in Sources */,
+				9280ADF51F8C09E700A8713D /* DailyMessagesTableViewCell.swift in Sources */,
 				92062C3D1DB272F70001DE0C /* ObjectiveCException.m in Sources */,
 				924878341D8733C2000C86FF /* ValueMessageManager.swift in Sources */,
 				92554D121DBA7F3800009A21 /* SettingsViewController.swift in Sources */,
@@ -815,6 +836,7 @@
 				9291F68D1DAC306500042F42 /* Time.swift in Sources */,
 				92C7A28C1F54F99A004678A7 /* MessageTableViewDataSource.swift in Sources */,
 				92F7CDBE1DAF033E009E2924 /* NotificationManager.swift in Sources */,
+				921D18751F8BFF97006C483A /* DailyMessagesViewController.swift in Sources */,
 				92A1D5F71E1F3BBA004E5D3F /* ShareReminderPopupViewController.swift in Sources */,
 				927E72AA1E1B4135003CFD5A /* SurveyFormViewController.swift in Sources */,
 				92986D921D99A5FF008B8533 /* SurveyViewController.swift in Sources */,
@@ -837,6 +859,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92EE8BFD1F7AE3FF0026CA34 /* NotificationManagerMock.swift in Sources */,
+				92EE8BFF1F7AEC5A0026CA34 /* Mock.swift in Sources */,
 				920224B31E2C57FC0000929D /* SchedulerTests.swift in Sources */,
 				92062C371DB26C8C0001DE0C /* ScheduleCoderTests.swift in Sources */,
 				922C70AF1D93576400F1C401 /* MessageManagerTests.swift in Sources */,

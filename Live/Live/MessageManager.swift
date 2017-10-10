@@ -8,8 +8,12 @@
 
 import Foundation
 
-class Message {
-
+class Message: Equatable {
+    
+    static func ==(lhs: Message, rhs: Message) -> Bool {
+        return lhs === rhs
+    }
+    
     class Key: JSONConvertable {
 
         let group: String

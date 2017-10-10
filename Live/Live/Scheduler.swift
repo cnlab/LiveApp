@@ -27,7 +27,7 @@ class Scheduler {
     func nextNotes(status: Note.Status, date: Date) -> [Note] {
         var notes: [Note] = []
         for messageManager in messageManagers {
-            notes.append(Note(uuid: UUID().uuidString, type: messageManager.type, messageKey: messageManager.next(), status: status, date: date))
+            notes.append(Note(uuid: UUID().uuidString, type: messageManager.type, messageKey: messageManager.next(), status: status, deleted: false))
         }
         return notes
     }

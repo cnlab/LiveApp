@@ -83,13 +83,15 @@ class Note: JSONConvertable {
     let type: String
     let messageKey: Message.Key
     var status: Status
+    var deleted: Bool
     var rating: Rating?
 
-    init(uuid: String, type: String, messageKey: Message.Key, status: Status, date: Date) {
+    init(uuid: String, type: String, messageKey: Message.Key, status: Status, deleted: Bool) {
         self.uuid = uuid
         self.type = type
         self.messageKey = messageKey
         self.status = status
+        self.deleted = deleted
     }
 
     required init(json: [String: Any]) throws {
@@ -98,11 +100,13 @@ class Note: JSONConvertable {
         let messageKey: Message.Key = try JSON.jsonObject(json: json, key: "messageKey")
         let status: Status = try JSON.jsonObject(json: json, key: "status")
         let rating: Rating? = try JSON.jsonOptionalObject(json: json, key: "rating")
+        let deleted: Bool = try JSON.jsonDefaultBool(json: json, key: "deleted", fallback: false)
 
         self.uuid = uuid
         self.type = type
         self.messageKey = messageKey
         self.status = status
+        self.deleted = deleted
         self.rating = rating
     }
 
@@ -112,6 +116,7 @@ class Note: JSONConvertable {
             "type": JSON.json(string: type),
             "messageKey": JSON.json(object: messageKey),
             "status": JSON.json(object: status),
+            "deleted": JSON.json(bool: deleted),
         ]
         if let rating = rating {
             values["rating"] = rating.json()

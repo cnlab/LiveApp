@@ -16,6 +16,8 @@ class HomeViewController: UIViewController {
     @IBOutlet var valueTextView: CheckboxTextView?
     @IBOutlet var activityTextView: CheckboxTextView?
 
+    var dailyMessagesCallback: (() -> Void)? = nil
+
     func findChildViewController<T>() -> T? where T: UIViewController {
         if let index = (childViewControllers.index { $0 is T }) {
             return childViewControllers[index] as? T
@@ -40,6 +42,8 @@ class HomeViewController: UIViewController {
         dailyStepCountsChanged()
         valueChanged()
         activityChanged()
+        
+        AncestorUtility.notifyAncestorDidLoad(parent: parent, viewController: self)
     }
 
     func dailyStepCountsChanged() {
@@ -62,6 +66,12 @@ class HomeViewController: UIViewController {
         }
     }
 
+    @IBAction func dailyMessages() {
+        if let dailyMessagesCallback = dailyMessagesCallback {
+            dailyMessagesCallback()
+        }
+    }
+    
     func showMessage(view: CheckboxTextView?, note: Note?) {
         guard let view = view else {
             return
