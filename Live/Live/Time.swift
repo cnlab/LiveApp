@@ -54,5 +54,14 @@ class Time {
         let startDate = calendar.date(byAdding: .day, value: -6, to: today)!
         return (startDate: startDate, endDate: endDate)
     }
+    
+    static func utcDayString(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: date)
+    }
 
 }

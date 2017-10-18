@@ -115,6 +115,13 @@ class JSON {
         }
         return dictionary
     }
+    
+    static func jsonDefaultStringAnyDictionary(json: [String: Any], key: String, fallback: [String: Any]) throws -> [String: Any] {
+        if json[key] == nil {
+            return fallback
+        }
+        return try jsonStringAnyDictionary(json: json, key: key)
+    }
 
     static func json(date: Date) -> String {
         return dateFormatter.string(from: date)

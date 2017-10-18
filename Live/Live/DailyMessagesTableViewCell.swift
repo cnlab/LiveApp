@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import LiveViews
 
 class DailyMessagesTableViewCell: UITableViewCell {
 
     @IBOutlet var dateLabel: UILabel!
-    @IBOutlet var messageLabel: UILabel!
-    @IBOutlet var statusImageView: UIImageView!
+    @IBOutlet var checkboxTextView: CheckboxTextView!
 
 }

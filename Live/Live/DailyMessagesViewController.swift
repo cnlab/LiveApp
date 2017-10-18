@@ -73,8 +73,11 @@ class DailyMessagesViewController: UIViewController, UITableViewDelegate, UITabl
         let dailyMessage = self.dailyMessages[indexPath.row]
         let cell: DailyMessagesTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as! DailyMessagesTableViewCell!
         cell.dateLabel?.text = dailyMessage.date
-        cell.messageLabel?.text = dailyMessage.text
-        cell.statusImageView?.image = dailyMessage.rated ? UIImage(named: "ic_checked") : nil
+        cell.checkboxTextView?.tappedCallback = {}
+        cell.checkboxTextView?.text = dailyMessage.text
+        cell.checkboxTextView?.setChecked(checked: dailyMessage.rated)
+        cell.checkboxTextView?.image = UIImage(named: "ic_checked")
+        cell.checkboxTextView?.sizeFontToFitText();
         return cell
     }
     

@@ -14,7 +14,9 @@ var sharedLiveManager = LiveManager()
 protocol LiveManagerDelegate {
 
     func liveManagerAffirm(_ liveManager: LiveManager, uuid: String, type: String, messageKey: Message.Key, rank: Double)
-
+    
+    func liveManagerOpen(_ liveManager: LiveManager, url: URL)
+    
 }
 
 class LiveManager: NotificationManagerDelegate {
@@ -71,6 +73,7 @@ class LiveManager: NotificationManagerDelegate {
     var shareDataWithResearchers = Observable<Bool>(value: false)
     let surveyManager = SurveyManager()
     var dailyStepCounts = Observable<DailyStepCounts?>(value: nil)
+    var stepCountByDay: [String: Any] = [:]
     let orderedValues = Observable(value: ValueMessageManager.groups)
     var valueNote = Observable<Note?>(value: nil)
     var activityNote = Observable<Note?>(value: nil)
@@ -183,6 +186,7 @@ class LiveManager: NotificationManagerDelegate {
             "surveyManager": JSON.json(object: surveyManager.state),
             "personalInformation": JSON.json(object: personalInformation.value),
             "shareDataWithResearchers": JSON.json(bool: shareDataWithResearchers.value),
+            "stepCountByDay": JSON.json(dictionary: stepCountByDay)
         ]
         do {
             let data = try JSON.json(any: json)
@@ -220,6 +224,7 @@ class LiveManager: NotificationManagerDelegate {
             let surveyManager: SurveyManager.State = try JSON.jsonDefaultObject(json: json, key: "surveyManager", fallback: self.surveyManager.state)
             let personalInformation: PersonalInformation = try JSON.jsonDefaultObject(json: json, key: "personalInformation", fallback: self.personalInformation.value)
             let shareDataWithResearchers: Bool = try JSON.jsonDefaultBool(json: json, key: "shareDataWithResearchers")
+            let stepCountByDay: [String: Any] = try JSON.jsonDefaultStringAnyDictionary(json: json, key: "stepCountByDay", fallback: self.stepCountByDay)
 
             self.installationDate = installationDate
             self.installationUUID = installationUUID
@@ -236,6 +241,7 @@ class LiveManager: NotificationManagerDelegate {
             self.surveyManager.state = surveyManager
             self.personalInformation.value = personalInformation
             self.shareDataWithResearchers.value = shareDataWithResearchers
+            self.stepCountByDay = stepCountByDay
 
             dirty = false
         } catch {
@@ -533,6 +539,26 @@ class LiveManager: NotificationManagerDelegate {
 
     func dailyStepCounts(startDate: Date, stepCounts: [Int?]) {
         dailyStepCounts.value = DailyStepCounts(startDate: startDate, stepCounts: stepCounts)
+        
+        var stepCountDate = startDate
+        for stepCount in stepCounts {
+            if let stepCount = stepCount {
+                var save = false
+                let day = Time.utcDayString(date: stepCountDate)
+                if let value = stepCountByDay[day] as? Int {
+                    if stepCount > value {
+                        save = true
+                    }
+                } else {
+                    save = true
+                }
+                if save {
+                    stepCountByDay[day] = stepCount
+                    dirty = true
+                }
+            }
+            stepCountDate = Time.next(date: stepCountDate)
+        }
     }
 
 }

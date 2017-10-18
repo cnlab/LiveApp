@@ -27,16 +27,6 @@ class ValuesThinkViewController: UIViewController {
             return 0.0
         }
         set(value) {
-            if value > 0.0 {
-                importantButton?.isSelected = true
-                unimportantButton?.isSelected = false
-                return
-            }
-            if value < 0.0 {
-                importantButton?.isSelected = false
-                unimportantButton?.isSelected = true
-                return
-            }
             importantButton?.isSelected = false
             unimportantButton?.isSelected = false
         }
@@ -45,15 +35,13 @@ class ValuesThinkViewController: UIViewController {
     @IBAction func importantAction() {
         importantButton?.isSelected = true
         unimportantButton?.isSelected = false
+        popupViewController?.saveAction()
     }
     
     @IBAction func unimportantAction() {
         unimportantButton?.isSelected = true
         importantButton?.isSelected = false
-    }
-    
-    @IBAction func saveAction() {
         popupViewController?.saveAction()
     }
-
+    
 }

@@ -11,7 +11,9 @@ import Foundation
 @IBDesignable open class CheckboxTextView: UITextView {
     
     @IBInspectable open var image: UIImage?
-    @IBInspectable var isChecked: Bool = false
+    @IBInspectable open var isChecked: Bool = false
+    @IBInspectable open var targetFont: UIFont? = nil
+    @IBInspectable open var minimumFontSize: CGFloat = 10.0
     
     public var tappedCallback: (() -> Void)? = nil
 
@@ -40,6 +42,7 @@ import Foundation
         addGestureRecognizer(tapGestureRecognizer)
         
         text = "Sample text that is a really long line of text to see what happens when the text is too long to fit within the space available to the text region"
+        targetFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
     }
     
     @objc func tapped(_ sender: UITapGestureRecognizer) {
@@ -73,6 +76,23 @@ import Foundation
         updateExclusionPaths()
         super.layoutSubviews()
         setNeedsDisplay()
+    }
+    
+    open func sizeFontToFitText() {
+        self.text = text
+        
+        guard let font = targetFont else {
+            return
+        }
+        var fontSize = font.pointSize * 1.5
+        self.font = font.withSize(fontSize)
+        while sizeThatFits(CGSize(width: frame.size.width, height: .greatestFiniteMagnitude)).height >= frame.size.height {
+            fontSize -= 0.5
+            if fontSize < minimumFontSize {
+                break
+            }
+            self.font = font.withSize(fontSize)
+        }
     }
     
     override open func draw(_ rect: CGRect) {

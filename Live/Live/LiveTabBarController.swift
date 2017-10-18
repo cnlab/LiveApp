@@ -234,6 +234,19 @@ class LiveTabBarController: UITabBarController, UITabBarControllerDelegate, Ance
         activityPopupViewController?.show(inView: view, text: message.format(), rank: rank)
     }
 
+    func getQueryStringParameter(url: URL, parameter: String) -> String? {
+        guard let components = URLComponents(string: url.absoluteString) else {
+            return nil
+        }
+        return components.queryItems?.first(where: { $0.name == parameter })?.value
+    }
+    
+    func liveManagerOpen(_ liveManager: LiveManager, url: URL) {
+        if let studyId = getQueryStringParameter(url: url, parameter: "studyId") {
+            liveManager.personalInformation.value = liveManager.personalInformation.value.bySetting(studyId: studyId)
+        }
+    }
+    
     func affirm(rank: Double) {
         guard let uuid = uuid, let type = type, let messageKey = messageKey else {
             return

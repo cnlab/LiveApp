@@ -85,6 +85,7 @@ class HomeViewController: UIViewController {
             view.text = "?"
             view.setChecked(checked: false)
         }
+        view.sizeFontToFitText()
     }
 
     func valueChanged() {
