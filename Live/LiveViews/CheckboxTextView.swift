@@ -59,12 +59,15 @@ import Foundation
     }
     
     func updateExclusionPaths() {
+        /*
         if let font = font {
             textContainer.maximumNumberOfLines = max(Int(contentSize.height / font.lineHeight), 1)
         } else {
             textContainer.maximumNumberOfLines = 1
         }
-        
+ */
+        textContainer.maximumNumberOfLines = 3
+
         if isChecked, let image = image {
             textContainer.exclusionPaths = [UIBezierPath(rect: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))]
         } else {

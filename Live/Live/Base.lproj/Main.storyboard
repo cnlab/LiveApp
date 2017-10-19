@@ -128,7 +128,7 @@
         <!--Values-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="8rJ-Kc-sve" customClass="ValuesViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="ValuesViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -138,20 +138,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BOA-Mb-Zld">
-                                <rect key="frame" x="45" y="28" width="230" height="445"/>
+                                <rect key="frame" x="45" y="65" width="230" height="408"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewLayout key="collectionViewLayout" id="9tP-sD-irw" customClass="CollectionViewListLayout" customModule="Live" customModuleProvider="target"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ValueCell" id="EXS-BF-Tvj">
-                                        <rect key="frame" x="0.0" y="0.0" width="230" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="230" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="230" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="230" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sj5-sW-f5V" customClass="ImageLabelView" customModule="LiveViews">
-                                                    <rect key="frame" x="0.0" y="0.0" width="230" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="230" height="40"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                                             <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -159,7 +159,7 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="text" value="Sample"/>
                                                         <userDefinedRuntimeAttribute type="image" keyPath="image" value="ic_compassion"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                                                            <integer key="value" value="14"/>
+                                                            <integer key="value" value="18"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="highlightColor">
                                                             <color key="value" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -177,7 +177,7 @@
                                             <constraint firstAttribute="bottom" secondItem="Sj5-sW-f5V" secondAttribute="bottom" id="TQs-Mx-f3g"/>
                                             <constraint firstAttribute="trailing" secondItem="Sj5-sW-f5V" secondAttribute="trailing" id="mBb-aU-qfJ"/>
                                         </constraints>
-                                        <size key="customSize" width="230" height="50"/>
+                                        <size key="customSize" width="230" height="40"/>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -186,7 +186,7 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ceu-om-TjF" customClass="VerticalLabelView" customModule="LiveViews">
-                                <rect key="frame" x="16" y="380" width="21" height="99"/>
+                                <rect key="frame" x="16" y="374" width="21" height="99"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
@@ -194,18 +194,6 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                         <color key="value" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jzd-Q8-jEW" customClass="VerticalLabelView" customModule="LiveViews">
-                                <rect key="frame" x="16" y="28" width="21" height="101"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="Most Important"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                        <color key="value" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="alignRight" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tuN-ea-UBl">
@@ -216,6 +204,25 @@
                                     <action selector="letsGo" destination="8rJ-Kc-sve" eventType="touchUpInside" id="sVz-8E-G0r"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Values" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzK-zV-nBS">
+                                <rect key="frame" x="16" y="28" width="288" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jzd-Q8-jEW" customClass="VerticalLabelView" customModule="LiveViews">
+                                <rect key="frame" x="16" y="65" width="21" height="101"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="Most Important"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="alignRight" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -292,19 +299,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sOV-gS-Zlb">
-                                <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <connections>
                                     <segue destination="xo4-wB-Yo4" kind="embed" id="WTn-9E-Psx"/>
                                 </connections>
                             </containerView>
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XIK-6p-er2">
-                                <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <connections>
                                     <segue destination="YnH-BT-CRx" kind="embed" id="7Mq-86-nky"/>
                                 </connections>
                             </containerView>
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QcW-1j-x9Z">
-                                <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <connections>
                                     <segue destination="hIV-Za-qn0" kind="embed" id="hi1-9g-GUz"/>
                                 </connections>
@@ -323,7 +330,7 @@
                             <constraint firstItem="QcW-1j-x9Z" firstAttribute="leading" secondItem="sOV-gS-Zlb" secondAttribute="leading" id="jSW-2a-k9D"/>
                             <constraint firstItem="sOV-gS-Zlb" firstAttribute="top" secondItem="QcW-1j-x9Z" secondAttribute="top" id="khI-cl-Pip"/>
                             <constraint firstItem="XIK-6p-er2" firstAttribute="top" secondItem="QcW-1j-x9Z" secondAttribute="top" id="rk4-eq-4Vh"/>
-                            <constraint firstItem="sOV-gS-Zlb" firstAttribute="top" secondItem="uD8-Rn-7vg" secondAttribute="bottom" id="yjK-1E-zvi"/>
+                            <constraint firstItem="sOV-gS-Zlb" firstAttribute="top" secondItem="uD8-Rn-7vg" secondAttribute="bottom" constant="-20" id="yjK-1E-zvi"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Survey" image="ic_surveyOn" id="Wf3-Bd-uW0" customClass="SurveyTabBarItem" customModule="Live" customModuleProvider="target"/>
@@ -356,11 +363,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="900"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cv-c9-N2f">
-                                                <rect key="frame" x="8" y="37" width="304" height="93"/>
+                                                <rect key="frame" x="8" y="37" width="304" height="89"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <string key="text">Knowing more about who is using the app helps us improve the experience for all users. Please tell us more about yourself.
 </string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tT2-m9-dor">
@@ -382,7 +389,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kaf-vh-y9I">
-                                                <rect key="frame" x="8" y="8" width="34" height="29"/>
+                                                <rect key="frame" x="8" y="0.0" width="34" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <nil key="textColor"/>
@@ -719,11 +726,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YwW-lh-rv3">
-                                <rect key="frame" x="16" y="57" width="288" height="275"/>
+                                <rect key="frame" x="16" y="57" width="288" height="425"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="275" id="7tl-0X-lQm"/>
-                                </constraints>
                                 <string key="text">The Live Active! App was built by researchers at the University of Pennsylvania and HopeLab.
 
 The Communication Neuroscience Lab (Director: Emily Falk, PhD), is leading development efforts and you can learn more about their work here:
@@ -734,7 +738,7 @@ liveapp@gmail.com
 
 Terms of Use
 http://cn.asc.upenn.edu</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                 <connections>
@@ -744,7 +748,7 @@ http://cn.asc.upenn.edu</string>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Live Active! Version 0.0 Build 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQw-rA-3CU">
                                 <rect key="frame" x="16" y="490" width="288" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="3wu-LS-FUT"/>
+                                    <constraint firstAttribute="height" constant="21" id="hkc-b2-UaF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -753,15 +757,16 @@ http://cn.asc.upenn.edu</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gLb-VN-JSw" firstAttribute="trailing" secondItem="vAk-UN-tFx" secondAttribute="trailingMargin" id="5Kq-ZE-mwu"/>
-                            <constraint firstItem="J1o-xN-7ub" firstAttribute="top" secondItem="KQw-rA-3CU" secondAttribute="bottom" constant="8" symbolic="YES" id="JRQ-Q9-AnV"/>
-                            <constraint firstItem="gLb-VN-JSw" firstAttribute="leading" secondItem="vAk-UN-tFx" secondAttribute="leadingMargin" id="KXL-bp-cbn"/>
-                            <constraint firstItem="gLb-VN-JSw" firstAttribute="trailing" secondItem="YwW-lh-rv3" secondAttribute="trailing" id="Pys-s5-EHb"/>
-                            <constraint firstItem="YwW-lh-rv3" firstAttribute="trailing" secondItem="KQw-rA-3CU" secondAttribute="trailing" id="UGE-JH-9uz"/>
-                            <constraint firstItem="gLb-VN-JSw" firstAttribute="top" secondItem="eZR-lb-87O" secondAttribute="bottom" id="buy-es-DOs"/>
-                            <constraint firstItem="YwW-lh-rv3" firstAttribute="top" secondItem="gLb-VN-JSw" secondAttribute="bottom" constant="8" symbolic="YES" id="eWD-6q-Znt"/>
-                            <constraint firstItem="YwW-lh-rv3" firstAttribute="leading" secondItem="KQw-rA-3CU" secondAttribute="leading" id="nIO-qz-85j"/>
-                            <constraint firstItem="gLb-VN-JSw" firstAttribute="leading" secondItem="YwW-lh-rv3" secondAttribute="leading" id="sja-DP-7xr"/>
+                            <constraint firstItem="gLb-VN-JSw" firstAttribute="trailing" secondItem="vAk-UN-tFx" secondAttribute="trailingMargin" id="6LD-9N-vCI"/>
+                            <constraint firstItem="YwW-lh-rv3" firstAttribute="leading" secondItem="KQw-rA-3CU" secondAttribute="leading" id="DEt-Gg-BQx"/>
+                            <constraint firstItem="J1o-xN-7ub" firstAttribute="top" secondItem="KQw-rA-3CU" secondAttribute="bottom" constant="8" symbolic="YES" id="Da3-Ap-1NU"/>
+                            <constraint firstItem="YwW-lh-rv3" firstAttribute="top" secondItem="gLb-VN-JSw" secondAttribute="bottom" constant="8" symbolic="YES" id="PAy-Be-Ita"/>
+                            <constraint firstItem="YwW-lh-rv3" firstAttribute="trailing" secondItem="KQw-rA-3CU" secondAttribute="trailing" id="afI-06-jGV"/>
+                            <constraint firstItem="gLb-VN-JSw" firstAttribute="top" secondItem="eZR-lb-87O" secondAttribute="bottom" id="cUp-JS-bgK"/>
+                            <constraint firstItem="gLb-VN-JSw" firstAttribute="leading" secondItem="YwW-lh-rv3" secondAttribute="leading" id="nFG-WA-7mF"/>
+                            <constraint firstItem="KQw-rA-3CU" firstAttribute="top" secondItem="YwW-lh-rv3" secondAttribute="bottom" constant="8" symbolic="YES" id="sqj-6U-k9X"/>
+                            <constraint firstItem="gLb-VN-JSw" firstAttribute="leading" secondItem="vAk-UN-tFx" secondAttribute="leadingMargin" id="xXs-nR-MeA"/>
+                            <constraint firstItem="gLb-VN-JSw" firstAttribute="trailing" secondItem="YwW-lh-rv3" secondAttribute="trailing" id="zNW-k0-9gl"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="About" id="hnV-eD-AK6"/>
@@ -850,14 +855,14 @@ http://cn.asc.upenn.edu</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7k-gT-VUs">
-                                <rect key="frame" x="16" y="57" width="288" height="117"/>
+                                <rect key="frame" x="16" y="57" width="288" height="163"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="117" id="ir8-Bw-lBt"/>
+                                    <constraint firstAttribute="height" constant="163" id="ir8-Bw-lBt"/>
                                 </constraints>
                                 <string key="text">We will send you daily reminders of your values and a tip for being more physically active.
 
 What time do you want to receive these reminders?</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQg-Yj-n6y">
@@ -867,7 +872,7 @@ What time do you want to receive these reminders?</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remind me at" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7d-g6-pmm">
-                                <rect key="frame" x="16" y="188" width="288" height="21"/>
+                                <rect key="frame" x="16" y="228" width="288" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="TdB-CV-t3l"/>
                                 </constraints>
@@ -876,7 +881,7 @@ What time do you want to receive these reminders?</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="sM0-PY-JFf">
-                                <rect key="frame" x="16" y="217" width="288" height="216"/>
+                                <rect key="frame" x="16" y="257" width="288" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="498761161.217188">
                                     <!--2016-10-21 16:46:01 +0000-->
                                 </date>
@@ -885,7 +890,7 @@ What time do you want to receive these reminders?</string>
                                 </connections>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wb3-98-nKr">
-                                <rect key="frame" x="16" y="441" width="288" height="30"/>
+                                <rect key="frame" x="16" y="481" width="288" height="30"/>
                                 <state key="normal" title="Enable Notifications"/>
                                 <connections>
                                     <action selector="showSettings" destination="0nq-5A-lxm" eventType="touchUpInside" id="Exd-cL-58t"/>
@@ -899,7 +904,7 @@ What time do you want to receive these reminders?</string>
                             <constraint firstItem="BQg-Yj-n6y" firstAttribute="leading" secondItem="a7k-gT-VUs" secondAttribute="leading" id="Fpp-Wh-TbN"/>
                             <constraint firstItem="M7d-g6-pmm" firstAttribute="trailing" secondItem="sM0-PY-JFf" secondAttribute="trailing" id="GIv-7B-kfX"/>
                             <constraint firstItem="BQg-Yj-n6y" firstAttribute="leading" secondItem="ENq-ve-ocM" secondAttribute="leadingMargin" id="T5V-HU-EA7"/>
-                            <constraint firstItem="M7d-g6-pmm" firstAttribute="top" secondItem="a7k-gT-VUs" secondAttribute="bottom" constant="14" id="UHN-RN-7Na"/>
+                            <constraint firstItem="M7d-g6-pmm" firstAttribute="top" secondItem="a7k-gT-VUs" secondAttribute="bottom" constant="8" id="UHN-RN-7Na"/>
                             <constraint firstItem="a7k-gT-VUs" firstAttribute="trailing" secondItem="M7d-g6-pmm" secondAttribute="trailing" id="ZOv-MF-mL2"/>
                             <constraint firstItem="BQg-Yj-n6y" firstAttribute="top" secondItem="Kga-MI-oaU" secondAttribute="bottom" id="bhh-qN-TJw"/>
                             <constraint firstItem="a7k-gT-VUs" firstAttribute="leading" secondItem="M7d-g6-pmm" secondAttribute="leading" id="cfQ-z2-ce2"/>
@@ -940,29 +945,26 @@ What time do you want to receive these reminders?</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xD9-WP-ZG1">
-                                <rect key="frame" x="16" y="57" width="288" height="225"/>
+                                <rect key="frame" x="16" y="57" width="288" height="291"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="225" id="vaP-NL-sIV"/>
+                                    <constraint firstAttribute="height" constant="291" id="jEU-Jt-9XB"/>
                                 </constraints>
                                 <string key="text">This app was developed by academic researchers and they are working on improving the app to make it more custom to each user. 
 
 You can chose to share the data tracked in the app to help us improve the experience.
 
 Data is anonymous and has a random ID assigned to it. We do not share your data with anyone else. You can stop sharing data at anytime.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AcV-k3-XNM">
-                                <rect key="frame" x="16" y="290" width="288" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="GZm-4i-u5V"/>
-                                </constraints>
+                                <rect key="frame" x="16" y="356" width="288" height="44"/>
                                 <connections>
                                     <segue destination="SlT-nm-yds" kind="embed" id="Yhw-Re-Atc"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BWK-un-ufd">
-                                <rect key="frame" x="16" y="342" width="288" height="30"/>
+                                <rect key="frame" x="16" y="408" width="288" height="30"/>
                                 <state key="normal" title="Share Now"/>
                                 <connections>
                                     <action selector="shareNow" destination="Km8-Zb-u6F" eventType="touchUpInside" id="sHR-mp-3bU"/>
@@ -971,18 +973,19 @@ Data is anonymous and has a random ID assigned to it. We do not share your data 
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="AcV-k3-XNM" firstAttribute="trailing" secondItem="Ssi-45-W6U" secondAttribute="trailingMargin" id="4xX-qo-1OQ"/>
-                            <constraint firstItem="BWK-un-ufd" firstAttribute="top" secondItem="AcV-k3-XNM" secondAttribute="bottom" constant="8" id="AF4-ke-dtu"/>
-                            <constraint firstItem="BWK-un-ufd" firstAttribute="leading" secondItem="Ssi-45-W6U" secondAttribute="leadingMargin" id="BOU-ot-57r"/>
-                            <constraint firstItem="AcV-k3-XNM" firstAttribute="leading" secondItem="Ssi-45-W6U" secondAttribute="leadingMargin" id="NFK-rC-Vdq"/>
-                            <constraint firstItem="CV8-V3-wzl" firstAttribute="trailing" secondItem="Ssi-45-W6U" secondAttribute="trailingMargin" id="ahL-Nb-Lrv"/>
-                            <constraint firstItem="xD9-WP-ZG1" firstAttribute="leading" secondItem="Ssi-45-W6U" secondAttribute="leadingMargin" id="fwH-Oe-RHq"/>
-                            <constraint firstItem="AcV-k3-XNM" firstAttribute="top" secondItem="xD9-WP-ZG1" secondAttribute="bottom" constant="8" id="gZr-fg-W5V"/>
-                            <constraint firstItem="BWK-un-ufd" firstAttribute="trailing" secondItem="Ssi-45-W6U" secondAttribute="trailingMargin" id="ioV-Cf-Y0y"/>
-                            <constraint firstItem="CV8-V3-wzl" firstAttribute="top" secondItem="MNZ-g6-qFI" secondAttribute="bottom" id="qF2-za-Ggd"/>
-                            <constraint firstItem="xD9-WP-ZG1" firstAttribute="trailing" secondItem="Ssi-45-W6U" secondAttribute="trailingMargin" id="rkO-1E-qW7"/>
-                            <constraint firstItem="CV8-V3-wzl" firstAttribute="leading" secondItem="Ssi-45-W6U" secondAttribute="leadingMargin" id="u3h-Ib-Wxb"/>
-                            <constraint firstItem="xD9-WP-ZG1" firstAttribute="top" secondItem="CV8-V3-wzl" secondAttribute="bottom" constant="8" id="wzv-8D-3PV"/>
+                            <constraint firstItem="CV8-V3-wzl" firstAttribute="leading" secondItem="xD9-WP-ZG1" secondAttribute="leading" id="0O4-3t-xTU"/>
+                            <constraint firstItem="AcV-k3-XNM" firstAttribute="top" secondItem="xD9-WP-ZG1" secondAttribute="bottom" constant="8" symbolic="YES" id="3Ap-xl-0Ra"/>
+                            <constraint firstItem="CV8-V3-wzl" firstAttribute="top" secondItem="MNZ-g6-qFI" secondAttribute="bottom" id="4W6-zD-3i7"/>
+                            <constraint firstItem="BWK-un-ufd" firstAttribute="top" secondItem="AcV-k3-XNM" secondAttribute="bottom" constant="8" symbolic="YES" id="6aK-6b-lp7"/>
+                            <constraint firstItem="AcV-k3-XNM" firstAttribute="leading" secondItem="BWK-un-ufd" secondAttribute="leading" id="Ccr-g8-bOJ"/>
+                            <constraint firstItem="CV8-V3-wzl" firstAttribute="trailing" secondItem="Ssi-45-W6U" secondAttribute="trailingMargin" id="GoM-aO-uqe"/>
+                            <constraint firstItem="xD9-WP-ZG1" firstAttribute="top" secondItem="CV8-V3-wzl" secondAttribute="bottom" constant="8" symbolic="YES" id="Jse-is-aUH"/>
+                            <constraint firstItem="CV8-V3-wzl" firstAttribute="leading" secondItem="Ssi-45-W6U" secondAttribute="leadingMargin" id="Mws-2m-Eog"/>
+                            <constraint firstItem="AcV-k3-XNM" firstAttribute="trailing" secondItem="BWK-un-ufd" secondAttribute="trailing" id="QM7-Ad-8Kt"/>
+                            <constraint firstItem="xD9-WP-ZG1" firstAttribute="trailing" secondItem="AcV-k3-XNM" secondAttribute="trailing" id="VZf-tA-HnI"/>
+                            <constraint firstItem="xD9-WP-ZG1" firstAttribute="leading" secondItem="AcV-k3-XNM" secondAttribute="leading" id="VrR-Et-jwj"/>
+                            <constraint firstItem="jbj-Jn-bmP" firstAttribute="top" secondItem="BWK-un-ufd" secondAttribute="bottom" constant="81" id="W55-4S-pj1"/>
+                            <constraint firstItem="CV8-V3-wzl" firstAttribute="trailing" secondItem="xD9-WP-ZG1" secondAttribute="trailing" id="axu-PI-j5F"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Share" id="PeG-m9-RwD"/>
@@ -1034,7 +1037,7 @@ Data is anonymous and has a random ID assigned to it. We do not share your data 
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Value..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LaO-xc-g2U">
                                 <rect key="frame" x="0.0" y="43" width="224" height="184"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_dailyMessage" translatesAutoresizingMaskIntoConstraints="NO" id="cPa-i4-uQd">
@@ -1296,23 +1299,39 @@ Increase your Physical Activity.</string>
                                 <rect key="frame" x="162" y="116" width="31" height="31"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TB0-1m-YlF">
-                                <rect key="frame" x="18" y="155" width="190" height="195"/>
+                                <rect key="frame" x="0.0" y="155" width="224" height="195"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="195" id="ciZ-6L-CcM"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="Drag the value words in order of imporance to you.">
+                                    <fragment content="Drag the value words in order of importance to you.">
                                         <attributes>
-                                            <font key="NSFont" size="22" name=".SFNSText"/>
+                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">
-
-This list will be used to customize daily messages.  Don't worry if you are unsure.  You can change the order at anytime.</string>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
                                         <attributes>
                                             <font key="NSFont" metaFont="system" size="14"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="This list will be used to customize daily messages.  Don't worry if you are unsure.  You can change the order at anytime.">
+                                        <attributes>
+                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -1333,8 +1352,8 @@ This list will be used to customize daily messages.  Don't worry if you are unsu
                             <constraint firstItem="99X-0f-aDd" firstAttribute="top" secondItem="zrC-pg-qut" secondAttribute="bottom" constant="50" id="Iid-7s-Isi"/>
                             <constraint firstItem="FLU-yX-fNC" firstAttribute="centerX" secondItem="Fh0-4S-mGC" secondAttribute="centerX" id="KWp-Ie-rN2"/>
                             <constraint firstItem="TB0-1m-YlF" firstAttribute="top" secondItem="99X-0f-aDd" secondAttribute="bottom" constant="8" symbolic="YES" id="RSK-Rl-5BE"/>
-                            <constraint firstItem="TB0-1m-YlF" firstAttribute="leading" secondItem="jb7-IB-6eh" secondAttribute="leadingMargin" constant="2" id="T7w-4V-QP6"/>
-                            <constraint firstItem="FLU-yX-fNC" firstAttribute="trailing" secondItem="TB0-1m-YlF" secondAttribute="trailing" id="ZQc-xz-YIo"/>
+                            <constraint firstItem="TB0-1m-YlF" firstAttribute="leading" secondItem="jb7-IB-6eh" secondAttribute="leadingMargin" constant="-16" id="T7w-4V-QP6"/>
+                            <constraint firstItem="FLU-yX-fNC" firstAttribute="trailing" secondItem="TB0-1m-YlF" secondAttribute="trailing" constant="-16" id="ZQc-xz-YIo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="99X-0f-aDd" secondAttribute="trailing" constant="15" id="c0g-nx-eSk"/>
                             <constraint firstItem="zrC-pg-qut" firstAttribute="leading" secondItem="jb7-IB-6eh" secondAttribute="leadingMargin" id="g4D-cp-Vj1"/>
                             <constraint firstItem="TB0-1m-YlF" firstAttribute="top" secondItem="FLU-yX-fNC" secondAttribute="bottom" constant="31" id="lAw-2g-pka"/>
@@ -1442,7 +1461,7 @@ This list will be used to customize daily messages.  Don't worry if you are unsu
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Activity..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="33N-I0-BxV">
                                 <rect key="frame" x="0.0" y="43" width="224" height="251"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_dailyMessage" translatesAutoresizingMaskIntoConstraints="NO" id="nEx-Hb-BiE">
@@ -1557,27 +1576,33 @@ This list will be used to customize daily messages.  Don't worry if you are unsu
                         <viewControllerLayoutGuide type="bottom" id="fPp-lp-nVN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="V6e-fk-yrb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OLg-Wd-Wzk">
-                                <rect key="frame" x="16" y="57" width="288" height="141"/>
+                                <rect key="frame" x="16" y="65" width="288" height="174"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="141" id="9Me-T6-e7f"/>
+                                    <constraint firstAttribute="height" constant="174" id="9Me-T6-e7f"/>
                                 </constraints>
                                 <string key="text">Your phone may not track some kinds of activities like swimming or yoga. To keep track of them, you can answer questions about other activities every other week.
 
 The SURVEY tab will be highlighted when you have one to complete.
 </string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Survey" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QyN-CR-EXm">
+                                <rect key="frame" x="16" y="28" width="72" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ur-Le-H0N">
-                                <rect key="frame" x="16" y="206" width="288" height="273"/>
+                                <rect key="frame" x="16" y="247" width="288" height="264"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yza-b7-LA7">
-                                        <rect key="frame" x="8" y="20" width="268" height="157"/>
+                                        <rect key="frame" x="8" y="8" width="268" height="160"/>
                                         <string key="text">This app was developed by researchers. You can help them improve it by sharing your survey data and steps. 
 
 All shared data is anonymous and will only be used to improve the app experience.</string>
@@ -1586,14 +1611,14 @@ All shared data is anonymous and will only be used to improve the app experience
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBB-S8-RXR">
-                                        <rect key="frame" x="8" y="185" width="268" height="30"/>
+                                        <rect key="frame" x="8" y="176" width="268" height="30"/>
                                         <state key="normal" title="Share Data"/>
                                         <connections>
                                             <action selector="share" destination="xo4-wB-Yo4" eventType="touchUpInside" id="F1o-9l-jqP"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="936-fU-zuX">
-                                        <rect key="frame" x="8" y="223" width="268" height="30"/>
+                                        <rect key="frame" x="8" y="214" width="268" height="30"/>
                                         <state key="normal" title="About The Researchers"/>
                                         <connections>
                                             <action selector="about" destination="xo4-wB-Yo4" eventType="touchUpInside" id="XJW-9J-XnL"/>
@@ -1604,7 +1629,7 @@ All shared data is anonymous and will only be used to improve the app experience
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Yza-b7-LA7" firstAttribute="trailing" secondItem="mBB-S8-RXR" secondAttribute="trailing" id="0a6-fh-ZhA"/>
-                                    <constraint firstItem="Yza-b7-LA7" firstAttribute="top" secondItem="9ur-Le-H0N" secondAttribute="top" constant="20" id="8mK-DL-Crh"/>
+                                    <constraint firstItem="Yza-b7-LA7" firstAttribute="top" secondItem="9ur-Le-H0N" secondAttribute="top" constant="8" id="8mK-DL-Crh"/>
                                     <constraint firstItem="Yza-b7-LA7" firstAttribute="leading" secondItem="9ur-Le-H0N" secondAttribute="leadingMargin" id="AGQ-Uh-HpX"/>
                                     <constraint firstItem="mBB-S8-RXR" firstAttribute="trailing" secondItem="936-fU-zuX" secondAttribute="trailing" id="GaY-sC-omn"/>
                                     <constraint firstAttribute="bottom" secondItem="936-fU-zuX" secondAttribute="bottom" constant="20" id="Nj7-Jd-rzf"/>
@@ -1615,21 +1640,15 @@ All shared data is anonymous and will only be used to improve the app experience
                                     <constraint firstItem="936-fU-zuX" firstAttribute="top" secondItem="mBB-S8-RXR" secondAttribute="bottom" constant="8" symbolic="YES" id="zhR-hc-0CQ"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Survey" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QyN-CR-EXm">
-                                <rect key="frame" x="16" y="20" width="72" height="29"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="OLg-Wd-Wzk" firstAttribute="trailing" secondItem="9ur-Le-H0N" secondAttribute="trailing" id="0oG-LK-YJo"/>
                             <constraint firstItem="QyN-CR-EXm" firstAttribute="leading" secondItem="OLg-Wd-Wzk" secondAttribute="leading" id="3Du-Jk-toL"/>
-                            <constraint firstAttribute="bottom" secondItem="9ur-Le-H0N" secondAttribute="bottom" constant="20" symbolic="YES" id="4nT-Tf-Hda"/>
+                            <constraint firstAttribute="bottom" secondItem="9ur-Le-H0N" secondAttribute="bottom" constant="8" id="4nT-Tf-Hda"/>
                             <constraint firstItem="OLg-Wd-Wzk" firstAttribute="trailing" secondItem="V6e-fk-yrb" secondAttribute="trailingMargin" id="ALJ-14-poL"/>
                             <constraint firstItem="OLg-Wd-Wzk" firstAttribute="leading" secondItem="9ur-Le-H0N" secondAttribute="leading" id="G6H-X7-5f6"/>
-                            <constraint firstItem="QyN-CR-EXm" firstAttribute="top" secondItem="V6e-fk-yrb" secondAttribute="top" constant="20" symbolic="YES" id="aBh-bW-M0L"/>
+                            <constraint firstItem="QyN-CR-EXm" firstAttribute="top" secondItem="V6e-fk-yrb" secondAttribute="top" constant="28" id="aBh-bW-M0L"/>
                             <constraint firstItem="9ur-Le-H0N" firstAttribute="top" secondItem="OLg-Wd-Wzk" secondAttribute="bottom" constant="8" symbolic="YES" id="bcc-eg-eCi"/>
                             <constraint firstItem="QyN-CR-EXm" firstAttribute="leading" secondItem="V6e-fk-yrb" secondAttribute="leadingMargin" id="yHk-S4-ynN"/>
                             <constraint firstItem="OLg-Wd-Wzk" firstAttribute="top" secondItem="QyN-CR-EXm" secondAttribute="bottom" constant="8" symbolic="YES" id="yK1-pu-nX6"/>
@@ -1641,7 +1660,7 @@ All shared data is anonymous and will only be used to improve the app experience
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bRh-bY-JKH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2376" y="713"/>
+            <point key="canvasLocation" x="2375.625" y="712.5"/>
         </scene>
         <!--Survey Form View Controller-->
         <scene sceneID="g8T-qJ-3PE">
@@ -1652,60 +1671,60 @@ All shared data is anonymous and will only be used to improve the app experience
                         <viewControllerLayoutGuide type="bottom" id="YMh-H0-Rx0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="N9j-Pi-R4m">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="In the past month, how often did you engage in the following activities for at least 10 minutes?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="03E-ZA-xMs">
-                                <rect key="frame" x="16" y="57" width="288" height="70"/>
+                                <rect key="frame" x="16" y="65" width="288" height="70"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="jOF-pB-P3n"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Swimming, walking, running, cycling, aerobics, dancing playing a sport" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZOI-El-9A7">
-                                <rect key="frame" x="16" y="135" width="288" height="48"/>
+                                <rect key="frame" x="16" y="143" width="288" height="48"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="wCD-1t-a9o"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Indoor housework (ex. sweeping, scrubbing floors, washing windows)" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8JE-f1-PSc">
-                                <rect key="frame" x="16" y="227" width="288" height="48"/>
+                                <rect key="frame" x="16" y="235" width="288" height="48"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="78n-Nj-NLU"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Lifting weights, outdoor housework (ex. digging, raking, shoveling snow)" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2aQ-fB-FPC">
-                                <rect key="frame" x="16" y="319" width="288" height="48"/>
+                                <rect key="frame" x="16" y="327" width="288" height="48"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="zlT-Pn-XVl"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0w-Lg-jqj">
-                                <rect key="frame" x="16" y="411" width="288" height="30"/>
+                                <rect key="frame" x="16" y="419" width="288" height="30"/>
                                 <state key="normal" title="Submit Survey"/>
                                 <connections>
                                     <action selector="submitSurveyAction" destination="YnH-BT-CRx" eventType="touchUpInside" id="ooY-i2-etj"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Survey" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVH-FS-N1t">
-                                <rect key="frame" x="16" y="20" width="72" height="29"/>
+                                <rect key="frame" x="16" y="28" width="72" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BEw-ds-wc3">
-                                <rect key="frame" x="72" y="191" width="176" height="29"/>
+                                <rect key="frame" x="72" y="199" width="176" height="29"/>
                                 <segments>
                                     <segment title="Rarely"/>
                                     <segment title="Weekly"/>
@@ -1713,7 +1732,7 @@ All shared data is anonymous and will only be used to improve the app experience
                                 </segments>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZvP-zd-MG0">
-                                <rect key="frame" x="72" y="283" width="176" height="29"/>
+                                <rect key="frame" x="72" y="291" width="176" height="29"/>
                                 <segments>
                                     <segment title="Rarely"/>
                                     <segment title="Weekly"/>
@@ -1721,7 +1740,7 @@ All shared data is anonymous and will only be used to improve the app experience
                                 </segments>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="E95-jj-fqS">
-                                <rect key="frame" x="72" y="375" width="176" height="29"/>
+                                <rect key="frame" x="72" y="383" width="176" height="29"/>
                                 <segments>
                                     <segment title="Rarely"/>
                                     <segment title="Weekly"/>
@@ -1735,13 +1754,13 @@ All shared data is anonymous and will only be used to improve the app experience
                             <constraint firstItem="8JE-f1-PSc" firstAttribute="top" secondItem="BEw-ds-wc3" secondAttribute="bottom" constant="8" symbolic="YES" id="1Ox-Rg-pBw"/>
                             <constraint firstItem="ZvP-zd-MG0" firstAttribute="top" secondItem="8JE-f1-PSc" secondAttribute="bottom" constant="8" symbolic="YES" id="2eG-fP-VXe"/>
                             <constraint firstItem="DVH-FS-N1t" firstAttribute="leading" secondItem="03E-ZA-xMs" secondAttribute="leading" id="6Kp-UT-unT"/>
-                            <constraint firstItem="DVH-FS-N1t" firstAttribute="top" secondItem="N9j-Pi-R4m" secondAttribute="top" constant="20" symbolic="YES" id="6ue-9Z-iDH"/>
+                            <constraint firstItem="DVH-FS-N1t" firstAttribute="top" secondItem="N9j-Pi-R4m" secondAttribute="top" constant="28" id="6ue-9Z-iDH"/>
                             <constraint firstItem="DVH-FS-N1t" firstAttribute="leading" secondItem="N9j-Pi-R4m" secondAttribute="leadingMargin" id="CV3-cl-3nE"/>
                             <constraint firstItem="E95-jj-fqS" firstAttribute="top" secondItem="2aQ-fB-FPC" secondAttribute="bottom" constant="8" symbolic="YES" id="CyP-Cm-e8m"/>
                             <constraint firstItem="8JE-f1-PSc" firstAttribute="trailing" secondItem="2aQ-fB-FPC" secondAttribute="trailing" id="D4h-19-wCU"/>
                             <constraint firstItem="BEw-ds-wc3" firstAttribute="top" secondItem="ZOI-El-9A7" secondAttribute="bottom" constant="8" symbolic="YES" id="HwU-DI-YSn"/>
                             <constraint firstItem="ZOI-El-9A7" firstAttribute="leading" secondItem="8JE-f1-PSc" secondAttribute="leading" id="LiN-8D-6D4"/>
-                            <constraint firstItem="YMh-H0-Rx0" firstAttribute="top" secondItem="w0w-Lg-jqj" secondAttribute="bottom" constant="58" id="UUo-C8-rOO"/>
+                            <constraint firstItem="YMh-H0-Rx0" firstAttribute="top" secondItem="w0w-Lg-jqj" secondAttribute="bottom" constant="70" id="UUo-C8-rOO"/>
                             <constraint firstItem="ZvP-zd-MG0" firstAttribute="leading" secondItem="E95-jj-fqS" secondAttribute="leading" id="Wmb-0B-tLb"/>
                             <constraint firstItem="ZOI-El-9A7" firstAttribute="trailing" secondItem="8JE-f1-PSc" secondAttribute="trailing" id="Yth-qm-YVg"/>
                             <constraint firstItem="ZOI-El-9A7" firstAttribute="top" secondItem="03E-ZA-xMs" secondAttribute="bottom" constant="8" symbolic="YES" id="aDy-iS-myb"/>
@@ -1776,17 +1795,17 @@ All shared data is anonymous and will only be used to improve the app experience
                         <viewControllerLayoutGuide type="bottom" id="TLG-9V-Sgs"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Rvj-UK-jUy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Survey" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3x-37-MKS">
-                                <rect key="frame" x="16" y="20" width="72" height="29"/>
+                                <rect key="frame" x="16" y="28" width="72" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cs-ga-c5M">
-                                <rect key="frame" x="41" y="175" width="240" height="29"/>
+                                <rect key="frame" x="41" y="183" width="240" height="29"/>
                                 <string key="text">Thanks for checking in!
 
 Your next survey is due in ## days</string>
@@ -1795,22 +1814,22 @@ Your next survey is due in ## days</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_countdown" translatesAutoresizingMaskIntoConstraints="NO" id="ose-SK-v2s">
-                                <rect key="frame" x="16" y="57" width="288" height="110"/>
+                                <rect key="frame" x="16" y="65" width="288" height="110"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uc5-gE-2LG">
-                                <rect key="frame" x="16" y="96" width="288" height="32"/>
+                                <rect key="frame" x="16" y="104" width="288" height="32"/>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="28"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have no surveys to complete." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pj-Wv-lA5">
-                                <rect key="frame" x="32" y="212" width="257" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="39" y="220" width="243" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your next survey is due in 14 days." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="loD-le-OVr">
-                                <rect key="frame" x="56" y="241" width="209" height="16"/>
+                                <rect key="frame" x="56" y="247" width="209" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1829,7 +1848,7 @@ Your next survey is due in ## days</string>
                             <constraint firstItem="1pj-Wv-lA5" firstAttribute="centerX" secondItem="loD-le-OVr" secondAttribute="centerX" id="Yve-Ta-aZE"/>
                             <constraint firstItem="uc5-gE-2LG" firstAttribute="top" secondItem="k3x-37-MKS" secondAttribute="bottom" constant="47" id="c0i-XA-miZ"/>
                             <constraint firstItem="6cs-ga-c5M" firstAttribute="top" secondItem="ose-SK-v2s" secondAttribute="bottom" constant="8" symbolic="YES" id="jHU-Oq-aZn"/>
-                            <constraint firstItem="k3x-37-MKS" firstAttribute="top" secondItem="r00-gJ-BTV" secondAttribute="bottom" id="jqv-f6-ixI"/>
+                            <constraint firstItem="k3x-37-MKS" firstAttribute="top" secondItem="r00-gJ-BTV" secondAttribute="bottom" constant="8" id="jqv-f6-ixI"/>
                             <constraint firstItem="ose-SK-v2s" firstAttribute="trailing" secondItem="uc5-gE-2LG" secondAttribute="trailing" id="k3g-vR-n3b"/>
                             <constraint firstItem="1pj-Wv-lA5" firstAttribute="top" secondItem="6cs-ga-c5M" secondAttribute="bottom" constant="8" symbolic="YES" id="nia-GY-WsM"/>
                             <constraint firstItem="k3x-37-MKS" firstAttribute="leading" secondItem="Rvj-UK-jUy" secondAttribute="leadingMargin" id="oON-8l-RDP"/>
@@ -1859,7 +1878,7 @@ Your next survey is due in ## days</string>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="You can chose to share the data tracked in the app to help us improve the experience." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5oe-lm-Hjh">
                                 <rect key="frame" x="16" y="20" width="208" height="84"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="62I-yL-cAz">
@@ -1898,14 +1917,8 @@ Your next survey is due in ## days</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Messages" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJU-XW-PZL">
-                                <rect key="frame" x="16" y="68" width="288" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="92" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XU3-Uz-H6Y">
-                                <rect key="frame" x="0.0" y="97" width="320" height="414"/>
+                                <rect key="frame" x="0.0" y="65" width="320" height="446"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DailyMessageCell" rowHeight="92" id="Swv-HM-A9Q" customClass="DailyMessagesTableViewCell" customModule="Live" customModuleProvider="target">
@@ -1947,6 +1960,12 @@ Your next survey is due in ## days</string>
                                     <outlet property="delegate" destination="q4R-ba-k7u" id="QH0-xl-XqG"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Messages" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJU-XW-PZL">
+                                <rect key="frame" x="16" y="28" width="288" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1954,7 +1973,7 @@ Your next survey is due in ## days</string>
                             <constraint firstItem="AJU-XW-PZL" firstAttribute="leading" secondItem="XU3-Uz-H6Y" secondAttribute="leading" constant="16" id="QX0-qY-iO7"/>
                             <constraint firstItem="AJU-XW-PZL" firstAttribute="trailing" secondItem="0DF-1C-q4N" secondAttribute="trailingMargin" id="S8H-RL-Ggk"/>
                             <constraint firstItem="XU3-Uz-H6Y" firstAttribute="top" secondItem="AJU-XW-PZL" secondAttribute="bottom" constant="8" symbolic="YES" id="SYU-9D-KTl"/>
-                            <constraint firstItem="AJU-XW-PZL" firstAttribute="top" secondItem="DWR-iZ-G2X" secondAttribute="bottom" constant="48" id="TRU-xO-p8u"/>
+                            <constraint firstItem="AJU-XW-PZL" firstAttribute="top" secondItem="DWR-iZ-G2X" secondAttribute="bottom" constant="8" id="TRU-xO-p8u"/>
                             <constraint firstItem="qfy-lV-hcf" firstAttribute="top" secondItem="XU3-Uz-H6Y" secondAttribute="bottom" constant="8" symbolic="YES" id="gBi-kp-pkR"/>
                             <constraint firstItem="AJU-XW-PZL" firstAttribute="leading" secondItem="0DF-1C-q4N" secondAttribute="leadingMargin" id="s9S-Rc-MhT"/>
                         </constraints>

@@ -73,9 +73,9 @@ class ValuesViewController: UIViewController, UICollectionViewDataSource, UIColl
             return
         }
 
-        let basicInsets = UIEdgeInsets(top: 8.0, left: 16.0, bottom: 20.0, right: 16.0)
+        let basicInsets = UIEdgeInsets(top: mostImportantLabel.frame.origin.y, left: 16.0, bottom: 20.0, right: 16.0)
         var insets = basicInsets
-        insets.top += topLayoutGuide.length
+//        insets.top += topLayoutGuide.length
         insets.bottom += bottomLayoutGuide.length
         let spacing: CGFloat = 16.0
         let margin: CGFloat = 12.0
