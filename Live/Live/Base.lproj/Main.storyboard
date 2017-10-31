@@ -921,6 +921,7 @@ What time do you want to receive these reminders?</string>
                     <tabBarItem key="tabBarItem" title="Settings" image="ic_settingOn" id="RRd-XL-Hc4"/>
                     <connections>
                         <outlet property="showSettingsButton" destination="wb3-98-nKr" id="jbL-fc-l5J"/>
+                        <outlet property="timeLabel" destination="M7d-g6-pmm" id="jbG-bQ-xT4"/>
                         <outlet property="timePicker" destination="sM0-PY-JFf" id="gOB-bc-jkL"/>
                     </connections>
                 </viewController>

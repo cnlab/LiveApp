@@ -12,6 +12,7 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet var timePicker: UIDatePicker?
     @IBOutlet var showSettingsButton: UIButton?
+    @IBOutlet var timeLabel: UILabel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,13 +59,18 @@ class SettingsViewController: UIViewController {
         }
     }
 
-    func triggerChanged() {
-        let liveManager = LiveManager.shared
+    func triggerDateToday() -> Date {
         var dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+        let liveManager = LiveManager.shared
         let trigger = liveManager.trigger.value
         dateComponents.hour = trigger.hour
         dateComponents.minute = trigger.minute
         let date = Calendar.current.date(from: dateComponents)!
+        return date
+    }
+    
+    func triggerChanged() {
+        let date = triggerDateToday()
         if timePicker?.date != date {
             timePicker?.date = date
         }
@@ -77,6 +83,17 @@ class SettingsViewController: UIViewController {
 
         let liveManager = LiveManager.shared
         liveManager.trigger.value = Calendar.current.dateComponents([.hour, .minute], from: timePicker.date)
+        
+        if let label = timeLabel {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .none
+            dateFormatter.timeStyle = .short
+            let time = dateFormatter.string(from: triggerDateToday())
+            label.text = "You will be reminded at \(time)."
+            UIView.transition(with: label, duration: 0.3, options: [.transitionCrossDissolve], animations: { label.textColor = .black }, completion: { animationFinished in
+                UIView.transition(with: label, duration: 1.0, options: [.transitionCrossDissolve], animations: { label.textColor = .lightGray }, completion: nil)
+            } )
+        }
     }
 
 }
