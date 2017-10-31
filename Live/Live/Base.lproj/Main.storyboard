@@ -65,6 +65,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="image" value="ic_checked"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="sizeFontToFitText" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ut-VZ-mXr">
@@ -80,6 +81,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="image" value="ic_checked"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="sizeFontToFitText" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
@@ -1871,7 +1873,7 @@ Your next survey is due in ## days</string>
                         <rect key="frame" x="0.0" y="0.0" width="240" height="162"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="You can chose to share the data tracked in the app to help us improve the experience." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5oe-lm-Hjh">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="You can chose to share the data tracked in the app to help us improve the experience." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5oe-lm-Hjh">
                                 <rect key="frame" x="16" y="20" width="208" height="84"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1917,7 +1919,7 @@ Your next survey is due in ## days</string>
                                 <rect key="frame" x="0.0" y="65" width="320" height="446"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DailyMessageCell" rowHeight="92" id="Swv-HM-A9Q" customClass="DailyMessagesTableViewCell" customModule="Live" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DailyMessageCell" id="Swv-HM-A9Q" customClass="DailyMessagesTableViewCell" customModule="Live" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="DailyMessageCell" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Swv-HM-A9Q" id="kPI-q5-64F">

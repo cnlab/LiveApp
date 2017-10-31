@@ -28,6 +28,9 @@ class DailyMessagesViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
+        
         dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
     }
     
@@ -77,7 +80,7 @@ class DailyMessagesViewController: UIViewController, UITableViewDelegate, UITabl
         cell.checkboxTextView?.text = dailyMessage.text
         cell.checkboxTextView?.setChecked(checked: dailyMessage.rated)
         cell.checkboxTextView?.image = UIImage(named: "ic_checked")
-        cell.checkboxTextView?.sizeFontToFitText();
+        cell.checkboxTextView?.sizeFont();
         return cell
     }
     

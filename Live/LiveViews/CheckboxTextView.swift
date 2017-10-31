@@ -14,6 +14,7 @@ import Foundation
     @IBInspectable open var isChecked: Bool = false
     @IBInspectable open var targetFont: UIFont? = nil
     @IBInspectable open var minimumFontSize: CGFloat = 10.0
+    @IBInspectable open var sizeFontToFitText: Bool = false
     
     public var tappedCallback: (() -> Void)? = nil
 
@@ -35,7 +36,8 @@ import Foundation
         
         textContainerInset = UIEdgeInsets.zero
         textContainer.lineBreakMode = .byTruncatingTail
-
+        textContainer.maximumNumberOfLines = 0
+        
         gestureRecognizers = []
         tapGestureRecognizer.numberOfTapsRequired = 1
         tapGestureRecognizer.addTarget(self, action: #selector(tapped(_:)))
@@ -59,15 +61,6 @@ import Foundation
     }
     
     func updateExclusionPaths() {
-        /*
-        if let font = font {
-            textContainer.maximumNumberOfLines = max(Int(contentSize.height / font.lineHeight), 1)
-        } else {
-            textContainer.maximumNumberOfLines = 1
-        }
- */
-        textContainer.maximumNumberOfLines = 3
-
         if isChecked, let image = image {
             textContainer.exclusionPaths = [UIBezierPath(rect: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))]
         } else {
@@ -81,7 +74,7 @@ import Foundation
         setNeedsDisplay()
     }
     
-    open func sizeFontToFitText() {
+    open func sizeFont() {
         self.text = text
         
         guard let font = targetFont else {
@@ -89,12 +82,14 @@ import Foundation
         }
         var fontSize = font.pointSize * 1.5
         self.font = font.withSize(fontSize)
-        while sizeThatFits(CGSize(width: frame.size.width, height: .greatestFiniteMagnitude)).height >= frame.size.height {
-            fontSize -= 0.5
-            if fontSize < minimumFontSize {
-                break
+        if sizeFontToFitText {
+            while sizeThatFits(CGSize(width: frame.size.width, height: .greatestFiniteMagnitude)).height >= frame.size.height {
+                fontSize -= 0.5
+                if fontSize < minimumFontSize {
+                    break
+                }
+                self.font = font.withSize(fontSize)
             }
-            self.font = font.withSize(fontSize)
         }
     }
     
