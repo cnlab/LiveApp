@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class AboutViewController: UIViewController, UITextViewDelegate, MFMailComposeViewControllerDelegate {
+class AboutViewController: TrackerViewController, UITextViewDelegate, MFMailComposeViewControllerDelegate {
 
     @IBOutlet var textView: UITextView?
     @IBOutlet var versionLabel: UILabel?
@@ -29,6 +29,8 @@ class AboutViewController: UIViewController, UITextViewDelegate, MFMailComposeVi
     }
 
     func alert(message: String) {
+        Tracker.sharedInstance().event(category: "About", name: "Alert", value: message)
+
         let alertController = UIAlertController(title: "Mail Result", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)

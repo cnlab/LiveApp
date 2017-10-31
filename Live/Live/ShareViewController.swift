@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ShareViewController: UIViewController {
+class ShareViewController: TrackerViewController {
 
     @IBOutlet var shareNowButton: UIButton?
+    @IBOutlet var shareWarningLabel: UILabel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,14 +19,20 @@ class ShareViewController: UIViewController {
         let liveManager = LiveManager.shared
         liveManager.shareDataWithResearchers.subscribe(owner: self, observer: shareDataWithResearchersChanged)
 
-        shareNowButton?.isEnabled = LiveManager.shared.shareDataWithResearchers.value
+        shareDataWithResearchersChanged()
     }
 
     func shareDataWithResearchersChanged() {
-        shareNowButton?.isEnabled = LiveManager.shared.shareDataWithResearchers.value
+        let liveManager = LiveManager.shared
+        let share = liveManager.shareDataWithResearchers.value
+        shareNowButton?.isEnabled = share
+        
+        let studyId = liveManager.personalInformation.value.studyId ?? ""
+        shareWarningLabel?.isHidden = (studyId == "") || share;
     }
     
     @IBAction func shareNow() {
+        Tracker.sharedInstance().action(category: "Share", name: "Now")
         let liveManager = LiveManager.shared
         liveManager.cloudManager.lastModificationDate = nil
         liveManager.archive()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SurveyFormViewController: UIViewController {
+class SurveyFormViewController: TrackerViewController {
 
     var submitCallback: (([String : Any]) -> Void)? = nil
 
@@ -37,6 +37,7 @@ class SurveyFormViewController: UIViewController {
             answers["Q1"] = answer(segmentedControl: questionOneSegmentedControl)
             answers["Q2"] = answer(segmentedControl: questionTwoSegmentedControl)
             answers["Q3"] = answer(segmentedControl: questionThreeSegmentedControl)
+            Tracker.sharedInstance().action(category: "Survey", name: "Submit")
             submitCallback(answers)
         }
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IntroductionPage2ViewController: UIViewController {
+class IntroductionPage2ViewController: TrackerViewController {
 
     var popupViewController: IntroductionPopupViewController? = nil
     

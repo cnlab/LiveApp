@@ -34,6 +34,7 @@ class ShareReminderPopupViewController: PopupViewController {
 
     func okAction() {
         closeAction()
+        Tracker.sharedInstance().action(category: "Share", name: "Reminder")
         delegate?.shareReminderPopupViewController(self)
     }
     

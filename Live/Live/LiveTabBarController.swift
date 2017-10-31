@@ -244,6 +244,7 @@ class LiveTabBarController: UITabBarController, UITabBarControllerDelegate, Ance
     func liveManagerOpen(_ liveManager: LiveManager, url: URL) {
         if let studyId = getQueryStringParameter(url: url, parameter: "studyId") {
             liveManager.personalInformation.value = liveManager.personalInformation.value.bySetting(studyId: studyId)
+            liveManager.shareDataWithResearchers.value = true
         }
     }
     

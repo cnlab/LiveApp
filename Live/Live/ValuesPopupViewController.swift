@@ -39,6 +39,7 @@ class ValuesPopupViewController: PopupViewController {
         guard let thinkViewController = thinkViewController else {
             return
         }
+        Tracker.sharedInstance().event(category: "Value", name: "rank", value: "\(thinkViewController.rank)")
         delegate?.valuesPopupViewController(self, rank: thinkViewController.rank)
     }
 

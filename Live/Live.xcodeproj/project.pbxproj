@@ -48,6 +48,8 @@
 		92716C401D94CDCD00980CA3 /* CollectionViewListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92716C3F1D94CDCD00980CA3 /* CollectionViewListLayout.swift */; };
 		92785F811F6AE557007D55E1 /* HomeDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92785F801F6AE557007D55E1 /* HomeDataViewController.swift */; };
 		92785F831F6AE6EB007D55E1 /* HomeIntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92785F821F6AE6EB007D55E1 /* HomeIntroductionViewController.swift */; };
+		927ADFD81FA8F2BB00CD9CBB /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927ADFD71FA8F2BB00CD9CBB /* Tracker.swift */; };
+		927ADFDA1FA9149800CD9CBB /* TrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927ADFD91FA9149800CD9CBB /* TrackerViewController.swift */; };
 		927B69011E1592E200C80F76 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927B69001E1592E200C80F76 /* MessageUI.framework */; };
 		927B69041E15949B00C80F76 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927B69031E15949B00C80F76 /* AboutViewController.swift */; };
 		927E72AA1E1B4135003CFD5A /* SurveyFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927E72A91E1B4135003CFD5A /* SurveyFormViewController.swift */; };
@@ -189,6 +191,8 @@
 		92716C3F1D94CDCD00980CA3 /* CollectionViewListLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewListLayout.swift; sourceTree = "<group>"; };
 		92785F801F6AE557007D55E1 /* HomeDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeDataViewController.swift; sourceTree = "<group>"; };
 		92785F821F6AE6EB007D55E1 /* HomeIntroductionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeIntroductionViewController.swift; sourceTree = "<group>"; };
+		927ADFD71FA8F2BB00CD9CBB /* Tracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker.swift; sourceTree = "<group>"; };
+		927ADFD91FA9149800CD9CBB /* TrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerViewController.swift; sourceTree = "<group>"; };
 		927B69001E1592E200C80F76 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		927B69031E15949B00C80F76 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		927E72A91E1B4135003CFD5A /* SurveyFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyFormViewController.swift; sourceTree = "<group>"; };
@@ -400,6 +404,8 @@
 				92062C3A1DB272F60001DE0C /* Live-Bridging-Header.h */,
 				924991A21E1C3295002B7E97 /* Ancestor.swift */,
 				9255DC4B1E1D4CC600B931E3 /* JSON.swift */,
+				927ADFD71FA8F2BB00CD9CBB /* Tracker.swift */,
+				927ADFD91FA9149800CD9CBB /* TrackerViewController.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -833,11 +839,13 @@
 				927E72AE1E1B4155003CFD5A /* SurveyIntroductionViewController.swift in Sources */,
 				923E62BE1E14526B00D191EC /* IntroductionPopupViewController.swift in Sources */,
 				924991A31E1C3295002B7E97 /* Ancestor.swift in Sources */,
+				927ADFD81FA8F2BB00CD9CBB /* Tracker.swift in Sources */,
 				9291F68D1DAC306500042F42 /* Time.swift in Sources */,
 				92C7A28C1F54F99A004678A7 /* MessageTableViewDataSource.swift in Sources */,
 				92F7CDBE1DAF033E009E2924 /* NotificationManager.swift in Sources */,
 				921D18751F8BFF97006C483A /* DailyMessagesViewController.swift in Sources */,
 				92A1D5F71E1F3BBA004E5D3F /* ShareReminderPopupViewController.swift in Sources */,
+				927ADFDA1FA9149800CD9CBB /* TrackerViewController.swift in Sources */,
 				927E72AA1E1B4135003CFD5A /* SurveyFormViewController.swift in Sources */,
 				92986D921D99A5FF008B8533 /* SurveyViewController.swift in Sources */,
 				92CA919A1D8304B9000491CD /* HomeViewController.swift in Sources */,

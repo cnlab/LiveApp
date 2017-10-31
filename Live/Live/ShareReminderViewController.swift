@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShareReminderViewController: UIViewController {
+class ShareReminderViewController: TrackerViewController {
 
     var popupViewController: ShareReminderPopupViewController?
 

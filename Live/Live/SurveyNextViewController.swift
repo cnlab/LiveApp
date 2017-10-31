@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SurveyNextViewController: UIViewController {
+class SurveyNextViewController: TrackerViewController {
 
     @IBOutlet var daysLabel: UILabel?
     @IBOutlet var whenLabel: UILabel?

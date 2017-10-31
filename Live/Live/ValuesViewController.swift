@@ -9,7 +9,7 @@
 import UIKit
 import LiveViews
 
-class ValuesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ValuesViewController: TrackerViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     var letsGoCallback: (() -> Void)? = nil
 
@@ -187,7 +187,9 @@ class ValuesViewController: UIViewController, UICollectionViewDataSource, UIColl
         let value = values.remove(at: sourceIndex)
         let destinationIndex = destinationIndexPath.last!
         values.insert(value, at: destinationIndex)
-
+        
+        Tracker.sharedInstance().event(category: "Values", name: "order", value: values.joined(separator: ","))
+        
         let liveManager = LiveManager.shared
         liveManager.orderedValues.value = values
 

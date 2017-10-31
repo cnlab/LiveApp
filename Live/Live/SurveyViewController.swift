@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SurveyViewController: UIViewController {
+class SurveyViewController: TrackerViewController {
 
     @IBOutlet var introductionView: UIView?
     @IBOutlet var formView: UIView?

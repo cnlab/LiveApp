@@ -944,7 +944,7 @@ What time do you want to receive these reminders?</string>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xD9-WP-ZG1">
                                 <rect key="frame" x="16" y="57" width="288" height="291"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="291" id="esN-uC-oOW"/>
+                                    <constraint firstAttribute="height" constant="291" id="6G9-zQ-eot"/>
                                 </constraints>
                                 <string key="text">This app was developed by academic researchers and they are working on improving the app to make it more custom to each user. 
 
@@ -957,7 +957,7 @@ Data is anonymous and has a random ID assigned to it. We do not share your data 
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AcV-k3-XNM">
                                 <rect key="frame" x="16" y="356" width="288" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="ycJ-ud-fc3"/>
+                                    <constraint firstAttribute="height" constant="44" id="kFN-L2-NV8"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="SlT-nm-yds" kind="embed" id="Yhw-Re-Atc"/>
@@ -970,27 +970,42 @@ Data is anonymous and has a random ID assigned to it. We do not share your data 
                                     <action selector="shareNow" destination="Km8-Zb-u6F" eventType="touchUpInside" id="sHR-mp-3bU"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6j-KB-cHT">
+                                <rect key="frame" x="16" y="408" width="288" height="42"/>
+                                <color key="backgroundColor" red="0.47277605533599854" green="0.71026128530502319" blue="0.682353675365448" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="YWG-Hn-qDu"/>
+                                </constraints>
+                                <string key="text">You are a study participant.
+Please turn sharing on.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="AcV-k3-XNM" firstAttribute="top" secondItem="xD9-WP-ZG1" secondAttribute="bottom" constant="8" symbolic="YES" id="1Mk-SL-WuI"/>
-                            <constraint firstItem="xD9-WP-ZG1" firstAttribute="trailing" secondItem="AcV-k3-XNM" secondAttribute="trailing" id="76k-7r-2BT"/>
-                            <constraint firstItem="xD9-WP-ZG1" firstAttribute="leading" secondItem="AcV-k3-XNM" secondAttribute="leading" id="GaA-TC-Py5"/>
-                            <constraint firstItem="CV8-V3-wzl" firstAttribute="top" secondItem="MNZ-g6-qFI" secondAttribute="bottom" id="Il4-SV-BRe"/>
-                            <constraint firstItem="CV8-V3-wzl" firstAttribute="leading" secondItem="xD9-WP-ZG1" secondAttribute="leading" id="KHm-QD-eb3"/>
-                            <constraint firstItem="BWK-un-ufd" firstAttribute="bottom" secondItem="jbj-Jn-bmP" secondAttribute="top" constant="-8" id="WaH-AQ-Uni"/>
-                            <constraint firstItem="xD9-WP-ZG1" firstAttribute="top" secondItem="CV8-V3-wzl" secondAttribute="bottom" constant="8" symbolic="YES" id="YDF-gv-Lr4"/>
-                            <constraint firstItem="jbj-Jn-bmP" firstAttribute="top" secondItem="BWK-un-ufd" secondAttribute="bottom" constant="8" symbolic="YES" id="bx8-tl-Jxj"/>
-                            <constraint firstItem="AcV-k3-XNM" firstAttribute="trailing" secondItem="BWK-un-ufd" secondAttribute="trailing" id="hnU-xP-hMr"/>
-                            <constraint firstItem="AcV-k3-XNM" firstAttribute="leading" secondItem="BWK-un-ufd" secondAttribute="leading" id="jMg-Im-2Qw"/>
-                            <constraint firstItem="CV8-V3-wzl" firstAttribute="trailing" secondItem="Ssi-45-W6U" secondAttribute="trailingMargin" id="jOF-fn-MFn"/>
-                            <constraint firstItem="CV8-V3-wzl" firstAttribute="leading" secondItem="Ssi-45-W6U" secondAttribute="leadingMargin" id="oco-l3-pDJ"/>
-                            <constraint firstItem="CV8-V3-wzl" firstAttribute="trailing" secondItem="xD9-WP-ZG1" secondAttribute="trailing" id="saa-YV-jpC"/>
+                            <constraint firstItem="jbj-Jn-bmP" firstAttribute="top" secondItem="BWK-un-ufd" secondAttribute="bottom" constant="8" symbolic="YES" id="0U9-EZ-3BE"/>
+                            <constraint firstItem="CV8-V3-wzl" firstAttribute="leading" secondItem="xD9-WP-ZG1" secondAttribute="leading" id="AQg-H3-WvK"/>
+                            <constraint firstItem="CV8-V3-wzl" firstAttribute="top" secondItem="MNZ-g6-qFI" secondAttribute="bottom" id="DOU-Hg-hqq"/>
+                            <constraint firstItem="P6j-KB-cHT" firstAttribute="top" secondItem="AcV-k3-XNM" secondAttribute="bottom" constant="8" symbolic="YES" id="Ga0-3V-cOo"/>
+                            <constraint firstItem="CV8-V3-wzl" firstAttribute="trailing" secondItem="Ssi-45-W6U" secondAttribute="trailingMargin" id="Klt-ir-JG8"/>
+                            <constraint firstItem="AcV-k3-XNM" firstAttribute="leading" secondItem="P6j-KB-cHT" secondAttribute="leading" id="LMe-n5-3RI"/>
+                            <constraint firstItem="AcV-k3-XNM" firstAttribute="trailing" secondItem="P6j-KB-cHT" secondAttribute="trailing" id="OyA-5S-86E"/>
+                            <constraint firstItem="P6j-KB-cHT" firstAttribute="leading" secondItem="BWK-un-ufd" secondAttribute="leading" id="PGh-n7-QFi"/>
+                            <constraint firstItem="P6j-KB-cHT" firstAttribute="trailing" secondItem="BWK-un-ufd" secondAttribute="trailing" id="QB4-RY-OJ3"/>
+                            <constraint firstItem="AcV-k3-XNM" firstAttribute="top" secondItem="xD9-WP-ZG1" secondAttribute="bottom" constant="8" symbolic="YES" id="R75-a0-h0e"/>
+                            <constraint firstItem="CV8-V3-wzl" firstAttribute="leading" secondItem="Ssi-45-W6U" secondAttribute="leadingMargin" id="W5p-cc-jZl"/>
+                            <constraint firstItem="xD9-WP-ZG1" firstAttribute="trailing" secondItem="AcV-k3-XNM" secondAttribute="trailing" id="c4i-wf-ObR"/>
+                            <constraint firstItem="xD9-WP-ZG1" firstAttribute="leading" secondItem="AcV-k3-XNM" secondAttribute="leading" id="hiE-5w-9hH"/>
+                            <constraint firstItem="CV8-V3-wzl" firstAttribute="trailing" secondItem="xD9-WP-ZG1" secondAttribute="trailing" id="q2W-0l-UzK"/>
+                            <constraint firstItem="xD9-WP-ZG1" firstAttribute="top" secondItem="CV8-V3-wzl" secondAttribute="bottom" constant="8" symbolic="YES" id="sqA-Fe-M60"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Share" id="PeG-m9-RwD"/>
                     <connections>
                         <outlet property="shareNowButton" destination="BWK-un-ufd" id="CeP-Te-0p8"/>
+                        <outlet property="shareWarningLabel" destination="P6j-KB-cHT" id="Fkl-z1-4ho"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JCZ-m8-Ez7" userLabel="First Responder" sceneMemberID="firstResponder"/>

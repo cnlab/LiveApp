@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SurveyIntroductionViewController: UIViewController {
+class SurveyIntroductionViewController: TrackerViewController {
 
     @IBOutlet var tipView: UIView?
     
@@ -25,12 +25,14 @@ class SurveyIntroductionViewController: UIViewController {
 
     @IBAction func share() {
         if let shareCallback = shareCallback {
+            Tracker.sharedInstance().action(category: "Survey", name: "Share")
             shareCallback()
         }
     }
 
     @IBAction func about() {
         if let aboutCallback = aboutCallback {
+            Tracker.sharedInstance().action(category: "Survey", name: "About")
             aboutCallback()
         }
     }

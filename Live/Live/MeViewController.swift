@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MeViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class MeViewController: TrackerViewController, UITextFieldDelegate, UITextViewDelegate {
 
     let weightPerceptionValues = ["perception...", "about right", "heavier than I would like", "lighter than I would like"]
     

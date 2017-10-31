@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PopupViewController: UIViewController {
+class PopupViewController: TrackerViewController {
 
     @IBOutlet var contentView: UIView?
 

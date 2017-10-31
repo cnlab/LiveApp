@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ActivityThinkViewController: UIViewController {
+class ActivityThinkViewController: TrackerViewController {
 
     @IBOutlet var textView: UITextView?
     @IBOutlet var importantButton: UIButton?

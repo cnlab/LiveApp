@@ -15,11 +15,15 @@ class ShareFieldsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        shareSwitch?.setOn(LiveManager.shared.shareDataWithResearchers.value, animated: false)
+        let liveManager = LiveManager.shared
+        let share = liveManager.shareDataWithResearchers.value
+        shareSwitch?.setOn(share, animated: false)
     }
 
     @IBAction func shareSwitchChanged() {
-        LiveManager.shared.shareDataWithResearchers.value = shareSwitch?.isOn ?? false
+        let share = shareSwitch?.isOn ?? false
+        Tracker.sharedInstance().event(category: "Share", name: "State", value: "\(share)")
+        LiveManager.shared.shareDataWithResearchers.value = share
     }
     
 }

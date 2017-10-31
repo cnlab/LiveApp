@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class DebugViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class DebugViewController: TrackerViewController, MFMailComposeViewControllerDelegate {
 
     @IBOutlet var summaryLabel: UILabel? = nil
     @IBOutlet var textView: UITextView? = nil

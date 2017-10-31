@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PickerViewController: UIViewController {
+class PickerViewController: TrackerViewController {
 
     @IBOutlet var pickerView: UIPickerView?
 

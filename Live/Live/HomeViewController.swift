@@ -9,7 +9,7 @@
 import UIKit
 import LiveViews
 
-class HomeViewController: UIViewController {
+class HomeViewController: TrackerViewController {
 
     @IBOutlet var introductionView: UIView?
     @IBOutlet var dataView: UIView?
@@ -67,6 +67,8 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func dailyMessages() {
+        Tracker.sharedInstance().action(category: "Value", name: "Daily Messages")
+
         if let dailyMessagesCallback = dailyMessagesCallback {
             dailyMessagesCallback()
         }
@@ -102,6 +104,7 @@ class HomeViewController: UIViewController {
         let liveManager = LiveManager.shared
         if let note = liveManager.valueNote.value {
             let rank = note.rating?.rank ?? 0.5
+            Tracker.sharedInstance().action(category: "Home", name: "Rank Value")
             liveManager.delegate?.liveManagerAffirm(liveManager, uuid: note.uuid, type: note.type, messageKey: note.messageKey, rank: rank)
         }
     }
@@ -110,6 +113,7 @@ class HomeViewController: UIViewController {
         let liveManager = LiveManager.shared
         if let note = liveManager.activityNote.value {
             let rank = note.rating?.rank ?? 0.5
+            Tracker.sharedInstance().action(category: "Home", name: "Rank Activity")
             liveManager.delegate?.liveManagerAffirm(liveManager, uuid: note.uuid, type: note.type, messageKey: note.messageKey, rank: rank)
         }
     }

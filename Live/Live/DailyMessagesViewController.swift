@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DailyMessagesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DailyMessagesViewController: TrackerViewController, UITableViewDelegate, UITableViewDataSource {
     
     var dateFormatter: DateFormatter = DateFormatter()
 
