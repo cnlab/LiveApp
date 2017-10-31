@@ -11,10 +11,14 @@ import MessageUI
 
 class DebugViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
+    @IBOutlet var summaryLabel: UILabel? = nil
     @IBOutlet var textView: UITextView? = nil
 
     override func viewDidAppear(_ animated: Bool) {
-        if let data = try? Data(contentsOf: LiveManager.shared.archivePath, options: []) {
+        let liveManager = LiveManager.shared
+        let personalInformation = liveManager.personalInformation.value
+        summaryLabel?.text = "study id: " + (personalInformation.studyId ?? "not set")
+        if let data = try? Data(contentsOf: liveManager.archivePath, options: []) {
             textView?.text = String(data: data, encoding: .utf8)
         }
     }
