@@ -44,7 +44,7 @@ class DailyMessagesViewController: UIViewController, UITableViewDelegate, UITabl
                 let date: String
                 let moment = day.moment
                 if (moment.year == today.year) && (moment.month == today.month) && (moment.day == today.day) {
-                    date = "today"
+                    date = "Today"
                 } else {
                     if let when = Calendar.current.date(from: DateComponents(year: moment.year, month: moment.month, day: moment.day)) {
                         date = dateFormatter.string(from: when)
