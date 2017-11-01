@@ -37,7 +37,7 @@ class SurveyFormViewController: TrackerViewController {
             answers["Q1"] = answer(segmentedControl: questionOneSegmentedControl)
             answers["Q2"] = answer(segmentedControl: questionTwoSegmentedControl)
             answers["Q3"] = answer(segmentedControl: questionThreeSegmentedControl)
-            Tracker.sharedInstance().action(category: "Survey", name: "Submit")
+            Tracker.sharedInstance().record(category: "Survey", name: "Submit")
             submitCallback(answers)
         }
     }

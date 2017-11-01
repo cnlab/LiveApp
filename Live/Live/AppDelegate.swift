@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        Tracker.sharedInstance().event(category: "application", name: "open", value: url.absoluteString)
+        Tracker.sharedInstance().record(category: "application", name: "open", value: url.absoluteString)
         
         let liveManager = LiveManager.shared
         liveManager.delegate?.liveManagerOpen(liveManager, url: url)
@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         pageControl.currentPageIndicatorTintColor = UIColor.gray
         pageControl.backgroundColor = UIColor.white
         
-        Tracker.sharedInstance().session(transition: .didFinishLaunching)
+        Tracker.sharedInstance().record(transition: .didFinishLaunching)
  
         let liveManager = LiveManager.shared
         if !liveManager.unarchive() {
@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return
         }
 
-        Tracker.sharedInstance().session(transition: .willResignActive)
+        Tracker.sharedInstance().record(transition: .willResignActive)
 
         LiveManager.shared.archive()
     }
@@ -83,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return
         }
 
-        Tracker.sharedInstance().session(transition: .didEnterBackground)
+        Tracker.sharedInstance().record(transition: .didEnterBackground)
 
         LiveManager.shared.archive()
     }
@@ -91,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
         
-        Tracker.sharedInstance().session(transition: .willEnterForeground)
+        Tracker.sharedInstance().record(transition: .willEnterForeground)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -101,7 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return
         }
 
-        Tracker.sharedInstance().session(transition: .didBecomeActive)
+        Tracker.sharedInstance().record(transition: .didBecomeActive)
 
         LiveManager.shared.refresh()
     }
@@ -113,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return
         }
 
-        Tracker.sharedInstance().session(transition: .willTerminate)
+        Tracker.sharedInstance().record(transition: .willTerminate)
         
         LiveManager.shared.archive()
     }

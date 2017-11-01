@@ -25,14 +25,14 @@ class SurveyIntroductionViewController: TrackerViewController {
 
     @IBAction func share() {
         if let shareCallback = shareCallback {
-            Tracker.sharedInstance().action(category: "Survey", name: "Share")
+            Tracker.sharedInstance().record(category: "Survey", name: "Share")
             shareCallback()
         }
     }
 
     @IBAction func about() {
         if let aboutCallback = aboutCallback {
-            Tracker.sharedInstance().action(category: "Survey", name: "About")
+            Tracker.sharedInstance().record(category: "Survey", name: "About")
             aboutCallback()
         }
     }

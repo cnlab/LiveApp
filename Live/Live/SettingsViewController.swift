@@ -91,7 +91,7 @@ class SettingsViewController: TrackerViewController {
             dateFormatter.dateStyle = .none
             dateFormatter.timeStyle = .short
             let time = dateFormatter.string(from: triggerDateToday())
-            Tracker.sharedInstance().event(category: "Settings", name: "Time", value: time)
+            Tracker.sharedInstance().record(category: "Settings", name: "Time", value: time)
             label.text = "You will be reminded at \(time)."
             UIView.transition(with: label, duration: 0.3, options: [.transitionCrossDissolve], animations: { label.textColor = .black }, completion: { animationFinished in
                 UIView.transition(with: label, duration: 1.0, options: [.transitionCrossDissolve], animations: { label.textColor = .lightGray }, completion: nil)

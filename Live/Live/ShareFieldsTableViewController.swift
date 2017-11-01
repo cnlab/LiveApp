@@ -22,7 +22,7 @@ class ShareFieldsTableViewController: UITableViewController {
 
     @IBAction func shareSwitchChanged() {
         let share = shareSwitch?.isOn ?? false
-        Tracker.sharedInstance().event(category: "Share", name: "State", value: "\(share)")
+        Tracker.sharedInstance().record(category: "Share", name: "State", value: "\(share)")
         LiveManager.shared.shareDataWithResearchers.value = share
     }
     

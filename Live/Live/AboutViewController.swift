@@ -29,7 +29,7 @@ class AboutViewController: TrackerViewController, UITextViewDelegate, MFMailComp
     }
 
     func alert(message: String) {
-        Tracker.sharedInstance().event(category: "About", name: "Alert", value: message)
+        Tracker.sharedInstance().record(category: "About", name: "Alert", value: message)
 
         let alertController = UIAlertController(title: "Mail Result", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

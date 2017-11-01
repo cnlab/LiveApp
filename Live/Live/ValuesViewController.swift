@@ -188,7 +188,7 @@ class ValuesViewController: TrackerViewController, UICollectionViewDataSource, U
         let destinationIndex = destinationIndexPath.last!
         values.insert(value, at: destinationIndex)
         
-        Tracker.sharedInstance().event(category: "Values", name: "order", value: values.joined(separator: ","))
+        Tracker.sharedInstance().record(category: "Values", name: "order", value: values.joined(separator: ","))
         
         let liveManager = LiveManager.shared
         liveManager.orderedValues.value = values

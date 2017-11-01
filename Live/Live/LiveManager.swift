@@ -19,7 +19,7 @@ protocol LiveManagerDelegate {
     
 }
 
-class LiveManager: NotificationManagerDelegate {
+class LiveManager: NotificationManagerDelegate, TrackerDelegate {
 
     class var shared: LiveManager { get { return sharedLiveManager } }
 
@@ -81,6 +81,7 @@ class LiveManager: NotificationManagerDelegate {
     let horizon = 14
     var trigger = Observable<DateComponents>(value: DateComponents(hour: 9, minute: 0))
     var triggerOffsets: [String: TimeInterval] = ["Activity": 0, "Value": 10]
+    var actions: [Tracker.Action] = []
     var modificationDate = Date()
     var dirty = false {
         didSet {
@@ -94,6 +95,8 @@ class LiveManager: NotificationManagerDelegate {
     }
 
     init() {
+        Tracker.sharedInstance().delegate = self
+        
         orderedValues.subscribe(owner: self, observer: orderedValuesChanged)
         trigger.subscribe(owner: self, observer: triggerChanged)
         personalInformation.subscribe(owner: self, observer: personalInformationChanged)
@@ -106,6 +109,11 @@ class LiveManager: NotificationManagerDelegate {
         healthKitManager.height.subscribe(owner: self, observer: heightChanged)
     }
 
+    func tracker(_ tracker: Tracker, action: Tracker.Action) {
+        actions.append(action)
+        dirty = true
+    }
+    
     // !!! just for testing and debug
     func changeShareReminderDateToNow() {
         guard let installationDate = installationDate else {
@@ -174,6 +182,7 @@ class LiveManager: NotificationManagerDelegate {
             "installationDate": JSON.json(date: installationDate ?? Date()),
             "installationUUID": JSON.json(string: installationUUID ?? ""),
             "modificationDate": JSON.json(date: modificationDate),
+            "actions": JSON.json(array: actions),
             "trigger": LiveManager.json(dateComponents: trigger.value),
             "schedule": JSON.json(object: schedule),
             "valueMessageManager": JSON.json(object: valueMessageManager.state),
@@ -212,6 +221,7 @@ class LiveManager: NotificationManagerDelegate {
             let installationDate = try JSON.jsonOptionalDate(json: json, key: "installationDate")
             let installationUUID = try JSON.jsonOptionalString(json: json, key: "installationUUID")
             let modificationDate = try JSON.jsonDefaultDate(json: json, key: "modificationDate", fallback: self.modificationDate)
+            let actions = try JSON.jsonArray(json: json, key: "actions", fallback: self.actions)
             let trigger = try LiveManager.jsonDefaultDateComponents(json: json, key: "trigger", fallback: self.trigger.value)
             let schedule: Schedule = try JSON.jsonObject(json: json, key: "schedule")
             let valueMessageManager: ValueMessageManager.State = try JSON.jsonObject(json: json, key: "valueMessageManager")
@@ -229,6 +239,7 @@ class LiveManager: NotificationManagerDelegate {
             self.installationDate = installationDate
             self.installationUUID = installationUUID
             self.modificationDate = modificationDate
+            self.actions = actions
             self.trigger.value = trigger
             self.schedule = schedule
             self.valueMessageManager.state = valueMessageManager

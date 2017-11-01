@@ -206,6 +206,13 @@ class JSON {
         return try jsonArray(json: jsonArrayMaybe)
     }
 
+    static func jsonArray<T>(json: [String: Any], key: String, fallback: [T]) throws -> [T] where T: JSONConvertable {
+        if json[key] == nil {
+            return fallback
+        }
+        return try jsonArray(json: json, key: key)
+    }
+    
     static func json(array: [String]) -> [Any] {
         return array
     }

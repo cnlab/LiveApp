@@ -8,6 +8,12 @@
 
 import UIKit
 
+protocol TrackerDelegate {
+    
+    func tracker(_ tracker: Tracker, action: Tracker.Action)
+    
+}
+
 class Tracker {
     
     static let instance = Tracker()
@@ -34,24 +40,59 @@ class Tracker {
         }
     }
     
-    func session(transition: Session.Transition) {
-        NSLog("Tracker: session: transition: \(transition)")
+    class Action: JSONConvertable {
+        
+        let category: String
+        let name: String
+        let date: String
+        let value: String
+        
+        init(category: String, name: String, date: String, value: String) {
+            self.category = category
+            self.name = name
+            self.date = date
+            self.value = value
+        }
+        
+        required init(json: [String: Any]) throws {
+            let category = try JSON.jsonString(json: json, key: "category")
+            let name = try JSON.jsonString(json: json, key: "name")
+            let date = try JSON.jsonString(json: json, key: "date")
+            let value = try JSON.jsonString(json: json, key: "value")
+            
+            self.category = category
+            self.name = name
+            self.date = date
+            self.value = value
+        }
+        
+        func json() -> [String: Any] {
+            return [
+                "category": JSON.json(string: category),
+                "name": JSON.json(string: name),
+                "date": JSON.json(string: date),
+                "value": JSON.json(string: value),
+            ]
+        }
+        
     }
     
-    func view(name: String, transition: View.Transition) {
-        NSLog("Tracker: view: name: \(name) transition: \(transition)")
+    var delegate: TrackerDelegate?
+    
+    func record(category: String, name: String, value: String = "") {
+        let now = Date()
+        let date = DateFormatter.localizedString(from: now, dateStyle: .short, timeStyle: .medium)
+        let action = Action(category: category, name: name, date: date, value: value)
+        NSLog("Tracker Action: category: \(action.category) name: \(action.name) date: \(action.date) value: \(action.value)")
+        delegate?.tracker(self, action: action)
     }
     
-    func action(category: String, name: String) {
-        NSLog("Tracker: action: category: \(category) name: \(action)")
+    func record(transition: Session.Transition) {
+        record(category: "app", name: "session", value: String(describing: transition))
     }
     
-    func event(category: String, name: String, value: String) {
-        NSLog("Tracker: event: category: \(category) name: \(name) value: \(value)")
-    }
-    
-    func variable(category: String, name: String, value: String) {
-        NSLog("Tracker: variable: category: \(category) name: \(name) value: \(value)")
+    func record(name: String, transition: View.Transition) {
+        record(category: "screen", name: name, value: String(describing: transition))
     }
     
 }

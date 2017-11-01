@@ -23,6 +23,8 @@ class MeViewController: TrackerViewController, UITextFieldDelegate, UITextViewDe
     
     var pickerPopupViewController: PickerPopupViewController? = nil
     
+    var oldPersonalInformation = PersonalInformation()
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return false
@@ -178,6 +180,40 @@ class MeViewController: TrackerViewController, UITextFieldDelegate, UITextViewDe
         let newPersonalInformation = LiveManager.shared.personalInformation.value.bySetting(age: age, gender: gender, weight: weight, weightPerception: weightPerception, height: height, zipCode: zipCode, comment: comment)
         LiveManager.shared.personalInformation.value = newPersonalInformation
 //        LiveManager.shared.personalInformation.value = PersonalInformation(age: age, gender: gender, weight: weight, weightPerception: weightPerception, height: height, zipCode: zipCode, studyId: studyId, comment: comment)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        oldPersonalInformation = LiveManager.shared.personalInformation.value
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        let old = oldPersonalInformation
+        let new = LiveManager.shared.personalInformation.value
+        if old.age != new.age {
+            Tracker.sharedInstance().record(category: "Me", name: "Age", value: String(describing: new.age))
+        }
+        if old.gender != new.gender {
+            Tracker.sharedInstance().record(category: "Me", name: "Gender", value: String(describing: new.gender))
+        }
+        if old.weight != new.weight {
+            Tracker.sharedInstance().record(category: "Me", name: "Weight", value: String(describing: new.weight))
+        }
+        if old.weightPerception != new.weightPerception {
+            Tracker.sharedInstance().record(category: "Me", name: "WeightPerception", value: String(describing: new.weightPerception))
+        }
+        if old.height != new.height {
+            Tracker.sharedInstance().record(category: "Me", name: "Height", value: String(describing: new.height))
+        }
+        if old.zipCode != new.zipCode {
+            Tracker.sharedInstance().record(category: "Me", name: "ZipCode", value: String(describing: new.zipCode))
+        }
+        if old.comment != new.comment {
+            Tracker.sharedInstance().record(category: "Me", name: "Comment", value: String(describing: new.comment))
+        }
     }
 
 }

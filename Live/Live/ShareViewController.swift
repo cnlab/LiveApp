@@ -32,7 +32,7 @@ class ShareViewController: TrackerViewController {
     }
     
     @IBAction func shareNow() {
-        Tracker.sharedInstance().action(category: "Share", name: "Now")
+        Tracker.sharedInstance().record(category: "Share", name: "Now")
         let liveManager = LiveManager.shared
         liveManager.cloudManager.lastModificationDate = nil
         liveManager.archive()

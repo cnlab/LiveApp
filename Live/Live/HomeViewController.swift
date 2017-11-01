@@ -67,7 +67,7 @@ class HomeViewController: TrackerViewController {
     }
 
     @IBAction func dailyMessages() {
-        Tracker.sharedInstance().action(category: "Value", name: "Daily Messages")
+        Tracker.sharedInstance().record(category: "Value", name: "Daily Messages")
 
         if let dailyMessagesCallback = dailyMessagesCallback {
             dailyMessagesCallback()
@@ -104,7 +104,7 @@ class HomeViewController: TrackerViewController {
         let liveManager = LiveManager.shared
         if let note = liveManager.valueNote.value {
             let rank = note.rating?.rank ?? 0.5
-            Tracker.sharedInstance().action(category: "Home", name: "Rank Value")
+            Tracker.sharedInstance().record(category: "Home", name: "Rank Value")
             liveManager.delegate?.liveManagerAffirm(liveManager, uuid: note.uuid, type: note.type, messageKey: note.messageKey, rank: rank)
         }
     }
@@ -113,7 +113,7 @@ class HomeViewController: TrackerViewController {
         let liveManager = LiveManager.shared
         if let note = liveManager.activityNote.value {
             let rank = note.rating?.rank ?? 0.5
-            Tracker.sharedInstance().action(category: "Home", name: "Rank Activity")
+            Tracker.sharedInstance().record(category: "Home", name: "Rank Activity")
             liveManager.delegate?.liveManagerAffirm(liveManager, uuid: note.uuid, type: note.type, messageKey: note.messageKey, rank: rank)
         }
     }

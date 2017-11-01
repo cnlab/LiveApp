@@ -39,7 +39,7 @@ class ActivityPopupViewController: PopupViewController {
         guard let thinkViewController = thinkViewController else {
             return
         }
-        Tracker.sharedInstance().event(category: "Activity", name: "rank", value: "\(thinkViewController.rank)")
+        Tracker.sharedInstance().record(category: "Activity", name: "rank", value: "\(thinkViewController.rank)")
         delegate?.activityPopupViewController(self, rank: thinkViewController.rank)
     }
     
