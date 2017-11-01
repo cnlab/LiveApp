@@ -67,8 +67,8 @@ class ActivityMessageManager: MessageManager {
                 (active, "Squeeze in even more walking or biking. Think about places you go and see if any are close enough to walk or bike to."),
                 (inactive, "Squeeze in more walking or biking. Think about places you go and see if any are close enough to walk or bike to.")),
             Message(group: how, identifier: "4", alternatives:
-                (active, "Dancing is a great activity. Pick your song and start dancing. No need to look good, moving your body at all counts."),
-                (inactive, "Dancing is a great activity. Pick your song and start dancing. No need to look good, moving your body at all counts.")),
+                (active, "Dancing is a great activity. Pick your favorite song and start dancing. No need to look good, moving your body is all that counts."),
+                (inactive, "Dancing is a great activity. Pick your favorite song and start dancing. No need to look good, moving your body is all that counts.")),
             Message(group: how, identifier: "5", alternatives:
                 (active, "Some types of entertainment are more active than others. Bowling, skating, or swimming are some good things to mix in."),
                 (inactive, "Some types of entertainment are more active than others. Bowling, skating, or swimming are some good things to mix in.")),
@@ -81,8 +81,8 @@ class ActivityMessageManager: MessageManager {
 
             // PA1 Sedentary How
             Message(group: how, identifier: "8", alternatives:
-                (active, "When you sat for an hour, go for a 5-minute walk. Walk around the block, go up and down the stairs, or walk the halls."),
-                (inactive, "When you sat for an hour, go for a 5-minute walk. Walk around the block, go up and down the stairs, or walk the halls.")),
+                (active, "After you sit for an hour, go for a 5-minute walk. Walk around the block, go up and down the stairs, or walk the halls."),
+                (inactive, "After you sit for an hour, go for a 5-minute walk. Walk around the block, go up and down the stairs, or walk the halls.")),
             Message(group: how, identifier: "9", alternatives:
                 (active, "After an hour of sitting, stand up. Stand while you read, watch TV, talk on the phone, fold laundry, or write an email."),
                 (inactive, "After an hour of sitting, stand up. Stand while you read, watch TV, talk on the phone, fold laundry, or write an email.")),
@@ -102,8 +102,8 @@ class ActivityMessageManager: MessageManager {
                 (active, "Make your family time more active. Instead of sitting while you catch up with family, go for a walk while you chat."),
                 (inactive, "Make your family time more active. Instead of sitting while you catch up with family, go for a walk while you chat.")),
             Message(group: how, identifier: "15", alternatives:
-                (active, "Yard work can be keep you moving. Instead of using a leaf blower, rake your leaves to move around more."),
-                (inactive, "Yard work can be get you moving. Instead of using a leaf blower, rake your leaves to move around more.")),
+                (active, "Yard work can keep you moving. Instead of using a leaf blower, rake your leaves to move around more."),
+                (inactive, "Yard work can get you moving. Instead of using a leaf blower, rake your leaves to move around more.")),
 
             // PA2 How
             Message(group: how, identifier: "16", alternatives:
@@ -160,8 +160,8 @@ class ActivityMessageManager: MessageManager {
                 (active, "Staying active can connect you with others in fun social settings, like in classes, teams, or just playing with friends."),
                 (inactive, "Getting active can connect you with others in fun social settings, like in classes, teams, or just playing with friends.")),
             Message(group: why, identifier: "8", alternatives:
-                (active, "Staying active builds muscle. Becoming even stronger helps with everyday things and help you feel more powerful in life."),
-                (inactive, "Getting more active builds muscle. Becoming stronger helps with everyday things and help you feel more powerful in life.")),
+                (active, "Staying active builds muscle. Becoming even stronger helps with everyday things and helps you feel more powerful in life."),
+                (inactive, "Getting more active builds muscle. Becoming stronger helps with everyday things and helps you feel more powerful in life.")),
             Message(group: why, identifier: "9", alternatives:
                 (active, "Physical activity helps you age better. Staying active will help you continue doing things you like."),
                 (inactive, "Physical activity helps you age better. Becoming active will help you continue doing things you like.")),
@@ -171,8 +171,8 @@ class ActivityMessageManager: MessageManager {
 
             // PA1 Sedentary Why
             Message(group: why, identifier: "11", alternatives:
-                (active, "Imagine what you'd fill your time with if you watched less TV. Imagine how good that would feel to get more done in free time."),
-                (inactive, "Imagine what you'd fill your time with if you watched less TV. Imagine how good that would feel to get more done in free time.")),
+                (active, "Imagine what you'd fill your time with if you watched less TV. Imagine how good it would feel to get more done in your free time."),
+                (inactive, "Imagine what you'd fill your time with if you watched less TV. Imagine how good it would feel to get more done in your free time.")),
             Message(group: why, identifier: "12", alternatives:
                 (active, "The more you sit, the more damage it does. Your body won't handle sugar and fat, increasing risk for disease."),
                 (inactive, "The more you continue to sit, the more damage it does. Your body won't handle sugar and fat, increasing risk for disease.")),
@@ -186,8 +186,8 @@ class ActivityMessageManager: MessageManager {
                 (active, "Sitting less and achieving a healthy body means less worry and hospital visits, and more time and energy to enjoy life."),
                 (inactive, "Sitting less and achieving a healthy body means less worry and hospital visits, and more time and energy to enjoy life.")),
             Message(group: why, identifier: "16", alternatives:
-                (active, "A lack of activity means a shorter life. Continuing to sit less to enjoy the things that mean the most to you for longer."),
-                (inactive, "A lack of activity means a shorter life. Starting to sit less to enjoy the things that mean the most to you for longer.")),
+                (active, "A lack of activity means a shorter life. Continue to sit less to enjoy the things that mean the most to you for longer."),
+                (inactive, "A lack of activity means a shorter life. Start to sit less to enjoy the things that mean the most to you for longer.")),
             Message(group: why, identifier: "17", alternatives:
                 (active, "People who sit less have lower risk for certain diseases like diabetes and heart disease than those who sit more."),
                 (inactive, "People who sit less have lower risk for certain diseases like diabetes and heart disease than those who sit more.")),
@@ -198,15 +198,15 @@ class ActivityMessageManager: MessageManager {
                 (active, "Sitting less can energize you. It delivers oxygen to your heart, lungs, and veins, making you feel better."),
                 (inactive, "Sitting less can energize you. It delivers oxygen to your heart, lungs, and veins, making you feel better.")),
             Message(group: why, identifier: "20", alternatives:
-                (active, "Sitting less means fewer pills. Your body will make good cholesterol, and lowering blood pressure and blood sugar."),
-                (inactive, "Sitting less means fewer pills. Your body will make good cholesterol, and lowering blood pressure and blood sugar.")),
+                (active, "Sitting less means fewer pills. Your body will make good cholesterol, lowering blood pressure and blood sugar."),
+                (inactive, "Sitting less means fewer pills. Your body will make good cholesterol, lowering blood pressure and blood sugar.")),
 
             // PA2 Why
             Message(group: why, identifier: "21", alternatives:
                 (active, "You can live longer doing things you love if you continue to sit less. You can spend more time with the people you love."),
                 (inactive, "You can live longer doing things you love if you start to sit less. You can spend more time with the people you love.")),
             Message(group: why, identifier: "22", alternatives:
-                (active, "If you move around more even more, your body can use blood sugar. This can keep your arteries healthy."),
+                (active, "If you move around even more, your body can use blood sugar. This can keep your arteries healthy."),
                 (inactive, "As you start to move around more, your body can use blood sugar. This can keep your arteries healthy.")),
             Message(group: why, identifier: "23", alternatives:
                 (active, "As you remain active, your bones will grow stronger. Stronger bones will help you stay pain free."),
@@ -216,12 +216,12 @@ class ActivityMessageManager: MessageManager {
                 (inactive, "You can lower the risk of cancer if you exercise regularly. This means you can live longer and healthier.")),
             Message(group: why, identifier: "25", alternatives:
                 (active, "Staying active means less risk for diabetes. This means you can enjoy a longer and healthier life with more freedom."),
-                (inactive, "Getting active means less risk for diabetes. This means you can enjoy a longer and healthier life with more freedom.")),
+                (inactive, "Staying active means less risk for diabetes. This means you can enjoy a longer and healthier life with more freedom.")),
             Message(group: why, identifier: "26", alternatives:
                 (active, "Active people tend to live longer than less active people. You can live longer and healthier by staying active."),
                 (inactive, "Active people tend to live longer than less active people. You can live longer and healthier by becoming more active.")),
             Message(group: why, identifier: "27", alternatives:
-                (active, "You can help prevent age-related memory loss with even more exercise. Your mind will be more clear as you become older."),
+                (active, "You can help prevent age-related memory loss with more exercise. Your mind will be more clear as you become older."),
                 (inactive, "You can help prevent age-related memory loss with more exercise. Your mind will be more clear as you become older.")),
             Message(group: why, identifier: "28", alternatives:
                 (active, "Staying active will strengthen your muscles. Stronger muscles can help you do the things you enjoy for longer."),
@@ -241,7 +241,7 @@ class ActivityMessageManager: MessageManager {
                 (active, "A sedentary lifestyle increases the risk of diabetes, hypertension, colon cancer, depression, anxiety, and obesity."),
                 (inactive, "A sedentary lifestyle increases the risk of diabetes, hypertension, colon cancer, depression, anxiety, and obesity.")),
             Message(group: risk, identifier: "4", alternatives:
-                (active, "Becoming inactive puts you at risk for health problems related to lack of exercise."),
+                (active, "Being inactive puts you at risk for health problems related to lack of exercise."),
                 (inactive, "Remaining inactive puts you at risk for health problems related to lack of exercise.")),
             Message(group: risk, identifier: "5", alternatives:
                 (active, "On average, physically active people outlive those who are inactive."),
@@ -283,7 +283,7 @@ class ActivityMessageManager: MessageManager {
                 (active, "If you become sedentary, you could shorten your life. Inactive people tend to die before more active people."),
                 (inactive, "If you are sedentary, you could shorten your life. Inactive people tend to die before more active people.")),
             Message(group: risk, identifier: "18", alternatives:
-                (active, "Inactive lifestyle can worsen your memory. Becoming sedentary can shrink the brain's memory areas with age."),
+                (active, "Inactive lifestyle can worsen your memory. Being sedentary can shrink the brain's memory areas with age."),
                 (inactive, "Inactive lifestyle can worsen your memory. Remaining sedentary can shrink the brain's memory areas with age.")),
             Message(group: risk, identifier: "19", alternatives:
                 (active, "Sitting most of the time weakens your muscles, making it difficult to get around and do the things you enjoy."),
