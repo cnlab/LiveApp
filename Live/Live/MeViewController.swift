@@ -174,9 +174,9 @@ class MeViewController: TrackerViewController, UITextFieldDelegate, UITextViewDe
         let weightPerceptionTableViewDataSource = weightPerceptionTableView?.dataSource as? WeightPerceptionTableViewDataSource
         let weightPerception = weightPerceptionTableViewDataSource?.weightPerception ?? ""
         let height = parse(height: heightButton?.title(for: .normal))
-        let zipCode = zipCodeTextField?.text
+        let zipCode = zipCodeTextField?.text ?? ""
 //        let studyId = studyIdTextField?.text
-        let comment = commentTextView?.text
+        let comment = commentTextView?.text ?? ""
         let newPersonalInformation = LiveManager.shared.personalInformation.value.bySetting(age: age, gender: gender, weight: weight, weightPerception: weightPerception, height: height, zipCode: zipCode, comment: comment)
         LiveManager.shared.personalInformation.value = newPersonalInformation
 //        LiveManager.shared.personalInformation.value = PersonalInformation(age: age, gender: gender, weight: weight, weightPerception: weightPerception, height: height, zipCode: zipCode, studyId: studyId, comment: comment)
