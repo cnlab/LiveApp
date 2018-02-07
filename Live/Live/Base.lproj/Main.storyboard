@@ -29,90 +29,106 @@
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CVX-eS-r9d">
                                 <rect key="frame" x="0.0" y="28" width="320" height="320"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="320" id="JBd-ys-knO"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="ifB-RN-CBI" kind="embed" id="rhd-bQ-937"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DlK-fY-v9Z">
                                 <rect key="frame" x="0.0" y="28" width="320" height="320"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="320" id="mBn-ba-tzU"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="oTr-nD-Fyc" kind="embed" id="CGf-ta-kPJ"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nv0-ki-rjk" customClass="HorizontalLineView" customModule="LiveViews">
-                                <rect key="frame" x="0.0" y="450" width="320" height="1"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g2W-Gi-AAk">
+                                <rect key="frame" x="0.0" y="348" width="320" height="163"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ut-VZ-mXr">
+                                        <rect key="frame" x="20" y="20" width="280" height="18"/>
+                                        <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Daily Messages" image="ic_messageOn"/>
+                                        <connections>
+                                            <action selector="dailyMessages" destination="9pv-A4-QxB" eventType="touchUpInside" id="WtF-KB-6MA"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NOC-9A-eZV" customClass="HorizontalLineView" customModule="LiveViews">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="1"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="7Ny-Jw-1jh"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                <color key="value" red="0.89414393901824951" green="0.89411032199859619" blue="0.89413315057754517" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFa-Of-mx9" customClass="CheckboxTextView" customModule="LiveViews">
+                                        <rect key="frame" x="20" y="55" width="280" height="41.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="ic_checked"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="sizeFontToFitText" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nv0-ki-rjk" customClass="HorizontalLineView" customModule="LiveViews">
+                                        <rect key="frame" x="0.0" y="104.5" width="320" height="1"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="54B-GO-2MI"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                <color key="value" red="0.89806509017944336" green="0.89803123474121094" blue="0.89805412292480469" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ACP-vy-AqK" customClass="CheckboxTextView" customModule="LiveViews">
+                                        <rect key="frame" x="20" y="113.5" width="280" height="41.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="ic_checked"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="sizeFontToFitText" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="wVg-hw-BCw"/>
+                                    <constraint firstItem="NOC-9A-eZV" firstAttribute="leading" secondItem="g2W-Gi-AAk" secondAttribute="leading" id="21p-Kz-BrP"/>
+                                    <constraint firstItem="UFa-Of-mx9" firstAttribute="leading" secondItem="g2W-Gi-AAk" secondAttribute="leading" constant="20" symbolic="YES" id="6S1-id-nLh"/>
+                                    <constraint firstItem="UFa-Of-mx9" firstAttribute="top" secondItem="NOC-9A-eZV" secondAttribute="bottom" constant="8" symbolic="YES" id="7Gy-d3-he3"/>
+                                    <constraint firstItem="NOC-9A-eZV" firstAttribute="top" secondItem="9Ut-VZ-mXr" secondAttribute="bottom" constant="8" symbolic="YES" id="A5k-e6-Bwe"/>
+                                    <constraint firstAttribute="trailing" secondItem="9Ut-VZ-mXr" secondAttribute="trailing" constant="20" symbolic="YES" id="F2I-Xp-owC"/>
+                                    <constraint firstItem="ACP-vy-AqK" firstAttribute="top" secondItem="Nv0-ki-rjk" secondAttribute="bottom" constant="8" symbolic="YES" id="IC6-0w-miS"/>
+                                    <constraint firstAttribute="trailing" secondItem="ACP-vy-AqK" secondAttribute="trailing" constant="20" symbolic="YES" id="Ice-q0-Hmj"/>
+                                    <constraint firstItem="9Ut-VZ-mXr" firstAttribute="leading" secondItem="g2W-Gi-AAk" secondAttribute="leading" constant="20" symbolic="YES" id="P9J-iM-ofO"/>
+                                    <constraint firstItem="Nv0-ki-rjk" firstAttribute="leading" secondItem="g2W-Gi-AAk" secondAttribute="leading" id="PVw-Uv-ZfW"/>
+                                    <constraint firstItem="Nv0-ki-rjk" firstAttribute="top" secondItem="UFa-Of-mx9" secondAttribute="bottom" constant="8" symbolic="YES" id="S7h-Rx-iWb"/>
+                                    <constraint firstItem="ACP-vy-AqK" firstAttribute="leading" secondItem="g2W-Gi-AAk" secondAttribute="leading" constant="20" symbolic="YES" id="Wjb-N0-RLL"/>
+                                    <constraint firstItem="Nv0-ki-rjk" firstAttribute="trailing" secondItem="g2W-Gi-AAk" secondAttribute="trailing" id="aOy-eh-X0L"/>
+                                    <constraint firstItem="NOC-9A-eZV" firstAttribute="trailing" secondItem="g2W-Gi-AAk" secondAttribute="trailing" id="rJK-Zt-kvV"/>
+                                    <constraint firstAttribute="trailing" secondItem="UFa-Of-mx9" secondAttribute="trailing" constant="20" symbolic="YES" id="tDC-9w-A4R"/>
+                                    <constraint firstItem="9Ut-VZ-mXr" firstAttribute="top" secondItem="g2W-Gi-AAk" secondAttribute="top" constant="20" symbolic="YES" id="wRS-Xy-wgA"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                        <color key="value" red="0.89806509017944336" green="0.89803123474121094" blue="0.89805412292480469" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NOC-9A-eZV" customClass="HorizontalLineView" customModule="LiveViews">
-                                <rect key="frame" x="0.0" y="382" width="320" height="1"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                        <color key="value" red="0.89414393901824951" green="0.89411032199859619" blue="0.89413315057754517" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFa-Of-mx9" customClass="CheckboxTextView" customModule="LiveViews">
-                                <rect key="frame" x="16" y="391" width="288" height="51"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="ic_checked"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="sizeFontToFitText" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ut-VZ-mXr">
-                                <rect key="frame" x="16" y="356" width="288" height="18"/>
-                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Daily Messages" image="ic_messageOn"/>
-                                <connections>
-                                    <action selector="dailyMessages" destination="9pv-A4-QxB" eventType="touchUpInside" id="WtF-KB-6MA"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ACP-vy-AqK" customClass="CheckboxTextView" customModule="LiveViews">
-                                <rect key="frame" x="16" y="459" width="288" height="52"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="ic_checked"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="sizeFontToFitText" value="YES"/>
-                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="UFa-Of-mx9" firstAttribute="trailing" secondItem="ACP-vy-AqK" secondAttribute="trailing" id="1ba-db-KiY"/>
-                            <constraint firstItem="DlK-fY-v9Z" firstAttribute="trailing" secondItem="CVX-eS-r9d" secondAttribute="trailing" id="22m-Zo-L8Y"/>
-                            <constraint firstAttribute="trailing" secondItem="DlK-fY-v9Z" secondAttribute="trailing" id="7yr-IY-Vqe"/>
-                            <constraint firstItem="ACP-vy-AqK" firstAttribute="height" secondItem="UFa-Of-mx9" secondAttribute="height" constant="1" id="Ch3-Pv-SVo"/>
-                            <constraint firstItem="NOC-9A-eZV" firstAttribute="top" secondItem="9Ut-VZ-mXr" secondAttribute="bottom" constant="8" symbolic="YES" id="DR7-5j-ivq"/>
-                            <constraint firstItem="NOC-9A-eZV" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" constant="382" id="GQm-UH-pYf"/>
-                            <constraint firstItem="Nv0-ki-rjk" firstAttribute="top" secondItem="UFa-Of-mx9" secondAttribute="bottom" constant="8" symbolic="YES" id="HCS-4b-TQL"/>
-                            <constraint firstItem="UFa-Of-mx9" firstAttribute="leading" secondItem="ACP-vy-AqK" secondAttribute="leading" id="JYk-Qq-oON"/>
-                            <constraint firstItem="UFa-Of-mx9" firstAttribute="top" secondItem="NOC-9A-eZV" secondAttribute="bottom" constant="8" symbolic="YES" id="JyY-2d-J2H"/>
-                            <constraint firstItem="9Ut-VZ-mXr" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="KO6-cg-hR6"/>
-                            <constraint firstItem="DlK-fY-v9Z" firstAttribute="leading" secondItem="NOC-9A-eZV" secondAttribute="leading" id="LBg-mW-Vfz"/>
-                            <constraint firstItem="CVX-eS-r9d" firstAttribute="top" secondItem="DlK-fY-v9Z" secondAttribute="top" id="NYd-kc-fB9"/>
-                            <constraint firstItem="DlK-fY-v9Z" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="8" symbolic="YES" id="PcJ-Pp-H6Z"/>
-                            <constraint firstItem="DlK-fY-v9Z" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="RZP-pq-guT"/>
-                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="ACP-vy-AqK" secondAttribute="bottom" constant="8" symbolic="YES" id="XYy-O6-OtU"/>
-                            <constraint firstItem="CVX-eS-r9d" firstAttribute="bottom" secondItem="DlK-fY-v9Z" secondAttribute="bottom" id="YIW-pT-117"/>
-                            <constraint firstItem="9Ut-VZ-mXr" firstAttribute="leading" secondItem="UFa-Of-mx9" secondAttribute="leading" id="bUL-hD-E3B"/>
-                            <constraint firstItem="ACP-vy-AqK" firstAttribute="top" secondItem="Nv0-ki-rjk" secondAttribute="bottom" constant="8" symbolic="YES" id="jXx-Ra-pyr"/>
-                            <constraint firstItem="UFa-Of-mx9" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" constant="391" id="lwB-xc-SIh"/>
-                            <constraint firstItem="CVX-eS-r9d" firstAttribute="trailing" secondItem="NOC-9A-eZV" secondAttribute="trailing" id="mA4-Ub-iB2"/>
-                            <constraint firstItem="CVX-eS-r9d" firstAttribute="leading" secondItem="DlK-fY-v9Z" secondAttribute="leading" id="psh-0A-6Of"/>
-                            <constraint firstItem="9Ut-VZ-mXr" firstAttribute="trailing" secondItem="UFa-Of-mx9" secondAttribute="trailing" id="q51-f5-fFG"/>
-                            <constraint firstItem="9Ut-VZ-mXr" firstAttribute="centerX" secondItem="NOC-9A-eZV" secondAttribute="centerX" id="rXb-Kj-AXQ"/>
-                            <constraint firstItem="9Ut-VZ-mXr" firstAttribute="top" secondItem="CVX-eS-r9d" secondAttribute="bottom" constant="8" id="tOc-Cd-bCN"/>
-                            <constraint firstItem="NOC-9A-eZV" firstAttribute="leading" secondItem="Nv0-ki-rjk" secondAttribute="leading" id="tcs-2F-wc2"/>
-                            <constraint firstItem="NOC-9A-eZV" firstAttribute="trailing" secondItem="Nv0-ki-rjk" secondAttribute="trailing" id="y2u-Ot-b0t"/>
+                            <constraint firstItem="g2W-Gi-AAk" firstAttribute="top" secondItem="DlK-fY-v9Z" secondAttribute="bottom" id="7p6-0I-5DS"/>
+                            <constraint firstItem="g2W-Gi-AAk" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="Buj-bL-1sD"/>
+                            <constraint firstItem="DlK-fY-v9Z" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="CuS-l6-g4a"/>
+                            <constraint firstItem="DlK-fY-v9Z" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="8" symbolic="YES" id="K52-tj-B4s"/>
+                            <constraint firstItem="CVX-eS-r9d" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="Pci-Nb-TKU"/>
+                            <constraint firstItem="g2W-Gi-AAk" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="SjM-XP-4E0"/>
+                            <constraint firstItem="DlK-fY-v9Z" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailing" id="da2-2E-tJb"/>
+                            <constraint firstItem="CVX-eS-r9d" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="8" id="lgG-Eo-Acb"/>
+                            <constraint firstItem="g2W-Gi-AAk" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailing" id="rPH-pu-YKs"/>
+                            <constraint firstItem="CVX-eS-r9d" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailing" id="wbG-xH-Z9H"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="ic_homeOn" id="acW-dT-cKf"/>
@@ -120,6 +136,7 @@
                         <outlet property="activityTextView" destination="ACP-vy-AqK" id="Wqg-SJ-prm"/>
                         <outlet property="dataView" destination="DlK-fY-v9Z" id="nl5-UL-u9p"/>
                         <outlet property="introductionView" destination="CVX-eS-r9d" id="pgv-Ya-fuJ"/>
+                        <outlet property="messagesView" destination="g2W-Gi-AAk" id="l0H-25-T9C"/>
                         <outlet property="valueTextView" destination="UFa-Of-mx9" id="eSc-jo-lNl"/>
                     </connections>
                 </viewController>
@@ -822,9 +839,9 @@ http://cn.asc.upenn.edu</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7k-gT-VUs">
-                                <rect key="frame" x="16" y="57" width="288" height="163"/>
+                                <rect key="frame" x="16" y="57" width="288" height="131"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="163" id="ir8-Bw-lBt"/>
+                                    <constraint firstAttribute="height" constant="131" id="YQC-EJ-5GN"/>
                                 </constraints>
                                 <string key="text">We will send you daily reminders of your values and a tip for being more physically active.
 
@@ -834,21 +851,15 @@ What time do you want to receive these reminders?</string>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQg-Yj-n6y">
                                 <rect key="frame" x="16" y="20" width="288" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="7jV-9w-kr9"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remind me at" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7d-g6-pmm">
-                                <rect key="frame" x="16" y="228" width="288" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="TdB-CV-t3l"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="sM0-PY-JFf">
-                                <rect key="frame" x="16" y="257" width="288" height="216"/>
+                                <rect key="frame" x="16" y="287" width="288" height="186"/>
                                 <date key="date" timeIntervalSinceReferenceDate="498761161.217188">
                                     <!--2016-10-21 16:46:01 +0000-->
                                 </date>
@@ -858,34 +869,67 @@ What time do you want to receive these reminders?</string>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wb3-98-nKr">
                                 <rect key="frame" x="16" y="481" width="288" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ROL-KU-UdA"/>
+                                </constraints>
                                 <state key="normal" title="Enable Notifications"/>
                                 <connections>
                                     <action selector="showSettings" destination="0nq-5A-lxm" eventType="touchUpInside" id="Exd-cL-58t"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2Jp-1f-8IG" customClass="MultilineSegmentedControl" customModule="LiveViews">
+                                <rect key="frame" x="16" y="196" width="288" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="E40-kS-VM2"/>
+                                </constraints>
+                                <segments>
+                                    <segment>
+                                        <string key="title">First
+Line</string>
+                                    </segment>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentChanged" destination="0nq-5A-lxm" eventType="valueChanged" id="EG7-E2-nok"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remind me at" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7d-g6-pmm">
+                                <rect key="frame" x="16" y="258" width="288" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="FHG-ab-k9a"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wb3-98-nKr" firstAttribute="top" secondItem="sM0-PY-JFf" secondAttribute="bottom" constant="8" symbolic="YES" id="8hA-Oa-fwl"/>
-                            <constraint firstItem="M7d-g6-pmm" firstAttribute="leading" secondItem="sM0-PY-JFf" secondAttribute="leading" id="Art-l8-G2H"/>
-                            <constraint firstItem="BQg-Yj-n6y" firstAttribute="leading" secondItem="a7k-gT-VUs" secondAttribute="leading" id="Fpp-Wh-TbN"/>
-                            <constraint firstItem="M7d-g6-pmm" firstAttribute="trailing" secondItem="sM0-PY-JFf" secondAttribute="trailing" id="GIv-7B-kfX"/>
-                            <constraint firstItem="BQg-Yj-n6y" firstAttribute="leading" secondItem="ENq-ve-ocM" secondAttribute="leadingMargin" id="T5V-HU-EA7"/>
-                            <constraint firstItem="M7d-g6-pmm" firstAttribute="top" secondItem="a7k-gT-VUs" secondAttribute="bottom" constant="8" id="UHN-RN-7Na"/>
-                            <constraint firstItem="a7k-gT-VUs" firstAttribute="trailing" secondItem="M7d-g6-pmm" secondAttribute="trailing" id="ZOv-MF-mL2"/>
-                            <constraint firstItem="BQg-Yj-n6y" firstAttribute="top" secondItem="Kga-MI-oaU" secondAttribute="bottom" id="bhh-qN-TJw"/>
-                            <constraint firstItem="a7k-gT-VUs" firstAttribute="leading" secondItem="M7d-g6-pmm" secondAttribute="leading" id="cfQ-z2-ce2"/>
-                            <constraint firstItem="sM0-PY-JFf" firstAttribute="top" secondItem="M7d-g6-pmm" secondAttribute="bottom" constant="8" symbolic="YES" id="eIj-nk-k5W"/>
-                            <constraint firstItem="BQg-Yj-n6y" firstAttribute="trailing" secondItem="a7k-gT-VUs" secondAttribute="trailing" id="flO-RY-bw2"/>
-                            <constraint firstItem="sM0-PY-JFf" firstAttribute="trailing" secondItem="wb3-98-nKr" secondAttribute="trailing" id="kD7-ub-nkz"/>
-                            <constraint firstItem="BQg-Yj-n6y" firstAttribute="trailing" secondItem="ENq-ve-ocM" secondAttribute="trailingMargin" id="qcZ-MQ-uEk"/>
-                            <constraint firstItem="a7k-gT-VUs" firstAttribute="top" secondItem="BQg-Yj-n6y" secondAttribute="bottom" constant="8" symbolic="YES" id="rOw-3L-WhI"/>
-                            <constraint firstItem="sM0-PY-JFf" firstAttribute="leading" secondItem="wb3-98-nKr" secondAttribute="leading" id="wkB-sh-x8q"/>
+                            <constraint firstItem="BQg-Yj-n6y" firstAttribute="top" secondItem="Kga-MI-oaU" secondAttribute="bottom" id="08a-6T-2gl"/>
+                            <constraint firstItem="a7k-gT-VUs" firstAttribute="top" secondItem="BQg-Yj-n6y" secondAttribute="bottom" constant="8" symbolic="YES" id="5P4-4g-qi4"/>
+                            <constraint firstItem="2Jp-1f-8IG" firstAttribute="trailing" secondItem="M7d-g6-pmm" secondAttribute="trailing" id="6zP-SK-iWQ"/>
+                            <constraint firstItem="BQg-Yj-n6y" firstAttribute="trailing" secondItem="a7k-gT-VUs" secondAttribute="trailing" id="7DA-fh-iKr"/>
+                            <constraint firstItem="BQg-Yj-n6y" firstAttribute="trailing" secondItem="ENq-ve-ocM" secondAttribute="trailingMargin" id="7hj-fN-N1D"/>
+                            <constraint firstItem="M7d-g6-pmm" firstAttribute="trailing" secondItem="sM0-PY-JFf" secondAttribute="trailing" id="AZe-iV-yJq"/>
+                            <constraint firstItem="M7d-g6-pmm" firstAttribute="leading" secondItem="sM0-PY-JFf" secondAttribute="leading" id="C5q-Ai-jId"/>
+                            <constraint firstItem="2Jp-1f-8IG" firstAttribute="leading" secondItem="M7d-g6-pmm" secondAttribute="leading" id="M0b-jB-NoI"/>
+                            <constraint firstItem="sM0-PY-JFf" firstAttribute="top" secondItem="M7d-g6-pmm" secondAttribute="bottom" constant="8" symbolic="YES" id="MJq-gW-jcX"/>
+                            <constraint firstItem="sM0-PY-JFf" firstAttribute="trailing" secondItem="wb3-98-nKr" secondAttribute="trailing" id="OsO-UI-YZD"/>
+                            <constraint firstItem="sM0-PY-JFf" firstAttribute="leading" secondItem="wb3-98-nKr" secondAttribute="leading" id="Q68-Ef-26g"/>
+                            <constraint firstItem="M7d-g6-pmm" firstAttribute="top" secondItem="2Jp-1f-8IG" secondAttribute="bottom" constant="8" symbolic="YES" id="QC5-ME-lcj"/>
+                            <constraint firstItem="BQg-Yj-n6y" firstAttribute="leading" secondItem="a7k-gT-VUs" secondAttribute="leading" id="SKF-y7-USw"/>
+                            <constraint firstItem="a7k-gT-VUs" firstAttribute="trailing" secondItem="2Jp-1f-8IG" secondAttribute="trailing" id="U8Z-bg-5XF"/>
+                            <constraint firstItem="a7k-gT-VUs" firstAttribute="leading" secondItem="2Jp-1f-8IG" secondAttribute="leading" id="UX7-lD-XOW"/>
+                            <constraint firstItem="Eq6-Qo-K0a" firstAttribute="top" secondItem="wb3-98-nKr" secondAttribute="bottom" constant="8" symbolic="YES" id="VIZ-pp-ELe"/>
+                            <constraint firstItem="BQg-Yj-n6y" firstAttribute="leading" secondItem="ENq-ve-ocM" secondAttribute="leadingMargin" id="feQ-Qh-5GJ"/>
+                            <constraint firstItem="wb3-98-nKr" firstAttribute="top" secondItem="sM0-PY-JFf" secondAttribute="bottom" constant="8" symbolic="YES" id="hNG-5b-p7b"/>
+                            <constraint firstItem="2Jp-1f-8IG" firstAttribute="top" secondItem="a7k-gT-VUs" secondAttribute="bottom" constant="8" symbolic="YES" id="tda-Ro-f9M"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="ic_settingOn" id="RRd-XL-Hc4"/>
                     <connections>
                         <outlet property="showSettingsButton" destination="wb3-98-nKr" id="jbL-fc-l5J"/>
+                        <outlet property="slotSegmentedControl" destination="2Jp-1f-8IG" id="k7v-N2-o2Q"/>
                         <outlet property="timeLabel" destination="M7d-g6-pmm" id="jbG-bQ-xT4"/>
                         <outlet property="timePicker" destination="sM0-PY-JFf" id="gOB-bc-jkL"/>
                     </connections>

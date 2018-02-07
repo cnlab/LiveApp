@@ -70,6 +70,7 @@
 		92AD149A1F53BCB400E8DEC0 /* IntroductionPage2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AD14991F53BCB400E8DEC0 /* IntroductionPage2ViewController.swift */; };
 		92AD62FA1F508278001592CE /* HorizontalLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AD62F91F508278001592CE /* HorizontalLineView.swift */; };
 		92AD62FC1F50900E001592CE /* WeightPerceptionTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AD62FB1F50900E001592CE /* WeightPerceptionTableViewDataSource.swift */; };
+		92ADEECD2028BE5400769139 /* MultilineSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADEECC2028BE5400769139 /* MultilineSegmentedControl.swift */; };
 		92AF48281E71DB1100313FB1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92AF48271E71DB1100313FB1 /* CloudKit.framework */; };
 		92B89C501E15A92F00E7D5CC /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B89C4F1E15A92F00E7D5CC /* ShareViewController.swift */; };
 		92B89C531E15BBC600E7D5CC /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B89C521E15BBC600E7D5CC /* MeViewController.swift */; };
@@ -213,6 +214,7 @@
 		92AD14991F53BCB400E8DEC0 /* IntroductionPage2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionPage2ViewController.swift; sourceTree = "<group>"; };
 		92AD62F91F508278001592CE /* HorizontalLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalLineView.swift; sourceTree = "<group>"; };
 		92AD62FB1F50900E001592CE /* WeightPerceptionTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightPerceptionTableViewDataSource.swift; sourceTree = "<group>"; };
+		92ADEECC2028BE5400769139 /* MultilineSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineSegmentedControl.swift; sourceTree = "<group>"; };
 		92AF48271E71DB1100313FB1 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		92B89C4F1E15A92F00E7D5CC /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		92B89C521E15BBC600E7D5CC /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				92AD62F91F508278001592CE /* HorizontalLineView.swift */,
 				92C7A2891F54F47D004678A7 /* UIColor+Brightness.swift */,
 				922821AE1F56241500F6A597 /* CheckboxTextView.swift */,
+				92ADEECC2028BE5400769139 /* MultilineSegmentedControl.swift */,
 			);
 			path = LiveViews;
 			sourceTree = "<group>";
@@ -784,6 +787,7 @@
 				922821AF1F56241500F6A597 /* CheckboxTextView.swift in Sources */,
 				9263D69D1EE59055006902DF /* ImageLabelView.swift in Sources */,
 				928E72A61EE5E6BB00086853 /* VerticalLabelView.swift in Sources */,
+				92ADEECD2028BE5400769139 /* MultilineSegmentedControl.swift in Sources */,
 				92AD62FA1F508278001592CE /* HorizontalLineView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

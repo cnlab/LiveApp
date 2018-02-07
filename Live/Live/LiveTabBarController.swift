@@ -10,6 +10,8 @@ import UIKit
 
 class LiveTabBarController: UITabBarController, UITabBarControllerDelegate, Ancestor, LiveManagerDelegate, IntroductionPopupViewControllerDelegate, ShareReminderPopupViewControllerDelegate, ValuesPopupViewControllerDelegate, ActivityPopupViewControllerDelegate {
 
+    var originalViewControllers: [UIViewController] = []
+    
     var introductionPopupViewController: IntroductionPopupViewController?
     var shareReminderPopupViewController: ShareReminderPopupViewController?
 
@@ -39,10 +41,14 @@ class LiveTabBarController: UITabBarController, UITabBarControllerDelegate, Ance
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        originalViewControllers = viewControllers ?? []
+        
         self.delegate = self
 
         let liveManager = LiveManager.shared
         liveManager.delegate = self
+        liveManager.triggers.subscribe(owner: self, observer: triggersChanged)
+        triggersChanged()
 
         checkPopups()
 
@@ -245,6 +251,44 @@ class LiveTabBarController: UITabBarController, UITabBarControllerDelegate, Ance
         if let studyId = getQueryStringParameter(url: url, parameter: "studyId") {
             liveManager.personalInformation.value = liveManager.personalInformation.value.bySetting(studyId: studyId)
             liveManager.shareDataWithResearchers.value = true
+        }
+        
+        if let reminderCountParameter = getQueryStringParameter(url: url, parameter: "reminderCount") {
+            if let reminderCount = Int(reminderCountParameter), reminderCount <= 4 {
+                var triggers: [DateComponents] = []
+                for i in 0 ..< reminderCount {
+                    let hour = 9 + i * 3
+                    triggers.append(DateComponents(hour: hour, minute: 0))
+                }
+                liveManager.triggers.value = triggers
+            }
+        }
+    }
+    
+    func triggersChanged() {
+        var tabs = viewControllers ?? []
+        if LiveManager.shared.triggers.value.isEmpty {
+            // ensure message related tabs are not present
+            if let viewController: DailyMessagesViewController = findViewController() {
+                if let index = tabs.index(of: viewController) {
+                    tabs.remove(at: index)
+                }
+            }
+            if let viewController: SettingsViewController = findViewController() {
+                if let index = tabs.index(of: viewController) {
+                    tabs.remove(at: index)
+                }
+            }
+        } else {
+            // ensure message related tabs are present
+            tabs = originalViewControllers
+            if let viewController: DebugViewController = findViewController() {
+                tabs.append(viewController)
+            }
+        }
+        if tabs != (viewControllers ?? []) {
+            setViewControllers(tabs, animated: true)
+            selectedViewController = tabs[0]
         }
     }
     

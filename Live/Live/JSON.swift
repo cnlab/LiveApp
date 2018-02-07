@@ -227,6 +227,51 @@ class JSON {
         return jsonArray
     }
 
+    static func json(dateComponents: DateComponents) -> [String: Any] {
+        return ["hour": dateComponents.hour ?? 0, "minute": dateComponents.minute ?? 0]
+    }
+    
+    static func jsonDateComponents(json: [String: Any], key: String) throws -> DateComponents {
+        guard let jsonElement = json[key] as? [String: Any] else {
+            throw SerializationError.missing(key)
+        }
+        let hour = try JSON.jsonInt(json: jsonElement, key: "hour")
+        let minute = try JSON.jsonInt(json: jsonElement, key: "minute")
+        return DateComponents(hour: hour, minute: minute)
+    }
+
+    static func json(dateComponentsArray: [DateComponents]) -> [Any] {
+        return dateComponentsArray.map { ["hour": JSON.json(int: $0.hour ?? 0), "minute": JSON.json(int: $0.minute ?? 0)] }
+    }
+
+    static func jsonDateComponentsArray(json: Any) throws -> [DateComponents] {
+        var array: [DateComponents] = []
+        if let jsonElements = json as? [Any] {
+            for jsonElementMaybe in jsonElements {
+                if let jsonElement = jsonElementMaybe as? [String: Any] {
+                    let hour = try JSON.jsonInt(json: jsonElement, key: "hour")
+                    let minute = try JSON.jsonInt(json: jsonElement, key: "minute")
+                    array.append(DateComponents(hour: hour, minute: minute))
+                }
+            }
+        }
+        return array
+    }
+
+    static func jsonDateComponentsArray(json: [String: Any], key: String) throws -> [DateComponents] {
+        guard let jsonArrayMaybe = json[key] else {
+            throw SerializationError.missing(key)
+        }
+        return try jsonDateComponentsArray(json: jsonArrayMaybe)
+    }
+
+    static func jsonDateComponentsArray(json: [String: Any], key: String, fallback: [DateComponents]) throws -> [DateComponents] {
+        if json[key] == nil {
+            return fallback
+        }
+        return try jsonDateComponentsArray(json: json, key: key)
+    }
+
     static func json(data: Data) throws -> Any {
         if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
             return json

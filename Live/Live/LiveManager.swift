@@ -79,7 +79,12 @@ class LiveManager: NotificationManagerDelegate, TrackerDelegate {
     var activityNote = Observable<Note?>(value: nil)
     var schedule = Schedule(days: [])
     let horizon = 14
-    var trigger = Observable<DateComponents>(value: DateComponents(hour: 9, minute: 0))
+    var triggers = Observable<[DateComponents]>(value: [
+        DateComponents(hour: 9, minute: 0),
+        DateComponents(hour: 12, minute: 0),
+        DateComponents(hour: 15, minute: 0),
+        DateComponents(hour: 18, minute: 0),
+        ])
     var triggerOffsets: [String: TimeInterval] = ["Activity": 0, "Value": 10]
     var actions: [Tracker.Action] = []
     var modificationDate = Date()
@@ -98,7 +103,7 @@ class LiveManager: NotificationManagerDelegate, TrackerDelegate {
         Tracker.sharedInstance().delegate = self
         
         orderedValues.subscribe(owner: self, observer: orderedValuesChanged)
-        trigger.subscribe(owner: self, observer: triggerChanged)
+        triggers.subscribe(owner: self, observer: triggersChanged)
         personalInformation.subscribe(owner: self, observer: personalInformationChanged)
         shareDataWithResearchers.subscribe(owner: self, observer: shareDataWithResearchersChanged)
 
@@ -183,7 +188,8 @@ class LiveManager: NotificationManagerDelegate, TrackerDelegate {
             "installationUUID": JSON.json(string: installationUUID ?? ""),
             "modificationDate": JSON.json(date: modificationDate),
             "actions": JSON.json(array: actions),
-            "trigger": LiveManager.json(dateComponents: trigger.value),
+//            "trigger": LiveManager.json(dateComponents: trigger.value),
+            "triggers": JSON.json(dateComponentsArray: triggers.value),
             "schedule": JSON.json(object: schedule),
             "valueMessageManager": JSON.json(object: valueMessageManager.state),
             "activityMessageManager": JSON.json(object: activityMessageManager.state),
@@ -222,7 +228,13 @@ class LiveManager: NotificationManagerDelegate, TrackerDelegate {
             let installationUUID = try JSON.jsonOptionalString(json: json, key: "installationUUID")
             let modificationDate = try JSON.jsonDefaultDate(json: json, key: "modificationDate", fallback: self.modificationDate)
             let actions = try JSON.jsonArray(json: json, key: "actions", fallback: self.actions)
-            let trigger = try LiveManager.jsonDefaultDateComponents(json: json, key: "trigger", fallback: self.trigger.value)
+            let triggers: [DateComponents]
+            if json["triggers"] != nil {
+                triggers = try JSON.jsonDateComponentsArray(json: json, key: "triggers", fallback: self.triggers.value)
+            } else {
+                let trigger = try LiveManager.jsonDefaultDateComponents(json: json, key: "trigger", fallback: DateComponents(hour: 9, minute: 0))
+                triggers = [trigger]
+            }
             let schedule: Schedule = try JSON.jsonObject(json: json, key: "schedule")
             let valueMessageManager: ValueMessageManager.State = try JSON.jsonObject(json: json, key: "valueMessageManager")
             let activityMessageManager: ActivityMessageManager.State = try JSON.jsonObject(json: json, key: "activityMessageManager")
@@ -240,7 +252,7 @@ class LiveManager: NotificationManagerDelegate, TrackerDelegate {
             self.installationUUID = installationUUID
             self.modificationDate = modificationDate
             self.actions = actions
-            self.trigger.value = trigger
+            self.triggers.value = triggers
             self.schedule = schedule
             self.valueMessageManager.state = valueMessageManager
             self.activityMessageManager.state = activityMessageManager
@@ -356,12 +368,18 @@ class LiveManager: NotificationManagerDelegate, TrackerDelegate {
                 }
             }
         }
-        if let valueNote = valueNote {
+        if valueNote == nil {
+            NSLog("no current value note!")
+        }
+        if activityNote == nil {
+            NSLog("no current activity note!")
+        }
+//        if let valueNote = valueNote {
             self.valueNote.value = valueNote
-        }
-        if let activityNote = activityNote {
+//        }
+//        if let activityNote = activityNote {
             self.activityNote.value = activityNote
-        }
+//        }
 
     }
 
@@ -390,9 +408,11 @@ class LiveManager: NotificationManagerDelegate, TrackerDelegate {
                     let message = messageManager.find(messageKey: note.messageKey),
                     let triggerOffset = triggerOffsets[note.type]
                 {
-                    let date = Time.date(moment: day.moment, trigger: trigger.value).addingTimeInterval(triggerOffset)
-                    if date > now {
-                        notificationManager.request(date: date, uuid: note.uuid, type: note.type, message: message)
+                    for trigger in triggers.value {
+                        let date = Time.date(moment: day.moment, trigger: trigger).addingTimeInterval(triggerOffset)
+                        if date > now {
+                            notificationManager.request(date: date, uuid: note.uuid, type: note.type, message: message)
+                        }
                     }
                 }
             }
@@ -422,12 +442,14 @@ class LiveManager: NotificationManagerDelegate, TrackerDelegate {
 
         let date = Date()
         for day in schedule.days {
-            let notificationDate = Time.date(moment: day.moment, trigger: trigger.value)
-            if notificationDate < date {
-                for note in day.notes {
-                    if case .pending = note.status {
-                        if !uuids.contains(note.uuid) {
-                            note.status = .closed
+            for trigger in triggers.value {
+                let notificationDate = Time.date(moment: day.moment, trigger: trigger)
+                if notificationDate < date {
+                    for note in day.notes {
+                        if case .pending = note.status {
+                            if !uuids.contains(note.uuid) {
+                                note.status = .closed
+                            }
                         }
                     }
                 }
@@ -450,21 +472,21 @@ class LiveManager: NotificationManagerDelegate, TrackerDelegate {
 
     func resetSchedule() {
         NSLog("reset schedule")
-        let scheduler = Scheduler(messageManagers: messageManagers, now: Date(), trigger: trigger.value, triggerOffsets: triggerOffsets, horizon: horizon)
+        let scheduler = Scheduler(messageManagers: messageManagers, now: Date(), triggers: triggers.value, triggerOffsets: triggerOffsets, horizon: horizon)
         let days = scheduler.extendDays(previousDays: [])
         setScheduleDays(days: days)
     }
 
     func reschedule() {
         NSLog("reschedule")
-        let scheduler = Scheduler(messageManagers: messageManagers, now: Date(), trigger: trigger.value, triggerOffsets: triggerOffsets, horizon: horizon)
+        let scheduler = Scheduler(messageManagers: messageManagers, now: Date(), triggers: triggers.value, triggerOffsets: triggerOffsets, horizon: horizon)
         let days = scheduler.rescheduleDays(previousDays: schedule.days)
         setScheduleDays(days: days)
     }
 
     func extend() {
         NSLog("extend")
-        let scheduler = Scheduler(messageManagers: messageManagers, now: Date(), trigger: trigger.value, triggerOffsets: triggerOffsets, horizon: horizon)
+        let scheduler = Scheduler(messageManagers: messageManagers, now: Date(), triggers: triggers.value, triggerOffsets: triggerOffsets, horizon: horizon)
         let days = scheduler.extendDays(previousDays: schedule.days)
         setScheduleDays(days: days)
     }
@@ -475,7 +497,7 @@ class LiveManager: NotificationManagerDelegate, TrackerDelegate {
         dirty = true
     }
 
-    func triggerChanged() {
+    func triggersChanged() {
         reschedule()
         dirty = true
     }

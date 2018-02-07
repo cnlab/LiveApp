@@ -13,6 +13,7 @@ class HomeViewController: TrackerViewController {
 
     @IBOutlet var introductionView: UIView?
     @IBOutlet var dataView: UIView?
+    @IBOutlet var messagesView: UIView?
     @IBOutlet var valueTextView: CheckboxTextView?
     @IBOutlet var activityTextView: CheckboxTextView?
 
@@ -38,10 +39,12 @@ class HomeViewController: TrackerViewController {
         liveManager.dailyStepCounts.subscribe(owner: self, observer: dailyStepCountsChanged)
         liveManager.valueNote.subscribe(owner: self, observer: valueChanged)
         liveManager.activityNote.subscribe(owner: self, observer: activityChanged)
+        liveManager.triggers.subscribe(owner: self, observer: triggersChanged)
 
         dailyStepCountsChanged()
         valueChanged()
         activityChanged()
+        triggersChanged()
         
         AncestorUtility.notifyAncestorDidLoad(parent: parent, viewController: self)
     }
@@ -98,6 +101,12 @@ class HomeViewController: TrackerViewController {
     func activityChanged() {
         let liveManager = LiveManager.shared
         showMessage(view: activityTextView, note: liveManager.activityNote.value)
+    }
+    
+    func triggersChanged() {
+        let liveManager = LiveManager.shared
+        let hideMessages = liveManager.triggers.value.isEmpty
+        messagesView?.isHidden = hideMessages
     }
 
     @objc func respondToValueTouched() {

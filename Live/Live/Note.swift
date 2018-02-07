@@ -80,14 +80,16 @@ class Note: JSONConvertable {
     }
 
     let uuid: String
+    let trigger: DateComponents
     let type: String
     let messageKey: Message.Key
     var status: Status
     var deleted: Bool
     var rating: Rating?
 
-    init(uuid: String, type: String, messageKey: Message.Key, status: Status, deleted: Bool) {
+    init(uuid: String, trigger: DateComponents, type: String, messageKey: Message.Key, status: Status, deleted: Bool) {
         self.uuid = uuid
+        self.trigger = trigger
         self.type = type
         self.messageKey = messageKey
         self.status = status
@@ -96,6 +98,12 @@ class Note: JSONConvertable {
 
     required init(json: [String: Any]) throws {
         let uuid = try JSON.jsonString(json: json, key: "uuid")
+        let trigger: DateComponents
+        if json["trigger"] != nil {
+            trigger = try JSON.jsonDateComponents(json: json, key: "trigger")
+        } else {
+            trigger = DateComponents(hour: 9, minute: 0) // !!! maybe read "trigger" from LiveManager and use it here for default? -denis
+        }
         let type = try JSON.jsonString(json: json, key: "type")
         let messageKey: Message.Key = try JSON.jsonObject(json: json, key: "messageKey")
         let status: Status = try JSON.jsonObject(json: json, key: "status")
@@ -103,6 +111,7 @@ class Note: JSONConvertable {
         let deleted: Bool = try JSON.jsonDefaultBool(json: json, key: "deleted", fallback: false)
 
         self.uuid = uuid
+        self.trigger = trigger
         self.type = type
         self.messageKey = messageKey
         self.status = status
@@ -113,6 +122,7 @@ class Note: JSONConvertable {
     func json() -> [String: Any] {
         var values: [String: Any] = [
             "uuid": JSON.json(string: uuid),
+            "trigger": JSON.json(dateComponents: trigger),
             "type": JSON.json(string: type),
             "messageKey": JSON.json(object: messageKey),
             "status": JSON.json(object: status),

@@ -12,22 +12,24 @@ class Scheduler {
 
     let messageManagers: [MessageManager]
     let now: Date
-    let trigger: DateComponents
+    let triggers: [DateComponents]
     let triggerOffsets: [String: TimeInterval]
     let horizon: Int
 
-    init(messageManagers: [MessageManager], now: Date, trigger: DateComponents, triggerOffsets: [String: TimeInterval], horizon: Int) {
+    init(messageManagers: [MessageManager], now: Date, triggers: [DateComponents], triggerOffsets: [String: TimeInterval], horizon: Int) {
         self.messageManagers = messageManagers
         self.now = now
-        self.trigger = trigger
+        self.triggers = triggers
         self.triggerOffsets = triggerOffsets
         self.horizon = horizon
     }
 
-    func nextNotes(status: Note.Status, date: Date) -> [Note] {
+    func nextNotes(date: Date) -> [Note] {
         var notes: [Note] = []
-        for messageManager in messageManagers {
-            notes.append(Note(uuid: UUID().uuidString, type: messageManager.type, messageKey: messageManager.next(), status: status, deleted: false))
+        for trigger in LiveManager.shared.triggers.value {
+            for messageManager in messageManagers {
+                notes.append(Note(uuid: UUID().uuidString, trigger: trigger, type: messageManager.type, messageKey: messageManager.next(), status: .pending, deleted: false))
+            }
         }
         return notes
     }
@@ -50,21 +52,24 @@ class Scheduler {
     }
 
     func addDaysToHorizon(previousDays: [Schedule.Day]) -> [Schedule.Day] {
+        guard let firstTrigger = LiveManager.shared.triggers.value.first else {
+            return previousDays
+        }
         var days = previousDays
         let calendar = Calendar.current
         let nextDate: Date
         if let lastDay = previousDays.last {
-            let lastDate = dateForTrigger(day: lastDay)
+            let lastDate = dateForTrigger(day: lastDay, trigger: firstTrigger)
             nextDate = calendar.date(byAdding: .day, value: 1, to: lastDate)!
         } else {
-            nextDate = Time.previous(date: now, at: trigger)
+            nextDate = Time.previous(date: now, at: firstTrigger)
         }
-        let startDate = Time.previous(date: now, at: trigger)
-        let currentDate = Time.current(date: now, at: trigger)
+        let startDate = Time.previous(date: now, at: firstTrigger)
+        let currentDate = Time.current(date: now, at: firstTrigger)
         let endDate = calendar.date(byAdding: .day, value: horizon, to: currentDate)!
         var date = nextDate > startDate ? nextDate : startDate
         while date <= endDate {
-            let notes = nextNotes(status: .pending, date: date)
+            let notes = nextNotes(date: date)
             let components = calendar.dateComponents([.year, .month, .day], from: date)
             let moment = Moment(year: components.year!, month: components.month!, day: components.day!)
             days.append(Schedule.Day(moment: moment, notes: notes))
@@ -73,7 +78,7 @@ class Scheduler {
         return days
     }
 
-    func dateForTrigger(day: Schedule.Day) -> Date {
+    func dateForTrigger(day: Schedule.Day, trigger: DateComponents) -> Date {
         return Time.date(moment: day.moment, trigger: trigger)
     }
 
@@ -90,32 +95,31 @@ class Scheduler {
     }
 
     func updateNoteStatus(days: [Schedule.Day]) {
-        var haveSetCurrentDay = false
-        for day in days.reversed() {
-            let date = dateForTrigger(day: day)
-            if !haveSetCurrentDay && isCurrent(day: day) {
-                haveSetCurrentDay = true
-                continue
-            }
-
-            if date < now {
-                // notes for this day are before the trigger
-                if !haveSetCurrentDay {
-                    haveSetCurrentDay = true
-                    for note in day.notes {
-                        note.status = .current
+        let now = Date()
+        var lastOldNoteByType: [String: Note] = [:]
+        for day in days {
+            for note in day.notes {
+                if lastOldNoteByType[note.type] == nil {
+                    lastOldNoteByType[note.type] = note
+                }
+                switch note.status {
+                case .expired, .closed:
+                    continue
+                case .current, .pending:
+                    break
+                }
+                
+                let date = dateForTrigger(day: day, trigger: note.trigger)
+                if date < now {
+                    if let last = lastOldNoteByType[note.type] {
+                        last.status = .expired
                     }
-                } else {
-                    for note in day.notes {
-                        switch note.status {
-                        case .expired, .closed:
-                            break
-                        case .current, .pending:
-                            note.status = .expired
-                        }
-                    }
+                    lastOldNoteByType[note.type] = note
                 }
             }
+        }
+        for (_, note) in lastOldNoteByType {
+            note.status = .current
         }
     }
 
@@ -126,49 +130,21 @@ class Scheduler {
     }
 
     func assertNoteStatus(days: [Schedule.Day]) {
-        var currentCount = 0
+        var currentNotes: [String: Note] = [:]
         for day in days {
-            if day.notes.count != 2 {
-                assertFail()
-            }
-            let date = dateForTrigger(day: day)
-            if date < now {
-                for note in day.notes {
-                    switch note.status {
-                    case .pending:
+            for note in day.notes {
+                if note.status == .current {
+                    if currentNotes[note.type] != nil {
                         assertFail()
-                    case .current:
-                        currentCount += 1
-                        if currentCount > 2 {
-                            assertFail()
-                        }
-                        break
-                    case .expired:
-                        break
-                    case .closed:
-                        break
+                        NSLog("multiple current notes of type \(note.type)")
                     }
-                }
-            } else {
-                for note in day.notes {
-                    switch note.status {
-                    case .pending:
-                        break
-                    case .current:
-                        // if the trigger time was moved then the current can be in the future -denis
-                        currentCount += 1
-                        if currentCount > 2 {
-                            assertFail()
-                        }
-                        break
-                    default:
-                        assertFail()
-                    }
+                    currentNotes[note.type] = note
                 }
             }
         }
-        if currentCount != 2 {
+        if currentNotes.count != 2 {
             assertFail()
+            NSLog("incorrect count of current note types")
         }
     }
 
