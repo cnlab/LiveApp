@@ -33,10 +33,10 @@ class SchedulerTests: XCTestCase {
         let valueMessageManager = ValueMessageManager()
         let messageManagers: [MessageManager] = [valueMessageManager, activityMessageManager]
         let now = date(from: string)
-        let trigger = DateComponents(hour: 9, minute: 0)
+        let triggers = [DateComponents(hour: 9, minute: 0), DateComponents(hour: 20, minute: 0)]
         let triggerOffsets: [String: TimeInterval] = ["Activity": 0, "Value": 10]
         let horizon = 1
-        let scheduler = Scheduler(messageManagers: messageManagers, now: now, trigger: trigger, triggerOffsets: triggerOffsets, horizon: horizon)
+        let scheduler = Scheduler(messageManagers: messageManagers, now: now, triggers: triggers, triggerOffsets: triggerOffsets, horizon: horizon)
         return scheduler
     }
 

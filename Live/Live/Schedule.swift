@@ -36,7 +36,7 @@ class Schedule: JSONConvertable {
             ]
         }
         
-        var isPending: Bool {
+        var hasPending: Bool {
             get {
                 return notes.reduce(false) { $0 || $1.isPending }
             }
@@ -62,18 +62,10 @@ class Schedule: JSONConvertable {
         ]
     }
 
-    var isPending: Bool {
+    var hasPending: Bool {
         get {
-            return days.reduce(false) { $0 || $1.isPending }
+            return days.reduce(false) { $0 || $1.hasPending }
         }
-    }
-
-    func pendingDays() -> [Day] {
-        return days.filter() { $0.isPending }
-    }
-
-    func completedDays() -> [Day] {
-        return days.filter() { !$0.isPending }
     }
 
 }

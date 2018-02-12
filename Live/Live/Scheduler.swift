@@ -24,17 +24,7 @@ class Scheduler {
         self.horizon = horizon
     }
 
-    func nextNotes(date: Date) -> [Note] {
-        var notes: [Note] = []
-        for trigger in LiveManager.shared.triggers.value {
-            for messageManager in messageManagers {
-                notes.append(Note(uuid: UUID().uuidString, trigger: trigger, type: messageManager.type, messageKey: messageManager.next(), status: .pending, deleted: false))
-            }
-        }
-        return notes
-    }
-
-    func removePendingDays(previousDays: [Schedule.Day]) -> [Schedule.Day] {
+    func removePendingNotes(previousDays: [Schedule.Day]) -> [Schedule.Day] {
         var days: [Schedule.Day] = []
         for day in previousDays {
             var retainNotes: [Note] = []
@@ -51,28 +41,66 @@ class Scheduler {
         return days
     }
 
+    func triggerIndex(after date: Date) -> Int {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day], from: date)
+        let moment = Moment(year: components.year!, month: components.month!, day: components.day!)
+        for index in 0 ..< triggers.count {
+            let triggerDate = Time.date(moment: moment, trigger: triggers[index])
+            if triggerDate > date {
+                return index
+            }
+        }
+        return triggers.count
+    }
+    
+    func nextNotes(date: Date) -> [Note] {
+        var notes: [Note] = []
+        for trigger in triggers {
+            for messageManager in messageManagers {
+                notes.append(Note(uuid: UUID().uuidString, trigger: trigger, type: messageManager.type, messageKey: messageManager.next(), status: .pending, deleted: false))
+            }
+        }
+        return notes
+    }
+    
     func addDaysToHorizon(previousDays: [Schedule.Day]) -> [Schedule.Day] {
-        guard let firstTrigger = LiveManager.shared.triggers.value.first else {
+        if triggers.isEmpty {
             return previousDays
         }
+        
         var days = previousDays
         let calendar = Calendar.current
-        let nextDate: Date
-        if let lastDay = previousDays.last {
-            let lastDate = dateForTrigger(day: lastDay, trigger: firstTrigger)
-            nextDate = calendar.date(byAdding: .day, value: 1, to: lastDate)!
+        let startOfDay = calendar.startOfDay(for: now)
+        let endDate = calendar.date(byAdding: .day, value: 1 + horizon, to: startOfDay)!
+        var date: Date
+        if let lastDay = previousDays.last, let lastNote = lastDay.notes.last {
+            var notes = lastDay.notes
+            var index = triggerIndex(after: dateForTrigger(day: lastDay, trigger: lastNote.trigger))
+            while index < triggers.count {
+                let trigger = triggers[index]
+                for messageManager in messageManagers {
+                    notes.append(Note(uuid: UUID().uuidString, trigger: trigger, type: messageManager.type, messageKey: messageManager.next(), status: .pending, deleted: false))
+                }
+                index += 1
+            }
+            let moment = lastDay.moment
+            days[days.count - 1] = Schedule.Day(moment: moment, notes: notes)
+            date = Time.next(date: Calendar.current.date(from: DateComponents(year: moment.year, month: moment.month, day: moment.day))!)
         } else {
-            nextDate = Time.previous(date: now, at: firstTrigger)
+            date = startOfDay
         }
-        let startDate = Time.previous(date: now, at: firstTrigger)
-        let currentDate = Time.current(date: now, at: firstTrigger)
-        let endDate = calendar.date(byAdding: .day, value: horizon, to: currentDate)!
-        var date = nextDate > startDate ? nextDate : startDate
-        while date <= endDate {
-            let notes = nextNotes(date: date)
+        while date < endDate {
+            var notes: [Note] = []
+            for trigger in triggers {
+                for messageManager in messageManagers {
+                    notes.append(Note(uuid: UUID().uuidString, trigger: trigger, type: messageManager.type, messageKey: messageManager.next(), status: .pending, deleted: false))
+                }
+            }
             let components = calendar.dateComponents([.year, .month, .day], from: date)
             let moment = Moment(year: components.year!, month: components.month!, day: components.day!)
             days.append(Schedule.Day(moment: moment, notes: notes))
+            
             date = Time.next(date: date)
         }
         return days
@@ -95,7 +123,6 @@ class Scheduler {
     }
 
     func updateNoteStatus(days: [Schedule.Day]) {
-        let now = Date()
         var lastOldNoteByType: [String: Note] = [:]
         for day in days {
             for note in day.notes {
@@ -153,7 +180,7 @@ class Scheduler {
     // append days up to the horizon
     // update status
     func rescheduleDays(previousDays: [Schedule.Day]) -> [Schedule.Day] {
-        var days = removePendingDays(previousDays: previousDays)
+        var days = removePendingNotes(previousDays: previousDays)
         days = extendDays(previousDays: days)
         return days
     }

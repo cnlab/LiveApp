@@ -98,6 +98,7 @@ class LiveManager: NotificationManagerDelegate, TrackerDelegate {
             }
         }
     }
+    var updateTimer = Timer()
 
     init() {
         Tracker.sharedInstance().delegate = self
@@ -113,7 +114,20 @@ class LiveManager: NotificationManagerDelegate, TrackerDelegate {
         healthKitManager.bodyMass.subscribe(owner: self, observer: bodyMassChanged)
         healthKitManager.height.subscribe(owner: self, observer: heightChanged)
     }
-
+    
+    func startUpdating() {
+        let updateInterval: TimeInterval = 1 * 60
+        updateTimer = Timer.scheduledTimer(timeInterval: updateInterval, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+    }
+    
+    func stopUpdating() {
+        updateTimer.invalidate()
+    }
+    
+    @objc func update() {
+        refresh()
+    }
+    
     func tracker(_ tracker: Tracker, action: Tracker.Action) {
         actions.append(action)
         dirty = true
@@ -339,7 +353,7 @@ class LiveManager: NotificationManagerDelegate, TrackerDelegate {
         valueNote.value = valueNote.value
         activityNote.value = activityNote.value
         dirty = true
-        if !schedule.isPending {
+        if !schedule.hasPending {
             notificationManager.nothingPending()
         }
         notificationManager.getOutstanding()
@@ -408,11 +422,9 @@ class LiveManager: NotificationManagerDelegate, TrackerDelegate {
                     let message = messageManager.find(messageKey: note.messageKey),
                     let triggerOffset = triggerOffsets[note.type]
                 {
-                    for trigger in triggers.value {
-                        let date = Time.date(moment: day.moment, trigger: trigger).addingTimeInterval(triggerOffset)
-                        if date > now {
-                            notificationManager.request(date: date, uuid: note.uuid, type: note.type, message: message)
-                        }
+                    let date = Time.date(moment: day.moment, trigger: note.trigger).addingTimeInterval(triggerOffset)
+                    if date > now {
+                        notificationManager.request(date: date, uuid: note.uuid, type: note.type, message: message)
                     }
                 }
             }
@@ -442,14 +454,12 @@ class LiveManager: NotificationManagerDelegate, TrackerDelegate {
 
         let date = Date()
         for day in schedule.days {
-            for trigger in triggers.value {
-                let notificationDate = Time.date(moment: day.moment, trigger: trigger)
+            for note in day.notes {
+                let notificationDate = Time.date(moment: day.moment, trigger: note.trigger)
                 if notificationDate < date {
-                    for note in day.notes {
-                        if case .pending = note.status {
-                            if !uuids.contains(note.uuid) {
-                                note.status = .closed
-                            }
+                    if case .pending = note.status {
+                        if !uuids.contains(note.uuid) {
+                            note.status = .closed
                         }
                     }
                 }

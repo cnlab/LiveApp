@@ -27,13 +27,13 @@ class ScheduleCoderTests: XCTestCase {
     }
 
     func testNoteCoder() throws {
-        let note = Note(uuid: "uuid", type: "type", messageKey: Message.Key(group: "group", identifier: "identifier"), status: .pending, date: Date())
+        let note = Note(uuid: "uuid", trigger: DateComponents(hour: 9, minute: 0), type: "type", messageKey: Message.Key(group: "group", identifier: "identifier"), status: .pending, deleted: false)
         let unarchivedNote = try encodeAndDecode(note)
         XCTAssertEqual(note.uuid, unarchivedNote.uuid)
     }
 
     func testDayCoder() throws {
-        let note = Note(uuid: "uuid", type: "type", messageKey: Message.Key(group: "group", identifier: "identifier"), status: .pending, date: Date())
+        let note = Note(uuid: "uuid", trigger: DateComponents(hour: 9, minute: 0), type: "type", messageKey: Message.Key(group: "group", identifier: "identifier"), status: .pending, deleted: false)
         let day = Schedule.Day(moment: Moment(year: 2017, month: 1, day: 16), notes: [note])
         let unarchivedDay = try encodeAndDecode(day)
         XCTAssertEqual(day.moment.year, unarchivedDay.moment.year)
@@ -43,7 +43,7 @@ class ScheduleCoderTests: XCTestCase {
     }
 
     func testScheduleCoder() throws {
-        let note = Note(uuid: "uuid", type: "type", messageKey: Message.Key(group: "group", identifier: "identifier"), status: .pending, date: Date())
+        let note = Note(uuid: "uuid", trigger: DateComponents(hour: 9, minute: 0), type: "type", messageKey: Message.Key(group: "group", identifier: "identifier"), status: .pending, deleted: false)
         let day = Schedule.Day(moment: Moment(year: 2017, month: 1, day: 16), notes: [note])
         let schedule = Schedule(days: [day])
         let unarchivedSchedule = try encodeAndDecode(schedule)

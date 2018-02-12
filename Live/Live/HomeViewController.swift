@@ -127,4 +127,16 @@ class HomeViewController: TrackerViewController {
         }
     }
     
+    open override func viewDidLayoutSubviews() {
+        guard
+            let messagesView = self.messagesView,
+            let valueTextView = self.valueTextView,
+            let activityTextView = self.activityTextView
+        else {
+            return
+        }
+        
+        Layout.vertical(viewController: self, view: messagesView, flexibleViews: Set([valueTextView, activityTextView]))
+    }
+
 }

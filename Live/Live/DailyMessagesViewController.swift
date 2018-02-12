@@ -39,18 +39,22 @@ class DailyMessagesViewController: TrackerViewController, UITableViewDelegate, U
 
         dailyMessages = []
         let liveManager = LiveManager.shared
-        for day in liveManager.schedule.completedDays().reversed() {
+        for day in liveManager.schedule.days.reversed() {
             for note in day.notes.reversed() {
-                if note.deleted {
+                if note.deleted || note.isPending {
                     continue
                 }
                 let date: String
                 let moment = day.moment
                 if (moment.year == today.year) && (moment.month == today.month) && (moment.day == today.day) {
-                    date = "Today"
+                    if let when = Calendar.current.date(from: DateComponents(year: moment.year, month: moment.month, day: moment.day, hour: note.trigger.hour, minute: note.trigger.minute)) {
+                        date = DateFormatter.localizedString(from: when, dateStyle: .none, timeStyle: .short) + " Today"
+                    } else {
+                        date = "Today"
+                    }
                 } else {
-                    if let when = Calendar.current.date(from: DateComponents(year: moment.year, month: moment.month, day: moment.day)) {
-                        date = dateFormatter.string(from: when)
+                    if let when = Calendar.current.date(from: DateComponents(year: moment.year, month: moment.month, day: moment.day, hour: note.trigger.hour, minute: note.trigger.minute)) {
+                        date = DateFormatter.localizedString(from: when, dateStyle: .none, timeStyle: .short) + " " + dateFormatter.string(from: when)
                     } else {
                         date = "***"
                     }

@@ -72,4 +72,22 @@ class Layout {
         }
     }
 
+    static func vertical(viewController: UIViewController, view: UIView, flexibleViews: Set<UIView> = [], insets: UIEdgeInsets = UIEdgeInsets(top: 8.0, left: 16.0, bottom: 8.0, right: 16.0), spacing: CGFloat = 8.0) {
+        let x: CGFloat = insets.left
+        let y: CGFloat = insets.top
+        let width = view.bounds.width - insets.right - insets.left
+        let contentHeight = view.bounds.height - insets.top - insets.bottom
+        let totalFlexibleHeight = contentHeight - Layout.totalHeight(subviews: view.subviews, excluding: flexibleViews, spacing: spacing)
+        let flexibleHeight = totalFlexibleHeight / CGFloat(flexibleViews.count)
+        
+        var cy = y
+        for subview in view.subviews {
+            if subview.isHidden {
+                break
+            }
+            Layout.place(subview: subview, x: x, y: &cy, width: width, height: flexibleViews.contains(subview) ? flexibleHeight : nil)
+            cy += spacing
+        }
+    }
+    
 }

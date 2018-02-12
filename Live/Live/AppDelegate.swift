@@ -72,7 +72,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Tracker.sharedInstance().record(transition: .willResignActive)
 
-        LiveManager.shared.archive()
+        let liveManager = LiveManager.shared
+        liveManager.stopUpdating()
+        liveManager.archive()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -85,7 +87,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Tracker.sharedInstance().record(transition: .didEnterBackground)
 
-        LiveManager.shared.archive()
+        let liveManager = LiveManager.shared
+        liveManager.stopUpdating()
+        liveManager.archive()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -103,7 +107,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Tracker.sharedInstance().record(transition: .didBecomeActive)
 
-        LiveManager.shared.refresh()
+        let liveManager = LiveManager.shared
+        liveManager.startUpdating()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

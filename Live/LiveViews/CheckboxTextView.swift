@@ -97,7 +97,8 @@ import Foundation
         super.draw(rect)
         
         if isChecked, let image = image {
-            image.draw(at: CGPoint(x: 0, y: 0))
+            let y = (Swift.max(font?.ascender ?? 0, image.size.height) - image.size.height) / 2.0
+            image.draw(at: CGPoint(x: 0, y: y))
         }
     }
 
