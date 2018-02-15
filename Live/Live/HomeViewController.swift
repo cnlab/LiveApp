@@ -137,6 +137,10 @@ class HomeViewController: TrackerViewController {
         }
         
         Layout.vertical(viewController: self, view: messagesView, flexibleViews: Set([valueTextView, activityTextView]))
+        valueTextView.sizeFont()
+        valueTextView.setNeedsDisplay()
+        activityTextView.sizeFont()
+        activityTextView.setNeedsDisplay()
     }
 
 }

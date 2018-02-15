@@ -81,9 +81,9 @@ class LiveManager: NotificationManagerDelegate, TrackerDelegate {
     let horizon = 14
     var triggers = Observable<[DateComponents]>(value: [
         DateComponents(hour: 9, minute: 0),
-        DateComponents(hour: 12, minute: 0),
-        DateComponents(hour: 15, minute: 0),
-        DateComponents(hour: 18, minute: 0),
+//        DateComponents(hour: 12, minute: 0),
+//        DateComponents(hour: 15, minute: 0),
+//        DateComponents(hour: 18, minute: 0),
         ])
     var triggerOffsets: [String: TimeInterval] = ["Activity": 0, "Value": 10]
     var actions: [Tracker.Action] = []

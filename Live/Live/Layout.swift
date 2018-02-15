@@ -77,7 +77,7 @@ class Layout {
         let y: CGFloat = insets.top
         let width = view.bounds.width - insets.right - insets.left
         let contentHeight = view.bounds.height - insets.top - insets.bottom
-        let totalFlexibleHeight = contentHeight - Layout.totalHeight(subviews: view.subviews, excluding: flexibleViews, spacing: spacing)
+        let totalFlexibleHeight = contentHeight - Layout.totalHeight(subviews: view.subviews, excluding: flexibleViews, spacing: spacing) - spacing * CGFloat(flexibleViews.count)
         let flexibleHeight = totalFlexibleHeight / CGFloat(flexibleViews.count)
         
         var cy = y
