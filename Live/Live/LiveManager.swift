@@ -78,6 +78,7 @@ class LiveManager: NotificationManagerDelegate, TrackerDelegate {
     var valueNote = Observable<Note?>(value: nil)
     var activityNote = Observable<Note?>(value: nil)
     var schedule = Schedule(days: [])
+    let notificationLimit = 64
     let horizon = 14
     var triggers = Observable<[DateComponents]>(value: [
         DateComponents(hour: 9, minute: 0),
@@ -413,6 +414,7 @@ class LiveManager: NotificationManagerDelegate, TrackerDelegate {
 
         notificationManager.cancel()
 
+        var count = 0
         let now = Date()
         for day in schedule.days {
             for note in day.notes {
@@ -425,6 +427,10 @@ class LiveManager: NotificationManagerDelegate, TrackerDelegate {
                     let date = Time.date(moment: day.moment, trigger: note.trigger).addingTimeInterval(triggerOffset)
                     if date > now {
                         notificationManager.request(date: date, uuid: note.uuid, type: note.type, message: message)
+                        count += 1
+                        if count >= notificationLimit {
+                            return
+                        }
                     }
                 }
             }
