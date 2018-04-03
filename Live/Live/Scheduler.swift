@@ -175,19 +175,15 @@ class Scheduler {
         }
     }
 
-    // keep all notes from the past
-    // remove pending days
-    // append days up to the horizon
-    // update status
     func rescheduleDays(previousDays: [Schedule.Day]) -> [Schedule.Day] {
+        updateNoteStatus(days: previousDays)
         var days = removePendingNotes(previousDays: previousDays)
         days = extendDays(previousDays: days)
         return days
     }
 
-    // append days up to the horizon
-    // update status
     func extendDays(previousDays: [Schedule.Day]) -> [Schedule.Day] {
+        updateNoteStatus(days: previousDays)
         let days = addDaysToHorizon(previousDays: previousDays)
         updateNoteStatus(days: days)
         assertNoteStatus(days: days)
