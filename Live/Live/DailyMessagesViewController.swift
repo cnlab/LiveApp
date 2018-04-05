@@ -78,13 +78,15 @@ class DailyMessagesViewController: TrackerViewController, UITableViewDelegate, U
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let dailyMessage = self.dailyMessages[indexPath.row]
-        let cell: DailyMessagesTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as! DailyMessagesTableViewCell!
+        guard let cell: DailyMessagesTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as? DailyMessagesTableViewCell else {
+            return self.tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        }
         cell.dateLabel?.text = dailyMessage.date
         cell.checkboxTextView?.tappedCallback = {}
         cell.checkboxTextView?.text = dailyMessage.text
         cell.checkboxTextView?.setChecked(checked: dailyMessage.rated)
         cell.checkboxTextView?.image = UIImage(named: "ic_checked")
-        cell.checkboxTextView?.sizeFont();
+        cell.checkboxTextView?.sizeFont()
         return cell
     }
     
