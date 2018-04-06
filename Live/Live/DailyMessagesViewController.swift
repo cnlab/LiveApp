@@ -32,9 +32,17 @@ class DailyMessagesViewController: TrackerViewController, UITableViewDelegate, U
         tableView.estimatedRowHeight = 100
         
         dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
+        
+        let liveManager = LiveManager.shared
+        liveManager.activityNote.subscribe(owner: self, observer: reloadMessages)
+        liveManager.valueNote.subscribe(owner: self, observer: reloadMessages)
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        reloadMessages()
+    }
+    
+    func reloadMessages() {
         let today = Calendar.current.dateComponents([.year, .month, .day], from: Date())
 
         dailyMessages = []

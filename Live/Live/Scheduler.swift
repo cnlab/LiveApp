@@ -132,7 +132,9 @@ class Scheduler {
                 switch note.status {
                 case .expired, .closed:
                     continue
-                case .current, .pending:
+                case .current:
+                    note.status = .pending
+                case .pending:
                     break
                 }
                 
@@ -179,6 +181,7 @@ class Scheduler {
         updateNoteStatus(days: previousDays)
         var days = removePendingNotes(previousDays: previousDays)
         days = extendDays(previousDays: days)
+        assertNoteStatus(days: days)
         return days
     }
 
